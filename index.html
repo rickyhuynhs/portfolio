@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RICKY HUYNH — Filmmaker & Director Portfolio</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Ricky Huynh — Filmmaker & Creator</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -12,529 +11,372 @@
             theme: {
                 extend: {
                     colors: {
-                        darkBg: '#0a0a0a',
-                        cardBg: '#121212',
-                        accentGold: '#d4af37',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        darkbg: '#0a0a0a',
+                        cardbg: '#141414',
+                        bordercolor: '#262626'
                     }
                 }
             }
         }
     </script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            background-color: #0a0a0a;
-            color: #f3f4f6;
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0a0a0a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #262626;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #404040;
-        }
-        .cinematic-gradient {
-            background: linear-gradient(180deg, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.9) 80%, rgba(10,10,10,1) 100%);
-        }
+        .animate-fadeIn { animation: fadeIn 0.3s ease-out forwards; }
     </style>
 </head>
-<body class="bg-[#0a0a0a] text-gray-100 antialiased selection:bg-neutral-800 selection:text-white">
+<body class="bg-darkbg text-zinc-100 min-h-screen flex flex-col selection:bg-zinc-700 selection:text-white">
 
-    <!-- Navigation Header -->
-    <header id="site-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-neutral-900">
+    <!-- NAVIGATION HEADER (Kerr Creatives Inspired Minimalist Layout) -->
+    <header class="sticky top-0 z-50 bg-darkbg/90 backdrop-blur-md border-b border-bordercolor">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="font-serif tracking-widest text-xl md:text-2xl font-bold text-white hover:text-neutral-300 transition">
+            <!-- Brand / Name -->
+            <a href="#" onclick="switchTab('home')" class="text-xl font-bold tracking-wider hover:opacity-80 transition-opacity">
                 RICKY HUYNH
             </a>
             
-            <!-- Desktop Nav Links -->
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wider uppercase text-neutral-400">
-                <button onclick="switchTab('home')" class="nav-btn text-white hover:text-white transition" data-tab="home">Home</button>
-                <button onclick="switchTab('film')" class="nav-btn hover:text-white transition" data-tab="film">Film & Narrative</button>
-                <button onclick="switchTab('videography')" class="nav-btn hover:text-white transition" data-tab="videography">Videography</button>
-                <button onclick="switchTab('onset')" class="nav-btn hover:text-white transition" data-tab="onset">On Set</button>
-                <button onclick="switchTab('content')" class="nav-btn hover:text-white transition" data-tab="content">Content Creator</button>
-                <button onclick="switchTab('about')" class="nav-btn hover:text-white transition" data-tab="about">About</button>
-                <button onclick="switchTab('contact')" class="nav-btn hover:text-white transition" data-tab="contact">Contact</button>
+            <!-- Desktop Navigation Tabs -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <button onclick="switchTab('home')" id="nav-home" class="nav-btn text-sm font-medium tracking-wide transition-colors text-white">Home</button>
+                <button onclick="switchTab('film')" id="nav-film" class="nav-btn text-sm font-medium tracking-wide transition-colors text-zinc-400 hover:text-white">Film & Narrative</button>
+                <button onclick="switchTab('videography')" id="nav-videography" class="nav-btn text-sm font-medium tracking-wide transition-colors text-zinc-400 hover:text-white">Videography</button>
+                <button onclick="switchTab('onset')" id="nav-onset" class="nav-btn text-sm font-medium tracking-wide transition-colors text-zinc-400 hover:text-white">On Set</button>
+                <button onclick="switchTab('content')" id="nav-content" class="nav-btn text-sm font-medium tracking-wide transition-colors text-zinc-400 hover:text-white">Content Creator</button>
+                <button onclick="switchTab('about')" id="nav-about" class="nav-btn text-sm font-medium tracking-wide transition-colors text-zinc-400 hover:text-white">About</button>
+                <button onclick="switchTab('contact')" id="nav-contact" class="nav-btn text-sm font-medium tracking-wide transition-colors text-zinc-400 hover:text-white">Contact</button>
             </nav>
 
-            <!-- Mobile Menu Toggle -->
-            <button id="mobile-menu-btn" class="md:hidden text-white text-xl focus:outline-none">
-                <i class="fa-solid fa-bars"></i>
+            <!-- Mobile Menu Toggle Button -->
+            <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-zinc-300 hover:text-white">
+                <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
         </div>
 
         <!-- Mobile Navigation Drawer -->
-        <div id="mobile-menu" class="hidden md:hidden bg-[#0a0a0a] border-b border-neutral-800 px-6 py-6 space-y-4">
-            <button onclick="switchTab('home'); toggleMobileMenu();" class="block w-full text-left text-lg font-medium text-white py-2">Home</button>
-            <button onclick="switchTab('film'); toggleMobileMenu();" class="block w-full text-left text-lg font-medium text-neutral-400 py-2">Film & Narrative</button>
-            <button onclick="switchTab('videography'); toggleMobileMenu();" class="block w-full text-left text-lg font-medium text-neutral-400 py-2">Videography</button>
-            <button onclick="switchTab('onset'); toggleMobileMenu();" class="block w-full text-left text-lg font-medium text-neutral-400 py-2">On Set</button>
-            <button onclick="switchTab('content'); toggleMobileMenu();" class="block w-full text-left text-lg font-medium text-neutral-400 py-2">Content Creator</button>
-            <button onclick="switchTab('about'); toggleMobileMenu();" class="block w-full text-left text-lg font-medium text-neutral-400 py-2">About</button>
-            <button onclick="switchTab('contact'); toggleMobileMenu();" class="block w-full text-left text-lg font-medium text-neutral-400 py-2">Contact</button>
+        <div id="mobile-menu" class="hidden md:hidden border-b border-bordercolor bg-cardbg px-6 py-6 space-y-4">
+            <button onclick="switchTab('home'); toggleMobileMenu();" class="block w-full text-left text-base font-medium text-zinc-200 hover:text-white">Home</button>
+            <button onclick="switchTab('film'); toggleMobileMenu();" class="block w-full text-left text-base font-medium text-zinc-200 hover:text-white">Film & Narrative</button>
+            <button onclick="switchTab('videography'); toggleMobileMenu();" class="block w-full text-left text-base font-medium text-zinc-200 hover:text-white">Videography</button>
+            <button onclick="switchTab('onset'); toggleMobileMenu();" class="block w-full text-left text-base font-medium text-zinc-200 hover:text-white">On Set</button>
+            <button onclick="switchTab('content'); toggleMobileMenu();" class="block w-full text-left text-base font-medium text-zinc-200 hover:text-white">Content Creator</button>
+            <button onclick="switchTab('about'); toggleMobileMenu();" class="block w-full text-left text-base font-medium text-zinc-200 hover:text-white">About</button>
+            <button onclick="switchTab('contact'); toggleMobileMenu();" class="block w-full text-left text-base font-medium text-zinc-200 hover:text-white">Contact</button>
         </div>
     </header>
 
     <!-- MAIN CONTENT CONTAINER -->
-    <main class="pt-20">
+    <main class="flex-grow max-w-7xl mx-auto px-6 py-16 w-full">
 
-        <!-- ================= TAB: HOME ================= -->
-        <div id="tab-home" class="tab-content active-tab">
-            <!-- Hero / Full-Width Cinematic Showreel Background Header -->
-            <section class="relative h-[90vh] w-full flex items-center justify-center overflow-hidden">
-                <!-- Background Cinematic Video / Fallback Poster -->
-                <div class="absolute inset-0 z-0">
-                    <iframe class="absolute inset-0 w-full h-full object-cover pointer-events-none scale-125 opacity-60" 
-                            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ&controls=0&showinfo=0&autohide=1" 
-                            title="Showreel Background" frameborder="0"></iframe>
-                    <div class="absolute inset-0 bg-black/50 cinematic-gradient"></div>
+        <!-- 0. HOMEPAGE SECTION (Kerr Creatives Layout Style) -->
+        <section id="content-home" class="tab-content space-y-20 animate-fadeIn">
+            <!-- Full Width Hero Reel -->
+            <div class="space-y-6">
+                <div class="aspect-video w-full bg-cardbg border border-bordercolor rounded-2xl overflow-hidden relative shadow-2xl">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/nmq4ATBxz-Q" title="Director's Reel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
-
-                <!-- Hero Content -->
-                <div class="relative z-10 text-center px-6 max-w-5xl mx-auto mt-12">
-                    <p class="text-xs md:text-sm uppercase tracking-[0.3em] text-neutral-400 mb-4 font-semibold">Director & Cinematographer</p>
-                    <h1 class="text-4xl md:text-7xl lg:text-8xl font-serif font-light tracking-tight text-white mb-8">
-                        Talent · Craft · Story.
-                    </h1>
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', '2026 Cinematic Reel')" class="px-8 py-4 bg-white text-black font-medium tracking-widest text-xs uppercase rounded-full hover:bg-neutral-200 transition flex items-center gap-3">
-                            <i class="fa-solid fa-play text-xs"></i> Watch Showreel
-                        </button>
-                        <button onclick="switchTab('film')" class="px-8 py-4 bg-transparent border border-neutral-700 text-white font-medium tracking-widest text-xs uppercase rounded-full hover:border-white transition">
-                            Explore Works
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Scroll Down Indicator -->
-                <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce text-neutral-500">
-                    <i class="fa-solid fa-chevron-down text-sm"></i>
-                </div>
-            </section>
-
-            <!-- Featured Work / Minimalist Category Feature Grid -->
-            <section class="py-24 px-6 max-w-7xl mx-auto">
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pt-2">
                     <div>
-                        <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">Selected Portfolio</p>
-                        <h2 class="text-3xl md:text-5xl font-serif text-white">Featured Masterpieces</h2>
+                        <h1 class="text-3xl font-bold tracking-tight">RICKY HUYNH</h1>
+                        <p class="text-zinc-400 text-sm mt-1">Director, Videographer, and Editor based in Boston, Massachusetts.</p>
                     </div>
-                    <div class="mt-4 md:mt-0 flex gap-2">
-                        <button onclick="filterProjects('all')" class="filter-btn px-4 py-2 text-xs uppercase tracking-wider rounded-full bg-neutral-800 text-white transition">All</button>
-                        <button onclick="filterProjects('Commercial')" class="filter-btn px-4 py-2 text-xs uppercase tracking-wider rounded-full bg-neutral-900 text-neutral-400 hover:text-white transition">Commercial</button>
-                        <button onclick="filterProjects('Documentary')" class="filter-btn px-4 py-2 text-xs uppercase tracking-wider rounded-full bg-neutral-900 text-neutral-400 hover:text-white transition">Documentary</button>
-                        <button onclick="filterProjects('Corporate')" class="filter-btn px-4 py-2 text-xs uppercase tracking-wider rounded-full bg-neutral-900 text-neutral-400 hover:text-white transition">Corporate</button>
-                    </div>
-                </div>
-
-                <!-- Grid -->
-                <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Project 1 -->
-                    <div class="project-card group cursor-pointer" data-category="Commercial" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'IEL Platform - Commercial')">
-                        <div class="relative overflow-hidden rounded-xl aspect-[16/10] bg-neutral-900 mb-4">
-                            <img src="https://placehold.co/1200x750/171717/333333?text=IEL+Platform" alt="IEL Platform" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                            <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition duration-300"></div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                                <div class="w-16 h-16 rounded-full bg-white/90 text-black flex items-center justify-center shadow-2xl">
-                                    <i class="fa-solid fa-play ml-1"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <span class="text-xs uppercase tracking-widest text-neutral-500 font-medium">Commercial</span>
-                                <h3 class="text-xl font-serif text-white mt-1 group-hover:text-neutral-300 transition">IEL Platform</h3>
-                            </div>
-                            <span class="text-sm text-neutral-500">2026</span>
-                        </div>
-                    </div>
-
-                    <!-- Project 2 -->
-                    <div class="project-card group cursor-pointer" data-category="Documentary" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Finding Vision - Documentary')">
-                        <div class="relative overflow-hidden rounded-xl aspect-[16/10] bg-neutral-900 mb-4">
-                            <img src="https://placehold.co/1200x750/171717/333333?text=Finding+Vision" alt="Finding Vision" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                            <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition duration-300"></div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                                <div class="w-16 h-16 rounded-full bg-white/90 text-black flex items-center justify-center shadow-2xl">
-                                    <i class="fa-solid fa-play ml-1"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <span class="text-xs uppercase tracking-widest text-neutral-500 font-medium">Documentary</span>
-                                <h3 class="text-xl font-serif text-white mt-1 group-hover:text-neutral-300 transition">Finding Vision with Jacque Duncan</h3>
-                            </div>
-                            <span class="text-sm text-neutral-500">2025</span>
-                        </div>
-                    </div>
-
-                    <!-- Project 3 -->
-                    <div class="project-card group cursor-pointer" data-category="Corporate" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Ritchie Bros. Hall of Fame')">
-                        <div class="relative overflow-hidden rounded-xl aspect-[16/10] bg-neutral-900 mb-4">
-                            <img src="https://placehold.co/1200x750/171717/333333?text=Ritchie+Bros" alt="Ritchie Bros" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                            <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition duration-300"></div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                                <div class="w-16 h-16 rounded-full bg-white/90 text-black flex items-center justify-center shadow-2xl">
-                                    <i class="fa-solid fa-play ml-1"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <span class="text-xs uppercase tracking-widest text-neutral-500 font-medium">Corporate</span>
-                                <h3 class="text-xl font-serif text-white mt-1 group-hover:text-neutral-300 transition">Ritchie Bros. Hall of Fame - Junior Davis</h3>
-                            </div>
-                            <span class="text-sm text-neutral-500">2025</span>
-                        </div>
-                    </div>
-
-                    <!-- Project 4 -->
-                    <div class="project-card group cursor-pointer" data-category="Commercial" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'BNP Paribas Open')">
-                        <div class="relative overflow-hidden rounded-xl aspect-[16/10] bg-neutral-900 mb-4">
-                            <img src="https://placehold.co/1200x750/171717/333333?text=BNP+Paribas+Open" alt="BNP Paribas Open" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                            <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition duration-300"></div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                                <div class="w-16 h-16 rounded-full bg-white/90 text-black flex items-center justify-center shadow-2xl">
-                                    <i class="fa-solid fa-play ml-1"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <span class="text-xs uppercase tracking-widest text-neutral-500 font-medium">Commercial</span>
-                                <h3 class="text-xl font-serif text-white mt-1 group-hover:text-neutral-300 transition">BNP Paribas Open - Indian Wells</h3>
-                            </div>
-                            <span class="text-sm text-neutral-500">2026</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- ================= TAB: FILM & NARRATIVE ================= -->
-        <div id="tab-film" class="tab-content hidden py-24 px-6 max-w-7xl mx-auto">
-            <div class="mb-16">
-                <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">Cinematic Artistry</p>
-                <h2 class="text-3xl md:text-6xl font-serif text-white">Film & Narrative Works</h2>
-                <p class="text-neutral-400 mt-4 max-w-2xl text-base">Immersive storytelling, gripping shorts, and narrative films crafted with meticulous detail, lighting precision, and emotional depth.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="group cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'The Silent Echo')">
-                    <div class="relative overflow-hidden rounded-xl aspect-[16/9] bg-neutral-900 mb-4">
-                        <img src="https://placehold.co/1200x675/121212/444444?text=The+Silent+Echo" alt="The Silent Echo" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    </div>
-                    <h3 class="text-2xl font-serif text-white">The Silent Echo (Short Film)</h3>
-                    <p class="text-neutral-400 text-sm mt-1">Official Selection - Bay Area Indie Film Festival 2025</p>
-                </div>
-                <div class="group cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Midnight Horizon')">
-                    <div class="relative overflow-hidden rounded-xl aspect-[16/9] bg-neutral-900 mb-4">
-                        <img src="https://placehold.co/1200x675/121212/444444?text=Midnight+Horizon" alt="Midnight Horizon" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    </div>
-                    <h3 class="text-2xl font-serif text-white">Midnight Horizon</h3>
-                    <p class="text-neutral-400 text-sm mt-1">Cinematography Reel & Narrative Concept</p>
+                    <button onclick="switchTab('film')" class="px-6 py-3 bg-white text-black font-semibold rounded-full text-sm hover:bg-zinc-200 transition-colors w-full md:w-auto text-center">View Portfolio</button>
                 </div>
             </div>
-        </div>
 
-        <!-- ================= TAB: VIDEOGRAPHY ================= -->
-        <div id="tab-videography" class="tab-content hidden py-24 px-6 max-w-7xl mx-auto">
-            <div class="mb-16">
-                <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">Commercial & Brand Production</p>
-                <h2 class="text-3xl md:text-6xl font-serif text-white">Videography Collection</h2>
-                <p class="text-neutral-400 mt-4 max-w-2xl text-base">High-end brand films, promotional campaigns, and high-energy spots that convert and inspire.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="group cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Dom Pérignon x Promontory')">
-                    <div class="relative overflow-hidden rounded-xl aspect-[4/5] bg-neutral-900 mb-3">
-                        <img src="https://placehold.co/800x1000/171717/333333?text=Dom+Perignon" alt="Dom Perignon" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    </div>
-                    <h4 class="text-lg font-serif text-white">Dom Pérignon x Promontory</h4>
-                    <p class="text-xs text-neutral-500 uppercase tracking-widest mt-1">Luxury Brand Campaign</p>
+            <!-- Featured Showcase Grid -->
+            <div class="space-y-8">
+                <div class="flex items-center justify-between border-b border-bordercolor pb-4">
+                    <h2 class="text-xl font-bold tracking-wide">FEATURED PROJECTS</h2>
+                    <button onclick="switchTab('film')" class="text-xs text-zinc-400 hover:text-white uppercase tracking-wider font-semibold">All Works →</button>
                 </div>
-                <div class="group cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Krug x Harbor House')">
-                    <div class="relative overflow-hidden rounded-xl aspect-[4/5] bg-neutral-900 mb-3">
-                        <img src="https://placehold.co/800x1000/171717/333333?text=Krug+Wine" alt="Krug Wine" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    </div>
-                    <h4 class="text-lg font-serif text-white">Krug x Harbor House</h4>
-                    <p class="text-xs text-neutral-500 uppercase tracking-widest mt-1">Culinary Documentary</p>
-                </div>
-                <div class="group cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Silicon Valley Tech Summit')">
-                    <div class="relative overflow-hidden rounded-xl aspect-[4/5] bg-neutral-900 mb-3">
-                        <img src="https://placehold.co/800x1000/171717/333333?text=Tech+Summit" alt="Tech Summit" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    </div>
-                    <h4 class="text-lg font-serif text-white">Silicon Valley Tech Summit</h4>
-                    <p class="text-xs text-neutral-500 uppercase tracking-widest mt-1">Event Coverage</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= TAB: ON SET ================= -->
-        <div id="tab-onset" class="tab-content hidden py-24 px-6 max-w-7xl mx-auto">
-            <div class="mb-16">
-                <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">Behind the Scenes</p>
-                <h2 class="text-3xl md:text-6xl font-serif text-white">On Set Photography</h2>
-                <p class="text-neutral-400 mt-4 max-w-2xl text-base">A glimpse into production days, lighting setups, camera rigs, and the dedicated crews bringing visions to life.</p>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                <div class="overflow-hidden rounded-xl aspect-square bg-neutral-900">
-                    <img src="https://placehold.co/800x800/171717/333333?text=BTS+Camera+Rig" alt="BTS Rig" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                </div>
-                <div class="overflow-hidden rounded-xl aspect-square bg-neutral-900">
-                    <img src="https://placehold.co/800x800/171717/333333?text=Director+Monitor" alt="Director Monitor" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                </div>
-                <div class="overflow-hidden rounded-xl aspect-square bg-neutral-900">
-                    <img src="https://placehold.co/800x800/171717/333333?text=Lighting+Setup" alt="Lighting Setup" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                </div>
-                <div class="overflow-hidden rounded-xl aspect-square bg-neutral-900">
-                    <img src="https://placehold.co/800x800/171717/333333?text=Crew+In+Action" alt="Crew" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                </div>
-                <div class="overflow-hidden rounded-xl aspect-square bg-neutral-900">
-                    <img src="https://placehold.co/800x800/171717/333333?text=Location+Scout" alt="Location Scout" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                </div>
-                <div class="overflow-hidden rounded-xl aspect-square bg-neutral-900">
-                    <img src="https://placehold.co/800x800/171717/333333?text=Post+Production" alt="Post Production" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= TAB: CONTENT CREATOR ================= -->
-        <div id="tab-content" class="tab-content hidden py-24 px-6 max-w-7xl mx-auto">
-            <div class="mb-16">
-                <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">Digital & Social Media</p>
-                <h2 class="text-3xl md:text-6xl font-serif text-white">Content Creator Works</h2>
-                <p class="text-neutral-400 mt-4 max-w-2xl text-base">Engaging short-form vertical videos, YouTube essays, and digital series designed for maximum viewer retention and impact.</p>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="group cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Creator Series Episode 1')">
-                    <div class="relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 mb-3">
-                        <img src="https://placehold.co/720x1280/171717/333333?text=Short+Form+1" alt="Short Form 1" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    </div>
-                    <h4 class="text-base font-serif text-white">Cinematic Lighting Breakdown</h4>
-                </div>
-                <div class="group cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Creator Series Episode 2')">
-                    <div class="relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 mb-3">
-                        <img src="https://placehold.co/720x1280/171717/333333?text=Short+Form+2" alt="Short Form 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    </div>
-                    <h4 class="text-base font-serif text-white">Behind The Lens: Sonoma Valley</h4>
-                </div>
-                <div class="group cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Creator Series Episode 3')">
-                    <div class="relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 mb-3">
-                        <img src="https://placehold.co/720x1280/171717/333333?text=Short+Form+3" alt="Short Form 3" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    </div>
-                    <h4 class="text-base font-serif text-white">Color Grading Masterclass</h4>
-                </div>
-                <div class="group cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Creator Series Episode 4')">
-                    <div class="relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 mb-3">
-                        <img src="https://placehold.co/720x1280/171717/333333?text=Short+Form+4" alt="Short Form 4" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    </div>
-                    <h4 class="text-base font-serif text-white">My 2026 Film Rig Setup</h4>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= TAB: ABOUT ================= -->
-        <div id="tab-about" class="tab-content hidden py-24 px-6 max-w-5xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="aspect-[4/5] rounded-2xl overflow-hidden bg-neutral-900">
-                    <img src="https://placehold.co/800x1000/171717/555555?text=Ricky+Huynh" alt="Ricky Huynh" class="w-full h-full object-cover">
-                </div>
-                <div>
-                    <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">About The Filmmaker</p>
-                    <h2 class="text-3xl md:text-5xl font-serif text-white mb-6">Crafting cinematic stories with passion and precision.</h2>
-                    <p class="text-neutral-400 text-base leading-relaxed mb-6">
-                        I am a director, cinematographer, and visual storyteller based in California. My work spans across high-end commercial spots, emotional documentary features, and immersive brand narratives. 
-                    </p>
-                    <p class="text-neutral-400 text-base leading-relaxed mb-8">
-                        With a deep dedication to atmospheric lighting, meticulous framing, and authentic human connection, I partner with forward-thinking brands and agencies to elevate their stories into cinematic experiences.
-                    </p>
-                    <div class="grid grid-cols-2 gap-6 border-t border-neutral-800 pt-6">
-                        <div>
-                            <h4 class="text-white font-serif text-lg mb-1">Based In</h4>
-                            <p class="text-neutral-400 text-sm">San Francisco Bay Area & Sonoma County</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div onclick="openMediaModal('YEARN', 'Dark Fantasy Short Film • 2026', 'Directed, Written & Edited\n\nA young woman, imprisoned by vampire hunters, follows an otherworldly presence toward the one she\'s been longing for.', 'https://www.youtube.com/embed/vLsucl9ixMQ')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                        <div class="aspect-video bg-zinc-900 overflow-hidden relative">
+                            <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/vLsucl9ixMQ" frameborder="0"></iframe>
                         </div>
-                        <div>
-                            <h4 class="text-white font-serif text-lg mb-1">Specialties</h4>
-                            <p class="text-neutral-400 text-sm">Commercial, Narrative, Documentary</p>
+                        <div class="p-6">
+                            <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2026 • Dark Fantasy Short Film</span>
+                            <h3 class="text-xl font-bold mt-1">YEARN</h3>
+                            <p class="text-zinc-400 text-sm mt-2">Directed, Written & Edited</p>
+                        </div>
+                    </div>
+                    <div onclick="openMediaModal('The Crown and The Root', 'Narrative Short • 2025', 'Directed, Written, Filmed & Edited\n\nWhile creating this video, I found myself torn on the direction I wanted the visuals to take. Was it a story about finding purpose? A surreal fantasy about a queen? Or just a montage of beautiful moments? It’s up to you to decide.', 'https://www.youtube.com/embed/0jof7MnCG1M')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                        <div class="aspect-video bg-zinc-900 overflow-hidden relative">
+                            <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/0jof7MnCG1M" frameborder="0"></iframe>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2025 • Narrative Short</span>
+                            <h3 class="text-xl font-bold mt-1">The Crown and The Root</h3>
+                            <p class="text-zinc-400 text-sm mt-2">Directed, Written, Filmed & Edited</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- ================= TAB: CONTACT ================= -->
-        <div id="tab-contact" class="tab-content hidden py-24 px-6 max-w-4xl mx-auto text-center">
-            <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">Get In Touch</p>
-            <h2 class="text-4xl md:text-6xl font-serif text-white mb-6">Let's Create Something Extraordinary Together.</h2>
-            <p class="text-neutral-400 text-lg mb-12 max-w-2xl mx-auto">Currently available for select commercial projects, brand films, and creative direction worldwide.</p>
+        <!-- 1. FILM & NARRATIVE SECTION -->
+        <section id="content-film" class="tab-content hidden space-y-12 animate-fadeIn">
+            <div class="space-y-3 max-w-2xl">
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Film & Narrative</h1>
+                <p class="text-zinc-400 text-lg">A chronological archive of narrative works, fantasy, horror shorts, and documentary pieces.</p>
+            </div>
             
-            <div class="inline-block bg-neutral-900 border border-neutral-800 p-8 md:p-12 rounded-2xl w-full max-w-xl text-left shadow-2xl">
-                <form onsubmit="handleContactSubmit(event)" class="space-y-6">
-                    <div>
-                        <label class="block text-xs uppercase tracking-widest text-neutral-400 mb-2 font-medium">Your Name</label>
-                        <input type="text" required class="w-full bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white transition" placeholder="John Doe">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 1. YEARN -->
+                <div onclick="openMediaModal('YEARN', 'Dark Fantasy Short Film • 2026', 'Directed, Written & Edited\n\nA young woman, imprisoned by vampire hunters, follows an otherworldly presence toward the one she\'s been longing for.', 'https://www.youtube.com/embed/vLsucl9ixMQ')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/vLsucl9ixMQ" frameborder="0"></iframe>
                     </div>
-                    <div>
-                        <label class="block text-xs uppercase tracking-widest text-neutral-400 mb-2 font-medium">Email Address</label>
-                        <input type="email" required class="w-full bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white transition" placeholder="john@example.com">
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2026 • Dark Fantasy Short Film</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">YEARN</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Directed, Written & Edited</p>
                     </div>
-                    <div>
-                        <label class="block text-xs uppercase tracking-widest text-neutral-400 mb-2 font-medium">Project Details</label>
-                        <textarea rows="4" required class="w-full bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white transition resize-none" placeholder="Tell me about your vision, timeline, and scope..."></textarea>
+                </div>
+
+                <!-- 2. The Crown and The Root -->
+                <div onclick="openMediaModal('The Crown and The Root', 'Narrative Short • 2025', 'Directed, Written, Filmed & Edited\n\nWhile creating this video, I found myself torn on the direction I wanted the visuals to take. Was it a story about finding purpose? A surreal fantasy about a queen? Or just a montage of beautiful moments? It’s up to you to decide.', 'https://www.youtube.com/embed/0jof7MnCG1M')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/0jof7MnCG1M" frameborder="0"></iframe>
                     </div>
-                    <button type="submit" class="w-full py-4 bg-white text-black font-medium uppercase tracking-widest text-xs rounded-lg hover:bg-neutral-200 transition">
-                        Send Message
-                    </button>
-                </form>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2025 • Narrative Short</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">The Crown and The Root</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Directed, Written, Filmed & Edited</p>
+                    </div>
+                </div>
+
+                <!-- 3. A Family Friendly Camping Vlog -->
+                <div onclick="openMediaModal('A Family Friendly Camping Vlog', 'Horror Short • 2025', 'Directed, Written, Filmed & Edited\n\nOn what seems like another routine camping trip, a cheerful family-friendly YouTube vlogger heads out alone for the first time without her usual partner. But when she crosses paths with a stranger in the woods, everything changes. What happens to Aly? Why would someone do this to her?', 'https://www.youtube.com/embed/j7F6JK5Vi1w')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/j7F6JK5Vi1w" frameborder="0"></iframe>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2025 • Horror Short</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">A Family Friendly Camping Vlog</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Directed, Written, Filmed & Edited</p>
+                    </div>
+                </div>
+
+                <!-- 4. VITA ULTRA -->
+                <div onclick="openMediaModal('VITA ULTRA', 'Sci-fi Short • 2025', 'Directed, Written & Edited\n\nOn a mission to uncover the truth about his past, an astronaut crashes on a strange world where the inhabitants hold an unsettling connection to him.', 'https://www.youtube.com/embed/b0GA1tooWzY')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/b0GA1tooWzY" frameborder="0"></iframe>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2025 • Sci-fi Short</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">VITA ULTRA</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Directed, Written & Edited</p>
+                    </div>
+                </div>
+
+                <!-- 5. Would You Change Things? -->
+                <div onclick="openMediaModal('Would You Change Things?', 'Narrative Short • 2025', 'Directed, Written & Edited\n\nEven when you know how a relationship will end, would you still embrace it and cherish the moments it gives you?', 'https://www.youtube.com/embed/kkQsD7qCH34')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/kkQsD7qCH34" frameborder="0"></iframe>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2025 • Narrative Short</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">Would You Change Things?</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Directed, Written & Edited</p>
+                    </div>
+                </div>
+
+                <!-- 6. How Adoption Shaped His Sense of Self -->
+                <div onclick="openMediaModal('How Adoption Shaped His Sense of Self', 'Documentary Short • 2024', 'Directed, Written & Edited\n\nThis short documentary tells the heartfelt adoption story of Jonathan Dees, who was adopted from Korea at just two years old. Through his journey, we gain insight into his upbringing alongside his siblings and reflect on the cherished, competitive memories they share. Adoption profoundly shaped Jonathan\'s identity, and he wouldn’t change a thing about the path that led him to become the person he is today.', 'https://www.youtube.com/embed/ZSFCy8aswtI')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/ZSFCy8aswtI" frameborder="0"></iframe>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2024 • Documentary Short</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">How Adoption Shaped His Sense of Self</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Directed, Written & Edited</p>
+                    </div>
+                </div>
+
+                <!-- 7. Maria -->
+                <div onclick="openMediaModal('Maria', 'Horror Short • 2024', 'Directed, Written & Edited\n\nInspired by ‘Pearl’ (2022), Maria tells the story of a girl whose failed relationship takes a deadly turn. When she realizes her partner will never treat her the way she deserves, she decides to take matters into her own hands.', 'https://www.youtube.com/embed/dZf6PXTZElo')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/dZf6PXTZElo" frameborder="0"></iframe>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2024 • Horror Short</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">Maria</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Directed, Written & Edited</p>
+                    </div>
+                </div>
+
+                <!-- 8. Do You Remember -->
+                <div onclick="openMediaModal('Do You Remember', 'Narrative Short • 2023', 'Directed, Written & Edited\n\nA couple reminisces on their past memories through old photos. After finding their digital camera tucked away in a \'memories\' box, they discuss the moments leading up to where they are now.', 'https://www.youtube.com/embed/AsAiFbdpOOs')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/AsAiFbdpOOs" frameborder="0"></iframe>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2023 • Narrative Short</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">Do You Remember</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Directed, Written & Edited</p>
+                    </div>
+                </div>
+
+                <!-- 9. Dear Anna -->
+                <div onclick="openMediaModal('Dear Anna', 'Narrative Short • 2022', 'Directed, Written & Edited\n\nA young woman reflects on her past relationship with her ex-girlfriend. The beauty and the pain of their connection are looked at through the eyes of a letter.', 'https://www.youtube.com/embed/CYJSHqBpbiE')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/CYJSHqBpbiE" frameborder="0"></iframe>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2022 • Narrative Short</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">Dear Anna</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Directed, Written & Edited</p>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- 2. VIDEOGRAPHY SECTION -->
+        <section id="content-videography" class="tab-content hidden space-y-12 animate-fadeIn">
+            <div class="space-y-3 max-w-2xl">
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Videography</h1>
+                <p class="text-zinc-400 text-lg">Professional coverage capturing corporate milestones, community events, and weddings.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-cardbg border border-bordercolor rounded-xl p-6">
+                    <h3 class="font-bold text-lg">Videography Archive</h3>
+                    <p class="text-zinc-400 text-sm mt-2">Professional commercial and event videography.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ON SET SECTION -->
+        <section id="content-onset" class="tab-content hidden space-y-12 animate-fadeIn">
+            <div class="space-y-3 max-w-2xl">
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">On Set</h1>
+                <p class="text-zinc-400 text-lg">Behind-the-scenes glimpses into production, lighting setups, and crew collaboration.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-cardbg border border-bordercolor rounded-xl p-6">
+                    <h3 class="font-bold text-lg">Production Gallery Coming Soon</h3>
+                    <p class="text-zinc-400 text-sm mt-2">Check back later for behind-the-scenes photography and equipment configurations.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. CONTENT CREATOR SECTION -->
+        <section id="content-content" class="tab-content hidden space-y-12 animate-fadeIn">
+            <div class="space-y-3 max-w-2xl">
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Content Creator</h1>
+                <p class="text-zinc-400 text-lg">Digital content, tutorials, and creative deep-dives across social platforms.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-cardbg border border-bordercolor rounded-xl p-6">
+                    <h3 class="font-bold text-lg">Creator Hub Coming Soon</h3>
+                    <p class="text-zinc-400 text-sm mt-2">Browse upcoming vlogs and filmmaking tutorials here.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. ABOUT SECTION -->
+        <section id="content-about" class="tab-content hidden space-y-12 animate-fadeIn">
+            <div class="space-y-3 max-w-2xl">
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">About Me</h1>
+                <p class="text-zinc-400 text-lg">Filmmaker and creator dedicated to telling compelling visual stories.</p>
+            </div>
+            <div class="bg-cardbg border border-bordercolor rounded-xl p-6 max-w-3xl space-y-4">
+                <p class="text-zinc-300">Hello! I'm Ricky Huynh, an independent filmmaker, director, and content creator based out of Boston. My work spans narrative short films, documentary projects, and commercial videography.</p>
+            </div>
+        </section>
+
+        <!-- 6. CONTACT SECTION -->
+        <section id="content-contact" class="tab-content hidden space-y-12 animate-fadeIn">
+            <div class="space-y-3 max-w-2xl">
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Get in Touch</h1>
+                <p class="text-zinc-400 text-lg">Let's collaborate on your next project or film.</p>
+            </div>
+            <div class="bg-cardbg border border-bordercolor rounded-xl p-6 max-w-xl">
+                <p class="text-zinc-300 mb-4">Reach out directly via email at <a href="mailto:rickyhuynhcontact@gmail.com" class="text-white underline font-medium">rickyhuynhcontact@gmail.com</a>.</p>
+            </div>
+        </section>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-neutral-900 py-12 px-6 mt-20">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="font-serif text-lg tracking-widest text-white">
-                RICKY HUYNH
+    <!-- MEDIA MODAL -->
+    <div id="media-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div onclick="event.stopPropagation()" class="bg-cardbg border border-bordercolor rounded-2xl max-w-3xl w-full overflow-hidden relative shadow-2xl animate-fadeIn">
+            <button onclick="closeMediaModal()" class="absolute top-4 right-4 z-10 p-2 text-zinc-400 hover:text-white bg-darkbg/50 rounded-full">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <div id="modal-media-container" class="aspect-video bg-black"></div>
+            <div class="p-6 space-y-2">
+                <span id="modal-category" class="text-xs uppercase tracking-widest text-zinc-500 font-semibold"></span>
+                <h3 id="modal-title" class="text-2xl font-bold"></h3>
+                <p id="modal-description" class="text-zinc-400 text-sm whitespace-pre-line mt-2"></p>
             </div>
-            <div class="flex space-x-6 text-neutral-400 text-sm">
-                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-instagram text-lg"></i></a>
-                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-vimeo text-lg"></i></a>
-                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-youtube text-lg"></i></a>
-                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-linkedin text-lg"></i></a>
-            </div>
-            <p class="text-neutral-500 text-xs tracking-wider">
-                &copy; 2026 Ricky Huynh. All Rights Reserved.
-            </p>
-        </div>
-    </footer>
-
-    <!-- Video Modal -->
-    <div id="video-modal" class="fixed inset-0 z-50 hidden bg-black/95 backdrop-blur-md flex items-center justify-center p-4 md:p-12">
-        <button onclick="closeVideoModal()" class="absolute top-6 right-6 text-neutral-400 hover:text-white text-3xl focus:outline-none z-10">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-        <div class="w-full max-w-5xl aspect-[16/9] relative bg-neutral-900 rounded-2xl overflow-hidden shadow-2xl">
-            <iframe id="modal-iframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
 
-    <!-- JavaScript Interactive Logic -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Tab Switching Logic
         function switchTab(tabId) {
-            // Hide all tabs
-            const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => {
-                tab.classList.add('hidden');
-                tab.classList.remove('active-tab');
-            });
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(el => el.classList.add('hidden'));
 
-            // Show selected tab
-            const targetTab = document.getElementById(`tab-${tabId}`);
-            if (targetTab) {
-                targetTab.classList.remove('hidden');
-                targetTab.classList.add('active-tab');
+            const target = document.getElementById('content-' + tabId);
+            if (target) {
+                target.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
 
-            // Update nav button states
-            const navButtons = document.querySelectorAll('.nav-btn');
-            navButtons.forEach(btn => {
-                if (btn.getAttribute('data-tab') === tabId) {
-                    btn.classList.add('text-white');
-                    btn.classList.remove('text-neutral-400');
-                } else {
-                    btn.classList.remove('text-white');
-                    btn.classList.add('text-neutral-400');
-                }
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('text-white');
+                btn.classList.add('text-zinc-400');
             });
 
-            // Scroll to top smoothly
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            const activeBtn = document.getElementById('nav-' + tabId);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-zinc-400');
+                activeBtn.classList.add('text-white');
+            }
         }
-
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
 
         function toggleMobileMenu() {
-            mobileMenu.classList.toggle('hidden');
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
         }
 
-        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        function openMediaModal(title, category, description, mediaUrl) {
+            const modal = document.getElementById('media-modal');
+            const container = document.getElementById('modal-media-container');
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-category').innerText = category;
+            document.getElementById('modal-description').innerText = description;
 
-        // Project Filtering (Home)
-        function filterProjects(category) {
-            const cards = document.querySelectorAll('.project-card');
-            cards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+            if (mediaUrl.includes('youtube.com/embed')) {
+                container.innerHTML = `<iframe class="w-full h-full" src="${mediaUrl}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            } else {
+                container.innerHTML = `<img src="${mediaUrl}" class="w-full h-full object-cover">`;
+            }
 
-            // Update filter button styling
-            event.target.parentElement.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('bg-neutral-800', 'text-white');
-                btn.classList.add('bg-neutral-900', 'text-neutral-400');
-            });
-            event.target.classList.remove('bg-neutral-900', 'text-neutral-400');
-            event.target.classList.add('bg-neutral-800', 'text-white');
-        }
-
-        // Video Modal Handler
-        const videoModal = document.getElementById('video-modal');
-        const modalIframe = document.getElementById('modal-iframe');
-
-        function openVideoModal(url, title) {
-            modalIframe.src = url;
-            videoModal.classList.remove('hidden');
+            modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
 
-        function closeVideoModal() {
-            modalIframe.src = '';
-            videoModal.classList.add('hidden');
+        function closeMediaModal() {
+            const modal = document.getElementById('media-modal');
+            const container = document.getElementById('modal-media-container');
+            container.innerHTML = '';
+            modal.classList.add('hidden');
             document.body.style.overflow = 'auto';
         }
 
-        // Close modal on outside click
-        videoModal.addEventListener('click', (e) => {
-            if (e.target === videoModal) {
-                closeVideoModal();
-            }
+        window.addEventListener('DOMContentLoaded', () => {
+            switchTab('home');
         });
-
-        // Contact Form Submission Handler (Custom non-alert message box simulation)
-        function handleContactSubmit(event) {
-            event.preventDefault();
-            const form = event.target;
-            
-            // Create success message banner
-            const successDiv = document.createElement('div');
-            successDiv.className = 'bg-neutral-900 border border-neutral-700 text-white p-6 rounded-xl text-center mt-4 animate-fade-in';
-            successDiv.innerHTML = `<h3 class="font-serif text-xl mb-1">Message Received</h3><p class="text-neutral-400 text-sm">Thank you! Ricky Huynh's studio will get back to you shortly.</p>`;
-            
-            form.replaceWith(successDiv);
-        }
     </script>
 </body>
 </html>
