@@ -1,508 +1,360 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ricky Huynh — Independent Filmmaker & Director</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Ricky Huynh — Filmmaker & Creator</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
                     colors: {
-                        darkbg: '#080808',
-                        carddark: '#121212',
-                        cardborder: '#222222',
+                        darkbg: '#0a0a0a',
+                        cardbg: '#141414',
+                        bordercolor: '#262626'
                     }
                 }
             }
         }
     </script>
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <!-- FontAwesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .serif-title {
-            font-family: 'Playfair Display', serif;
-        }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #080808;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #262626;
-            border-radius: 3px;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="bg-neutral-50 text-neutral-900 dark:bg-darkbg dark:text-neutral-100 transition-colors duration-300 antialiased selection:bg-neutral-900 selection:text-white dark:selection:bg-white dark:selection:text-neutral-900">
+<body class="bg-darkbg text-zinc-100 min-h-screen flex flex-col selection:bg-zinc-700 selection:text-white">
 
-    <!-- Navigation Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-neutral-50/80 dark:bg-darkbg/80 backdrop-blur-md border-b border-neutral-200 dark:border-cardborder transition-colors duration-300">
+    <!-- NAVIGATION HEADER -->
+    <header class="sticky top-0 z-50 bg-darkbg/80 backdrop-blur-md border-b border-bordercolor">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="text-lg font-bold tracking-wider uppercase flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-neutral-900 dark:bg-white inline-block"></span>
-                Ricky Huynh
+            <a href="#" onclick="switchTab('film')" class="text-lg font-bold tracking-tight hover:opacity-80 transition-opacity">
+                RICKY HUYNH
             </a>
-
-            <!-- Desktop Nav Links -->
-            <nav class="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-widest text-neutral-600 dark:text-neutral-400">
-                <a href="#reel" class="hover:text-neutral-900 dark:hover:text-white transition-colors">Reel</a>
-                <a href="#work" class="hover:text-neutral-900 dark:hover:text-white transition-colors">Films</a>
-                <a href="#about" class="hover:text-neutral-900 dark:hover:text-white transition-colors">About</a>
-                <a href="#contact" class="hover:text-neutral-900 dark:hover:text-white transition-colors">Contact</a>
+            
+            <!-- Desktop Navigation Tabs -->
+            <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                <button onclick="switchTab('film')" id="nav-film" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all bg-zinc-800 text-white">Film</button>
+                <button onclick="switchTab('videography')" id="nav-videography" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all text-zinc-400 hover:text-white hover:bg-zinc-900">Videography</button>
+                <button onclick="switchTab('onset')" id="nav-onset" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all text-zinc-400 hover:text-white hover:bg-zinc-900">On Set</button>
+                <button onclick="switchTab('content')" id="nav-content" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all text-zinc-400 hover:text-white hover:bg-zinc-900">Content Creator</button>
+                <button onclick="switchTab('about')" id="nav-about" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all text-zinc-400 hover:text-white hover:bg-zinc-900">About</button>
+                <button onclick="switchTab('contact')" id="nav-contact" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all text-zinc-400 hover:text-white hover:bg-zinc-900">Contact</button>
             </nav>
 
-            <div class="flex items-center gap-4">
-                <!-- Theme Toggle Button -->
-                <button id="themeToggle" aria-label="Toggle theme" class="w-9 h-9 rounded-full flex items-center justify-center bg-white dark:bg-carddark border border-neutral-200 dark:border-cardborder text-neutral-700 dark:text-neutral-300 hover:scale-105 transition-all">
-                    <i class="fa-solid fa-moon dark:hidden text-xs"></i>
-                    <i class="fa-solid fa-sun hidden dark:block text-xs"></i>
-                </button>
-                <!-- Mobile Menu Button -->
-                <button id="mobileMenuBtn" aria-label="Toggle mobile menu" class="md:hidden w-9 h-9 rounded-full flex items-center justify-center bg-white dark:bg-carddark border border-neutral-200 dark:border-cardborder text-neutral-700 dark:text-neutral-300">
-                    <i class="fa-solid fa-bars text-xs"></i>
-                </button>
-            </div>
+            <!-- Mobile Menu Toggle Button -->
+            <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-zinc-300 hover:text-white">
+                <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
         </div>
 
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobileMenu" class="hidden md:hidden border-b border-neutral-200 dark:border-cardborder bg-white dark:bg-darkbg px-6 py-4 space-y-4 text-xs font-semibold uppercase tracking-widest">
-            <a href="#reel" class="block text-neutral-600 dark:text-neutral-400 mobile-link">Reel</a>
-            <a href="#work" class="block text-neutral-600 dark:text-neutral-400 mobile-link">Films</a>
-            <a href="#about" class="block text-neutral-600 dark:text-neutral-400 mobile-link">About</a>
-            <a href="#contact" class="block text-neutral-600 dark:text-neutral-400 mobile-link">Contact</a>
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-bordercolor bg-cardbg px-6 py-4 space-y-2">
+            <button onclick="switchTab('film'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-zinc-200 hover:bg-zinc-800">Film</button>
+            <button onclick="switchTab('videography'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-zinc-200 hover:bg-zinc-800">Videography</button>
+            <button onclick="switchTab('onset'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-zinc-200 hover:bg-zinc-800">On Set</button>
+            <button onclick="switchTab('content'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-zinc-200 hover:bg-zinc-800">Content Creator</button>
+            <button onclick="switchTab('about'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-zinc-200 hover:bg-zinc-800">About</button>
+            <button onclick="switchTab('contact'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-zinc-200 hover:bg-zinc-800">Contact</button>
         </div>
     </header>
 
-    <!-- Hero Video Reel Section -->
-    <section id="reel" class="relative min-h-screen pt-24 flex flex-col justify-center items-center px-4 overflow-hidden bg-neutral-950">
-        <div class="absolute inset-0 z-0 opacity-60">
-            <video autoplay muted loop playsinline class="w-full h-full object-cover">
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4" type="video/mp4">
-            </video>
-            <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-neutral-950/60"></div>
-        </div>
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-grow max-w-7xl mx-auto px-6 py-12 w-full">
 
-        <div class="relative z-10 max-w-5xl mx-auto text-center space-y-6 px-4">
-            <span class="text-xs font-semibold tracking-widest uppercase text-neutral-400">Independent Filmmaker & Director</span>
-            <h1 class="text-4xl sm:text-7xl font-light tracking-tight text-white serif-title italic">
-                Visual stories born from curiosity and purpose.
-            </h1>
-            <p class="text-sm sm:text-base text-neutral-300 max-w-xl mx-auto font-light leading-relaxed">
-                Exploring identity, personal heritage, and authentic human experiences through narrative and visual storytelling.
-            </p>
-
-            <div class="pt-6 flex flex-wrap items-center justify-center gap-4">
-                <button onclick="openVideoModal('https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4', 'Director Reel 2026')" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-neutral-950 font-medium text-xs tracking-widest uppercase hover:bg-neutral-200 transition-all shadow-xl">
-                    <i class="fa-solid fa-play text-xs"></i> Play Director Reel
-                </button>
+        <!-- 1. FILM SECTION -->
+        <section id="content-film" class="tab-content space-y-12 animate-fadeIn">
+            <div class="space-y-3 max-w-2xl">
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Narrative & Short Films</h1>
+                <p class="text-zinc-400 text-lg">Cinematic explorations of memory, cultural identity, and coming-of-age dynamics.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="work" class="py-28 px-6 max-w-7xl mx-auto">
-        <div class="space-y-12">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-neutral-200 dark:border-cardborder pb-8">
-                <div>
-                    <span class="text-xs font-semibold tracking-widest uppercase text-neutral-500 dark:text-neutral-400">Selected Works</span>
-                    <h2 class="text-3xl sm:text-4xl font-light mt-2 serif-title">Films & Visual Stories</h2>
-                </div>
-
-                <!-- Category Tabs -->
-                <div class="flex flex-wrap gap-2" id="filterButtons">
-                    <button data-filter="all" class="px-5 py-2.5 rounded-full text-xs font-semibold tracking-widest uppercase bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 transition-all">All</button>
-                    <button data-filter="Short Film" class="px-5 py-2.5 rounded-full text-xs font-semibold tracking-widest uppercase bg-white dark:bg-carddark border border-neutral-200 dark:border-cardborder text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-all">Short Films</button>
-                    <button data-filter="Documentary" class="px-5 py-2.5 rounded-full text-xs font-semibold tracking-widest uppercase bg-white dark:bg-carddark border border-neutral-200 dark:border-cardborder text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-all">Documentary</button>
-                    <button data-filter="Experimental" class="px-5 py-2.5 rounded-full text-xs font-semibold tracking-widest uppercase bg-white dark:bg-carddark border border-neutral-200 dark:border-cardborder text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-all">Experimental</button>
-                </div>
-            </div>
-
-            <!-- Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="projectsGrid">
-                <!-- Project 1 -->
-                <div class="project-card group cursor-pointer space-y-3" data-category="Short Film" onclick="openProjectModal(0)">
-                    <div class="aspect-[16/10] rounded-2xl overflow-hidden bg-neutral-200 dark:bg-carddark border border-neutral-200 dark:border-cardborder relative">
-                        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80" alt="Echoes of Heritage" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/1200x800/121212/ffffff?text=Echoes+of+Heritage'">
-                        <div class="absolute inset-0 bg-neutral-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <span class="px-6 py-3 rounded-full bg-white text-neutral-950 font-semibold text-xs tracking-widest uppercase shadow-lg">View Film</span>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Film Item 1 -->
+                <div onclick="openMediaModal('Red Hot', 'Narrative Short Film • Writer / Director', 'A tense psychological drama exploring expectations and hidden frictions within immigrant family dynamics.', 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80" alt="Red Hot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span class="px-4 py-2 bg-white text-black font-semibold text-xs tracking-wider uppercase rounded-full">View Project</span>
                         </div>
                     </div>
-                    <div class="flex items-center justify-between pt-1">
-                        <div>
-                            <h3 class="text-lg font-medium group-hover:text-neutral-500 transition-colors">Echoes of Heritage</h3>
-                            <p class="text-xs text-neutral-500 dark:text-neutral-400 tracking-wide uppercase mt-0.5">Short Film • 2025 • Director & Writer</p>
-                        </div>
-                        <span class="text-xs font-mono text-neutral-400">15 MIN</span>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2024 • Short Film</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">Red Hot</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Director & Screenwriter</p>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="project-card group cursor-pointer space-y-3" data-category="Documentary" onclick="openProjectModal(1)">
-                    <div class="aspect-[16/10] rounded-2xl overflow-hidden bg-neutral-200 dark:bg-carddark border border-neutral-200 dark:border-cardborder relative">
-                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80" alt="Finding My Voice" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/1200x800/121212/ffffff?text=Finding+My+Voice'">
-                        <div class="absolute inset-0 bg-neutral-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <span class="px-6 py-3 rounded-full bg-white text-neutral-950 font-semibold text-xs tracking-widest uppercase shadow-lg">View Film</span>
+                <!-- Film Item 2 -->
+                <div onclick="openMediaModal('It Ain't Easy', 'Narrative Short • Co-Director', 'A bittersweet portrait of youth navigating urban transition and shifting relationships.', 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80" alt="It Ain't Easy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span class="px-4 py-2 bg-white text-black font-semibold text-xs tracking-wider uppercase rounded-full">View Project</span>
                         </div>
                     </div>
-                    <div class="flex items-center justify-between pt-1">
-                        <div>
-                            <h3 class="text-lg font-medium group-hover:text-neutral-500 transition-colors">Finding My Voice</h3>
-                            <p class="text-xs text-neutral-500 dark:text-neutral-400 tracking-wide uppercase mt-0.5">Documentary • 2025 • Director</p>
-                        </div>
-                        <span class="text-xs font-mono text-neutral-400">12 MIN</span>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card group cursor-pointer space-y-3" data-category="Experimental" onclick="openProjectModal(2)">
-                    <div class="aspect-[16/10] rounded-2xl overflow-hidden bg-neutral-200 dark:bg-carddark border border-neutral-200 dark:border-cardborder relative">
-                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80" alt="Fragments of Yesterday" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/1200x800/121212/ffffff?text=Fragments+of+Yesterday'">
-                        <div class="absolute inset-0 bg-neutral-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <span class="px-6 py-3 rounded-full bg-white text-neutral-950 font-semibold text-xs tracking-widest uppercase shadow-lg">View Film</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between pt-1">
-                        <div>
-                            <h3 class="text-lg font-medium group-hover:text-neutral-500 transition-colors">Fragments of Yesterday</h3>
-                            <p class="text-xs text-neutral-500 dark:text-neutral-400 tracking-wide uppercase mt-0.5">Experimental • 2024 • Creator</p>
-                        </div>
-                        <span class="text-xs font-mono text-neutral-400">6 MIN</span>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="project-card group cursor-pointer space-y-3" data-category="Short Film" onclick="openProjectModal(3)">
-                    <div class="aspect-[16/10] rounded-2xl overflow-hidden bg-neutral-200 dark:bg-carddark border border-neutral-200 dark:border-cardborder relative">
-                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80" alt="The Journey Forward" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/1200x800/121212/ffffff?text=The+Journey+Forward'">
-                        <div class="absolute inset-0 bg-neutral-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <span class="px-6 py-3 rounded-full bg-white text-neutral-950 font-semibold text-xs tracking-widest uppercase shadow-lg">View Film</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between pt-1">
-                        <div>
-                            <h3 class="text-lg font-medium group-hover:text-neutral-500 transition-colors">The Journey Forward</h3>
-                            <p class="text-xs text-neutral-500 dark:text-neutral-400 tracking-wide uppercase mt-0.5">Short Film • 2024 • Director & DP</p>
-                        </div>
-                        <span class="text-xs font-mono text-neutral-400">18 MIN</span>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2023 • Short Film</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">It Ain't Easy</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Co-Director & Editor</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-28 px-6 border-t border-neutral-200 dark:border-cardborder bg-white dark:bg-carddark/50">
-        <div class="max-w-4xl mx-auto space-y-12">
+        <!-- 2. VIDEOGRAPHY SECTION -->
+        <section id="content-videography" class="tab-content hidden space-y-12 animate-fadeIn">
+            <div class="space-y-3 max-w-2xl">
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Commercial & Music Videography</h1>
+                <p class="text-zinc-400 text-lg">High-aesthetic brand campaigns, artist music videos, and dynamic visual storytelling.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div onclick="openMediaModal('Night Drive Music Video', 'Music Video • DP & Colorist', 'An immersive neo-noir visual set against late-night city lights.', 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-[4/3] bg-zinc-900 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg">Neon Anthem</h3>
+                        <p class="text-xs text-zinc-400 mt-1">Cinematography</p>
+                    </div>
+                </div>
+
+                <div onclick="openMediaModal('Brand Lookbook', 'Commercial • Director of Photography', 'Minimalist fashion commercial emphasizing texture and motion.', 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-[4/3] bg-zinc-900 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg">Atelier Spring</h3>
+                        <p class="text-xs text-zinc-400 mt-1">Commercial DP</p>
+                    </div>
+                </div>
+
+                <div onclick="openMediaModal('Live Session Concert', 'Music Video • Director', 'Intimate acoustic live performance capture.', 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-[4/3] bg-zinc-900 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg">Warehouse Sessions</h3>
+                        <p class="text-xs text-zinc-400 mt-1">Director & Edit</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ON SET SECTION -->
+        <section id="content-onset" class="tab-content hidden space-y-12 animate-fadeIn">
+            <div class="space-y-3 max-w-2xl">
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">On Set Photography</h1>
+                <p class="text-zinc-400 text-lg">Behind-the-scenes glimpses into production, lighting setups, and crew collaboration.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-cardbg border border-bordercolor rounded-xl overflow-hidden aspect-[4/5] relative group">
+                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <p class="text-sm font-medium text-zinc-200">Setting up C-stands & Arri lights on night shoot.</p>
+                    </div>
+                </div>
+                <div class="bg-cardbg border border-bordercolor rounded-xl overflow-hidden aspect-[4/5] relative group">
+                    <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <p class="text-sm font-medium text-zinc-200">Director's monitor check during dialogue take.</p>
+                    </div>
+                </div>
+                <div class="bg-cardbg border border-bordercolor rounded-xl overflow-hidden aspect-[4/5] relative group">
+                    <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <p class="text-sm font-medium text-zinc-200">Gaffer reviewing diffusion angles.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. CONTENT CREATOR SECTION -->
+        <section id="content-content" class="tab-content hidden space-y-12 animate-fadeIn">
+            <div class="space-y-3 max-w-2xl">
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Content Creator & Essays</h1>
+                <p class="text-zinc-400 text-lg">Digital video essays, gear breakdowns, and explorations of modern media culture.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-cardbg border border-bordercolor rounded-xl p-6 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <span class="px-3 py-1 bg-zinc-800 text-zinc-300 text-xs rounded-full font-medium">YouTube Essay</span>
+                        <h3 class="text-2xl font-bold">The Evolution of Independent Cinema in the Digital Age</h3>
+                        <p class="text-zinc-400 text-sm">An in-depth video essay examining how modern creators leverage indie workflows to reach global audiences.</p>
+                    </div>
+                    <a href="https://youtube.com" target="_blank" class="inline-flex items-center space-x-2 text-sm font-semibold text-white hover:underline">
+                        <span>Watch on YouTube</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                </div>
+
+                <div class="bg-cardbg border border-bordercolor rounded-xl p-6 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <span class="px-3 py-1 bg-zinc-800 text-zinc-300 text-xs rounded-full font-medium">Behind the Lens</span>
+                        <h3 class="text-2xl font-bold">Minimalist Film Setup: Traveling Light</h3>
+                        <p class="text-zinc-400 text-sm">Breaking down gear choices, compact lighting rigs, and run-and-gun audio solutions for indie shoots.</p>
+                    </div>
+                    <a href="https://youtube.com" target="_blank" class="inline-flex items-center space-x-2 text-sm font-semibold text-white hover:underline">
+                        <span>Watch on YouTube</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. ABOUT SECTION -->
+        <section id="content-about" class="tab-content hidden space-y-12 animate-fadeIn max-w-4xl">
+            <div class="space-y-6">
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">About Ricky Huynh</h1>
+                <div class="text-zinc-300 text-lg leading-relaxed space-y-4">
+                    <p>I am an independent filmmaker, director, and content creator based in the United States. My work centers on narrative storytelling, visual essays, and commercial videography that bridges intimate human emotion with clean, modern aesthetics.</p>
+                    <p>Transitioning from academic pressures toward a full-time pursuit in cinema, my projects explore identity, family dynamics, and contemporary cultural nuances.</p>
+                </div>
+            </div>
+
+            <div class="border-t border-bordercolor pt-12 space-y-8">
+                <h2 class="text-2xl font-bold">Experience & Background</h2>
+                <div class="space-y-6 border-l border-zinc-800 pl-6 ml-2">
+                    <div class="relative">
+                        <div class="absolute -left-[31px] top-1.5 w-3 h-3 bg-white rounded-full"></div>
+                        <span class="text-xs text-zinc-500 font-semibold">2021 — Present</span>
+                        <h3 class="text-lg font-bold mt-1">Independent Filmmaker & Director</h3>
+                        <p class="text-zinc-400 text-sm mt-1">Directing narrative shorts, branded commercial content, and digital media essays.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[31px] top-1.5 w-3 h-3 bg-zinc-600 rounded-full"></div>
+                        <span class="text-xs text-zinc-500 font-semibold">2019 — 2021</span>
+                        <h3 class="text-lg font-bold mt-1">Videographer & Assistant Camera</h3>
+                        <p class="text-zinc-400 text-sm mt-1">Working on set across camera departments, lighting, and independent productions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. CONTACT SECTION -->
+        <section id="content-contact" class="tab-content hidden space-y-12 animate-fadeIn max-w-2xl">
             <div class="space-y-3">
-                <span class="text-xs font-semibold tracking-widest uppercase text-neutral-500 dark:text-neutral-400">About Ricky</span>
-                <h2 class="text-3xl sm:text-4xl font-light serif-title">From academic pressure to cinematic purpose.</h2>
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Let's Work Together</h1>
+                <p class="text-zinc-400 text-lg">Interested in collaborating on a film, commercial project, or creative inquiry? Send a message below.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-neutral-600 dark:text-neutral-300 font-light leading-relaxed text-base">
-                <div class="space-y-6">
-                    <p>
-                        For the past ten years, I have been wrestling with who I am and who I want to become. Growing up in a household that placed strong pressure on academics, I did not have many opportunities to creatively express myself. That changed when I randomly started making videos—filming my day-to-day life and experimenting with framing.
-                    </p>
-                    <p>
-                        What started as curiosity slowly became something I could not let go of. During my time at university, I realized that filmmaking is what gives me purpose. I may have fully understood that a little late after graduating, but I am not giving up on this craft.
-                    </p>
+            <form onsubmit="handleContactSubmit(event)" class="space-y-6 bg-cardbg border border-bordercolor p-8 rounded-2xl">
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Your Name</label>
+                    <input type="text" required class="w-full bg-darkbg border border-bordercolor rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white transition-colors" placeholder="Jane Doe">
                 </div>
-                <div class="space-y-6">
-                    <div class="p-6 rounded-2xl bg-neutral-50 dark:bg-darkbg border border-neutral-200 dark:border-cardborder space-y-4">
-                        <h3 class="text-xs font-semibold tracking-widest uppercase text-neutral-900 dark:text-white">Independent Vision</h3>
-                        <p class="text-sm text-neutral-600 dark:text-neutral-400">
-                            As an emerging independent Asian American filmmaker, my mission is to craft stories that reflect authentic lived experiences, bridging cultural roots with modern cinematic expression.
-                        </p>
-                        <div class="pt-2">
-                            <span class="text-xs font-mono text-neutral-500 block">First ever video released: "Ricky's Vlog 1" (8 years ago)</span>
-                        </div>
-                    </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Email Address</label>
+                    <input type="email" required class="w-full bg-darkbg border border-bordercolor rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white transition-colors" placeholder="jane@example.com">
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-28 px-6 border-t border-neutral-200 dark:border-cardborder">
-        <div class="max-w-4xl mx-auto space-y-16">
-            <div class="text-center space-y-4">
-                <span class="text-xs font-semibold tracking-widest uppercase text-neutral-500 dark:text-neutral-400">Inquiries</span>
-                <h2 class="text-4xl sm:text-6xl font-light serif-title italic">Let's connect.</h2>
-                <p class="text-neutral-600 dark:text-neutral-400 font-light max-w-md mx-auto text-sm">
-                    For project collaborations, screenings, inquiries, or support, reach out below.
-                </p>
-            </div>
-
-            <!-- Contact Grid / Form -->
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pt-8">
-                <div class="md:col-span-5 space-y-8 text-sm">
-                    <div class="space-y-1">
-                        <span class="text-xs font-semibold tracking-widest uppercase text-neutral-500 dark:text-neutral-400 block">Direct Email</span>
-                        <a href="mailto:ricky@rickyhuynh.film" class="text-lg font-medium hover:underline serif-title">ricky@rickyhuynh.film</a>
-                    </div>
-
-                    <div class="space-y-1">
-                        <span class="text-xs font-semibold tracking-widest uppercase text-neutral-500 dark:text-neutral-400 block">Location</span>
-                        <p class="font-medium">United States</p>
-                    </div>
-
-                    <div class="space-y-1">
-                        <span class="text-xs font-semibold tracking-widest uppercase text-neutral-500 dark:text-neutral-400 block">Support & Community</span>
-                        <p class="text-neutral-600 dark:text-neutral-400 text-xs leading-relaxed">
-                            Supporting independent Asian American voices in filmmaking and international festival journeys.
-                        </p>
-                    </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Project Details</label>
+                    <textarea rows="4" required class="w-full bg-darkbg border border-bordercolor rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white transition-colors" placeholder="Tell me about your project, timeline, and scope..."></textarea>
                 </div>
+                <button type="submit" class="w-full py-4 bg-white text-black font-semibold rounded-lg hover:bg-zinc-200 transition-colors">Send Message</button>
+                <p id="form-success" class="hidden text-green-400 text-center text-sm font-medium">Thank you! Your message has been sent successfully.</p>
+            </form>
+        </section>
 
-                <div class="md:col-span-7 bg-white dark:bg-carddark p-8 sm:p-10 rounded-3xl border border-neutral-200 dark:border-cardborder shadow-sm">
-                    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
-                        <div class="space-y-2">
-                            <label for="name" class="block text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:text-neutral-400">Your Name</label>
-                            <input type="text" id="name" required class="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-darkbg border border-neutral-200 dark:border-cardborder focus:outline-none focus:border-neutral-400 text-sm transition-colors" placeholder="Jane Doe">
-                        </div>
+    </main>
 
-                        <div class="space-y-2">
-                            <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:text-neutral-400">Email Address</label>
-                            <input type="email" id="email" required class="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-darkbg border border-neutral-200 dark:border-cardborder focus:outline-none focus:border-neutral-400 text-sm transition-colors" placeholder="jane@example.com">
-                        </div>
-
-                        <div class="space-y-2">
-                            <label for="message" class="block text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:text-neutral-400">Message</label>
-                            <textarea id="message" rows="4" required class="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-darkbg border border-neutral-200 dark:border-cardborder focus:outline-none focus:border-neutral-400 text-sm transition-colors resize-none" placeholder="Tell me about your thoughts or collaboration idea..."></textarea>
-                        </div>
-
-                        <button type="submit" id="submitBtn" class="w-full py-4 rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 font-semibold text-xs tracking-widest uppercase hover:opacity-90 transition-all shadow-md">
-                            Send Message
-                        </button>
-
-                        <div id="formSuccess" class="hidden p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-sm text-center">
-                            Thank you! Your message has been sent successfully.
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Project & Video Modal -->
-    <div id="projectModal" class="fixed inset-0 z-50 hidden bg-neutral-950/80 backdrop-blur-md flex items-center justify-center p-4">
-        <div class="bg-white dark:bg-carddark border border-neutral-200 dark:border-cardborder rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-10 relative space-y-6 shadow-2xl">
-            <button onclick="closeProjectModal()" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-neutral-100 dark:bg-darkbg border border-neutral-200 dark:border-cardborder flex items-center justify-center text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-all">
-                <i class="fa-solid fa-xmark"></i>
+    <!-- MEDIA MODAL POPUP -->
+    <div id="media-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-cardbg border border-bordercolor max-w-3xl w-full rounded-2xl overflow-hidden relative animate-fadeIn">
+            <button onclick="closeMediaModal()" class="absolute top-4 right-4 z-10 p-2 bg-black/60 hover:bg-black rounded-full text-white">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
-
-            <div class="space-y-2">
-                <span id="modalCategory" class="text-xs font-semibold tracking-widest uppercase text-neutral-500 dark:text-neutral-400"></span>
-                <h2 id="modalTitle" class="text-2xl sm:text-3xl font-light serif-title"></h2>
+            <div class="aspect-video bg-black relative">
+                <img id="modal-img" src="" class="w-full h-full object-cover">
             </div>
-
-            <div class="aspect-[16/9] rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-200 dark:border-cardborder relative">
-                <video id="modalVideo" controls autoplay class="w-full h-full object-cover">
-                    <source src="" type="video/mp4">
-                </video>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 py-4 border-y border-neutral-200 dark:border-cardborder text-sm">
-                <div>
-                    <span class="text-xs text-neutral-500 uppercase tracking-wider block">Role</span>
-                    <span id="modalRole" class="font-medium">Director</span>
-                </div>
-                <div>
-                    <span class="text-xs text-neutral-500 uppercase tracking-wider block">Year</span>
-                    <span id="modalYear" class="font-medium">2025</span>
-                </div>
-                <div>
-                    <span class="text-xs text-neutral-500 uppercase tracking-wider block">Runtime</span>
-                    <span id="modalRuntime" class="font-medium">15 min</span>
-                </div>
-            </div>
-
-            <div class="space-y-3">
-                <h3 class="font-medium text-base">Synopsis</h3>
-                <p id="modalDescription" class="text-neutral-600 dark:text-neutral-400 font-light leading-relaxed text-sm"></p>
-            </div>
-
-            <div class="flex justify-end pt-4">
-                <button onclick="closeProjectModal()" class="px-6 py-2.5 rounded-xl bg-neutral-100 dark:bg-darkbg border border-neutral-200 dark:border-cardborder font-medium text-xs tracking-widest uppercase hover:border-neutral-400 transition-all">
-                    Close
-                </button>
+            <div class="p-8 space-y-4">
+                <span id="modal-category" class="text-xs uppercase tracking-widest text-zinc-400 font-semibold"></span>
+                <h2 id="modal-title" class="text-2xl md:text-3xl font-bold"></h2>
+                <p id="modal-desc" class="text-zinc-300 leading-relaxed"></p>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="py-12 px-6 border-t border-neutral-200 dark:border-cardborder bg-white dark:bg-darkbg text-center text-xs tracking-widest uppercase text-neutral-500 dark:text-neutral-400">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
-            <p>© 2026 Ricky Huynh. All rights reserved.</p>
-            <div class="flex items-center gap-6">
-                <a href="#" class="hover:text-neutral-900 dark:hover:text-white transition-colors">Vimeo</a>
-                <a href="#" class="hover:text-neutral-900 dark:hover:text-white transition-colors">Instagram</a>
-                <a href="#" class="hover:text-neutral-900 dark:hover:text-white transition-colors">GoFundMe</a>
-            </div>
+    <!-- FOOTER -->
+    <footer class="max-w-7xl mx-auto px-6 py-12 w-full border-t border-bordercolor mt-auto flex flex-col md:flex-row items-center justify-between text-zinc-500 text-sm">
+        <p>© 2026 Ricky Huynh. All Rights Reserved.</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+            <a href="https://instagram.com" target="_blank" class="hover:text-white transition-colors">Instagram</a>
+            <a href="https://youtube.com" target="_blank" class="hover:text-white transition-colors">YouTube</a>
+            <a href="https://linkedin.com" target="_blank" class="hover:text-white transition-colors">LinkedIn</a>
+            <a href="mailto:ricky@example.com" class="hover:text-white transition-colors">Email</a>
         </div>
     </footer>
 
-    <!-- JavaScript functionality -->
+    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
     <script>
-        const projectsData = [
-            {
-                title: "Echoes of Heritage",
-                category: "Short Film • 2025 • Director & Writer",
-                video: "https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4",
-                role: "Director & Writer",
-                year: "2025",
-                runtime: "15 min",
-                description: "An intimate exploration of generational memory and cultural identity, following an Asian American protagonist reconciling familial expectations with creative self-discovery."
-            },
-            {
-                title: "Finding My Voice",
-                category: "Documentary • 2025 • Director",
-                video: "https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4",
-                role: "Director",
-                year: "2025",
-                runtime: "12 min",
-                description: "A documentary vignette capturing the quiet transition from academic rigidness to discovering purpose through the lens of independent filmmaking."
-            },
-            {
-                title: "Fragments of Yesterday",
-                category: "Experimental • 2024 • Creator",
-                video: "https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4",
-                role: "Creator",
-                year: "2024",
-                runtime: "6 min",
-                description: "An experimental visual piece reflecting on 8 years of vlogging, growth, and the evolution from casual curiosity to dedicated cinematic craft."
-            },
-            {
-                title: "The Journey Forward",
-                category: "Short Film • 2024 • Director & DP",
-                video: "https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4",
-                role: "Director & DP",
-                year: "2024",
-                runtime: "18 min",
-                description: "A narrative short depicting a young creator taking a leap of faith after university to pursue storytelling against all odds."
+        function switchTab(tabId) {
+            // Hide all tab contents
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.add('hidden'));
+
+            // Show selected tab
+            const activeTab = document.getElementById('content-' + tabId);
+            if (activeTab) {
+                activeTab.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
-        ];
 
-        // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        themeToggle.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-        });
-
-        // Mobile Menu
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-        });
-
-        // Category Filter Tabs
-        const filterButtons = document.querySelectorAll('#filterButtons button');
-        const projectCards = document.querySelectorAll('.project-card');
-
-        filterButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterButtons.forEach(b => {
-                    b.classList.remove('bg-neutral-900', 'text-white', 'dark:bg-white', 'dark:text-neutral-900');
-                    b.classList.add('bg-white', 'dark:bg-carddark', 'border', 'border-neutral-200', 'dark:border-cardborder', 'text-neutral-600', 'dark:text-neutral-400');
-                });
-                btn.classList.remove('bg-white', 'dark:bg-carddark', 'border', 'border-neutral-200', 'dark:border-cardborder', 'text-neutral-600', 'dark:text-neutral-400');
-                btn.classList.add('bg-neutral-900', 'text-white', 'dark:bg-white', 'dark:text-neutral-900');
-
-                const filter = btn.getAttribute('data-filter');
-                projectCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
+            // Update desktop navigation active states
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.classList.remove('bg-zinc-800', 'text-white');
+                btn.classList.add('text-zinc-400', 'hover:text-white', 'hover:bg-zinc-900');
             });
-        });
 
-        // Modal Functions
-        const projectModal = document.getElementById('projectModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalCategory = document.getElementById('modalCategory');
-        const modalVideo = document.getElementById('modalVideo');
-        const modalRole = document.getElementById('modalRole');
-        const modalYear = document.getElementById('modalYear');
-        const modalRuntime = document.getElementById('modalRuntime');
-        const modalDescription = document.getElementById('modalDescription');
-
-        function openProjectModal(index) {
-            const project = projectsData[index];
-            modalTitle.textContent = project.title;
-            modalCategory.textContent = project.category;
-            modalVideo.src = project.video;
-            modalRole.textContent = project.role;
-            modalYear.textContent = project.year;
-            modalRuntime.textContent = project.runtime;
-            modalDescription.textContent = project.description;
-
-            projectModal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            modalVideo.play();
-        }
-
-        function openVideoModal(videoSrc, title) {
-            modalTitle.textContent = title;
-            modalCategory.textContent = "Director Reel";
-            modalVideo.src = videoSrc;
-            modalRole.textContent = "Director & Creator";
-            modalYear.textContent = "2026";
-            modalRuntime.textContent = "2:30";
-            modalDescription.textContent = "A curated selection of narrative short films and visual storytelling projects by independent filmmaker Ricky Huynh.";
-
-            projectModal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            modalVideo.play();
-        }
-
-        function closeProjectModal() {
-            projectModal.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-            modalVideo.pause();
-        }
-
-        projectModal.addEventListener('click', (e) => {
-            if (e.target === projectModal) {
-                closeProjectModal();
+            const activeBtn = document.getElementById('nav-' + tabId);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-zinc-400', 'hover:text-white', 'hover:bg-zinc-900');
+                activeBtn.classList.add('bg-zinc-800', 'text-white');
             }
-        });
+        }
 
-        // Contact Form Handler
-        function handleFormSubmit(event) {
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function openMediaModal(title, category, desc, imgSrc) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-category').innerText = category;
+            document.getElementById('modal-desc').innerText = desc;
+            document.getElementById('modal-img').src = imgSrc;
+            document.getElementById('media-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMediaModal() {
+            document.getElementById('media-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function handleContactSubmit(event) {
             event.preventDefault();
-            const submitBtn = document.getElementById('submitBtn');
-            const formSuccess = document.getElementById('formSuccess');
-
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-
+            const successMsg = document.getElementById('form-success');
+            successMsg.classList.remove('hidden');
+            event.target.reset();
             setTimeout(() => {
-                submitBtn.style.display = 'none';
-                formSuccess.classList.remove('hidden');
-                document.getElementById('contactForm').reset();
-            }, 1000);
+                successMsg.classList.add('hidden');
+            }, 5000);
+        }
+
+        // Close modal on background click
+        window.onclick = function(event) {
+            const modal = document.getElementById('media-modal');
+            if (event.target == modal) {
+                closeMediaModal();
+            }
         }
     </script>
 </body>
