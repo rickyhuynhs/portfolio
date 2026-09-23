@@ -36,7 +36,7 @@
                 RICKY HUYNH
             </a>
             
-            <!-- Desktop Navigation Tabs (Home button removed) -->
+            <!-- Desktop Navigation Tabs -->
             <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
                 <button onclick="switchTab('film')" id="nav-film" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all text-zinc-400 hover:text-white hover:bg-zinc-900">Film</button>
                 <button onclick="switchTab('videography')" id="nav-videography" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all text-zinc-400 hover:text-white hover:bg-zinc-900">Videography</button>
@@ -68,7 +68,7 @@
     <main class="flex-grow max-w-7xl mx-auto px-6 py-12 w-full">
 
         <!-- 0. HOMEPAGE SECTION (Embedded YouTube Reel) -->
-        <section id="content-home" class="tab-content space-y-16 animate-fadeIn">
+        <section id="content-home" class="tab-content hidden space-y-16 animate-fadeIn">
             <!-- Hero Video Reel Section -->
             <div class="space-y-6">
                 <div class="aspect-video w-full bg-cardbg border border-bordercolor rounded-2xl overflow-hidden relative shadow-2xl">
@@ -93,109 +93,147 @@
                     <button onclick="switchTab('film')" class="text-xs text-zinc-400 hover:text-white uppercase tracking-wider font-semibold">View All →</button>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div onclick="openMediaModal('Red Hot', 'Narrative Short Film', 'A tense psychological drama exploring expectations and hidden frictions within immigrant family dynamics.', 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div onclick="openMediaModal('YEARN', 'Dark Fantasy Short Film • 2026', 'Directed, Written & Edited by Ricky Huynh\n\nA young woman, imprisoned by vampire hunters, follows an otherworldly presence toward the one she\'s been longing for.', 'https://www.youtube.com/embed/vLsucl9ixMQ')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
                         <div class="aspect-video bg-zinc-900 overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/vLsucl9ixMQ" frameborder="0"></iframe>
                         </div>
                         <div class="p-6">
-                            <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">Short Film</span>
-                            <h3 class="text-xl font-bold mt-1">Red Hot</h3>
-                            <p class="text-zinc-400 text-sm mt-2">Director & Screenwriter</p>
+                            <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2026 • Dark Fantasy Short Film</span>
+                            <h3 class="text-xl font-bold mt-1">YEARN</h3>
+                            <p class="text-zinc-400 text-sm mt-2">Directed, Written & Edited by Ricky Huynh</p>
                         </div>
                     </div>
-                    <div onclick="openMediaModal('It Ain\'t Easy', 'Narrative Short', 'A bittersweet portrait of youth navigating urban transition.', 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div onclick="openMediaModal('The Crown and The Root', 'Narrative Short • 2025', 'Directed, Written, Filmed & Edited by Ricky Huynh\n\nWhile creating this video, I found myself torn on the direction I wanted the visuals to take. Was it a story about finding purpose? A surreal fantasy about a queen? Or just a montage of beautiful moments? It’s up to you to decide.', 'https://www.youtube.com/embed/0jof7MnCG1M')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
                         <div class="aspect-video bg-zinc-900 overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/0jof7MnCG1M" frameborder="0"></iframe>
                         </div>
                         <div class="p-6">
-                            <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">Short Film</span>
-                            <h3 class="text-xl font-bold mt-1">It Ain't Easy</h3>
-                            <p class="text-zinc-400 text-sm mt-2">Co-Director & Editor</p>
+                            <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2025 • Narrative Short</span>
+                            <h3 class="text-xl font-bold mt-1">The Crown and The Root</h3>
+                            <p class="text-zinc-400 text-sm mt-2">Directed, Written, Filmed & Edited by Ricky Huynh</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 1. FILM SECTION (Extended Chronological Layout: Newest to Oldest) -->
-        <section id="content-film" class="tab-content hidden space-y-12 animate-fadeIn">
+        <!-- 1. FILM SECTION (Active by Default) -->
+        <section id="content-film" class="tab-content space-y-12 animate-fadeIn">
             <div class="space-y-3 max-w-2xl">
                 <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Narrative & Short Films</h1>
-                <p class="text-zinc-400 text-lg">A complete chronological archive of narrative works, spanning recent projects to early explorations.</p>
+                <p class="text-zinc-400 text-lg">A chronological archive of narrative works, fantasy, horror shorts, and documentary pieces.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Film 1: 2025/2026 Latest -->
-                <div onclick="openMediaModal('Blue Hour', 'Narrative Short Film • Writer & Director', 'A nocturnal meditation on distance, city lights, and unexpressed thoughts between two estranged friends.', 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
-                    <div class="aspect-video bg-zinc-900 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=80" alt="Blue Hour" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                
+                <!-- 0. YEARN -->
+                <div onclick="openMediaModal('YEARN', 'Dark Fantasy Short Film • 2026', 'Directed, Written & Edited by Ricky Huynh\n\nA young woman, imprisoned by vampire hunters, follows an otherworldly presence toward the one she\'s been longing for.', 'https://www.youtube.com/embed/vLsucl9ixMQ')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/vLsucl9ixMQ" frameborder="0"></iframe>
                     </div>
                     <div class="p-6">
-                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2025 • Short Film</span>
-                        <h3 class="text-xl font-bold mt-1 text-zinc-100">Blue Hour</h3>
-                        <p class="text-zinc-400 text-sm mt-2">Writer & Director</p>
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2026 • Dark Fantasy Short Film</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">YEARN</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Directed, Written & Edited by Ricky Huynh</p>
                     </div>
                 </div>
 
-                <!-- Film 2 -->
-                <div onclick="openMediaModal('Red Hot', 'Narrative Short Film • Writer / Director', 'A tense psychological drama exploring expectations and hidden frictions within immigrant family dynamics.', 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
-                    <div class="aspect-video bg-zinc-900 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80" alt="Red Hot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <!-- 1. The Crown and The Root -->
+                <div onclick="openMediaModal('The Crown and The Root', 'Narrative Short • 2025', 'Directed, Written, Filmed & Edited by Ricky Huynh\n\nWhile creating this video, I found myself torn on the direction I wanted the visuals to take. Was it a story about finding purpose? A surreal fantasy about a queen? Or just a montage of beautiful moments? It’s up to you to decide.', 'https://www.youtube.com/embed/0jof7MnCG1M')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/0jof7MnCG1M" frameborder="0"></iframe>
                     </div>
                     <div class="p-6">
-                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2024 • Short Film</span>
-                        <h3 class="text-xl font-bold mt-1 text-zinc-100">Red Hot</h3>
-                        <p class="text-zinc-400 text-sm mt-2">Director & Screenwriter</p>
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2025 • Narrative Short</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">The Crown and The Root</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Directed, Written, Filmed & Edited by Ricky Huynh</p>
                     </div>
                 </div>
 
-                <!-- Film 3 -->
-                <div onclick="openMediaModal('It Ain\'t Easy', 'Narrative Short • Co-Director', 'A bittersweet portrait of youth navigating urban transition and shifting relationships.', 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
-                    <div class="aspect-video bg-zinc-900 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80" alt="It Ain't Easy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <!-- 2. A Family Friendly Camping Vlog -->
+                <div onclick="openMediaModal('A Family Friendly Camping Vlog', 'Horror Short • 2025', 'Directed, Written, Filmed & Edited by Ricky Huynh\n\nOn what seems like another routine camping trip, a cheerful family-friendly YouTube vlogger heads out alone for the first time without her usual partner. But when she crosses paths with a stranger in the woods, everything changes. What happens to Aly? Why would someone do this to her?', 'https://www.youtube.com/embed/j7F6JK5Vi1w')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/j7F6JK5Vi1w" frameborder="0"></iframe>
                     </div>
                     <div class="p-6">
-                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2023 • Short Film</span>
-                        <h3 class="text-xl font-bold mt-1 text-zinc-100">It Ain't Easy</h3>
-                        <p class="text-zinc-400 text-sm mt-2">Co-Director & Editor</p>
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2025 • Horror Short</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">A Family Friendly Camping Vlog</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Directed, Written, Filmed & Edited by Ricky Huynh</p>
                     </div>
                 </div>
 
-                <!-- Film 4 -->
-                <div onclick="openMediaModal('Suburban Echoes', 'Narrative Short • Cinematographer', 'Following an immigrant family as they pack up their childhood home over the course of a single afternoon.', 'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
-                    <div class="aspect-video bg-zinc-900 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1200&q=80" alt="Suburban Echoes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <!-- 3. VITA ULTRA -->
+                <div onclick="openMediaModal('VITA ULTRA', 'Sci-fi Short • 2025', 'Directed, Written & Edited by Ricky Huynh\n\nOn a mission to uncover the truth about his past, an astronaut crashes on a strange world where the inhabitants hold an unsettling connection to him.', 'https://www.youtube.com/embed/b0GA1tooWzY')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/b0GA1tooWzY" frameborder="0"></iframe>
                     </div>
                     <div class="p-6">
-                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2022 • Short Film</span>
-                        <h3 class="text-xl font-bold mt-1 text-zinc-100">Suburban Echoes</h3>
-                        <p class="text-zinc-400 text-sm mt-2">Director of Photography</p>
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2025 • Sci-fi Short</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">VITA ULTRA</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Directed, Written & Edited by Ricky Huynh</p>
                     </div>
                 </div>
 
-                <!-- Film 5 -->
-                <div onclick="openMediaModal('Late Shift', 'Narrative Short • Director & Editor', 'A lone convenience store clerk encounters a mysterious regular during an overnight blizzard.', 'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
-                    <div class="aspect-video bg-zinc-900 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1200&q=80" alt="Late Shift" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <!-- 4. Would You Change Things? -->
+                <div onclick="openMediaModal('Would You Change Things?', 'Narrative Short • 2025', 'Directed, Written & Edited by Ricky Huynh\n\nEven when you know how a relationship will end, would you still embrace it and cherish the moments it gives you?', 'https://www.youtube.com/embed/kkQsD7qCH34')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/kkQsD7qCH34" frameborder="0"></iframe>
                     </div>
                     <div class="p-6">
-                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2021 • Short Film</span>
-                        <h3 class="text-xl font-bold mt-1 text-zinc-100">Late Shift</h3>
-                        <p class="text-zinc-400 text-sm mt-2">Director & Editor</p>
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2025 • Narrative Short</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">Would You Change Things?</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Directed, Written & Edited by Ricky Huynh</p>
                     </div>
                 </div>
 
-                <!-- Film 6 -->
-                <div onclick="openMediaModal('First Light', 'Student Short • Director', 'An exploration of early morning creative routines and artistic awakening.', 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
-                    <div class="aspect-video bg-zinc-900 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80" alt="First Light" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <!-- 5. How Adoption Shaped His Sense of Self -->
+                <div onclick="openMediaModal('How Adoption Shaped His Sense of Self', 'Documentary Short', 'Directed, Filmed & Edited by Ricky Huynh\n\nThis short documentary tells the heartfelt adoption story of Jonathan Dees, who was adopted from Korea at just two years old. Through his journey, we gain insight into his upbringing alongside his siblings and reflect on the cherished, competitive memories they share. Adoption profoundly shaped Jonathan\'s identity, and he wouldn’t change a thing about the path that led him to become the person he is today.', 'https://www.youtube.com/embed/ZSFCy8aswtI')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/ZSFCy8aswtI" frameborder="0"></iframe>
                     </div>
                     <div class="p-6">
-                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2020 • Short Film</span>
-                        <h3 class="text-xl font-bold mt-1 text-zinc-100">First Light</h3>
-                        <p class="text-zinc-400 text-sm mt-2">Director</p>
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">Documentary Short</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">How Adoption Shaped His Sense of Self</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Directed, Filmed & Edited by Ricky Huynh</p>
                     </div>
                 </div>
+
+                <!-- 6. Maria -->
+                <div onclick="openMediaModal('Maria', 'Horror Short', 'Written, Directed & Edited by Ricky Huynh\n\nInspired by ‘Pearl’ (2022), Maria tells the story of a girl whose failed relationship takes a deadly turn. When she realizes her partner will never treat her the way she deserves, she decides to take matters into her own hands.', 'https://www.youtube.com/embed/dZf6PXTZElo')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/dZf6PXTZElo" frameborder="0"></iframe>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">Horror Short</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">Maria</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Written, Directed & Edited by Ricky Huynh</p>
+                    </div>
+                </div>
+
+                <!-- 7. Do You Remember -->
+                <div onclick="openMediaModal('Do You Remember', 'Narrative Short', 'Written, Directed & Edited by Ricky Huynh\n\nA couple reminisces on their past memories through old photos. After finding their digital camera tucked away in a \'memories\' box, they discuss the moments leading up to where they are now.', 'https://www.youtube.com/embed/AsAiFbdpOOs')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/AsAiFbdpOOs" frameborder="0"></iframe>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">Narrative Short</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">Do You Remember</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Written, Directed & Edited by Ricky Huynh</p>
+                    </div>
+                </div>
+
+                <!-- 8. Dear Anna -->
+                <div onclick="openMediaModal('Dear Anna', 'Narrative Short', 'Co-directed, Co-written & Edited by Ricky Huynh\n\nA young woman reflects on her past relationship with her ex-girlfriend. The beauty and the pain of their connection are looked at through the eyes of a letter.', 'https://www.youtube.com/embed/CYJSHqBpbiE')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/CYJSHqBpbiE" frameborder="0"></iframe>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">Narrative Short</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">Dear Anna</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Co-directed, Co-written & Edited by Ricky Huynh</p>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -365,12 +403,12 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
             <div class="aspect-video bg-black relative">
-                <img id="modal-img" src="" class="w-full h-full object-cover">
+                <iframe id="modal-iframe" src="" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <div class="p-8 space-y-4">
+            <div class="p-8 space-y-4 max-h-[40vh] overflow-y-auto">
                 <span id="modal-category" class="text-xs uppercase tracking-widest text-zinc-400 font-semibold"></span>
                 <h2 id="modal-title" class="text-2xl md:text-3xl font-bold"></h2>
-                <p id="modal-desc" class="text-zinc-300 leading-relaxed"></p>
+                <p id="modal-desc" class="text-zinc-300 leading-relaxed whitespace-pre-line"></p>
             </div>
         </div>
     </div>
@@ -388,6 +426,11 @@
 
     <!-- INTERACTIVE JAVASCRIPT LOGIC -->
     <script>
+        // Start on Film tab by default as requested
+        document.addEventListener('DOMContentLoaded', () => {
+            switchTab('film');
+        });
+
         function switchTab(tabId) {
             // Hide all tab contents
             const tabs = document.querySelectorAll('.tab-content');
@@ -419,17 +462,18 @@
             menu.classList.toggle('hidden');
         }
 
-        function openMediaModal(title, category, desc, imgSrc) {
+        function openMediaModal(title, category, desc, embedUrl) {
             document.getElementById('modal-title').innerText = title;
             document.getElementById('modal-category').innerText = category;
             document.getElementById('modal-desc').innerText = desc;
-            document.getElementById('modal-img').src = imgSrc;
+            document.getElementById('modal-iframe').src = embedUrl;
             document.getElementById('media-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
 
         function closeMediaModal() {
             document.getElementById('media-modal').classList.add('hidden');
+            document.getElementById('modal-iframe').src = '';
             document.body.style.overflow = 'auto';
         }
 
