@@ -31,13 +31,14 @@
     <!-- NAVIGATION HEADER -->
     <header class="sticky top-0 z-50 bg-darkbg/80 backdrop-blur-md border-b border-bordercolor">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" onclick="switchTab('film')" class="text-lg font-bold tracking-tight hover:opacity-80 transition-opacity">
+            <a href="#" onclick="switchTab('home')" class="text-lg font-bold tracking-tight hover:opacity-80 transition-opacity">
                 RICKY HUYNH
             </a>
             
             <!-- Desktop Navigation Tabs -->
             <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
-                <button onclick="switchTab('film')" id="nav-film" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all bg-zinc-800 text-white">Film</button>
+                <button onclick="switchTab('home')" id="nav-home" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all bg-zinc-800 text-white">Home</button>
+                <button onclick="switchTab('film')" id="nav-film" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all text-zinc-400 hover:text-white hover:bg-zinc-900">Film</button>
                 <button onclick="switchTab('videography')" id="nav-videography" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all text-zinc-400 hover:text-white hover:bg-zinc-900">Videography</button>
                 <button onclick="switchTab('onset')" id="nav-onset" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all text-zinc-400 hover:text-white hover:bg-zinc-900">On Set</button>
                 <button onclick="switchTab('content')" id="nav-content" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all text-zinc-400 hover:text-white hover:bg-zinc-900">Content Creator</button>
@@ -53,6 +54,7 @@
 
         <!-- Mobile Navigation Drawer -->
         <div id="mobile-menu" class="hidden md:hidden border-b border-bordercolor bg-cardbg px-6 py-4 space-y-2">
+            <button onclick="switchTab('home'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-zinc-200 hover:bg-zinc-800">Home</button>
             <button onclick="switchTab('film'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-zinc-200 hover:bg-zinc-800">Film</button>
             <button onclick="switchTab('videography'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-zinc-200 hover:bg-zinc-800">Videography</button>
             <button onclick="switchTab('onset'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-zinc-200 hover:bg-zinc-800">On Set</button>
@@ -65,21 +67,72 @@
     <!-- MAIN CONTENT CONTAINER -->
     <main class="flex-grow max-w-7xl mx-auto px-6 py-12 w-full">
 
+        <!-- 0. HOMEPAGE SECTION (Your Original Layout) -->
+        <section id="content-home" class="tab-content space-y-16 animate-fadeIn">
+            <!-- Hero Video Reel Section -->
+            <div class="space-y-6">
+                <div class="aspect-video w-full bg-cardbg border border-bordercolor rounded-2xl overflow-hidden relative group">
+                    <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1600&q=80" alt="Cinematic Reel Hero" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkbg via-black/30 to-transparent flex items-center justify-center">
+                        <button onclick="openMediaModal('2026 Cinematography Reel', 'Showreel • Ricky Huynh', 'A curated montage of narrative short films, commercial spots, and cinematic lighting projects.', 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1600&q=80')" class="w-20 h-20 bg-white text-black rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <h1 class="text-2xl md:text-3xl font-bold tracking-tight">RICKY HUYNH</h1>
+                        <p class="text-zinc-400 text-sm mt-1">Independent Filmmaker, Director & Creator</p>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <button onclick="switchTab('film')" class="px-5 py-2.5 bg-white text-black font-semibold rounded-full text-sm hover:bg-zinc-200 transition-colors">Explore Films</button>
+                        <button onclick="switchTab('contact')" class="px-5 py-2.5 bg-cardbg border border-bordercolor text-zinc-200 font-semibold rounded-full text-sm hover:bg-zinc-800 transition-colors">Get in Touch</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Highlights Grid -->
+            <div class="space-y-6">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xl font-bold">Featured Works</h2>
+                    <button onclick="switchTab('film')" class="text-xs text-zinc-400 hover:text-white uppercase tracking-wider font-semibold">View All →</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div onclick="openMediaModal('Red Hot', 'Narrative Short Film', 'A tense psychological drama exploring expectations and hidden frictions within immigrant family dynamics.', 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                        <div class="aspect-video bg-zinc-900 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">Short Film</span>
+                            <h3 class="text-xl font-bold mt-1">Red Hot</h3>
+                            <p class="text-zinc-400 text-sm mt-2">Director & Screenwriter</p>
+                        </div>
+                    </div>
+                    <div onclick="openMediaModal('It Ain't Easy', 'Narrative Short', 'A bittersweet portrait of youth navigating urban transition.', 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                        <div class="aspect-video bg-zinc-900 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">Short Film</span>
+                            <h3 class="text-xl font-bold mt-1">It Ain't Easy</h3>
+                            <p class="text-zinc-400 text-sm mt-2">Co-Director & Editor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- 1. FILM SECTION -->
-        <section id="content-film" class="tab-content space-y-12 animate-fadeIn">
+        <section id="content-film" class="tab-content hidden space-y-12 animate-fadeIn">
             <div class="space-y-3 max-w-2xl">
                 <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Narrative & Short Films</h1>
                 <p class="text-zinc-400 text-lg">Cinematic explorations of memory, cultural identity, and coming-of-age dynamics.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Film Item 1 -->
                 <div onclick="openMediaModal('Red Hot', 'Narrative Short Film • Writer / Director', 'A tense psychological drama exploring expectations and hidden frictions within immigrant family dynamics.', 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
                     <div class="aspect-video bg-zinc-900 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80" alt="Red Hot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                            <span class="px-4 py-2 bg-white text-black font-semibold text-xs tracking-wider uppercase rounded-full">View Project</span>
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2024 • Short Film</span>
@@ -88,13 +141,9 @@
                     </div>
                 </div>
 
-                <!-- Film Item 2 -->
                 <div onclick="openMediaModal('It Ain't Easy', 'Narrative Short • Co-Director', 'A bittersweet portrait of youth navigating urban transition and shifting relationships.', 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
                     <div class="aspect-video bg-zinc-900 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80" alt="It Ain't Easy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                            <span class="px-4 py-2 bg-white text-black font-semibold text-xs tracking-wider uppercase rounded-full">View Project</span>
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2023 • Short Film</span>
