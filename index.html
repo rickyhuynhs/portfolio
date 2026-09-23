@@ -1,14 +1,42 @@
-<!-- ... existing code ... -->
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricky Huynh — Filmmaker & Creator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0a0a0a',
+                        cardbg: '#141414',
+                        bordercolor: '#262626'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
 <body class="bg-darkbg text-zinc-100 min-h-screen flex flex-col selection:bg-zinc-700 selection:text-white">
 
     <!-- NAVIGATION HEADER -->
     <header class="sticky top-0 z-50 bg-darkbg/80 backdrop-blur-md border-b border-bordercolor">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <button onclick="switchTab('home')" class="text-lg font-bold tracking-tight hover:opacity-80 transition-opacity text-left">
+            <!-- Name acts as the Home button -->
+            <a href="#" onclick="switchTab('home')" class="text-lg font-bold tracking-tight hover:opacity-80 transition-opacity">
                 RICKY HUYNH
-            </button>
+            </a>
             
-            <!-- Desktop Navigation Tabs -->
+            <!-- Desktop Navigation Tabs (Home button removed) -->
             <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
                 <button onclick="switchTab('film')" id="nav-film" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all text-zinc-400 hover:text-white hover:bg-zinc-900">Film</button>
                 <button onclick="switchTab('videography')" id="nav-videography" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all text-zinc-400 hover:text-white hover:bg-zinc-900">Videography</button>
@@ -26,6 +54,7 @@
 
         <!-- Mobile Navigation Drawer -->
         <div id="mobile-menu" class="hidden md:hidden border-b border-bordercolor bg-cardbg px-6 py-4 space-y-2">
+            <button onclick="switchTab('home'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-zinc-200 hover:bg-zinc-800">Home</button>
             <button onclick="switchTab('film'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-zinc-200 hover:bg-zinc-800">Film</button>
             <button onclick="switchTab('videography'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-zinc-200 hover:bg-zinc-800">Videography</button>
             <button onclick="switchTab('onset'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-zinc-200 hover:bg-zinc-800">On Set</button>
@@ -38,12 +67,12 @@
     <!-- MAIN CONTENT CONTAINER -->
     <main class="flex-grow max-w-7xl mx-auto px-6 py-12 w-full">
 
-        <!-- 0. HOMEPAGE SECTION (Your Original Layout) -->
+        <!-- 0. HOMEPAGE SECTION (Embedded YouTube Reel) -->
         <section id="content-home" class="tab-content space-y-16 animate-fadeIn">
-            <!-- Hero Video Reel Section with Embedded YouTube Video -->
+            <!-- Hero Video Reel Section -->
             <div class="space-y-6">
-                <div class="aspect-video w-full bg-cardbg border border-bordercolor rounded-2xl overflow-hidden relative group">
-                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/nmq4ATBxz-Q" title="Ricky Huynh Showreel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="aspect-video w-full bg-cardbg border border-bordercolor rounded-2xl overflow-hidden relative shadow-2xl">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/nmq4ATBxz-Q" title="My Directing & Videography Reel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
@@ -58,9 +87,257 @@
             </div>
 
             <!-- Featured Highlights Grid -->
-<!-- ... existing code ... -->
+            <div class="space-y-6">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xl font-bold">Featured Works</h2>
+                    <button onclick="switchTab('film')" class="text-xs text-zinc-400 hover:text-white uppercase tracking-wider font-semibold">View All →</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div onclick="openMediaModal('Red Hot', 'Narrative Short Film', 'A tense psychological drama exploring expectations and hidden frictions within immigrant family dynamics.', 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                        <div class="aspect-video bg-zinc-900 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">Short Film</span>
+                            <h3 class="text-xl font-bold mt-1">Red Hot</h3>
+                            <p class="text-zinc-400 text-sm mt-2">Director & Screenwriter</p>
+                        </div>
+                    </div>
+                    <div onclick="openMediaModal('It Ain\'t Easy', 'Narrative Short', 'A bittersweet portrait of youth navigating urban transition.', 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                        <div class="aspect-video bg-zinc-900 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">Short Film</span>
+                            <h3 class="text-xl font-bold mt-1">It Ain't Easy</h3>
+                            <p class="text-zinc-400 text-sm mt-2">Co-Director & Editor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. FILM SECTION -->
+        <section id="content-film" class="tab-content hidden space-y-12 animate-fadeIn">
+            <div class="space-y-3 max-w-2xl">
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Narrative & Short Films</h1>
+                <p class="text-zinc-400 text-lg">Cinematic explorations of memory, cultural identity, and coming-of-age dynamics.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div onclick="openMediaModal('Red Hot', 'Narrative Short Film • Writer / Director', 'A tense psychological drama exploring expectations and hidden frictions within immigrant family dynamics.', 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2024 • Short Film</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">Red Hot</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Director & Screenwriter</p>
+                    </div>
+                </div>
+
+                <div onclick="openMediaModal('It Ain\'t Easy', 'Narrative Short • Co-Director', 'A bittersweet portrait of youth navigating urban transition and shifting relationships.', 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2023 • Short Film</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">It Ain't Easy</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Co-Director & Editor</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. VIDEOGRAPHY SECTION -->
+        <section id="content-videography" class="tab-content hidden space-y-12 animate-fadeIn">
+            <div class="space-y-3 max-w-2xl">
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Commercial & Music Videography</h1>
+                <p class="text-zinc-400 text-lg">High-aesthetic brand campaigns, artist music videos, and dynamic visual storytelling.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div onclick="openMediaModal('Night Drive Music Video', 'Music Video • DP & Colorist', 'An immersive neo-noir visual set against late-night city lights.', 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-[4/3] bg-zinc-900 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg">Neon Anthem</h3>
+                        <p class="text-xs text-zinc-400 mt-1">Cinematography</p>
+                    </div>
+                </div>
+
+                <div onclick="openMediaModal('Brand Lookbook', 'Commercial • Director of Photography', 'Minimalist fashion commercial emphasizing texture and motion.', 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-[4/3] bg-zinc-900 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg">Atelier Spring</h3>
+                        <p class="text-xs text-zinc-400 mt-1">Commercial DP</p>
+                    </div>
+                </div>
+
+                <div onclick="openMediaModal('Live Session Concert', 'Music Video • Director', 'Intimate acoustic live performance capture.', 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-[4/3] bg-zinc-900 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg">Warehouse Sessions</h3>
+                        <p class="text-xs text-zinc-400 mt-1">Director & Edit</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ON SET SECTION -->
+        <section id="content-onset" class="tab-content hidden space-y-12 animate-fadeIn">
+            <div class="space-y-3 max-w-2xl">
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">On Set Photography</h1>
+                <p class="text-zinc-400 text-lg">Behind-the-scenes glimpses into production, lighting setups, and crew collaboration.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-cardbg border border-bordercolor rounded-xl overflow-hidden aspect-[4/5] relative group">
+                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <p class="text-sm font-medium text-zinc-200">Setting up C-stands & Arri lights on night shoot.</p>
+                    </div>
+                </div>
+                <div class="bg-cardbg border border-bordercolor rounded-xl overflow-hidden aspect-[4/5] relative group">
+                    <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <p class="text-sm font-medium text-zinc-200">Director's monitor check during dialogue take.</p>
+                    </div>
+                </div>
+                <div class="bg-cardbg border border-bordercolor rounded-xl overflow-hidden aspect-[4/5] relative group">
+                    <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <p class="text-sm font-medium text-zinc-200">Gaffer reviewing diffusion angles.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. CONTENT CREATOR SECTION -->
+        <section id="content-content" class="tab-content hidden space-y-12 animate-fadeIn">
+            <div class="space-y-3 max-w-2xl">
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Content Creator & Essays</h1>
+                <p class="text-zinc-400 text-lg">Digital video essays, gear breakdowns, and explorations of modern media culture.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-cardbg border border-bordercolor rounded-xl p-6 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <span class="px-3 py-1 bg-zinc-800 text-zinc-300 text-xs rounded-full font-medium">YouTube Essay</span>
+                        <h3 class="text-2xl font-bold">The Evolution of Independent Cinema in the Digital Age</h3>
+                        <p class="text-zinc-400 text-sm">An in-depth video essay examining how modern creators leverage indie workflows to reach global audiences.</p>
+                    </div>
+                    <a href="https://youtube.com" target="_blank" class="inline-flex items-center space-x-2 text-sm font-semibold text-white hover:underline">
+                        <span>Watch on YouTube</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                </div>
+
+                <div class="bg-cardbg border border-bordercolor rounded-xl p-6 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <span class="px-3 py-1 bg-zinc-800 text-zinc-300 text-xs rounded-full font-medium">Behind the Lens</span>
+                        <h3 class="text-2xl font-bold">Minimalist Film Setup: Traveling Light</h3>
+                        <p class="text-zinc-400 text-sm">Breaking down gear choices, compact lighting rigs, and run-and-gun audio solutions for indie shoots.</p>
+                    </div>
+                    <a href="https://youtube.com" target="_blank" class="inline-flex items-center space-x-2 text-sm font-semibold text-white hover:underline">
+                        <span>Watch on YouTube</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. ABOUT SECTION -->
+        <section id="content-about" class="tab-content hidden space-y-12 animate-fadeIn max-w-4xl">
+            <div class="space-y-6">
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">About Ricky Huynh</h1>
+                <div class="text-zinc-300 text-lg leading-relaxed space-y-4">
+                    <p>I am an independent filmmaker, director, and content creator based in the United States. My work centers on narrative storytelling, visual essays, and commercial videography that bridges intimate human emotion with clean, modern aesthetics.</p>
+                    <p>Transitioning from academic pressures toward a full-time pursuit in cinema, my projects explore identity, family dynamics, and contemporary cultural nuances.</p>
+                </div>
+            </div>
+
+            <div class="border-t border-bordercolor pt-12 space-y-8">
+                <h2 class="text-2xl font-bold">Experience & Background</h2>
+                <div class="space-y-6 border-l border-zinc-800 pl-6 ml-2">
+                    <div class="relative">
+                        <div class="absolute -left-[31px] top-1.5 w-3 h-3 bg-white rounded-full"></div>
+                        <span class="text-xs text-zinc-500 font-semibold">2021 — Present</span>
+                        <h3 class="text-lg font-bold mt-1">Independent Filmmaker & Director</h3>
+                        <p class="text-zinc-400 text-sm mt-1">Directing narrative shorts, branded commercial content, and digital media essays.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[31px] top-1.5 w-3 h-3 bg-zinc-600 rounded-full"></div>
+                        <span class="text-xs text-zinc-500 font-semibold">2019 — 2021</span>
+                        <h3 class="text-lg font-bold mt-1">Videographer & Assistant Camera</h3>
+                        <p class="text-zinc-400 text-sm mt-1">Working on set across camera departments, lighting, and independent productions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. CONTACT SECTION -->
         <section id="content-contact" class="tab-content hidden space-y-12 animate-fadeIn max-w-2xl">
-<!-- ... existing code ... -->
+            <div class="space-y-3">
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Let's Work Together</h1>
+                <p class="text-zinc-400 text-lg">Interested in collaborating on a film, commercial project, or creative inquiry? Send a message below.</p>
+            </div>
+
+            <form onsubmit="handleContactSubmit(event)" class="space-y-6 bg-cardbg border border-bordercolor p-8 rounded-2xl">
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Your Name</label>
+                    <input type="text" required class="w-full bg-darkbg border border-bordercolor rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white transition-colors" placeholder="Jane Doe">
+                </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Email Address</label>
+                    <input type="email" required class="w-full bg-darkbg border border-bordercolor rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white transition-colors" placeholder="jane@example.com">
+                </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Project Details</label>
+                    <textarea rows="4" required class="w-full bg-darkbg border border-bordercolor rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white transition-colors" placeholder="Tell me about your project, timeline, and scope..."></textarea>
+                </div>
+                <button type="submit" class="w-full py-4 bg-white text-black font-semibold rounded-lg hover:bg-zinc-200 transition-colors">Send Message</button>
+                <p id="form-success" class="hidden text-green-400 text-center text-sm font-medium">Thank you! Your message has been sent successfully.</p>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- MEDIA MODAL POPUP -->
+    <div id="media-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-cardbg border border-bordercolor max-w-3xl w-full rounded-2xl overflow-hidden relative animate-fadeIn">
+            <button onclick="closeMediaModal()" class="absolute top-4 right-4 z-10 p-2 bg-black/60 hover:bg-black rounded-full text-white">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <div class="aspect-video bg-black relative">
+                <img id="modal-img" src="" class="w-full h-full object-cover">
+            </div>
+            <div class="p-8 space-y-4">
+                <span id="modal-category" class="text-xs uppercase tracking-widest text-zinc-400 font-semibold"></span>
+                <h2 id="modal-title" class="text-2xl md:text-3xl font-bold"></h2>
+                <p id="modal-desc" class="text-zinc-300 leading-relaxed"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="max-w-7xl mx-auto px-6 py-12 w-full border-t border-bordercolor mt-auto flex flex-col md:flex-row items-center justify-between text-zinc-500 text-sm">
+        <p>© 2026 Ricky Huynh. All Rights Reserved.</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+            <a href="https://instagram.com" target="_blank" class="hover:text-white transition-colors">Instagram</a>
+            <a href="https://youtube.com" target="_blank" class="hover:text-white transition-colors">YouTube</a>
+            <a href="https://linkedin.com" target="_blank" class="hover:text-white transition-colors">LinkedIn</a>
+            <a href="mailto:ricky@example.com" class="hover:text-white transition-colors">Email</a>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+    <script>
         function switchTab(tabId) {
             // Hide all tab contents
             const tabs = document.querySelectorAll('.tab-content');
@@ -88,4 +365,41 @@
         }
 
         function toggleMobileMenu() {
-<!-- ... existing code ... -->
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function openMediaModal(title, category, desc, imgSrc) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-category').innerText = category;
+            document.getElementById('modal-desc').innerText = desc;
+            document.getElementById('modal-img').src = imgSrc;
+            document.getElementById('media-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMediaModal() {
+            document.getElementById('media-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            const successMsg = document.getElementById('form-success');
+            successMsg.classList.remove('hidden');
+            event.target.reset();
+            setTimeout(() => {
+                successMsg.classList.add('hidden');
+            }, 5000);
+        }
+
+        // Close modal on background click
+        window.onclick = function(event) {
+            const modal = document.getElementById('media-modal');
+            if (event.target == modal) {
+                closeMediaModal();
+            }
+        }
+    </script>
+</body>
+</html>
