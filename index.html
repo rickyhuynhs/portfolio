@@ -24,6 +24,11 @@
         body { font-family: 'Inter', sans-serif; }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn { animation: fadeIn 0.3s ease-out forwards; }
     </style>
 </head>
 <body class="bg-darkbg text-zinc-100 min-h-screen flex flex-col selection:bg-zinc-700 selection:text-white">
@@ -31,10 +36,12 @@
     <!-- NAVIGATION HEADER -->
     <header class="sticky top-0 z-50 bg-darkbg/80 backdrop-blur-md border-b border-bordercolor">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Name acts as the Home button -->
             <a href="#" onclick="switchTab('home')" class="text-lg font-bold tracking-tight hover:opacity-80 transition-opacity">
                 RICKY HUYNH
             </a>
             
+            <!-- Desktop Navigation Tabs -->
             <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
                 <button onclick="switchTab('film')" id="nav-film" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all text-zinc-400 hover:text-white hover:bg-zinc-900">Film</button>
                 <button onclick="switchTab('videography')" id="nav-videography" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all text-zinc-400 hover:text-white hover:bg-zinc-900">Videography</button>
@@ -44,11 +51,13 @@
                 <button onclick="switchTab('contact')" id="nav-contact" class="nav-btn px-4 py-2 rounded-full text-sm font-medium transition-all text-zinc-400 hover:text-white hover:bg-zinc-900">Contact</button>
             </nav>
 
+            <!-- Mobile Menu Toggle Button -->
             <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-zinc-300 hover:text-white">
                 <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
         </div>
 
+        <!-- Mobile Navigation Drawer -->
         <div id="mobile-menu" class="hidden md:hidden border-b border-bordercolor bg-cardbg px-6 py-4 space-y-2">
             <button onclick="switchTab('home'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-zinc-200 hover:bg-zinc-800">Home</button>
             <button onclick="switchTab('film'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-zinc-200 hover:bg-zinc-800">Film</button>
@@ -63,8 +72,8 @@
     <!-- MAIN CONTENT CONTAINER -->
     <main class="flex-grow max-w-7xl mx-auto px-6 py-12 w-full">
 
-        <!-- HOMEPAGE SECTION -->
-        <section id="content-home" class="tab-content hidden space-y-16 animate-fadeIn">
+        <!-- 0. HOMEPAGE SECTION -->
+        <section id="content-home" class="tab-content space-y-16 animate-fadeIn">
             <div class="space-y-6">
                 <div class="aspect-video w-full bg-cardbg border border-bordercolor rounded-2xl overflow-hidden relative shadow-2xl">
                     <iframe class="w-full h-full" src="https://www.youtube.com/embed/nmq4ATBxz-Q" title="My Directing & Videography Reel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -97,7 +106,7 @@
                             <p class="text-zinc-400 text-sm mt-2">Directed, Written & Edited</p>
                         </div>
                     </div>
-                    <div onclick="openMediaModal('The Crown and The Root', 'Narrative Short • 2025', 'Directed, Written, Filmed & Edited\n\nWhile creating this video, I found myself torn on the direction I wanted the visuals to take.', 'https://www.youtube.com/embed/0jof7MnCG1M')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div onclick="openMediaModal('The Crown and The Root', 'Narrative Short • 2025', 'Directed, Written, Filmed & Edited\n\nWhile creating this video, I found myself torn on the direction I wanted the visuals to take. Was it a story about finding purpose? A surreal fantasy about a queen? Or just a montage of beautiful moments? It’s up to you to decide.', 'https://www.youtube.com/embed/0jof7MnCG1M')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
                         <div class="aspect-video bg-zinc-900 overflow-hidden relative">
                             <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/0jof7MnCG1M" frameborder="0"></iframe>
                         </div>
@@ -111,7 +120,7 @@
             </div>
         </section>
 
-        <!-- FILM SECTION -->
+        <!-- 1. FILM SECTION -->
         <section id="content-film" class="tab-content hidden space-y-12 animate-fadeIn">
             <div class="space-y-3 max-w-2xl">
                 <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Narrative & Short Films</h1>
@@ -119,7 +128,8 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div onclick="openMediaModal('YEARN', 'Dark Fantasy Short Film • 2026', 'Directed, Written & Edited', 'https://www.youtube.com/embed/vLsucl9ixMQ')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                <!-- YEARN -->
+                <div onclick="openMediaModal('YEARN', 'Dark Fantasy Short Film • 2026', 'Directed, Written & Edited\n\nA young woman, imprisoned by vampire hunters, follows an otherworldly presence toward the one she\'s been longing for.', 'https://www.youtube.com/embed/vLsucl9ixMQ')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
                     <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
                         <iframe class="w-full h-full" src="https://www.youtube.com/embed/vLsucl9ixMQ" frameborder="0"></iframe>
                     </div>
@@ -129,7 +139,9 @@
                         <p class="text-zinc-400 text-sm mt-2">Directed, Written & Edited</p>
                     </div>
                 </div>
-                <div onclick="openMediaModal('The Crown and The Root', 'Narrative Short • 2025', 'Directed, Written, Filmed & Edited', 'https://www.youtube.com/embed/0jof7MnCG1M')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+
+                <!-- The Crown and The Root -->
+                <div onclick="openMediaModal('The Crown and The Root', 'Narrative Short • 2025', 'Directed, Written, Filmed & Edited\n\nWhile creating this video, I found myself torn on the direction I wanted the visuals to take. Was it a story about finding purpose? A surreal fantasy about a queen? Or just a montage of beautiful moments? It’s up to you to decide.', 'https://www.youtube.com/embed/0jof7MnCG1M')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
                     <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
                         <iframe class="w-full h-full" src="https://www.youtube.com/embed/0jof7MnCG1M" frameborder="0"></iframe>
                     </div>
@@ -139,17 +151,101 @@
                         <p class="text-zinc-400 text-sm mt-2">Directed, Written, Filmed & Edited</p>
                     </div>
                 </div>
+
+                <!-- A Family Friendly Camping Vlog -->
+                <div onclick="openMediaModal('A Family Friendly Camping Vlog', 'Horror Short • 2025', 'Directed, Written, Filmed & Edited\n\nOn what seems like another routine camping trip, a cheerful family-friendly YouTube vlogger heads out alone for the first time without her usual partner. But when she crosses paths with a stranger in the woods, everything changes. What happens to Aly? Why would someone do this to her?', 'https://www.youtube.com/embed/j7F6JK5Vi1w')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/j7F6JK5Vi1w" frameborder="0"></iframe>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2025 • Horror Short</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">A Family Friendly Camping Vlog</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Directed, Written, Filmed & Edited</p>
+                    </div>
+                </div>
+
+                <!-- VITA ULTRA -->
+                <div onclick="openMediaModal('VITA ULTRA', 'Sci-fi Short • 2025', 'Directed, Written & Edited\n\nOn a mission to uncover the truth about his past, an astronaut crashes on a strange world where the inhabitants hold an unsettling connection to him.', 'https://www.youtube.com/embed/b0GA1tooWzY')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/b0GA1tooWzY" frameborder="0"></iframe>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2025 • Sci-fi Short</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">VITA ULTRA</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Directed, Written & Edited</p>
+                    </div>
+                </div>
+
+                <!-- Would You Change Things? -->
+                <div onclick="openMediaModal('Would You Change Things?', 'Narrative Short • 2025', 'Directed, Written & Edited\n\nEven when you know how a relationship will end, would you still embrace it and cherish the moments it gives you?', 'https://www.youtube.com/embed/kkQsD7qCH34')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/kkQsD7qCH34" frameborder="0"></iframe>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2025 • Narrative Short</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">Would You Change Things?</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Directed, Written & Edited</p>
+                    </div>
+                </div>
+
+                <!-- How Adoption Shaped His Sense of Self -->
+                <div onclick="openMediaModal('How Adoption Shaped His Sense of Self', 'Documentary Short • 2024', 'Directed, Filmed & Edited\n\nThis short documentary tells the heartfelt adoption story of Jonathan Dees, who was adopted from Korea at just two years old. Through his journey, we gain insight into his upbringing alongside his siblings and reflect on the cherished, competitive memories they share. Adoption profoundly shaped Jonathan\'s identity, and he wouldn’t change a thing about the path that led him to become the person he is today.', 'https://www.youtube.com/embed/ZSFCy8aswtI')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/ZSFCy8aswtI" frameborder="0"></iframe>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2024 • Documentary Short</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">How Adoption Shaped His Sense of Self</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Directed, Filmed & Edited</p>
+                    </div>
+                </div>
+
+                <!-- Maria -->
+                <div onclick="openMediaModal('Maria', 'Horror Short • 2024', 'Directed, Written & Edited\n\nInspired by ‘Pearl’ (2022), Maria tells the story of a girl whose failed relationship takes a deadly turn. When she realizes her partner will never treat her the way she deserves, she decides to take matters into her own hands.', 'https://www.youtube.com/embed/dZf6PXTZElo')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/dZf6PXTZElo" frameborder="0"></iframe>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2024 • Horror Short</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">Maria</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Directed, Written & Edited</p>
+                    </div>
+                </div>
+
+                <!-- Do You Remember -->
+                <div onclick="openMediaModal('Do You Remember', 'Narrative Short • 2023', 'Directed, Written & Edited\n\nA couple reminisces on their past memories through old photos. After finding their digital camera tucked away in a \'memories\' box, they discuss the moments leading up to where they are now.', 'https://www.youtube.com/embed/AsAiFbdpOOs')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/AsAiFbdpOOs" frameborder="0"></iframe>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2023 • Narrative Short</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">Do You Remember</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Directed, Written & Edited</p>
+                    </div>
+                </div>
+
+                <!-- Dear Anna -->
+                <div onclick="openMediaModal('Dear Anna', 'Narrative Short • 2022', 'Co-directed, Co-written & Edited\n\nA young woman reflects on her past relationship with her ex-girlfriend. The beauty and the pain of their connection are looked at through the eyes of a letter.', 'https://www.youtube.com/embed/CYJSHqBpbiE')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden pointer-events-none">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/CYJSHqBpbiE" frameborder="0"></iframe>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2022 • Narrative Short</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">Dear Anna</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Co-directed, Co-written & Edited</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- VIDEOGRAPHY SECTION (MAIN HUB) -->
+        <!-- 2. VIDEOGRAPHY SECTION (MAIN HUB) -->
         <section id="content-videography" class="tab-content hidden space-y-20 animate-fadeIn">
             <div class="space-y-3 max-w-2xl">
                 <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Videography</h1>
-                <p class="text-zinc-400 text-lg">Professional coverage capturing corporate milestones, community gatherings, and university student culture.</p>
+                <p class="text-zinc-400 text-lg">Professional coverage capturing corporate milestones, community gatherings, and wedding memories.</p>
             </div>
 
-            <!-- SECTION 1: CORPORATE EVENTS (IN ORDER: Recent to Last) -->
+            <!-- SECTION A: CORPORATE EVENTS -->
             <div class="space-y-8">
                 <div class="flex items-center justify-between border-b border-bordercolor pb-4">
                     <button onclick="openCategoryArchive('Corporate Events')" class="group text-2xl md:text-3xl font-bold tracking-tight flex items-center space-x-3 text-left hover:text-zinc-300 transition-colors">
@@ -159,40 +255,40 @@
                     <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold hidden sm:inline-block">Click header to view full archive</span>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- 1. https://youtu.be/2rpHTFKlYwM -->
-                    <div onclick="openMediaModal('Corporate Feature 01', 'Corporate Events', 'Professional corporate event coverage.', 'https://www.youtube.com/embed/2rpHTFKlYwM')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
-                        <div class="aspect-video bg-zinc-900 overflow-hidden relative">
-                            <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/2rpHTFKlYwM" frameborder="0"></iframe>
+                    <div onclick="openMediaModal('Brand Launch Summit', 'Corporate Events', 'High-profile corporate summit highlighting keynote speakers, product showcases, and executive panels.', 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                        <div class="aspect-[4/3] bg-zinc-900 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="p-5">
-                            <span class="text-xs text-zinc-500 font-semibold">Corporate Event</span>
-                            <h3 class="font-bold text-lg mt-0.5">Corporate Highlight Reel 1</h3>
+                            <span class="text-xs text-zinc-500 font-semibold">Latest Release • 2026</span>
+                            <h3 class="font-bold text-lg mt-0.5">Innovate Global Summit</h3>
+                            <p class="text-xs text-zinc-400 mt-1">Lead Event Videographer</p>
                         </div>
                     </div>
-                    <!-- 2. https://youtu.be/p9N8dAqoRGQ -->
-                    <div onclick="openMediaModal('Corporate Feature 02', 'Corporate Events', 'Professional corporate event coverage.', 'https://www.youtube.com/embed/p9N8dAqoRGQ')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
-                        <div class="aspect-video bg-zinc-900 overflow-hidden relative">
-                            <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/p9N8dAqoRGQ" frameborder="0"></iframe>
+                    <div onclick="openMediaModal('Annual Leadership Conference', 'Corporate Events', 'Professional corporate video capturing keynote addresses and networking sessions.', 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                        <div class="aspect-[4/3] bg-zinc-900 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="p-5">
-                            <span class="text-xs text-zinc-500 font-semibold">Corporate Event</span>
-                            <h3 class="font-bold text-lg mt-0.5">Corporate Highlight Reel 2</h3>
+                            <span class="text-xs text-zinc-500 font-semibold">2025</span>
+                            <h3 class="font-bold text-lg mt-0.5">Nexus Tech Conference</h3>
+                            <p class="text-xs text-zinc-400 mt-1">Cinematography & Edit</p>
                         </div>
                     </div>
-                    <!-- 3. https://www.youtube.com/watch?v=XBKifPwL-Ho -->
-                    <div onclick="openMediaModal('Corporate Feature 03', 'Corporate Events', 'Professional corporate event coverage.', 'https://www.youtube.com/embed/XBKifPwL-Ho')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
-                        <div class="aspect-video bg-zinc-900 overflow-hidden relative">
-                            <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/XBKifPwL-Ho" frameborder="0"></iframe>
+                    <div onclick="openMediaModal('VIP Investor Gala', 'Corporate Events', 'Sophisticated corporate gathering capturing key notes and celebratory networking.', 'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=800&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                        <div class="aspect-[4/3] bg-zinc-900 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="p-5">
-                            <span class="text-xs text-zinc-500 font-semibold">Corporate Event</span>
-                            <h3 class="font-bold text-lg mt-0.5">Corporate Highlight Reel 3</h3>
+                            <span class="text-xs text-zinc-500 font-semibold">2025</span>
+                            <h3 class="font-bold text-lg mt-0.5">Venture Capital Gala</h3>
+                            <p class="text-xs text-zinc-400 mt-1">Videography & Color</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- SECTION 2: COMMUNITY EVENTS -->
+            <!-- SECTION B: COMMUNITY EVENTS -->
             <div class="space-y-8">
                 <div class="flex items-center justify-between border-b border-bordercolor pb-4">
                     <button onclick="openCategoryArchive('Community Events')" class="group text-2xl md:text-3xl font-bold tracking-tight flex items-center space-x-3 text-left hover:text-zinc-300 transition-colors">
@@ -201,318 +297,176 @@
                     </button>
                     <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold hidden sm:inline-block">Click header to view full archive</span>
                 </div>
-
-                <!-- SUB-CATEGORY A: Boston Asian American Film Festival (BAAFF) -->
-                <div class="space-y-4">
-                    <h3 class="text-xl font-semibold text-zinc-200">Boston Asian American Film Festival (BAAFF)</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div onclick="openMediaModal('2025 BAAFF Preview Party Highlights', 'Boston Asian American Film Festival', 'Event highlights.', 'https://www.youtube.com/embed/_c43KTZy_og')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
-                            <div class="aspect-video bg-zinc-900 overflow-hidden relative">
-                                <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/_c43KTZy_og" frameborder="0"></iframe>
-                            </div>
-                            <div class="p-5">
-                                <h4 class="font-bold text-base mt-0.5">2025 BAAFF PREVIEW PARTY HIGHLIGHTS</h4>
-                            </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div onclick="openMediaModal('City Cultural Festival', 'Community Events', 'High-energy local festival recap highlighting performances, community booths, and crowd engagement.', 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                        <div class="aspect-[4/3] bg-zinc-900 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         </div>
-                        <div onclick="openMediaModal('BAAFF Showcase 2', 'Boston Asian American Film Festival', 'Festival highlights.', 'https://www.youtube.com/embed/QDSbKUHBnWE')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
-                            <div class="aspect-video bg-zinc-900 overflow-hidden relative">
-                                <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/QDSbKUHBnWE" frameborder="0"></iframe>
-                            </div>
-                            <div class="p-5">
-                                <h4 class="font-bold text-base mt-0.5">BAAFF Highlights & Screenings</h4>
-                            </div>
+                        <div class="p-5">
+                            <span class="text-xs text-zinc-500 font-semibold">Latest Release • 2026</span>
+                            <h3 class="font-bold text-lg mt-0.5">Metro Heritage Festival</h3>
+                            <p class="text-xs text-zinc-400 mt-1">Cinematography & Edit</p>
                         </div>
-                        <div onclick="openMediaModal('BAAFF Showcase 3', 'Boston Asian American Film Festival', 'Festival highlights.', 'https://www.youtube.com/embed/vhQh7yFkJsU')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
-                            <div class="aspect-video bg-zinc-900 overflow-hidden relative">
-                                <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/vhQh7yFkJsU" frameborder="0"></iframe>
-                            </div>
-                            <div class="p-5">
-                                <h4 class="font-bold text-base mt-0.5">BAAFF Filmmaker Q&A Recap</h4>
-                            </div>
+                    </div>
+                    <div onclick="openMediaModal('Local Arts & Music Showcase', 'Community Events', 'Grassroots arts exhibition highlighting local creators and community performers.', 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                        <div class="aspect-[4/3] bg-zinc-900 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-5">
+                            <span class="text-xs text-zinc-500 font-semibold">2025</span>
+                            <h3 class="font-bold text-lg mt-0.5">Downtown Open Stage</h3>
+                            <p class="text-xs text-zinc-400 mt-1">Director of Photography</p>
+                        </div>
+                    </div>
+                    <div onclick="openMediaModal('Charity Run & Community Fair', 'Community Events', 'Outdoor community wellness event capturing candid athlete moments and family activities.', 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                        <div class="aspect-[4/3] bg-zinc-900 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-5">
+                            <span class="text-xs text-zinc-500 font-semibold">2025</span>
+                            <h3 class="font-bold text-lg mt-0.5">Annual Hope 5K Fair</h3>
+                            <p class="text-xs text-zinc-400 mt-1">Full Coverage</p>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- SUB-CATEGORY B: UMass Altitude 5:Dirty Crew -->
-                <div class="space-y-4 pt-6">
-                    <h3 class="text-xl font-semibold text-zinc-200">UMass Altitude 5:Dirty Crew</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div onclick="openMediaModal('G.O.M.D. - J. Cole | Matt Chung Choreography', 'UMass Altitude 5:Dirty Crew', 'Dance performance capture.', 'https://www.youtube.com/embed/nmq4ATBxz-Q')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
-                            <div class="aspect-video bg-zinc-900 overflow-hidden relative">
-                                <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/nmq4ATBxz-Q" frameborder="0"></iframe>
-                            </div>
-                            <div class="p-5">
-                                <h4 class="font-bold text-base mt-0.5">G.O.M.D. - J. Cole | Matt Chung Choreography</h4>
-                            </div>
+            <!-- SECTION C: WEDDING VIDEOGRAPHY -->
+            <div class="space-y-8">
+                <div class="flex items-center justify-between border-b border-bordercolor pb-4">
+                    <button onclick="openCategoryArchive('Wedding Videography')" class="group text-2xl md:text-3xl font-bold tracking-tight flex items-center space-x-3 text-left hover:text-zinc-300 transition-colors">
+                        <span>Wedding Videography</span>
+                        <svg class="w-6 h-6 transform group-hover:translate-x-1.5 transition-transform text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </button>
+                    <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold hidden sm:inline-block">Click header to view full archive</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div onclick="openMediaModal('Cinematic Wedding Film', 'Wedding Videography', 'An intimate cinematic love story filmed across coastal estates.', 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                        <div class="aspect-[4/3] bg-zinc-900 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         </div>
-                        <div onclick="openMediaModal('5:Dirty Crew | AASA Asian Night 2023', 'UMass Altitude 5:Dirty Crew', 'Live stage performance.', 'https://www.youtube.com/embed/nmq4ATBxz-Q')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
-                            <div class="aspect-video bg-zinc-900 overflow-hidden relative">
-                                <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/nmq4ATBxz-Q" frameborder="0"></iframe>
-                            </div>
-                            <div class="p-5">
-                                <h4 class="font-bold text-base mt-0.5">5:Dirty Crew | AASA Asian Night 2023</h4>
-                            </div>
+                        <div class="p-5">
+                            <span class="text-xs text-zinc-500 font-semibold">Latest Release • 2026</span>
+                            <h3 class="font-bold text-lg mt-0.5">Coastal Romance</h3>
+                            <p class="text-xs text-zinc-400 mt-1">Cinematography & Edit</p>
                         </div>
-                        <div onclick="openMediaModal('Lady Gaga - Telephone ft. Beyoncé', 'UMass Altitude 5:Dirty Crew', 'Terry Nguyen Choreography', 'https://www.youtube.com/embed/nmq4ATBxz-Q')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
-                            <div class="aspect-video bg-zinc-900 overflow-hidden relative">
-                                <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/nmq4ATBxz-Q" frameborder="0"></iframe>
-                            </div>
-                            <div class="p-5">
-                                <h4 class="font-bold text-base mt-0.5">Lady Gaga - Telephone | Terry Nguyen Choreography</h4>
-                            </div>
+                    </div>
+                    <div onclick="openMediaModal('Estate Wedding Story', 'Wedding Videography', 'Timeless coverage capturing luxury ceremony details and emotional vows.', 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                        <div class="aspect-[4/3] bg-zinc-900 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-5">
+                            <span class="text-xs text-zinc-500 font-semibold">2025</span>
+                            <h3 class="font-bold text-lg mt-0.5">Heritage Estate Vows</h3>
+                            <p class="text-xs text-zinc-400 mt-1">Lead Videographer</p>
+                        </div>
+                    </div>
+                    <div onclick="openMediaModal('Sunset Celebration', 'Wedding Videography', 'Vibrant evening reception highlighting celebration, toasts, and dance floor energy.', 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                        <div class="aspect-[4/3] bg-zinc-900 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-5">
+                            <span class="text-xs text-zinc-500 font-semibold">2025</span>
+                            <h3 class="font-bold text-lg mt-0.5">Golden Hour Reception</h3>
+                            <p class="text-xs text-zinc-400 mt-1">Cinematography</p>
                         </div>
                     </div>
                 </div>
-
-                <!-- SUB-CATEGORY C: Asian American Student Association -->
-                <div class="space-y-4 pt-6">
-                    <h3 class="text-xl font-semibold text-zinc-200">Asian American Student Association</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div onclick="openMediaModal('AASA’s 39th ANNUAL ASIAN NIGHT', 'Asian American Student Association', 'MEMORIES IN MOTION Recap Video', 'https://www.youtube.com/embed/nmq4ATBxz-Q')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
-                            <div class="aspect-video bg-zinc-900 overflow-hidden relative">
-                                <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/nmq4ATBxz-Q" frameborder="0"></iframe>
-                            </div>
-                            <div class="p-5">
-                                <h4 class="font-bold text-base mt-0.5">AASA’s 39th ANNUAL ASIAN NIGHT: MEMORIES IN MOTION</h4>
-                            </div>
-                        </div>
-                        <div onclick="openMediaModal('memories in motion | a short film', 'Asian American Student Association', 'Short film production', 'https://www.youtube.com/embed/nmq4ATBxz-Q')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
-                            <div class="aspect-video bg-zinc-900 overflow-hidden relative">
-                                <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/nmq4ATBxz-Q" frameborder="0"></iframe>
-                            </div>
-                            <div class="p-5">
-                                <h4 class="font-bold text-base mt-0.5">memories in motion | a short film</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SUB-CATEGORY D: Vietnamese Student Association -->
-                <div class="space-y-4 pt-6">
-                    <h3 class="text-xl font-semibold text-zinc-200">Vietnamese Student Association</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div onclick="openMediaModal('36th Annual VSA by Night', 'Vietnamese Student Association', 'Uống Nước Nhớ Nguồn Recap (2023)', 'https://www.youtube.com/embed/nmq4ATBxz-Q')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
-                            <div class="aspect-video bg-zinc-900 overflow-hidden relative">
-                                <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/nmq4ATBxz-Q" frameborder="0"></iframe>
-                            </div>
-                            <div class="p-5">
-                                <h4 class="font-bold text-base mt-0.5">36th Annual VSA by Night: Uống Nước Nhớ Nguồn Recap (2023)</h4>
-                            </div>
-                        </div>
-                        <div onclick="openMediaModal('VSA Spring Show 2019 Promo Video', 'Vietnamese Student Association', 'Promo video production', 'https://www.youtube.com/embed/nmq4ATBxz-Q')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
-                            <div class="aspect-video bg-zinc-900 overflow-hidden relative">
-                                <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/nmq4ATBxz-Q" frameborder="0"></iframe>
-                            </div>
-                            <div class="p-5">
-                                <h4 class="font-bold text-base mt-0.5">VSA Spring Show 2019 Promo Video</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SUB-CATEGORY E: Additional Community Events -->
-                <div class="space-y-4 pt-6">
-                    <h3 class="text-xl font-semibold text-zinc-200">Affiliated Student Groups & Partners</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div onclick="openMediaModal('African Student Association Showcase', 'African Student Association', 'Event videography', 'https://www.youtube.com/embed/yuML2D4wRj4')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
-                            <div class="aspect-video bg-zinc-900 overflow-hidden relative">
-                                <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/yuML2D4wRj4" frameborder="0"></iframe>
-                            </div>
-                            <div class="p-5">
-                                <h4 class="font-bold text-base mt-0.5">African Student Association Showcase</h4>
-                            </div>
-                        </div>
-                        <div onclick="openMediaModal('Latinos Unidos Annual Gala', 'Latinos Unidos', 'Event videography', 'https://www.youtube.com/embed/MgE0KM4_MFw')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
-                            <div class="aspect-video bg-zinc-900 overflow-hidden relative">
-                                <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/MgE0KM4_MFw" frameborder="0"></iframe>
-                            </div>
-                            <div class="p-5">
-                                <h4 class="font-bold text-base mt-0.5">Latinos Unidos Annual Gala</h4>
-                            </div>
-                        </div>
-                        <div onclick="openMediaModal('Wave Life Sciences Corporate / Community Feature', 'Wave Life Sciences', 'Videography feature', 'https://www.youtube.com/embed/8BazOduxq2I')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
-                            <div class="aspect-video bg-zinc-900 overflow-hidden relative">
-                                <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/8BazOduxq2I" frameborder="0"></iframe>
-                            </div>
-                            <div class="p-5">
-                                <h4 class="font-bold text-base mt-0.5">Wave Life Sciences Feature</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </section>
 
-        <!-- ON SET SECTION -->
+        <!-- 3. ON SET SECTION -->
         <section id="content-onset" class="tab-content hidden space-y-12 animate-fadeIn">
             <div class="space-y-3 max-w-2xl">
-                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">On Set Photography</h1>
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">On Set</h1>
                 <p class="text-zinc-400 text-lg">Behind-the-scenes glimpses into production, lighting setups, and crew collaboration.</p>
             </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-cardbg border border-bordercolor rounded-xl overflow-hidden aspect-[4/5] relative group">
-                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                        <p class="text-sm font-medium text-zinc-200">Setting up C-stands & Arri lights on night shoot.</p>
-                    </div>
-                </div>
-                <div class="bg-cardbg border border-bordercolor rounded-xl overflow-hidden aspect-[4/5] relative group">
-                    <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                        <p class="text-sm font-medium text-zinc-200">Director's monitor check during dialogue take.</p>
-                    </div>
-                </div>
-                <div class="bg-cardbg border border-bordercolor rounded-xl overflow-hidden aspect-[4/5] relative group">
-                    <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                        <p class="text-sm font-medium text-zinc-200">Gaffer reviewing diffusion angles.</p>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-cardbg border border-bordercolor rounded-xl p-6">
+                    <h3 class="font-bold text-lg">Production Gallery Coming Soon</h3>
+                    <p class="text-zinc-400 text-sm mt-2">Check back later for behind-the-scenes photography and equipment configurations.</p>
                 </div>
             </div>
         </section>
 
-        <!-- CONTENT CREATOR SECTION -->
+        <!-- 4. CONTENT CREATOR SECTION -->
         <section id="content-content" class="tab-content hidden space-y-12 animate-fadeIn">
             <div class="space-y-3 max-w-2xl">
-                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Content Creator & Essays</h1>
-                <p class="text-zinc-400 text-lg">Digital video essays, gear breakdowns, and explorations of modern media culture.</p>
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Content Creator</h1>
+                <p class="text-zinc-400 text-lg">Digital content, tutorials, and creative deep-dives across social platforms.</p>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-cardbg border border-bordercolor rounded-xl p-6 flex flex-col justify-between space-y-6">
-                    <div class="space-y-4">
-                        <span class="px-3 py-1 bg-zinc-800 text-zinc-300 text-xs rounded-full font-medium">YouTube Essay</span>
-                        <h3 class="text-2xl font-bold">The Evolution of Independent Cinema in the Digital Age</h3>
-                        <p class="text-zinc-400 text-sm">An in-depth video essay examining how modern creators leverage indie workflows to reach global audiences.</p>
-                    </div>
-                    <a href="https://youtube.com" target="_blank" class="inline-flex items-center space-x-2 text-sm font-semibold text-white hover:underline">
-                        <span>Watch on YouTube</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                    </a>
-                </div>
-
-                <div class="bg-cardbg border border-bordercolor rounded-xl p-6 flex flex-col justify-between space-y-6">
-                    <div class="space-y-4">
-                        <span class="px-3 py-1 bg-zinc-800 text-zinc-300 text-xs rounded-full font-medium">Behind the Lens</span>
-                        <h3 class="text-2xl font-bold">Minimalist Film Setup: Traveling Light</h3>
-                        <p class="text-zinc-400 text-sm">Breaking down gear choices, compact lighting rigs, and run-and-gun audio solutions for indie shoots.</p>
-                    </div>
-                    <a href="https://youtube.com" target="_blank" class="inline-flex items-center space-x-2 text-sm font-semibold text-white hover:underline">
-                        <span>Watch on YouTube</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                    </a>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-cardbg border border-bordercolor rounded-xl p-6">
+                    <h3 class="font-bold text-lg">Creator Hub Coming Soon</h3>
+                    <p class="text-zinc-400 text-sm mt-2">Browse upcoming vlogs and filmmaking tutorials here.</p>
                 </div>
             </div>
         </section>
 
-        <!-- ABOUT SECTION -->
-        <section id="content-about" class="tab-content hidden space-y-12 animate-fadeIn max-w-4xl">
-            <div class="space-y-6">
-                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">About Ricky Huynh</h1>
-                <div class="text-zinc-300 text-lg leading-relaxed space-y-4">
-                    <p>I am an independent filmmaker, director, and content creator based in the United States. My work centers on narrative storytelling, visual essays, and commercial videography that bridges intimate human emotion with clean, modern aesthetics.</p>
-                </div>
+        <!-- 5. ABOUT SECTION -->
+        <section id="content-about" class="tab-content hidden space-y-12 animate-fadeIn">
+            <div class="space-y-3 max-w-2xl">
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">About Me</h1>
+                <p class="text-zinc-400 text-lg">Filmmaker and creator dedicated to telling compelling visual stories.</p>
+            </div>
+            <div class="bg-cardbg border border-bordercolor rounded-xl p-6 max-w-3xl space-y-4">
+                <p class="text-zinc-300">Hello! I'm Ricky Huynh, an independent filmmaker, director, and content creator based out of Boston. My work spans narrative short films, documentary projects, and commercial videography.</p>
             </div>
         </section>
 
-        <!-- CONTACT SECTION -->
-        <section id="content-contact" class="tab-content hidden space-y-12 animate-fadeIn max-w-2xl">
-            <div class="space-y-3">
-                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Let's Work Together</h1>
-                <p class="text-zinc-400 text-lg">Interested in collaborating on a film, commercial project, or creative inquiry? Send a message below.</p>
+        <!-- 6. CONTACT SECTION -->
+        <section id="content-contact" class="tab-content hidden space-y-12 animate-fadeIn">
+            <div class="space-y-3 max-w-2xl">
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Get in Touch</h1>
+                <p class="text-zinc-400 text-lg">Let's collaborate on your next project or film.</p>
             </div>
-
-            <form onsubmit="handleContactSubmit(event)" class="space-y-6 bg-cardbg border border-bordercolor p-8 rounded-2xl">
-                <div>
-                    <label class="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Your Name</label>
-                    <input type="text" required class="w-full bg-darkbg border border-bordercolor rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white transition-colors" placeholder="Jane Doe">
-                </div>
-                <div>
-                    <label class="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Email Address</label>
-                    <input type="email" required class="w-full bg-darkbg border border-bordercolor rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white transition-colors" placeholder="jane@example.com">
-                </div>
-                <div>
-                    <label class="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Project Details</label>
-                    <textarea rows="4" required class="w-full bg-darkbg border border-bordercolor rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white transition-colors" placeholder="Tell me about your project, timeline, and scope..."></textarea>
-                </div>
-                <button type="submit" class="w-full py-4 bg-white text-black font-semibold rounded-lg hover:bg-zinc-200 transition-colors">Send Message</button>
-                <p id="form-success" class="hidden text-green-400 text-center text-sm font-medium">Thank you! Your message has been sent successfully.</p>
-            </form>
+            <div class="bg-cardbg border border-bordercolor rounded-xl p-6 max-w-xl">
+                <p class="text-zinc-300 mb-4">Reach out directly via email at <a href="mailto:ricky@example.com" class="text-white underline font-medium">ricky@example.com</a>.</p>
+            </div>
         </section>
 
     </main>
 
-    <!-- MEDIA MODAL POPUP -->
-    <div id="media-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-cardbg border border-bordercolor max-w-3xl w-full rounded-2xl overflow-hidden relative animate-fadeIn">
-            <button onclick="closeMediaModal()" class="absolute top-4 right-4 z-10 p-2 bg-black/60 hover:bg-black rounded-full text-white">
+    <!-- MEDIA MODAL -->
+    <div id="media-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div onclick="event.stopPropagation()" class="bg-cardbg border border-bordercolor rounded-2xl max-w-3xl w-full overflow-hidden relative shadow-2xl animate-fadeIn">
+            <button onclick="closeMediaModal()" class="absolute top-4 right-4 z-10 p-2 text-zinc-400 hover:text-white bg-darkbg/50 rounded-full">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
-            <div class="aspect-video bg-black relative">
-                <iframe id="modal-iframe" src="" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="p-8 space-y-4 max-h-[40vh] overflow-y-auto">
-                <span id="modal-category" class="text-xs uppercase tracking-widest text-zinc-400 font-semibold"></span>
-                <h2 id="modal-title" class="text-2xl md:text-3xl font-bold"></h2>
-                <p id="modal-desc" class="text-zinc-300 leading-relaxed whitespace-pre-line"></p>
+            <div id="modal-media-container" class="aspect-video bg-black"></div>
+            <div class="p-6 space-y-2">
+                <span id="modal-category" class="text-xs uppercase tracking-widest text-zinc-500 font-semibold"></span>
+                <h3 id="modal-title" class="text-2xl font-bold"></h3>
+                <p id="modal-description" class="text-zinc-400 text-sm whitespace-pre-line mt-2"></p>
             </div>
         </div>
     </div>
 
-    <!-- CATEGORY ARCHIVE MODAL -->
-    <div id="archive-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
-        <div class="bg-cardbg border border-bordercolor max-w-4xl w-full rounded-2xl overflow-hidden relative animate-fadeIn flex flex-col max-h-[90vh]">
-            <div class="p-6 border-b border-bordercolor flex items-center justify-between">
-                <div>
-                    <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">Complete Archive</span>
-                    <h2 id="archive-title" class="text-2xl font-bold mt-1">Category Archive</h2>
-                </div>
-                <button onclick="closeCategoryArchive()" class="p-2 bg-zinc-900 hover:bg-zinc-800 rounded-full text-white transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                </button>
-            </div>
-            <div id="archive-content" class="p-8 overflow-y-auto space-y-6 text-zinc-300">
-                <!-- Dynamically populated archive items -->
-            </div>
-        </div>
-    </div>
-
-    <footer class="max-w-7xl mx-auto px-6 py-12 w-full border-t border-bordercolor mt-auto flex flex-col md:flex-row items-center justify-between text-zinc-500 text-sm">
-        <p>© 2026 Ricky Huynh. All Rights Reserved.</p>
-        <div class="flex space-x-6 mt-4 md:mt-0">
-            <a href="https://instagram.com" target="_blank" class="hover:text-white transition-colors">Instagram</a>
-            <a href="https://youtube.com" target="_blank" class="hover:text-white transition-colors">YouTube</a>
-            <a href="https://linkedin.com" target="_blank" class="hover:text-white transition-colors">Email</a>
-        </div>
-    </footer>
-
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            switchTab('videography');
-        });
-
         function switchTab(tabId) {
-            const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => tab.classList.add('hidden'));
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(el => el.classList.add('hidden'));
 
-            const activeTab = document.getElementById('content-' + tabId);
-            if (activeTab) {
-                activeTab.classList.remove('hidden');
+            // Show selected tab content
+            const target = document.getElementById('content-' + tabId);
+            if (target) {
+                target.classList.remove('hidden');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
 
-            const navButtons = document.querySelectorAll('.nav-btn');
-            navButtons.forEach(btn => {
-                btn.classList.remove('bg-zinc-800', 'text-white');
-                btn.classList.add('text-zinc-400', 'hover:text-white', 'hover:bg-zinc-900');
+            // Update active state on nav buttons
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('text-white', 'bg-zinc-900');
+                btn.classList.add('text-zinc-400');
             });
 
             const activeBtn = document.getElementById('nav-' + tabId);
             if (activeBtn) {
-                activeBtn.classList.remove('text-zinc-400', 'hover:text-white', 'hover:bg-zinc-900');
-                activeBtn.classList.add('bg-zinc-800', 'text-white');
+                activeBtn.classList.remove('text-zinc-400');
+                activeBtn.classList.add('text-white', 'bg-zinc-900');
             }
         }
 
@@ -521,74 +475,39 @@
             menu.classList.toggle('hidden');
         }
 
-        function openMediaModal(title, category, desc, mediaUrl) {
+        function openMediaModal(title, category, description, mediaUrl) {
+            const modal = document.getElementById('media-modal');
+            const container = document.getElementById('modal-media-container');
             document.getElementById('modal-title').innerText = title;
             document.getElementById('modal-category').innerText = category;
-            document.getElementById('modal-desc').innerText = desc;
-            
-            const iframe = document.getElementById('modal-iframe');
-            if (mediaUrl) {
-                iframe.src = mediaUrl;
-                iframe.classList.remove('hidden');
+            document.getElementById('modal-description').innerText = description;
+
+            if (mediaUrl.includes('youtube.com/embed')) {
+                container.innerHTML = `<iframe class="w-full h-full" src="${mediaUrl}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            } else {
+                container.innerHTML = `<img src="${mediaUrl}" class="w-full h-full object-cover">`;
             }
-            
-            document.getElementById('media-modal').classList.remove('hidden');
+
+            modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
 
         function closeMediaModal() {
-            document.getElementById('media-modal').classList.add('hidden');
-            document.getElementById('modal-iframe').src = '';
+            const modal = document.getElementById('media-modal');
+            const container = document.getElementById('modal-media-container');
+            container.innerHTML = '';
+            modal.classList.add('hidden');
             document.body.style.overflow = 'auto';
         }
 
         function openCategoryArchive(categoryName) {
-            document.getElementById('archive-title').innerText = categoryName + ' — Full Portfolio Archive';
-            const container = document.getElementById('archive-content');
-            
-            let archiveHTML = `<p class="text-zinc-400">Exploring the complete body of work under <strong>${categoryName}</strong>. Select any project below for details.</p>`;
-            archiveHTML += `<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">`;
-            
-            for(let i = 1; i <= 6; i++) {
-                archiveHTML += `
-                    <div class="bg-zinc-900 border border-bordercolor p-4 rounded-xl flex items-center space-x-4">
-                        <div class="w-20 h-14 bg-zinc-800 rounded-lg overflow-hidden flex-shrink-0 flex items-center justify-center text-xs text-zinc-500 font-bold">ARCHIVE</div>
-                        <div>
-                            <span class="text-[10px] uppercase tracking-wider text-zinc-500 font-semibold">Project 0${i} • Archive Record</span>
-                            <h4 class="font-bold text-sm text-white mt-0.5">${categoryName} Item ${i}</h4>
-                            <p class="text-xs text-zinc-400 mt-0.5">Comprehensive multi-cam capture & coverage.</p>
-                        </div>
-                    </div>
-                `;
-            }
-            archiveHTML += `</div>`;
-            
-            container.innerHTML = archiveHTML;
-            document.getElementById('archive-modal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
+            alert("Viewing full archive for: " + categoryName);
         }
 
-        function closeCategoryArchive() {
-            document.getElementById('archive-modal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        function handleContactSubmit(event) {
-            event.preventDefault();
-            const successMsg = document.getElementById('form-success');
-            successMsg.classList.remove('hidden');
-            event.target.reset();
-            setTimeout(() => {
-                successMsg.classList.add('hidden');
-            }, 5000);
-        }
-
-        window.onclick = function(event) {
-            const mediaModal = document.getElementById('media-modal');
-            const archiveModal = document.getElementById('archive-modal');
-            if (event.target == mediaModal) closeMediaModal();
-            if (event.target == archiveModal) closeCategoryArchive();
-        }
+        // Initialize default view to Home tab on load
+        window.addEventListener('DOMContentLoaded', () => {
+            switchTab('home');
+        });
     </script>
 </body>
 </html>
