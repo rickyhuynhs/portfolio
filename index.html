@@ -117,17 +117,30 @@
             </div>
         </section>
 
-        <!-- 1. FILM SECTION -->
+        <!-- 1. FILM SECTION (Extended Chronological Layout: Newest to Oldest) -->
         <section id="content-film" class="tab-content hidden space-y-12 animate-fadeIn">
             <div class="space-y-3 max-w-2xl">
                 <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Narrative & Short Films</h1>
-                <p class="text-zinc-400 text-lg">Cinematic explorations of memory, cultural identity, and coming-of-age dynamics.</p>
+                <p class="text-zinc-400 text-lg">A complete chronological archive of narrative works, spanning recent projects to early explorations.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Film 1: 2025/2026 Latest -->
+                <div onclick="openMediaModal('Blue Hour', 'Narrative Short Film • Writer & Director', 'A nocturnal meditation on distance, city lights, and unexpressed thoughts between two estranged friends.', 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=80" alt="Blue Hour" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2025 • Short Film</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">Blue Hour</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Writer & Director</p>
+                    </div>
+                </div>
+
+                <!-- Film 2 -->
                 <div onclick="openMediaModal('Red Hot', 'Narrative Short Film • Writer / Director', 'A tense psychological drama exploring expectations and hidden frictions within immigrant family dynamics.', 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
                     <div class="aspect-video bg-zinc-900 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80" alt="Red Hot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2024 • Short Film</span>
@@ -136,14 +149,51 @@
                     </div>
                 </div>
 
+                <!-- Film 3 -->
                 <div onclick="openMediaModal('It Ain\'t Easy', 'Narrative Short • Co-Director', 'A bittersweet portrait of youth navigating urban transition and shifting relationships.', 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
                     <div class="aspect-video bg-zinc-900 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80" alt="It Ain't Easy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2023 • Short Film</span>
                         <h3 class="text-xl font-bold mt-1 text-zinc-100">It Ain't Easy</h3>
                         <p class="text-zinc-400 text-sm mt-2">Co-Director & Editor</p>
+                    </div>
+                </div>
+
+                <!-- Film 4 -->
+                <div onclick="openMediaModal('Suburban Echoes', 'Narrative Short • Cinematographer', 'Following an immigrant family as they pack up their childhood home over the course of a single afternoon.', 'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1200&q=80" alt="Suburban Echoes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2022 • Short Film</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">Suburban Echoes</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Director of Photography</p>
+                    </div>
+                </div>
+
+                <!-- Film 5 -->
+                <div onclick="openMediaModal('Late Shift', 'Narrative Short • Director & Editor', 'A lone convenience store clerk encounters a mysterious regular during an overnight blizzard.', 'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1200&q=80" alt="Late Shift" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2021 • Short Film</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">Late Shift</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Director & Editor</p>
+                    </div>
+                </div>
+
+                <!-- Film 6 -->
+                <div onclick="openMediaModal('First Light', 'Student Short • Director', 'An exploration of early morning creative routines and artistic awakening.', 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80')" class="group cursor-pointer bg-cardbg border border-bordercolor rounded-xl overflow-hidden hover:border-zinc-500 transition-all">
+                    <div class="aspect-video bg-zinc-900 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80" alt="First Light" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs uppercase tracking-widest text-zinc-500 font-semibold">2020 • Short Film</span>
+                        <h3 class="text-xl font-bold mt-1 text-zinc-100">First Light</h3>
+                        <p class="text-zinc-400 text-sm mt-2">Director</p>
                     </div>
                 </div>
             </div>
