@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RICKY HUYNH — Filmmaker & Director Portfolio</title>
+    <title>AC - RICKY HUYNH</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -59,14 +59,14 @@
     <!-- Navigation Header -->
     <header id="site-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-neutral-900">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="font-serif tracking-widest text-xl md:text-2xl font-bold text-white hover:text-neutral-300 transition">
-                RICKY HUYNH
+            <a href="#" onclick="switchTab('home')" class="font-serif tracking-widest text-xl md:text-2xl font-bold text-white hover:text-neutral-300 transition">
+                AC
             </a>
             
             <!-- Desktop Nav Links -->
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wider uppercase text-neutral-400">
                 <button onclick="switchTab('home')" class="nav-btn text-white hover:text-white transition" data-tab="home">Home</button>
-                <button onclick="switchTab('film')" class="nav-btn hover:text-white transition" data-tab="film">Film & Narrative</button>
+                <button onclick="switchTab('film')" class="nav-btn hover:text-white transition" data-tab="film">Film &amp;桶 Narrative</button>
                 <button onclick="switchTab('videography')" class="nav-btn hover:text-white transition" data-tab="videography">Videography</button>
                 <button onclick="switchTab('onset')" class="nav-btn hover:text-white transition" data-tab="onset">On Set</button>
                 <button onclick="switchTab('content')" class="nav-btn hover:text-white transition" data-tab="content">Content Creator</button>
@@ -75,7 +75,7 @@
             </nav>
 
             <!-- Mobile Menu Toggle -->
-            <button id="mobile-menu-btn" class="md:hidden text-white text-xl focus:outline-none">
+            <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden text-white text-xl focus:outline-none">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
@@ -83,7 +83,7 @@
         <!-- Mobile Navigation Drawer -->
         <div id="mobile-menu" class="hidden md:hidden bg-[#0a0a0a] border-b border-neutral-800 px-6 py-6 space-y-4">
             <button onclick="switchTab('home'); toggleMobileMenu();" class="block w-full text-left text-lg font-medium text-white py-2">Home</button>
-            <button onclick="switchTab('film'); toggleMobileMenu();" class="block w-full text-left text-lg font-medium text-neutral-400 py-2">Film & Narrative</button>
+            <button onclick="switchTab('film'); toggleMobileMenu();" class="block w-full text-left text-lg font-medium text-neutral-400 py-2">Film &amp; Narrative</button>
             <button onclick="switchTab('videography'); toggleMobileMenu();" class="block w-full text-left text-lg font-medium text-neutral-400 py-2">Videography</button>
             <button onclick="switchTab('onset'); toggleMobileMenu();" class="block w-full text-left text-lg font-medium text-neutral-400 py-2">On Set</button>
             <button onclick="switchTab('content'); toggleMobileMenu();" class="block w-full text-left text-lg font-medium text-neutral-400 py-2">Content Creator</button>
@@ -97,9 +97,8 @@
 
         <!-- ================= TAB: HOME ================= -->
         <div id="tab-home" class="tab-content active-tab">
-            <!-- Hero / Full-Width Cinematic Showreel Background Header -->
+            <!-- Hero / Full-Width遮罩 Container -->
             <section class="relative h-[90vh] w-full flex items-center justify-center overflow-hidden">
-                <!-- Background Cinematic Video / Fallback Poster -->
                 <div class="absolute inset-0 z-0">
                     <iframe class="absolute inset-0 w-full h-full object-cover pointer-events-none scale-125 opacity-60" 
                             src="https://www.youtube.com/embed/nmq4ATBxz-Q?autoplay=1&mute=1&loop=1&playlist=nmq4ATBxz-Q&controls=0&showinfo=0&autohide=1" 
@@ -107,14 +106,13 @@
                     <div class="absolute inset-0 bg-black/50 cinematic-gradient"></div>
                 </div>
 
-                <!-- Hero Content -->
                 <div class="relative z-10 text-center px-6 max-w-5xl mx-auto mt-12">
-                    <p class="text-xs md:text-sm uppercase tracking-[0.3em] text-neutral-400 mb-4 font-semibold">Independent Filmmaker, Director & Creator</p>
+                    <p class="text-xs md:text-sm uppercase tracking-[0.3em] text-neutral-400 mb-4 font-semibold">Independent機能, Director &amp; Creator</p>
                     <h1 class="text-4xl md:text-7xl lg:text-8xl font-serif font-light tracking-tight text-white mb-8">
-                        RICKY HUYNH
+                        AC
                     </h1>
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <button onclick="openVideoModal('https://www.youtube.com/embed/nmq4ATBxz-Q?autoplay=1', 'Director & Videography Reel')" class="px-8 py-4 bg-white text-black font-medium tracking-widest text-xs uppercase rounded-full hover:bg-neutral-200 transition flex items-center gap-3">
+                        <button onclick="openVideoModal('https://www.youtube.com/embed/nmq4ATBxz-Q?autoplay=1', 'Director &amp; Videography Reel')" class="px-8 py-4 bg-white text-black font-medium tracking-widest text-xs uppercase rounded-full hover:bg-neutral-200 transition flex items-center gap-3">
                             <i class="fa-solid fa-play text-xs"></i> Watch Showreel
                         </button>
                         <button onclick="switchTab('film')" class="px-8 py-4 bg-transparent border border-neutral-700 text-white font-medium tracking-widest text-xs uppercase rounded-full hover:border-white transition">
@@ -123,13 +121,12 @@
                     </div>
                 </div>
 
-                <!-- Scroll Down Indicator -->
                 <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce text-neutral-500">
                     <i class="fa-solid fa-chevron-down text-sm"></i>
                 </div>
             </section>
 
-            <!-- Featured Work / Minimalist Category Feature Grid -->
+            <!-- Featured Work -->
             <section class="py-24 px-6 max-w-7xl mx-auto">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
                     <div>
@@ -141,9 +138,7 @@
                     </div>
                 </div>
 
-                <!-- Grid -->
                 <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Project 1 -->
                     <div class="project-card group cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/vLsucl9ixMQ?autoplay=1', 'YEARN')">
                         <div class="relative overflow-hidden rounded-xl aspect-[16/10] bg-neutral-900 mb-4">
                             <iframe class="w-full h-full pointer-events-none scale-105" src="https://www.youtube.com/embed/vLsucl9ixMQ" frameborder="0"></iframe>
@@ -153,12 +148,11 @@
                             <div>
                                 <span class="text-xs uppercase tracking-widest text-neutral-500 font-medium">2026 • Dark Fantasy Short Film</span>
                                 <h3 class="text-xl font-serif text-white mt-1 group-hover:text-neutral-300 transition">YEARN</h3>
-                                <p class="text-xs text-neutral-400 mt-1">Directed, Written & Edited</p>
+                                <p class="text-xs text-neutral-400 mt-1">Directed, Written &amp; Edited</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Project 2 -->
                     <div class="project-card group cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/0jof7MnCG1M?autoplay=1', 'The Crown and The Root')">
                         <div class="relative overflow-hidden rounded-xl aspect-[16/10] bg-neutral-900 mb-4">
                             <iframe class="w-full h-full pointer-events-none scale-105" src="https://www.youtube.com/embed/0jof7MnCG1M" frameborder="0"></iframe>
@@ -168,7 +162,7 @@
                             <div>
                                 <span class="text-xs uppercase tracking-widest text-neutral-500 font-medium">2025 • Narrative Short</span>
                                 <h3 class="text-xl font-serif text-white mt-1 group-hover:text-neutral-300 transition">The Crown and The Root</h3>
-                                <p class="text-xs text-neutral-400 mt-1">Directed, Written & Edited</p>
+                                <p class="text-xs text-neutral-400 mt-1">Directed, Written &amp; Edited</p>
                             </div>
                         </div>
                     </div>
@@ -180,7 +174,7 @@
         <div id="tab-film" class="tab-content hidden py-24 px-6 max-w-7xl mx-auto">
             <div class="mb-16">
                 <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">Cinematic Archive</p>
-                <h2 class="text-3xl md:text-6xl font-serif text-white">Film & Narrative</h2>
+                <h2 class="text-3xl md:text-6xl font-serif text-white">Film &amp; Narrative</h2>
                 <p class="text-neutral-400 mt-4 max-w-2xl text-base">A chronological archive of narrative works, fantasy, horror shorts, and documentary pieces.</p>
             </div>
             
@@ -193,7 +187,7 @@
                     <div class="p-6">
                         <span class="text-xs uppercase tracking-widest text-neutral-500 font-semibold">2026 • Dark Fantasy Short Film</span>
                         <h3 class="text-xl font-serif text-white mt-1">YEARN</h3>
-                        <p class="text-neutral-400 text-sm mt-2">Directed, Written & Edited</p>
+                        <p class="text-neutral-400 text-sm mt-2">Directed, Written &amp; Edited</p>
                     </div>
                 </div>
 
@@ -205,7 +199,7 @@
                     <div class="p-6">
                         <span class="text-xs uppercase tracking-widest text-neutral-500 font-semibold">2025 • Narrative Short</span>
                         <h3 class="text-xl font-serif text-white mt-1">The Crown and The Root</h3>
-                        <p class="text-neutral-400 text-sm mt-2">Directed, Written & Edited</p>
+                        <p class="text-neutral-400 text-sm mt-2">Directed, Written &amp; Edited</p>
                     </div>
                 </div>
 
@@ -217,7 +211,7 @@
                     <div class="p-6">
                         <span class="text-xs uppercase tracking-widest text-neutral-500 font-semibold">2025 • Horror Short</span>
                         <h3 class="text-xl font-serif text-white mt-1">A Family Friendly Camping Vlog</h3>
-                        <p class="text-neutral-400 text-sm mt-2">Directed, Written & Edited</p>
+                        <p class="text-neutral-400 text-sm mt-2">Directed, Written &amp; Edited</p>
                     </div>
                 </div>
 
@@ -229,7 +223,7 @@
                     <div class="p-6">
                         <span class="text-xs uppercase tracking-widest text-neutral-500 font-semibold">2025 • Sci-fi Short</span>
                         <h3 class="text-xl font-serif text-white mt-1">VITA ULTRA</h3>
-                        <p class="text-neutral-400 text-sm mt-2">Directed, Written & Edited</p>
+                        <p class="text-neutral-400 text-sm mt-2">Directed, Written &amp; Edited</p>
                     </div>
                 </div>
 
@@ -241,7 +235,7 @@
                     <div class="p-6">
                         <span class="text-xs uppercase tracking-widest text-neutral-500 font-semibold">2025 • Narrative Short</span>
                         <h3 class="text-xl font-serif text-white mt-1">Would You Change Things?</h3>
-                        <p class="text-neutral-400 text-sm mt-2">Directed, Written & Edited</p>
+                        <p class="text-neutral-400 text-sm mt-2">Directed, Written &amp; Edited</p>
                     </div>
                 </div>
 
@@ -253,7 +247,7 @@
                     <div class="p-6">
                         <span class="text-xs uppercase tracking-widest text-neutral-500 font-semibold">2024 • Documentary Short</span>
                         <h3 class="text-xl font-serif text-white mt-1">How Adoption Shaped His Sense of Self</h3>
-                        <p class="text-neutral-400 text-sm mt-2">Directed, Written & Edited</p>
+                        <p class="text-neutral-400 text-sm mt-2">Directed, Written &amp; Edited</p>
                     </div>
                 </div>
 
@@ -265,7 +259,7 @@
                     <div class="p-6">
                         <span class="text-xs uppercase tracking-widest text-neutral-500 font-semibold">2024 • Horror Short</span>
                         <h3 class="text-xl font-serif text-white mt-1">Maria</h3>
-                        <p class="text-neutral-400 text-sm mt-2">Directed, Written & Edited</p>
+                        <p class="text-neutral-400 text-sm mt-2">Directed, Written &amp; Edited</p>
                     </div>
                 </div>
 
@@ -277,7 +271,7 @@
                     <div class="p-6">
                         <span class="text-xs uppercase tracking-widest text-neutral-500 font-semibold">2023 • Narrative Short</span>
                         <h3 class="text-xl font-serif text-white mt-1">Do You Remember</h3>
-                        <p class="text-neutral-400 text-sm mt-2">Directed, Written & Edited</p>
+                        <p class="text-neutral-400 text-sm mt-2">Directed, Written &amp; Edited</p>
                     </div>
                 </div>
 
@@ -289,7 +283,7 @@
                     <div class="p-6">
                         <span class="text-xs uppercase tracking-widest text-neutral-500 font-semibold">2022 • Narrative Short</span>
                         <h3 class="text-xl font-serif text-white mt-1">Dear Anna</h3>
-                        <p class="text-neutral-400 text-sm mt-2">Directed, Written & Edited</p>
+                        <p class="text-neutral-400 text-sm mt-2">Directed, Written &amp; Edited</p>
                     </div>
                 </div>
             </div>
@@ -298,7 +292,7 @@
         <!-- ================= TAB: VIDEOGRAPHY ================= -->
         <div id="tab-videography" class="tab-content hidden py-24 px-6 max-w-7xl mx-auto">
             <div class="mb-16">
-                <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">Commercial & Brand Production</p>
+                <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">Commercial &amp; Brand Production</p>
                 <h2 class="text-3xl md:text-6xl font-serif text-white">Videography Collection</h2>
                 <p class="text-neutral-400 mt-4 max-w-2xl text-base">High-end brand films, promotional campaigns, and corporate work.</p>
             </div>
@@ -350,7 +344,7 @@
         <!-- ================= TAB: CONTENT CREATOR ================= -->
         <div id="tab-content" class="tab-content hidden py-24 px-6 max-w-7xl mx-auto">
             <div class="mb-16">
-                <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">Digital & Social Media</p>
+                <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">Digital &amp; Social Media</p>
                 <h2 class="text-3xl md:text-6xl font-serif text-white">Content Creator Works</h2>
                 <p class="text-neutral-400 mt-4 max-w-2xl text-base">Digital content, tutorials, and creative deep-dives across social platforms.</p>
             </div>
@@ -359,7 +353,7 @@
                     <div class="relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 mb-3">
                         <img src="https://placehold.co/720x1280/171717/333333?text=Short+Form+1" alt="Short Form 1" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
-                    <h4 class="text-base font-serif text-white">Filmmaking Tips & Tricks</h4>
+                    <h4 class="text-base font-serif text-white">Filmmaking Tips &amp; Tricks</h4>
                 </div>
                 <div class="group cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Creator Content 2')">
                     <div class="relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 mb-3">
@@ -373,91 +367,65 @@
         <!-- ================= TAB: ABOUT ================= -->
         <div id="tab-about" class="tab-content hidden py-24 px-6 max-w-5xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="aspect-[4/5] rounded-2xl overflow-hidden bg-neutral-900">
-                    <img src="https://placehold.co/800x1000/171717/555555?text=Ricky+Huynh" alt="Ricky Huynh" class="w-full h-full object-cover">
+                <div class="aspect-[4/5] rounded-2xl overflow-hidden bg-neutral-900 shadow-2xl relative">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=80" alt="Ricky" class="w-full h-full object-cover">
                 </div>
-                <div>
-                    <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">About Me</p>
-                    <h2 class="text-3xl md:text-5xl font-serif text-white mb-6">Filmmaker and creator dedicated to telling compelling visual stories.</h2>
-                    <p class="text-neutral-400 text-base leading-relaxed mb-6">
-                        Hello! I'm Ricky Huynh, an independent filmmaker, director, and content creator based out of Boston. My work spans narrative short films, documentary projects, and commercial videography.
-                    </p>
-                    <div class="grid grid-cols-2 gap-6 border-t border-neutral-800 pt-6">
-                        <div>
-                            <h4 class="text-white font-serif text-lg mb-1">Based In</h4>
-                            <p class="text-neutral-400 text-sm">Boston, Massachusetts</p>
-                        </div>
-                        <div>
-                            <h4 class="text-white font-serif text-lg mb-1">Specialties</h4>
-                            <p class="text-neutral-400 text-sm">Directing, Editing, Videography</p>
-                        </div>
+                <div class="space-y-6">
+                    <div>
+                        <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">About Me</p>
+                        <h2 class="text-4xl font-serif text-white">Hi there! I'm Ricky.</h2>
                     </div>
+                    <p class="text-neutral-300 leading-relaxed text-lg">
+                        A recent college grad from Boston. I am a video content creator, freelance videographer, and editor with a passion for storytelling. With over 8 years of experience, I have developed expertise in videography, editing, and post-production. I work on crafting compelling video content for individuals, organizations, and companies, bringing their visions to life. My portfolio highlights the diverse and impactful projects I've worked on throughout my career.
+                    </p>
+                    <p class="text-neutral-300 leading-relaxed text-lg">
+                        On the fun side, I like doing things that add plot to my story. I write and direct short films, watch a crazy amount of movies, love Vietnamese food, and more. Who doesn't like more?
+                    </p>
+                    <p class="text-neutral-300 leading-relaxed text-lg">
+                        I'm currently working as a Community Engagement Coordinator at VietAID Community Center, while actively trying to pursue my dreams! I'm thrilled to share my work with you—thanks for stopping by!
+                    </p>
                 </div>
             </div>
         </div>
 
         <!-- ================= TAB: CONTACT ================= -->
-        <div id="tab-contact" class="tab-content hidden py-24 px-6 max-w-4xl mx-auto text-center">
-            <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">Get in Touch</p>
-            <h2 class="text-4xl md:text-6xl font-serif text-white mb-6">Let's Collaborate.</h2>
-            <p class="text-neutral-400 text-lg mb-12 max-w-2xl mx-auto">Let's collaborate on your next project or film.</p>
-            
-            <div class="inline-block bg-neutral-900 border border-neutral-800 p-8 md:p-12 rounded-2xl w-full max-w-xl text-left shadow-2xl">
-                <p class="text-neutral-300 text-center">Reach out directly via email at <a href="mailto:rickyhuynhcontact@gmail.com" class="text-white underline font-medium">rickyhuynhcontact@gmail.com</a>.</p>
-            </div>
+        <div id="tab-contact" class="tab-content hidden py-24 px-6 max-w-3xl mx-auto text-center">
+            <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">Get In Touch</p>
+            <h2 class="text-4xl font-serif text-white mb-6">Let's Create Something Together</h2>
+            <p class="text-neutral-400 mb-8 max-w-md mx-auto">Have a project, a story to tell, or just want to connect? Reach out and let's talk.</p>
+            <a href="mailto:contact@example.com" class="inline-block px-8 py-4 bg-white text-black font-semibold uppercase tracking-wider text-xs rounded-full hover:bg-neutral-200 transition">
+                Send an Email
+            </a>
         </div>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-neutral-900 py-12 px-6 mt-20">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="font-serif text-lg tracking-widest text-white">
-                RICKY HUYNH
-            </div>
-            <div class="flex space-x-6 text-neutral-400 text-sm">
-                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-instagram text-lg"></i></a>
-                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-vimeo text-lg"></i></a>
-                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-youtube text-lg"></i></a>
-                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-linkedin text-lg"></i></a>
-            </div>
-            <p class="text-neutral-500 text-xs tracking-wider">
-                &copy; 2026 Ricky Huynh. All Rights Reserved.
-            </p>
-        </div>
-    </footer>
-
-    <!-- Video Modal -->
-    <div id="video-modal" class="fixed inset-0 z-50 hidden bg-black/95 backdrop-blur-md flex items-center justify-center p-4 md:p-12">
-        <button onclick="closeVideoModal()" class="absolute top-6 right-6 text-neutral-400 hover:text-white text-3xl focus:outline-none z-10">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-        <div class="w-full max-w-5xl aspect-[16/9] relative bg-neutral-900 rounded-2xl overflow-hidden shadow-2xl">
-            <iframe id="modal-iframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <!-- VIDEO MODAL -->
+    <div id="video-modal" class="fixed inset-0 z-50 bg-black/90 hidden flex items-center justify-center p-4">
+        <div class="relative w-full max-w-4xl aspect-video bg-black rounded-lg overflow-hidden shadow-2xl">
+            <button onclick="closeVideoModal()" class="absolute top-4 right-4 text-white hover:text-gray-400 z-10 text-2xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <iframe id="modal-player" class="w-full h-full" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
     </div>
 
-    <!-- JavaScript Interactive Logic -->
+    <!-- JS for Tab Switching & Video Modal -->
     <script>
-        // Tab Switching Logic
         function switchTab(tabId) {
             // Hide all tabs
             const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => {
-                tab.classList.add('hidden');
-                tab.classList.remove('active-tab');
-            });
+            tabs.forEach(tab => tab.classList.add('hidden'));
 
             // Show selected tab
-            const targetTab = document.getElementById(`tab-${tabId}`);
-            if (targetTab) {
-                targetTab.classList.remove('hidden');
-                targetTab.classList.add('active-tab');
+            const target = document.getElementById('tab-' + tabId);
+            if (target) {
+                target.classList.remove('hidden');
             }
 
-            // Update nav button states
-            const navButtons = document.querySelectorAll('.nav-btn');
-            navButtons.forEach(btn => {
+            // Update active state in nav buttons
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => {
                 if (btn.getAttribute('data-tab') === tabId) {
                     btn.classList.add('text-white');
                     btn.classList.remove('text-neutral-400');
@@ -467,42 +435,30 @@
                 }
             });
 
-            // Scroll to top smoothly
+            // Scroll to top upon tab switch
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
         function toggleMobileMenu() {
-            mobileMenu.classList.toggle('hidden');
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
         }
 
-        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-
-        // Video Modal Handler
-        const videoModal = document.getElementById('video-modal');
-        const modalIframe = document.getElementById('modal-iframe');
-
         function openVideoModal(url, title) {
-            modalIframe.src = url;
-            videoModal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('modal-player');
+            iframe.src = url;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
         }
 
         function closeVideoModal() {
-            modalIframe.src = '';
-            videoModal.classList.add('hidden');
-            document.body.style.overflow = 'auto';
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('modal-player');
+            iframe.src = '';
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
         }
-
-        // Close modal on outside click
-        videoModal.addEventListener('click', (e) => {
-            if (e.target === videoModal) {
-                closeVideoModal();
-            }
-        });
     </script>
 </body>
 </html>
