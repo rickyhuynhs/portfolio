@@ -399,7 +399,7 @@
                         </div>
                     </div>
 
-                    <!-- Events Grid Blocks (Now Clickable) -->
+                    <!-- Events Grid Blocks (Updated with content) -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <!-- Block 1: Corporate & Gala -->
                         <div class="group cursor-pointer bg-neutral-900/60 border border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-500 transition duration-300" onclick="openCategoryDetail('corporate')">
@@ -413,7 +413,7 @@
                                     <span class="text-xs text-neutral-400 group-hover:text-white transition">Explore Category →</span>
                                 </div>
                                 <h4 class="text-xl font-serif text-white mt-2 group-hover:text-amber-300 transition">Corporate &amp; Gala</h4>
-                                <p class="text-xs text-neutral-400 mt-2">Crisp audio, keynote highlights, galas, and corporate interview productions.</p>
+                                <p class="text-xs text-neutral-400 mt-2">High-Impact Event Coverage &amp; Executive Recaps</p>
                             </div>
                         </div>
 
@@ -429,7 +429,7 @@
                                     <span class="text-xs text-neutral-400 group-hover:text-white transition">Explore Category →</span>
                                 </div>
                                 <h4 class="text-xl font-serif text-white mt-2 group-hover:text-amber-300 transition">Community Events</h4>
-                                <p class="text-xs text-neutral-400 mt-2">Dynamic quick-cuts, cultural festivals, crowd reactions, and ambient venue energy.</p>
+                                <p class="text-xs text-neutral-400 mt-2">Local Culture, Festivals &amp; Gathering Highlights</p>
                             </div>
                         </div>
 
@@ -445,7 +445,7 @@
                                     <span class="text-xs text-neutral-400 group-hover:text-white transition">Explore Category →</span>
                                 </div>
                                 <h4 class="text-xl font-serif text-white mt-2 group-hover:text-amber-300 transition">Past Work Archive</h4>
-                                <p class="text-xs text-neutral-400 mt-2">Historical projects, pop-up events, and promotional social content.</p>
+                                <p class="text-xs text-neutral-400 mt-2">Comprehensive Vault of Selected Videography Projects</p>
                             </div>
                         </div>
                     </div>
@@ -529,13 +529,9 @@
                 </div>
 
                 <div class="border-t border-neutral-800 pt-8">
-                    <!-- Placeholder Container for User's Upcoming Content List -->
+                    <!-- Updated Dynamic Content List Container -->
                     <div id="category-content-list" class="space-y-4">
-                        <div class="p-8 border border-dashed border-neutral-800 rounded-xl text-center text-neutral-500">
-                            <i class="fa-solid fa-film text-3xl mb-3 text-neutral-600"></i>
-                            <p class="text-sm font-medium">Content list for this category will appear here.</p>
-                            <p class="text-xs text-neutral-600 mt-1">Ready to receive your videos and projects!</p>
-                        </div>
+                        <!-- Populated dynamically via JS mapping -->
                     </div>
                 </div>
             </div>
@@ -673,22 +669,39 @@
 
     <!-- JS for Tab Switching, Subtabs, Category Detail Pages & Video Modal -->
     <script>
-        // Category details config data
+        // Category details config data with structured content lists for block navigation
         const categoryData = {
             'corporate': {
                 badge: 'Block 1',
                 title: 'Corporate & Gala',
-                desc: 'Coverage of annual galas, corporate conferences, executive keynotes, and promotional organizational stories.'
+                desc: 'High-Impact Event Coverage & Executive Recaps',
+                items: [
+                    { title: 'Full-length Gala Recaps', subtitle: 'Annual Nonprofit & Corporate Galas', desc: 'Comprehensive event storytelling capturing key milestones and guest experiences.' },
+                    { title: 'Keynote Highlights', subtitle: 'Executive Presentations', desc: 'Crisp audio and multi-angle edits highlighting industry leaders.' },
+                    { title: 'Panel Discussions', subtitle: 'Thought Leadership', desc: 'Engaging multi-cam coverage of expert panels and Q&A segments.' },
+                    { title: 'Brand Partnership Promos', subtitle: 'Promotional Content', desc: 'Short-form promotional pieces highlighting sponsors and corporate collaborations.' }
+                ]
             },
             'community': {
                 badge: 'Block 2',
                 title: 'Community Events',
-                desc: 'High-energy cultural festivals, street markets, non-profit gatherings, and local community recaps.'
+                desc: 'Local Culture, Festivals & Gathering Highlights',
+                items: [
+                    { title: 'Festival Recaps', subtitle: 'Cultural Celebrations', desc: 'High-energy edits capturing performances, night markets, and vibrant local crowds.' },
+                    { title: 'Non-profit Fundraisers', subtitle: 'Community Impact', desc: 'Story-driven coverage showcasing local missions and supporter engagement.' },
+                    { title: 'Workshops & Gatherings', subtitle: 'Interactive Sessions', desc: 'Documenting collaborative community workshops and educational events.' },
+                    { title: 'Local Cultural Storytelling', subtitle: 'Heritage & Identity', desc: 'Deep-dives into neighborhood traditions, arts, and local community voices.' }
+                ]
             },
             'archive': {
                 badge: 'Block 3',
                 title: 'Past Work Archive',
-                desc: 'A collection of past project highlights, pop-up events, and experimental brand reels.'
+                desc: 'Comprehensive Vault of Selected Videography Projects',
+                items: [
+                    { title: 'Filterable Project Vault', subtitle: 'Chronological Archive', desc: 'Organized by year, event scale, and deliverables across past client engagements.' },
+                    { title: 'Pop-up Event Highlights', subtitle: 'Experiential Activations', desc: 'Dynamic recap videos for immersive brand pop-ups and live installations.' },
+                    { title: 'Promotional Social Content', subtitle: 'Digital Delivery', desc: 'Bite-sized vertical and horizontal cuts optimized for web and social channels.' }
+                ]
             }
         };
 
@@ -699,6 +712,20 @@
             document.getElementById('category-detail-badge').innerText = data.badge;
             document.getElementById('category-detail-title').innerText = data.title;
             document.getElementById('category-detail-desc').innerText = data.desc;
+
+            // Render dynamic items list for the category block
+            const listContainer = document.getElementById('category-content-list');
+            listContainer.innerHTML = data.items.map(item => `
+                <div class="p-6 bg-neutral-900/50 border border-neutral-800 rounded-xl hover:border-neutral-700 transition">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+                        <div>
+                            <span class="text-[10px] uppercase tracking-widest text-amber-400 font-semibold">${item.subtitle}</span>
+                            <h3 class="text-xl font-serif text-white mt-1">${item.title}</h3>
+                            <p class="text-xs text-neutral-400 mt-1">${item.desc}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
 
             // Hide main videography grid and show category view
             document.getElementById('videography-main-view').classList.add('hidden');
