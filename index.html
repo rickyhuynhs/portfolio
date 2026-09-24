@@ -398,33 +398,33 @@
                         </div>
                     </div>
 
-                    <!-- Events Grid Blocks (Updated with Corporate & Gala title replacing "Block 1") -->
+                    <!-- Events Grid Blocks (With "Block 1" and distinct accent colors for Corporate & Gala, Community Events, and Past Work Archive) -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <!-- Block 1: Corporate & Gala -->
-                        <div class="group cursor-pointer bg-neutral-900/60 border border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-500 transition duration-300" onclick="openCategoryDetail('corporate')">
+                        <!-- Block 1: Corporate & Gala (Blue/Indigo accent color) -->
+                        <div class="group cursor-pointer bg-neutral-900/60 border border-neutral-800 rounded-xl overflow-hidden hover:border-indigo-500/50 transition duration-300" onclick="openCategoryDetail('corporate')">
                             <div class="aspect-video relative overflow-hidden bg-neutral-900">
                                 <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80" alt="Corporate Event" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                                 <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
                             </div>
                             <div class="p-6">
                                 <div class="flex items-center justify-between">
-                                    <span class="text-[10px] uppercase tracking-widest text-amber-400 font-semibold">Corporate &amp; Gala</span>
+                                    <span class="text-[10px] uppercase tracking-widest text-indigo-400 font-semibold">Block 1</span>
                                     <span class="text-xs text-neutral-400 group-hover:text-white transition">Explore Category →</span>
                                 </div>
-                                <h4 class="text-xl font-serif text-white mt-2 group-hover:text-amber-300 transition">Corporate &amp; Gala</h4>
+                                <h4 class="text-xl font-serif text-white mt-2 group-hover:text-indigo-300 transition">Corporate &amp; Gala</h4>
                                 <p class="text-xs text-neutral-400 mt-2">High-Impact Event Coverage &amp; Executive Recaps</p>
                             </div>
                         </div>
 
-                        <!-- Block 2: Community Events -->
-                        <div class="group cursor-pointer bg-neutral-900/60 border border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-500 transition duration-300" onclick="openCategoryDetail('community')">
+                        <!-- Block 2: Community Events (Gold/Amber accent color) -->
+                        <div class="group cursor-pointer bg-neutral-900/60 border border-neutral-800 rounded-xl overflow-hidden hover:border-amber-500/50 transition duration-300" onclick="openCategoryDetail('community')">
                             <div class="aspect-video relative overflow-hidden bg-neutral-900">
                                 <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80" alt="Community Event" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                                 <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
                             </div>
                             <div class="p-6">
                                 <div class="flex items-center justify-between">
-                                    <span class="text-[10px] uppercase tracking-widest text-neutral-500 font-semibold">Block 2</span>
+                                    <span class="text-[10px] uppercase tracking-widest text-amber-400 font-semibold">Block 2</span>
                                     <span class="text-xs text-neutral-400 group-hover:text-white transition">Explore Category →</span>
                                 </div>
                                 <h4 class="text-xl font-serif text-white mt-2 group-hover:text-amber-300 transition">Community Events</h4>
@@ -432,18 +432,18 @@
                             </div>
                         </div>
 
-                        <!-- Block 3: Past Work Archive -->
-                        <div class="group cursor-pointer bg-neutral-900/60 border border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-500 transition duration-300" onclick="openCategoryDetail('archive')">
+                        <!-- Block 3: Past Work Archive (Emerald/Green accent color) -->
+                        <div class="group cursor-pointer bg-neutral-900/60 border border-neutral-800 rounded-xl overflow-hidden hover:border-emerald-500/50 transition duration-300" onclick="openCategoryDetail('archive')">
                             <div class="aspect-video relative overflow-hidden bg-neutral-900">
                                 <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80" alt="Past Work Archive" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                                 <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
                             </div>
                             <div class="p-6">
                                 <div class="flex items-center justify-between">
-                                    <span class="text-[10px] uppercase tracking-widest text-neutral-500 font-semibold">Block 3</span>
+                                    <span class="text-[10px] uppercase tracking-widest text-emerald-400 font-semibold">Block 3</span>
                                     <span class="text-xs text-neutral-400 group-hover:text-white transition">Explore Category →</span>
                                 </div>
-                                <h4 class="text-xl font-serif text-white mt-2 group-hover:text-amber-300 transition">Past Work Archive</h4>
+                                <h4 class="text-xl font-serif text-white mt-2 group-hover:text-emerald-300 transition">Past Work Archive</h4>
                                 <p class="text-xs text-neutral-400 mt-2">Comprehensive Vault of Selected Videography Projects</p>
                             </div>
                         </div>
@@ -516,13 +516,13 @@
                 </div>
             </div>
 
-            <!-- CATEGORY DETAIL VIEW CONTAINER (Dynamically populated when clicking Block 1, 2, or 3) -->
+            <!-- CATEGORY DETAIL VIEW CONTAINER (Matches YouTube video title upon entering) -->
             <div id="videography-category-detail" class="hidden space-y-8">
                 <div>
                     <button onclick="closeCategoryDetail()" class="text-xs uppercase tracking-widest text-neutral-400 hover:text-white mb-6 flex items-center gap-2 transition">
                         <i class="fa-solid fa-arrow-left"></i> Back to Videography
                     </button>
-                    <p class="text-xs uppercase tracking-[0.2em] text-amber-400 font-semibold" id="category-detail-badge">Category</p>
+                    <p class="text-xs uppercase tracking-[0.2em] text-indigo-400 font-semibold" id="category-detail-badge">Category</p>
                     <h2 class="text-3xl md:text-5xl font-serif text-white mt-1" id="category-detail-title">Category Title</h2>
                     <p class="text-neutral-400 mt-2 text-sm max-w-2xl" id="category-detail-desc">Category description placeholder.</p>
                 </div>
@@ -668,15 +668,15 @@
 
     <!-- JS for Tab Switching, Subtabs, Category Detail Pages & Video Modal -->
     <script>
-        // Category details config data with the requested Corporate & Gala past work video item
+        // Category details config data with Corporate & Gala mapped to the requested YouTube video and title
         const categoryData = {
             'corporate': {
-                badge: 'Corporate & Gala',
+                badge: 'Block 1',
                 title: 'Corporate & Gala',
                 desc: 'High-Impact Event Coverage & Executive Recaps',
                 items: [
                     { 
-                        title: 'Corporate Gala Highlight', 
+                        title: 'Corporate & Gala', 
                         org: 'Client Organization', 
                         date: 'June 2022', 
                         url: 'https://www.youtube.com/embed/XBKifPwL-Ho?autoplay=1' 
@@ -709,7 +709,7 @@
             document.getElementById('category-detail-title').innerText = data.title;
             document.getElementById('category-detail-desc').innerText = data.desc;
 
-            // Render dynamic table/row layout for items
+            // Render dynamic table/row layout for items where clicking takes the title of the video item
             const listContainer = document.getElementById('category-content-list');
             listContainer.innerHTML = data.items.map(item => `
                 <div onclick="openVideoModal('${item.url || 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1'}', '${item.title}')" class="group cursor-pointer p-6 bg-neutral-900/60 border border-neutral-800 rounded-xl hover:border-neutral-500 transition duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -718,7 +718,7 @@
                             <i class="fa-solid fa-play text-xs"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-serif text-white group-hover:text-amber-300 transition">${item.title}</h3>
+                            <h3 class="text-lg font-serif text-white group-hover:text-indigo-300 transition">${item.title}</h3>
                             <span class="text-xs uppercase tracking-wider text-neutral-400 mt-1 block md:hidden">Org: ${item.org} • ${item.date}</span>
                         </div>
                     </div>
