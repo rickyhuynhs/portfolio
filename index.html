@@ -618,18 +618,66 @@
                 <h2 class="text-3xl md:text-6xl font-serif text-white">Content Creator Works</h2>
                 <p class="text-neutral-400 mt-4 max-w-2xl text-base">Digital content, tutorials, and creative deep-dives across social platforms.</p>
             </div>
+            
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="group cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Creator Content 1')">
-                    <div class="relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 mb-3">
-                        <img src="https://placehold.co/720x1280/171717/333333?text=Short+Form+1" alt="Short Form 1" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <!-- Item 1: Filmmaking Tips -->
+                <div class="group cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Filmmaking Tips & Tricks')">
+                    <div class="relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 mb-3 border border-neutral-800 group-hover:border-neutral-600 transition">
+                        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=720&q=80" alt="Filmmaking Tips & Tricks" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white">
+                                <i class="fa-solid fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
                     </div>
-                    <h4 class="text-base font-serif text-white">Filmmaking Tips &amp; Tricks</h4>
+                    <span class="text-[10px] uppercase tracking-widest text-neutral-500 font-medium">Short Form • TikTok / Reels</span>
+                    <h4 class="text-base font-serif text-white mt-1 group-hover:text-neutral-300 transition">Filmmaking Tips &amp; Tricks</h4>
                 </div>
-                <div class="group cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Creator Content 2')">
-                    <div class="relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 mb-3">
-                        <img src="https://placehold.co/720x1280/171717/333333?text=Short+Form+2" alt="Short Form 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+
+                <!-- Item 2: Behind The Scenes Vlog -->
+                <div class="group cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Behind The Scenes Vlog')">
+                    <div class="relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 mb-3 border border-neutral-800 group-hover:border-neutral-600 transition">
+                        <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=720&q=80" alt="Behind The Scenes Vlog" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white">
+                                <i class="fa-solid fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
                     </div>
-                    <h4 class="text-base font-serif text-white">Behind The Scenes Vlog</h4>
+                    <span class="text-[10px] uppercase tracking-widest text-neutral-500 font-medium">Vlog • Production Life</span>
+                    <h4 class="text-base font-serif text-white mt-1 group-hover:text-neutral-300 transition">Behind The Scenes Vlog</h4>
+                </div>
+
+                <!-- Item 3: Color Grading Breakdown -->
+                <div class="group cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Color Grading Breakdown')">
+                    <div class="relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 mb-3 border border-neutral-800 group-hover:border-neutral-600 transition">
+                        <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=720&q=80" alt="Color Grading Breakdown" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white">
+                                <i class="fa-solid fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="text-[10px] uppercase tracking-widest text-neutral-500 font-medium">Tutorial • Post-Production</span>
+                    <h4 class="text-base font-serif text-white mt-1 group-hover:text-neutral-300 transition">Cinematic Color Grading</h4>
+                </div>
+
+                <!-- Item 4: Gear & Setup Walkthrough -->
+                <div class="group cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Gear & Setup Walkthrough')">
+                    <div class="relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 mb-3 border border-neutral-800 group-hover:border-neutral-600 transition">
+                        <img src="https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?auto=format&fit=crop&w=720&q=80" alt="Gear & Setup Walkthrough" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white">
+                                <i class="fa-solid fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="text-[10px] uppercase tracking-widest text-neutral-500 font-medium">Review • Rig Breakdown</span>
+                    <h4 class="text-base font-serif text-white mt-1 group-hover:text-neutral-300 transition">Running &amp; Gunning Rig Setup</h4>
                 </div>
             </div>
         </div>
