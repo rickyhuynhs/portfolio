@@ -668,7 +668,7 @@
 
     <!-- JS for Tab Switching, Subtabs, Category Detail Pages & Video Modal -->
     <script>
-        // Category details config data with Corporate & Gala mapped to the requested YouTube video and title
+        // Category details config data with Corporate & Gala, Community Events (including BAAFF and other added items sorted chronologically), and Past Work Archive
         const categoryData = {
             'corporate': {
                 badge: 'Block 1',
@@ -688,7 +688,27 @@
                 title: 'Community Events',
                 desc: 'Local Culture, Festivals & Gathering Highlights',
                 items: [
-                    { title: 'Festival Recaps', org: 'Community Partner', date: 'July 2025' }
+                    { title: '2025 BAAFF Recap | Film Festival Highlights | Bringing Community Together through Film in Boston', org: 'Boston Asian American Film Festival', date: 'October 2025', url: 'https://www.youtube.com/embed/iy6Gf-njBII?autoplay=1' },
+                    { title: '2025 BAAFF DAY 2 Highlights | Bringing Community Together through Film in Boston', org: 'Boston Asian American Film Festival', date: 'October 2025', url: 'https://www.youtube.com/embed/QDSbKUHBnWE?autoplay=1' },
+                    { title: '2025 BAAFF Closing Night Highlights - Bringing Community Together through Film', org: 'Boston Asian American Film Festival', date: 'October 2025', url: 'https://www.youtube.com/embed/vhQh7yFkJsU?autoplay=1' },
+                    { title: '2025 BAAFF Opening Night Highlights | Bringing Community Together through Film in Boston', org: 'Boston Asian American Film Festival', date: 'October 2025', url: 'https://www.youtube.com/embed/_c43KTZy_og?autoplay=1' },
+                    { title: 'BAAFF 2025 Closing Night | Mustache: FULL Q&A', org: 'Boston Asian American Film Festival', date: 'October 2025', url: 'https://www.youtube.com/embed/6xebryYA1YU?autoplay=1' },
+                    { title: 'BAAFF 2025 | Year of the Cat: FULL Q&A', org: 'Boston Asian American Film Festival', date: 'October 2025', url: 'https://www.youtube.com/embed/mEAdZugyp4k?autoplay=1' },
+                    { title: 'BAAFF 2025 Centerpiece | Love, Chinatown: FULL Q&A', org: 'Boston Asian American Film Festival', date: 'October 2025', url: 'https://www.youtube.com/embed/V69RH26nPNk?autoplay=1' },
+                    { title: 'BAAFF 2025 Opening Night | Forge: FULL Q&A', org: 'Boston Asian American Film Festival', date: 'October 2025', url: 'https://www.youtube.com/embed/OOh8SkdtXFo?autoplay=1' },
+                    { title: '2025 BAAFF PREVIEW PARTY HIGHLIGHTS', org: 'Boston Asian American Film Festival', date: 'October 2025', url: 'https://www.youtube.com/embed/jBvLgzNa9tE?autoplay=1' },
+                    { title: 'LU Noche Latina 2022', org: 'Latinos Unidos', date: 'April 2023', url: 'https://www.youtube.com/embed/MgE0KM4_MFw?autoplay=1' },
+                    { title: 'AASA\'s 39th Annual Asian Night: Memories in Motion Recap Video', org: 'Asian American Student Association', date: 'May 2023', url: 'https://www.youtube.com/embed/HvcjJHegz8I?autoplay=1' },
+                    { title: 'memories in motion | a short film', org: 'Asian American Student Association', date: 'April 2023', url: 'https://www.youtube.com/embed/7mjR-jwc0UU?autoplay=1' },
+                    { title: 'Wave Life Sciences CEO Soak Boston 2022', org: 'Wave Life Sciences', date: 'February 2023', url: 'https://www.youtube.com/embed/8BazOduxq2I?autoplay=1' },
+                    { title: 'AASA Spring GIM 2023 Recap Video', org: 'Asian American Student Association', date: 'February 2023', url: 'https://www.youtube.com/embed/Mgm3a-YQwLs?autoplay=1' },
+                    { title: 'AASA Winter Ball | Lost in the Sky 2022', org: 'Asian American Student Association', date: 'January 2023', url: 'https://www.youtube.com/embed/sqy9BmibZOk?autoplay=1' },
+                    { title: 'ASA AFROBALL 2022 | Crazy Rich Africans', org: 'African Student Association', date: 'December 2022', url: 'https://www.youtube.com/embed/yuML2D4wRj4?autoplay=1' },
+                    { title: 'Fall GIM Recap Video 2022', org: 'Asian American Student Association', date: 'October 2022', url: 'https://www.youtube.com/embed/H_To2A1lDwU?autoplay=1' },
+                    { title: 'AASA x BSU Skelebration 2022 Recap Video', org: 'Asian American Student Association', date: 'October 2022', url: 'https://www.youtube.com/embed/5dDsw7qaPC8?autoplay=1' },
+                    { title: 'UMass x AASA Fall Fair 2022 Recap Video', org: 'Asian American Student Association', date: 'September 2022', url: 'https://www.youtube.com/embed/07cs7HgIoHA?autoplay=1' },
+                    { title: 'Asian Night 2022 Recap Video', org: 'Asian American Student Association', date: 'April 2022', url: 'https://www.youtube.com/embed/C8PH17ugOmY?autoplay=1' },
+                    { title: 'VSA Food Fair 2019 Recap Video', org: 'Vietnamese Student Association', date: 'November 2019', url: 'https://www.youtube.com/embed/UDV4nq2sO7U?autoplay=1' }
                 ]
             },
             'archive': {
@@ -696,7 +716,29 @@
                 title: 'Past Work Archive',
                 desc: 'Comprehensive Vault of Selected Videography Projects',
                 items: [
-                    { title: 'Vault Project Highlight', org: 'Archive', date: '2023' }
+                    { title: 'G.O.M.D. - J. Cole | Matt Chung Choreography', org: 'UMass ALTITUDE 5:Dirty Crew', date: 'August 2023', url: 'https://www.youtube.com/embed/SOcc6PHKftI?autoplay=1' },
+                    { title: '5:Dirty Crew | AASA Asian Night 2023', org: 'UMass ALTITUDE 5:Dirty Crew', date: 'June 2023', url: 'https://www.youtube.com/embed/j627S10UMtE?autoplay=1' },
+                    { title: 'Lady Gaga - Telephone ft. Beyoncé | Terry Nguyen Choreography', org: 'UMass ALTITUDE 5:Dirty Crew', date: 'April 2023', url: 'https://www.youtube.com/embed/UDQZU8DSZws?autoplay=1' },
+                    { title: '36th Annual VSA by Night: Uống Nước Nhớ Nguồn Recap', org: 'Vietnamese Student Association', date: 'April 2023', url: 'https://www.youtube.com/embed/3bFd56DptlY?autoplay=1' },
+                    { title: 'Water - Kehlani | Renee Owen Choreography', org: 'UMass ALTITUDE 5:Dirty Crew', date: 'March 2023', url: 'https://www.youtube.com/embed/m2vXSrdOYSw?autoplay=1' },
+                    { title: 'SAD GIRLZ LUV MONEY Remix ft. Kali Uchis - Amaarae | Terry Nguyen Choreography', org: 'UMass ALTITUDE 5:Dirty Crew', date: 'January 2023', url: 'https://www.youtube.com/embed/NFMRuO6LhDg?autoplay=1' },
+                    { title: 'UMass ALTITUDE 5:Dirty Crew | UMass AASA\'s 2022 Winter Ball', org: 'UMass ALTITUDE 5:Dirty Crew', date: 'December 2022', url: 'https://www.youtube.com/embed/-pyMIgMa57U?autoplay=1' },
+                    { title: 'Bryson Tiller - Don\'t | Abby Iem Choreography', org: 'UMass ALTITUDE 5:Dirty Crew', date: 'December 2022', url: 'https://www.youtube.com/embed/AMZG-N4Tg2I?autoplay=1' },
+                    { title: 'Been Around the World - August Alsina | Lien Huang Choreography', org: 'UMass ALTITUDE 5:Dirty Crew', date: 'November 2022', url: 'https://www.youtube.com/embed/8MmZpc8FiLc?autoplay=1' },
+                    { title: 'Vegas - Doja Cat | Antara Adhav Choreography', org: 'UMass ALTITUDE 5:Dirty Crew', date: 'November 2022', url: 'https://www.youtube.com/embed/cgahGleevKg?autoplay=1' },
+                    { title: 'You Right - Doja Cat, The Weeknd | Tiffany Chen Choreography', org: 'UMass ALTITUDE 5:Dirty Crew', date: 'October 2022', url: 'https://www.youtube.com/embed/yQqoVeEvYtA?autoplay=1' },
+                    { title: 'Finesse (Remix) - Bruno Mars ft. Cardi B | Randy Philavong Choreography', org: 'UMass ALTITUDE 5:Dirty Crew', date: 'September 2022', url: 'https://www.youtube.com/embed/IRtnKZhYyXc?autoplay=1' },
+                    { title: 'Nostálgico - Rvssian, Rauw Alejandro & Chris Brown | Randy Philavong and Lien Huang Choreography', org: 'UMass ALTITUDE 5:Dirty Crew', date: 'September 2022', url: 'https://www.youtube.com/embed/iI1fRiW5ct4?autoplay=1' },
+                    { title: 'Fall GIM 2022 Promo Video', org: 'Asian American Student Association', date: 'September 2022', url: 'https://www.youtube.com/embed/LJgHfqKJDKw?autoplay=1' },
+                    { title: 'Perm - Bruno Mars | Terry Nguyen Choreography', org: 'UMass ALTITUDE 5:Dirty Crew', date: 'August 2022', url: 'https://www.youtube.com/embed/T5pR3--c_m0?autoplay=1' },
+                    { title: 'The Weekend - BIBI | Kalley Hou Choreography', org: 'UMass ALTITUDE 5:Dirty Crew', date: 'July 2022', url: 'https://www.youtube.com/embed/wPSCZv0UeuE?autoplay=1' },
+                    { title: '5:Dirty Crew | AASA Asian Night 2022', org: 'UMass ALTITUDE 5:Dirty Crew', date: 'June 2022', url: 'https://www.youtube.com/embed/KKsk-a7BBdo?autoplay=1' },
+                    { title: 'Weston Estate x Eugene Lee Yang Asian Night 2022 Promo Video', org: 'Asian American Student Association', date: 'April 2022', url: 'https://www.youtube.com/embed/hl9FihLXIMo?autoplay=1' },
+                    { title: 'Hojean x Eugene Lee Yang Asian Night 2022 Promo Video', org: 'Asian American Student Association', date: 'April 2022', url: 'https://www.youtube.com/embed/5BSGIUVM5oc?autoplay=1' },
+                    { title: 'AASA Asian Night 2022 Promo Video', org: 'Asian American Student Association', date: 'March 2022', url: 'https://www.youtube.com/embed/vJeBkdcv-i8?autoplay=1' },
+                    { title: 'AASA Winter Ball 2021 | Into the Enchanted Forest', org: 'Asian American Student Association', date: 'December 2021', url: 'https://www.youtube.com/embed/HE253krmBvQ?autoplay=1' },
+                    { title: 'VSA Dine n\' Dash', org: 'Vietnamese Student Association', date: 'April 2021', url: 'https://www.youtube.com/embed/W2nAeNBiHAI?autoplay=1' },
+                    { title: 'VSA Spring Show 2019 Promo Video', org: 'Vietnamese Student Association', date: 'April 2019', url: 'https://www.youtube.com/embed/hCfOQ6p1XGY?autoplay=1' }
                 ]
             }
         };
@@ -712,17 +754,17 @@
             // Render dynamic table/row layout for items where clicking takes the title of the video item
             const listContainer = document.getElementById('category-content-list');
             listContainer.innerHTML = data.items.map(item => `
-                <div onclick="openVideoModal('${item.url || 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1'}', '${item.title}')" class="group cursor-pointer p-6 bg-neutral-900/60 border border-neutral-800 rounded-xl hover:border-neutral-500 transition duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div onclick="openVideoModal('${item.url || 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1'}', '${item.title.replace(/'/g, "\\'")}')" class="group cursor-pointer p-6 bg-neutral-900/60 border border-neutral-800 rounded-xl hover:border-neutral-500 transition duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 rounded-lg bg-neutral-800 flex items-center justify-center text-white shrink-0 group-hover:bg-white group-hover:text-black transition">
                             <i class="fa-solid fa-play text-xs"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-serif text-white group-hover:text-indigo-300 transition">${item.title}</h3>
+                            <h3 class="text-lg font-serif text-white group-hover:text-amber-300 transition">${item.title}</h3>
                             <span class="text-xs uppercase tracking-wider text-neutral-400 mt-1 block md:hidden">Org: ${item.org} • ${item.date}</span>
                         </div>
                     </div>
-                    <div class="flex items-center gap-8 text-sm text-neutral-300">
+                    <div class="flex items-center gap-8 text-sm text-neutral-300 shrink-0">
                         <span class="hidden md:block font-medium text-neutral-300 bg-neutral-800/80 px-3 py-1 rounded-full text-xs uppercase tracking-wider">${item.org}</span>
                         <span class="text-xs uppercase tracking-wider text-neutral-400">${item.date}</span>
                     </div>
