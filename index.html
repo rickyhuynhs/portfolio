@@ -34,6 +34,8 @@
             color: #f3f4f6;
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+            /* Add bottom padding so fixed footer doesn't overlap content */
+            padding-bottom: 70px; 
         }
         /* Custom scrollbar */
         ::-webkit-scrollbar {
@@ -648,12 +650,42 @@
             <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">Get In Touch</p>
             <h2 class="text-4xl font-serif text-white mb-6">Let's Create Something Together</h2>
             <p class="text-neutral-400 mb-8 max-w-md mx-auto">Have a project, a story to tell, or just want to connect? Reach out and let's talk.</p>
-            <a href="mailto:contact@example.com" class="inline-block px-8 py-4 bg-white text-black font-semibold uppercase tracking-wider text-xs rounded-full hover:bg-neutral-200 transition">
+            <a href="mailto:rickyhuynhcontact@gmail.com" class="inline-block px-8 py-4 bg-white text-black font-semibold uppercase tracking-wider text-xs rounded-full hover:bg-neutral-200 transition">
                 Send an Email
             </a>
         </div>
 
     </main>
+
+    <!-- LOCKED FIXED FOOTER -->
+    <footer class="fixed bottom-0 left-0 w-full z-40 bg-[#0a0a0a]/90 backdrop-blur-md border-t border-neutral-900 text-neutral-400 text-xs py-3 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+            <!-- Left: Name, Location & Email -->
+            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-3">
+                <span class="font-bold text-white tracking-wider">RICKY HUYNH</span>
+                <span class="hidden sm:inline text-neutral-700">•</span>
+                <span>Boston, MA</span>
+                <span class="hidden sm:inline text-neutral-700">•</span>
+                <a href="mailto:rickyhuynhcontact@gmail.com" class="hover:text-white transition">rickyhuynhcontact@gmail.com</a>
+            </div>
+
+            <!-- Right: Social Links with Icons -->
+            <div class="flex items-center space-x-4 text-sm">
+                <a href="https://www.linkedin.com/in/rickyvhuynh/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition" title="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.instagram.com/rickyhuynhs/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition" title="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@rickyhuynhs" target="_blank" rel="noopener noreferrer" class="hover:text-white transition" title="TikTok">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+                <a href="https://www.youtube.com/@rickyhuynhs" target="_blank" rel="noopener noreferrer" class="hover:text-white transition" title="YouTube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
 
     <!-- VIDEO MODAL -->
     <div id="video-modal" class="fixed inset-0 z-50 bg-black/90 hidden flex items-center justify-center p-4">
@@ -674,8 +706,7 @@
                 desc: 'High-Impact Event Coverage & Executive Recaps',
                 items: [
                     { title: 'Bottom Line Rise Up Gala Recap Video 2024', org: 'Bottom Line', date: 'May 2024', url: 'https://www.youtube.com/embed/2rpHTFKlYwM?autoplay=1' },
-                    { title: 'Bottom Line Rise Up Gala - Student Panel Q&A', org: 'Bottom Line', date: 'May 2024', url: 'https://www.youtube.com/embed/p9N8dAqoRGQ?autoplay=1' },
-                    { title: 'Corporate & Gala', org: 'Client Organization', date: 'June 2022', url: 'https://www.youtube.com/embed/XBKifPwL-Ho?autoplay=1' }
+                    { title: 'Bottom Line Rise Up Gala - Student Panel Q&A', org: 'Bottom Line', date: 'May 2024', url: 'https://www.youtube.com/embed/p9N8dAqoRGQ?autoplay=1' }
                 ]
             },
             'community': {
