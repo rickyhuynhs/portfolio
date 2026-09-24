@@ -52,6 +52,20 @@
         .cinematic-gradient {
             background: linear-gradient(180deg, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.9) 80%, rgba(10,10,10,1) 100%);
         }
+
+        /* Continuous Infinite Logo Marquee Animation */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 30s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
     </style>
 </head>
 <body class="bg-[#0a0a0a] text-gray-100 antialiased selection:bg-neutral-800 selection:text-white">
@@ -338,44 +352,86 @@
                     </div>
                 </div>
 
-                <!-- Events Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Event 1 -->
-                    <div class="group cursor-pointer bg-neutral-900/60 border border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-600 transition duration-300" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Boston Nightlife Recap')">
-                        <div class="aspect-video relative overflow-hidden bg-neutral-900">
-                            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80" alt="Event Coverage" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            <div class="absolute inset-0 bg-black/30"></div>
-                        </div>
-                        <div class="p-6">
-                            <span class="text-[10px] uppercase tracking-widest text-neutral-500 font-semibold">Live Music & Festival</span>
-                            <h4 class="text-lg font-serif text-white mt-1 group-hover:text-neutral-300 transition">Cultural Festival Highlight</h4>
-                            <p class="text-xs text-neutral-400 mt-2">Dynamic quick-cuts, crowd reactions, and ambient venue energy.</p>
+                <!-- SCROLLING LOGO ROW (Brand Marquee Ticker) -->
+                <div class="py-10 border-y border-neutral-900 bg-neutral-950/40 relative overflow-hidden my-12 rounded-2xl">
+                    <div class="text-center mb-6">
+                        <p class="text-[10px] uppercase tracking-[0.3em] text-neutral-500 font-semibold">Trusted By &amp; Featured Collaborations</p>
+                    </div>
+                    
+                    <div class="relative w-full overflow-hidden">
+                        <!-- Fade overlays on edges -->
+                        <div class="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none"></div>
+                        <div class="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none"></div>
+
+                        <!-- Continuous Scrolling Container -->
+                        <div class="animate-marquee flex items-center gap-12 md:gap-20 opacity-60">
+                            <!-- Logo List Set 1 -->
+                            <span class="text-lg md:text-xl font-semibold tracking-wider text-neutral-300 whitespace-nowrap">WARNER BROS. DISCOVERY</span>
+                            <span class="text-lg md:text-xl font-serif tracking-widest text-neutral-300 whitespace-nowrap">AEP</span>
+                            <span class="text-lg md:text-xl font-bold text-neutral-300 whitespace-nowrap">salesforce</span>
+                            <span class="text-lg md:text-xl font-medium tracking-wide text-neutral-300 whitespace-nowrap">AMNESTY INTERNATIONAL</span>
+                            <span class="text-lg md:text-xl font-serif tracking-widest text-neutral-300 whitespace-nowrap">KRUG</span>
+                            <span class="text-lg md:text-xl font-extrabold tracking-tight text-neutral-300 whitespace-nowrap">Alcon</span>
+                            <span class="text-lg md:text-xl font-mono tracking-widest text-neutral-300 whitespace-nowrap">GDC</span>
+                            <span class="text-lg md:text-xl font-serif italic text-neutral-300 whitespace-nowrap">Dom Pérignon</span>
+                            <span class="text-lg md:text-xl font-serif text-neutral-300 whitespace-nowrap">Veuve Clicquot</span>
+                            <span class="text-lg md:text-xl font-medium text-neutral-300 whitespace-nowrap">Google</span>
+                            <span class="text-lg md:text-xl font-semibold text-neutral-300 whitespace-nowrap">Bloomberg</span>
+
+                            <!-- Logo List Set 2 (Duplicated for Seamless Loop) -->
+                            <span class="text-lg md:text-xl font-semibold tracking-wider text-neutral-300 whitespace-nowrap">WARNER BROS. DISCOVERY</span>
+                            <span class="text-lg md:text-xl font-serif tracking-widest text-neutral-300 whitespace-nowrap">AEP</span>
+                            <span class="text-lg md:text-xl font-bold text-neutral-300 whitespace-nowrap">salesforce</span>
+                            <span class="text-lg md:text-xl font-medium tracking-wide text-neutral-300 whitespace-nowrap">AMNESTY INTERNATIONAL</span>
+                            <span class="text-lg md:text-xl font-serif tracking-widest text-neutral-300 whitespace-nowrap">KRUG</span>
+                            <span class="text-lg md:text-xl font-extrabold tracking-tight text-neutral-300 whitespace-nowrap">Alcon</span>
+                            <span class="text-lg md:text-xl font-mono tracking-widest text-neutral-300 whitespace-nowrap">GDC</span>
+                            <span class="text-lg md:text-xl font-serif italic text-neutral-300 whitespace-nowrap">Dom Pérignon</span>
+                            <span class="text-lg md:text-xl font-serif text-neutral-300 whitespace-nowrap">Veuve Clicquot</span>
+                            <span class="text-lg md:text-xl font-medium text-neutral-300 whitespace-nowrap">Google</span>
+                            <span class="text-lg md:text-xl font-semibold text-neutral-300 whitespace-nowrap">Bloomberg</span>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Event 2 -->
-                    <div class="group cursor-pointer bg-neutral-900/60 border border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-600 transition duration-300" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Corporate Summit 2025')">
+                <!-- Events Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Block 1: Corporate & Non-profit (First Block) -->
+                    <div class="group cursor-pointer bg-neutral-900/60 border border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-600 transition duration-300" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Corporate & Non-profit Summit')">
                         <div class="aspect-video relative overflow-hidden bg-neutral-900">
                             <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80" alt="Corporate Event" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             <div class="absolute inset-0 bg-black/30"></div>
                         </div>
                         <div class="p-6">
-                            <span class="text-[10px] uppercase tracking-widest text-neutral-500 font-semibold">Corporate & Non-Profit</span>
-                            <h4 class="text-lg font-serif text-white mt-1 group-hover:text-neutral-300 transition">Impact & Keynote Conference</h4>
-                            <p class="text-xs text-neutral-400 mt-1">Crisp audio, keynote highlights, and executive interview highlights.</p>
+                            <span class="text-[10px] uppercase tracking-widest text-neutral-500 font-semibold">Corporate &amp; Non-profit</span>
+                            <h4 class="text-lg font-serif text-white mt-1 group-hover:text-neutral-300 transition">Impact &amp; Keynote Conference</h4>
+                            <p class="text-xs text-neutral-400 mt-2">Crisp audio, keynote highlights, and executive interview highlights.</p>
                         </div>
                     </div>
 
-                    <!-- Event 3 -->
-                    <div class="group cursor-pointer bg-neutral-900/60 border border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-600 transition duration-300" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Creative Pop-up Showcase')">
+                    <!-- Block 2: Community Events (Middle Block) -->
+                    <div class="group cursor-pointer bg-neutral-900/60 border border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-600 transition duration-300" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Community Events Festival')">
                         <div class="aspect-video relative overflow-hidden bg-neutral-900">
-                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80" alt="Art & Pop-up Event" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80" alt="Community Event" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             <div class="absolute inset-0 bg-black/30"></div>
                         </div>
                         <div class="p-6">
-                            <span class="text-[10px] uppercase tracking-widest text-neutral-500 font-semibold">Pop-up & Brand Activation</span>
-                            <h4 class="text-lg font-serif text-white mt-1 group-hover:text-neutral-300 transition">Fashion & Art Showcase</h4>
-                            <p class="text-xs text-neutral-400 mt-1">Sleek color grading and beat-synced visuals tailored for social channels.</p>
+                            <span class="text-[10px] uppercase tracking-widest text-neutral-500 font-semibold">Community Events</span>
+                            <h4 class="text-lg font-serif text-white mt-1 group-hover:text-neutral-300 transition">Cultural Festival &amp; Gathering</h4>
+                            <p class="text-xs text-neutral-400 mt-2">Dynamic quick-cuts, crowd reactions, and ambient venue energy.</p>
+                        </div>
+                    </div>
+
+                    <!-- Block 3: Past Work Archive (Last Block) -->
+                    <div class="group cursor-pointer bg-neutral-900/60 border border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-600 transition duration-300" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Past Work Archive')">
+                        <div class="aspect-video relative overflow-hidden bg-neutral-900">
+                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80" alt="Past Work Archive" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-black/30"></div>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-[10px] uppercase tracking-widest text-neutral-500 font-semibold">Past Work Archive</span>
+                            <h4 class="text-lg font-serif text-white mt-1 group-hover:text-neutral-300 transition">Pop-up &amp; Event Reel</h4>
+                            <p class="text-xs text-neutral-400 mt-2">Sleek color grading and beat-synced visuals tailored for social channels.</p>
                         </div>
                     </div>
                 </div>
