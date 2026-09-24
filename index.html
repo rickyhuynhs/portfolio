@@ -53,7 +53,7 @@
             background: linear-gradient(180deg, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.9) 80%, rgba(10,10,10,1) 100%);
         }
 
-        /* Continuous Infinite Logo Marquee Animation */
+        /* Continuous Infinite Logo Marquee Animation with No Pause on Hover */
         @keyframes marquee {
             0% { transform: translateX(0%); }
             100% { transform: translateX(-50%); }
@@ -62,9 +62,10 @@
             display: flex;
             width: max-content;
             animation: marquee 35s linear infinite;
+            animation-play-state: running !important;
         }
         .animate-marquee:hover {
-            animation-play-state: paused;
+            animation-play-state: running !important;
         }
     </style>
 </head>
@@ -77,7 +78,7 @@
                 RICKY HUYNH
             </a>
             
-            <!-- Desktop Nav Links -->
+            <!-- Desktop Nav Links (Home tab removed from top nav) -->
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wider uppercase text-neutral-400">
                 <button onclick="switchTab('film')" class="nav-btn hover:text-white transition" data-tab="film">Film & Narrative</button>
                 <button onclick="switchTab('videography')" class="nav-btn hover:text-white transition" data-tab="videography">Videography</button>
@@ -138,7 +139,7 @@
                 </div>
             </section>
 
-            <!-- Featured Work (Updated to showcase most recent Film & Narrative and Events pieces) -->
+            <!-- Featured Work -->
             <section class="py-24 px-6 max-w-7xl mx-auto">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
                     <div>
@@ -362,7 +363,7 @@
                         </div>
                     </div>
 
-                    <!-- SCROLLING LOGO ROW (Brand Marquee Ticker with Provided Partner Logos) -->
+                    <!-- SCROLLING LOGO ROW (Brand Marquee Ticker with Provided Partner Logos and zero gap loop, non-pausing on hover) -->
                     <div class="py-10 border-y border-neutral-900 bg-neutral-950/40 relative overflow-hidden my-12 rounded-2xl">
                         <div class="text-center mb-6">
                             <p class="text-[10px] uppercase tracking-[0.3em] text-neutral-500 font-semibold">Trusted By &amp; Featured Collaborations</p>
@@ -372,37 +373,37 @@
                             <div class="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none"></div>
                             <div class="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none"></div>
 
-                            <div class="animate-marquee flex items-center gap-12 md:gap-16 opacity-75">
+                            <div class="animate-marquee flex items-center opacity-75">
                                 <!-- Set 1 -->
-                                <img src="AASA.png" alt="AASA" class="h-12 w-auto object-contain" />
-                                <img src="ALTITUDE.png" alt="Altitude" class="h-12 w-auto object-contain" />
-                                <img src="artem.png" alt="ArtsEmerson" class="h-12 w-auto object-contain" />
-                                <img src="ASA.png" alt="ASA" class="h-12 w-auto object-contain" />
-                                <img src="baaff_LOGO_full_color-scaled.png" alt="BAAFF" class="h-12 w-auto object-contain" />
-                                <img src="BL.png" alt="BL" class="h-12 w-auto object-contain" />
-                                <img src="ChoDem2026_AssetDrop (1).png" alt="Boston Little Saigon" class="h-12 w-auto object-contain" />
-                                <img src="LU.png" alt="Latinos Unidos" class="h-12 w-auto object-contain" />
-                                <img src="project-aarw-gallery.png" alt="AARW" class="h-12 w-auto object-contain" />
-                                <img src="Robert Mitchel Owenby Photography Logo.png" alt="Robert Mitchel Owenby Photography" class="h-12 w-auto object-contain" />
+                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="AASA.png" alt="AASA" class="h-12 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="ALTITUDE.png" alt="Altitude" class="h-12 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="artem.png" alt="ArtsEmerson" class="h-12 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="ASA.png" alt="ASA" class="h-12 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="baaff_LOGO_full_color-scaled.png" alt="BAAFF" class="h-12 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="BL.png" alt="BL" class="h-12 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="ChoDem2026_AssetDrop (1).png" alt="Boston Little Saigon" class="h-12 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="LU.png" alt="Latinos Unidos" class="h-12 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="project-aarw-gallery.png" alt="AARW" class="h-12 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="Robert Mitchel Owenby Photography Logo.png" alt="Robert Mitchel Owenby Photography" class="h-12 w-auto object-contain" /></div>
 
                                 <!-- Set 2: Duplicate for Seamless Infinite Loop -->
-                                <img src="AASA.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" />
-                                <img src="ALTITUDE.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" />
-                                <img src="artem.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" />
-                                <img src="ASA.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" />
-                                <img src="baaff_LOGO_full_color-scaled.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" />
-                                <img src="BL.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" />
-                                <img src="ChoDem2026_AssetDrop (1).png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" />
-                                <img src="LU.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" />
-                                <img src="project-aarw-gallery.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" />
-                                <img src="Robert Mitchel Owenby Photography Logo.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" />
+                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="AASA.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="ALTITUDE.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="artem.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="ASA.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="baaff_LOGO_full_color-scaled.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="BL.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="ChoDem2026_AssetDrop (1).png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="LU.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="project-aarw-gallery.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="Robert Mitchel Owenby Photography Logo.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Events Grid Blocks -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <!-- Block 1: Corporate & Gala -->
+                        <!-- Block 1: Corporate & Gala (Updated to show most recent video thumbnail: Bottom Line Rise Up Gala 2024 / ID 2rpHTFKlYwM) -->
                         <div class="group cursor-pointer bg-neutral-900/60 border border-neutral-800 rounded-xl overflow-hidden hover:border-indigo-500/50 transition duration-300" onclick="openCategoryDetail('corporate')">
                             <div class="aspect-video relative overflow-hidden bg-neutral-900">
                                 <img src="https://img.youtube.com/vi/2rpHTFKlYwM/maxresdefault.jpg" alt="Corporate & Gala" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
@@ -453,12 +454,13 @@
                 </div>
 
                 <!-- SUB-SECTION 2: WEDDINGS -->
-                <div id="videography-weddings" class="hidden space-y-12">
+                <div id="videography-weddings" class="hidden space-y-20">
                     <div class="text-center max-w-2xl mx-auto py-4">
                         <p class="font-serif italic text-lg text-neutral-300">"Every love story has its own rhythm, quiet moments, and grand promises."</p>
                         <p class="text-xs text-neutral-500 uppercase tracking-widest mt-2">Cinematic Wedding Storytelling</p>
                     </div>
 
+                    <!-- Featured Story Block (Kept Same) -->
                     <div class="group cursor-pointer relative overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Sarah & David — Coastal Rhode Island')">
                         <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-center">
                             <div class="lg:col-span-7 aspect-video relative overflow-hidden">
@@ -484,36 +486,87 @@
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="group cursor-pointer bg-neutral-900/60 border border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-600 transition duration-300" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Elena & James — Boston Library')">
-                            <div class="aspect-[16/10] relative overflow-hidden bg-neutral-900">
-                                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80" alt="Wedding Film" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                                <div class="absolute inset-0 bg-black/30"></div>
+                    <!-- 3 Rows Alternating Layout (Inspired by user's attachment layout: text on one side, content block on the other) -->
+                    <div class="space-y-16 pt-6">
+                        
+                        <!-- Row 1: Text on Left, Content Block on Right -->
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                            <div class="lg:col-span-5 space-y-4">
+                                <h3 class="text-2xl md:text-4xl font-serif font-bold text-white tracking-tight uppercase leading-snug">
+                                    COASTAL ELEGANCE & INTIMATE VOWS
+                                </h3>
+                                <p class="text-neutral-400 text-sm md:text-base leading-relaxed">
+                                    An intimate seaside ceremony centered around personal vows, golden-hour portraits, and raw emotional moments shared with family along the shores of Newport.
+                                </p>
+                                <div class="pt-2">
+                                    <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Sarah & David — Coastal Rhode Island')" class="px-6 py-3 bg-white text-black font-medium tracking-widest text-[11px] uppercase rounded-full hover:bg-neutral-200 transition inline-flex items-center gap-2">
+                                        <i class="fa-solid fa-play text-[10px]"></i> Watch Film
+                                    </button>
+                                </div>
                             </div>
-                            <div class="p-8">
-                                <span class="text-[10px] uppercase tracking-widest text-neutral-500 font-semibold">Historic Elegance</span>
-                                <h4 class="text-2xl font-serif text-white mt-1 group-hover:text-neutral-300 transition">Elena &amp; James</h4>
-                                <p class="text-xs text-neutral-400 mt-2 leading-relaxed">Framed around heartfelt toast speeches, candlelight reception aesthetics, and timeless orchestral scoring.</p>
-                                <div class="mt-4 pt-4 border-t border-neutral-800 text-xs text-neutral-500">
-                                    <span>Boston Public Library • Boston, MA</span>
+                            <div class="lg:col-span-7 group cursor-pointer relative overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500 aspect-video shadow-2xl" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Sarah & David — Coastal Rhode Island')">
+                                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80" alt="Sarah & David" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                                <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition"></div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:scale-110 group-hover:bg-white group-hover:text-black text-white transition duration-300">
+                                        <i class="fa-solid fa-play text-sm ml-1"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="group cursor-pointer bg-neutral-900/60 border border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-600 transition duration-300" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Hannah & Alex — Berkshires Celebration')">
-                            <div class="aspect-[16/10] relative overflow-hidden bg-neutral-900">
-                                <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1000&q=80" alt="Mountain Wedding Film" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                                <div class="absolute inset-0 bg-black/30"></div>
+                        <!-- Row 2: Content Block on Left, Text on Right -->
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                            <div class="lg:col-span-7 lg:order-1 order-2 group cursor-pointer relative overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500 aspect-video shadow-2xl" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Elena & James — Boston Library')">
+                                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80" alt="Elena & James" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                                <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition"></div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:scale-110 group-hover:bg-white group-hover:text-black text-white transition duration-300">
+                                        <i class="fa-solid fa-play text-sm ml-1"></i>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="p-8">
-                                <span class="text-[10px] uppercase tracking-widest text-neutral-500 font-semibold">Rustic Mountain Celebration</span>
-                                <h4 class="text-2xl font-serif text-white mt-1 group-hover:text-neutral-300 transition">Hannah &amp; Alex</h4>
-                                <p class="text-xs text-neutral-400 mt-2 leading-relaxed">A warm, outdoor autumn celebration highlighting joyful dance floors and intimate sunset vows.</p>
-                                <div class="mt-4 pt-4 border-t border-neutral-800 text-xs text-neutral-500">
-                                    <span>The Berkshires • Western Massachusetts</span>
+                            <div class="lg:col-span-5 lg:order-2 order-1 space-y-4">
+                                <h3 class="text-2xl md:text-4xl font-serif font-bold text-white tracking-tight uppercase leading-snug">
+                                    HISTORIC ARCHITECTURE & CANDLELIGHT
+                                </h3>
+                                <p class="text-neutral-400 text-sm md:text-base leading-relaxed">
+                                    Framed around heartfelt toast speeches, breathtaking candlelight reception aesthetics, and timeless orchestral scoring inside the iconic Boston Public Library.
+                                </p>
+                                <div class="pt-2">
+                                    <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Elena & James — Boston Library')" class="px-6 py-3 bg-white text-black font-medium tracking-widest text-[11px] uppercase rounded-full hover:bg-neutral-200 transition inline-flex items-center gap-2">
+                                        <i class="fa-solid fa-play text-[10px]"></i> Watch Film
+                                    </button>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Row 3: Text on Left, Content Block on Right -->
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                            <div class="lg:col-span-5 space-y-4">
+                                <h3 class="text-2xl md:text-4xl font-serif font-bold text-white tracking-tight uppercase leading-snug">
+                                    RUSTIC MOUNTAIN & AUTUMN GLOW
+                                </h3>
+                                <p class="text-neutral-400 text-sm md:text-base leading-relaxed">
+                                    A warm, outdoor autumn celebration highlighting joyful dance floors, scenic mountain backdrops, and deeply emotional family traditions in the Berkshires.
+                                </p>
+                                <div class="pt-2">
+                                    <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Hannah & Alex — Berkshires Celebration')" class="px-6 py-3 bg-white text-black font-medium tracking-widest text-[11px] uppercase rounded-full hover:bg-neutral-200 transition inline-flex items-center gap-2">
+                                        <i class="fa-solid fa-play text-[10px]"></i> Watch Film
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-7 group cursor-pointer relative overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500 aspect-video shadow-2xl" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Hannah & Alex — Berkshires Celebration')">
+                                <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80" alt="Hannah & Alex" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                                <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition"></div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:scale-110 group-hover:bg-white group-hover:text-black text-white transition duration-300">
+                                        <i class="fa-solid fa-play text-sm ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -657,7 +710,7 @@
 
     </main>
 
-    <!-- NATURAL SCROLL-TO-BOTTOM FOOTER (Matching Reference Layout) -->
+    <!-- NATURAL SCROLL-TO-BOTTOM FOOTER (Copyright centered at bottom) -->
     <footer class="w-full bg-[#0a0a0a] text-neutral-400 text-xs py-12 px-6 md:px-12 mt-20 border-t border-neutral-900">
         <div class="max-w-7xl mx-auto flex flex-col justify-between min-h-[140px]">
             <!-- Top Section: Left Subtitle/Location & Right Social Stack -->
@@ -682,8 +735,8 @@
                 </div>
             </div>
 
-            <!-- Bottom Section: Copyright & Location -->
-            <div class="mt-12 pt-6 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between text-[11px] text-neutral-500">
+            <!-- Bottom Section: Centered Copyright Stamp -->
+            <div class="mt-12 pt-6 border-t border-neutral-900 text-center text-[11px] text-neutral-500">
                 <span>&copy; 2026 RICKY HUYNH | BOSTON, MA</span>
             </div>
         </div>
