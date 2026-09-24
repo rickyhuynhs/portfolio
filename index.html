@@ -291,32 +291,163 @@
 
         <!-- ================= TAB: VIDEOGRAPHY ================= -->
         <div id="tab-videography" class="tab-content hidden py-24 px-6 max-w-7xl mx-auto">
-            <div class="mb-16">
-                <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">Commercial & Brand Production</p>
+            <!-- Section Title -->
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">Live Coverage & Cinematic Films</p>
                 <h2 class="text-3xl md:text-6xl font-serif text-white">Videography Collection</h2>
-                <p class="text-neutral-400 mt-4 max-w-2xl text-base">High-end brand films, promotional campaigns, and corporate work.</p>
+                <p class="text-neutral-400 mt-4 text-base">Capturing live moments, high-energy events, and emotionally charged stories with cinematic clarity.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="group cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Commercial Project 1')">
-                    <div class="relative overflow-hidden rounded-xl aspect-[4/5] bg-neutral-900 mb-3">
-                        <img src="https://placehold.co/800x1000/171717/333333?text=Videography+1" alt="Videography 1" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    </div>
-                    <h4 class="text-lg font-serif text-white">Brand Highlight Reel</h4>
-                    <p class="text-xs text-neutral-500 uppercase tracking-widest mt-1">Commercial Production</p>
+
+            <!-- Interactive Sub-Tab Toggle Switch -->
+            <div class="flex justify-center mb-16">
+                <div class="bg-neutral-900/90 p-1.5 rounded-full border border-neutral-800 inline-flex items-center gap-1 shadow-2xl backdrop-blur-sm">
+                    <button id="video-subtab-events-btn" onclick="switchVideographySubtab('events')" class="px-8 py-3 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300 bg-white text-black shadow-lg">
+                        Events
+                    </button>
+                    <button id="video-subtab-weddings-btn" onclick="switchVideographySubtab('weddings')" class="px-8 py-3 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300 text-neutral-400 hover:text-white">
+                        Weddings
+                    </button>
                 </div>
-                <div class="group cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Commercial Project 2')">
-                    <div class="relative overflow-hidden rounded-xl aspect-[4/5] bg-neutral-900 mb-3">
-                        <img src="https://placehold.co/800x1000/171717/333333?text=Videography+2" alt="Videography 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            </div>
+
+            <!-- SUB-SECTION 1: EVENTS -->
+            <div id="videography-events" class="space-y-12">
+                <!-- Featured Event Spotlight Card -->
+                <div class="group cursor-pointer relative overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'VietAID Community Gala')">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-center">
+                        <div class="lg:col-span-7 aspect-video relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80" alt="Community Event" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:scale-110 group-hover:bg-white group-hover:text-black text-white transition duration-300">
+                                    <i class="fa-solid fa-play text-lg ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-5 p-8 md:p-12 space-y-4">
+                            <span class="px-3 py-1 bg-neutral-800 text-neutral-300 text-[10px] uppercase tracking-widest font-semibold rounded-full inline-block">Featured Highlight</span>
+                            <h3 class="text-2xl md:text-3xl font-serif text-white">VietAID Annual Community Gala</h3>
+                            <p class="text-neutral-400 text-sm leading-relaxed">
+                                A high-energy evening recap celebrating local culture, community leaders, and live performances in Dorchester, MA.
+                            </p>
+                            <div class="pt-4 border-t border-neutral-800 flex items-center justify-between text-xs text-neutral-500">
+                                <span><i class="fa-solid fa-location-dot mr-2"></i>Boston, MA</span>
+                                <span>Multi-Camera Event Coverage</span>
+                            </div>
+                        </div>
                     </div>
-                    <h4 class="text-lg font-serif text-white">Event Coverage Feature</h4>
-                    <p class="text-xs text-neutral-500 uppercase tracking-widest mt-1">Event Videography</p>
                 </div>
-                <div class="group cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Commercial Project 3')">
-                    <div class="relative overflow-hidden rounded-xl aspect-[4/5] bg-neutral-900 mb-3">
-                        <img src="https://placehold.co/800x1000/171717/333333?text=Videography+3" alt="Videography 3" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+
+                <!-- Events Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Event 1 -->
+                    <div class="group cursor-pointer bg-neutral-900/60 border border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-600 transition duration-300" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Boston Nightlife Recap')">
+                        <div class="aspect-video relative overflow-hidden bg-neutral-900">
+                            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80" alt="Event Coverage" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-black/30"></div>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-[10px] uppercase tracking-widest text-neutral-500 font-semibold">Live Music & Festival</span>
+                            <h4 class="text-lg font-serif text-white mt-1 group-hover:text-neutral-300 transition">Cultural Festival Highlight</h4>
+                            <p class="text-xs text-neutral-400 mt-2">Dynamic quick-cuts, crowd reactions, and ambient venue energy.</p>
+                        </div>
                     </div>
-                    <h4 class="text-lg font-serif text-white">Corporate Storytelling</h4>
-                    <p class="text-xs text-neutral-500 uppercase tracking-widest mt-1">Corporate Film</p>
+
+                    <!-- Event 2 -->
+                    <div class="group cursor-pointer bg-neutral-900/60 border border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-600 transition duration-300" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Corporate Summit 2025')">
+                        <div class="aspect-video relative overflow-hidden bg-neutral-900">
+                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80" alt="Corporate Event" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-black/30"></div>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-[10px] uppercase tracking-widest text-neutral-500 font-semibold">Corporate & Non-Profit</span>
+                            <h4 class="text-lg font-serif text-white mt-1 group-hover:text-neutral-300 transition">Impact & Keynote Conference</h4>
+                            <p class="text-xs text-neutral-400 mt-1">Crisp audio, keynote highlights, and executive interview highlights.</p>
+                        </div>
+                    </div>
+
+                    <!-- Event 3 -->
+                    <div class="group cursor-pointer bg-neutral-900/60 border border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-600 transition duration-300" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Creative Pop-up Showcase')">
+                        <div class="aspect-video relative overflow-hidden bg-neutral-900">
+                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80" alt="Art & Pop-up Event" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-black/30"></div>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-[10px] uppercase tracking-widest text-neutral-500 font-semibold">Pop-up & Brand Activation</span>
+                            <h4 class="text-lg font-serif text-white mt-1 group-hover:text-neutral-300 transition">Fashion & Art Showcase</h4>
+                            <p class="text-xs text-neutral-400 mt-1">Sleek color grading and beat-synced visuals tailored for social channels.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-SECTION 2: WEDDINGS -->
+            <div id="videography-weddings" class="hidden space-y-12">
+                <!-- Wedding Cinematic Intro Banner -->
+                <div class="text-center max-w-2xl mx-auto py-4">
+                    <p class="font-serif italic text-lg text-neutral-300">"Every love story has its own rhythm, quiet moments, and grand promises."</p>
+                    <p class="text-xs text-neutral-500 uppercase tracking-widest mt-2">Cinematic Wedding Storytelling</p>
+                </div>
+
+                <!-- Featured Wedding Film -->
+                <div class="group cursor-pointer relative overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Sarah & David — Coastal Rhode Island')">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-center">
+                        <div class="lg:col-span-7 aspect-video relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80" alt="Wedding Couple" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:scale-110 group-hover:bg-white group-hover:text-black text-white transition duration-300">
+                                    <i class="fa-solid fa-play text-lg ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-5 p-8 md:p-12 space-y-4">
+                            <span class="px-3 py-1 bg-amber-900/30 text-amber-300 border border-amber-800/40 text-[10px] uppercase tracking-widest font-semibold rounded-full inline-block">Featured Story</span>
+                            <h3 class="text-2xl md:text-3xl font-serif text-white">Sarah &amp; David</h3>
+                            <p class="text-neutral-400 text-sm leading-relaxed">
+                                An intimate seaside ceremony centered around personal vows, golden-hour portraits, and raw emotional moments shared with family.
+                            </p>
+                            <div class="pt-4 border-t border-neutral-800 flex items-center justify-between text-xs text-neutral-500">
+                                <span><i class="fa-solid fa-location-dot mr-2"></i>Newport, Rhode Island</span>
+                                <span>Full-Day Narrative Highlight</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wedding Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Wedding 1 -->
+                    <div class="group cursor-pointer bg-neutral-900/60 border border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-600 transition duration-300" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Elena & James — Boston Library')">
+                        <div class="aspect-[16/10] relative overflow-hidden bg-neutral-900">
+                            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80" alt="Wedding Film" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-black/30"></div>
+                        </div>
+                        <div class="p-8">
+                            <span class="text-[10px] uppercase tracking-widest text-neutral-500 font-semibold">Historic Elegance</span>
+                            <h4 class="text-2xl font-serif text-white mt-1 group-hover:text-neutral-300 transition">Elena &amp; James</h4>
+                            <p class="text-xs text-neutral-400 mt-2 leading-relaxed">Framed around heartfelt toast speeches, candlelight reception aesthetics, and timeless orchestral scoring.</p>
+                            <div class="mt-4 pt-4 border-t border-neutral-800 text-xs text-neutral-500">
+                                <span>Boston Public Library • Boston, MA</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wedding 2 -->
+                    <div class="group cursor-pointer bg-neutral-900/60 border border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-600 transition duration-300" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Hannah & Alex — Berkshires Celebration')">
+                        <div class="aspect-[16/10] relative overflow-hidden bg-neutral-900">
+                            <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1000&q=80" alt="Mountain Wedding Film" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-black/30"></div>
+                        </div>
+                        <div class="p-8">
+                            <span class="text-[10px] uppercase tracking-widest text-neutral-500 font-semibold">Rustic Mountain Celebration</span>
+                            <h4 class="text-2xl font-serif text-white mt-1 group-hover:text-neutral-300 transition">Hannah &amp; Alex</h4>
+                            <p class="text-xs text-neutral-400 mt-2 leading-relaxed">A warm, outdoor autumn celebration highlighting joyful dance floors and intimate sunset vows.</p>
+                            <div class="mt-4 pt-4 border-t border-neutral-800 text-xs text-neutral-500">
+                                <span>The Berkshires • Western Massachusetts</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -369,7 +500,7 @@
             <!-- Bio Section -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
                 <div class="aspect-[4/5] rounded-2xl overflow-hidden bg-neutral-900 shadow-2xl relative">
-                    <!-- Headshot Image: Ensure Ricky_Huynh_Headshot.jpg is saved in the exact same folder as index.html -->
+                    <!-- Headshot Image with error fallback -->
                     <img src="Ricky_Huynh_Headshot.jpg" 
                          onerror="this.onerror=null; this.src='https://placehold.co/800x1000/171717/ffffff?text=Ricky+Huynh+Headshot';" 
                          alt="Ricky Huynh" 
@@ -455,7 +586,7 @@
         </div>
     </div>
 
-    <!-- JS for Tab Switching & Video Modal -->
+    <!-- JS for Tab Switching, Videography Subtabs & Video Modal -->
     <script>
         function switchTab(tabId) {
             // Hide all tabs
@@ -482,6 +613,27 @@
 
             // Scroll to top upon tab switch
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function switchVideographySubtab(subtab) {
+            const eventsView = document.getElementById('videography-events');
+            const weddingsView = document.getElementById('videography-weddings');
+            const eventsBtn = document.getElementById('video-subtab-events-btn');
+            const weddingsBtn = document.getElementById('video-subtab-weddings-btn');
+
+            if (subtab === 'events') {
+                eventsView.classList.remove('hidden');
+                weddingsView.classList.add('hidden');
+
+                eventsBtn.className = "px-8 py-3 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300 bg-white text-black shadow-lg";
+                weddingsBtn.className = "px-8 py-3 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300 text-neutral-400 hover:text-white";
+            } else if (subtab === 'weddings') {
+                eventsView.classList.add('hidden');
+                weddingsView.classList.remove('hidden');
+
+                weddingsBtn.className = "px-8 py-3 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300 bg-white text-black shadow-lg";
+                eventsBtn.className = "px-8 py-3 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300 text-neutral-400 hover:text-white";
+            }
         }
 
         function toggleMobileMenu() {
