@@ -34,8 +34,6 @@
             color: #f3f4f6;
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
-            /* Add bottom padding so fixed footer doesn't overlap content */
-            padding-bottom: 70px; 
         }
         /* Custom scrollbar */
         ::-webkit-scrollbar {
@@ -109,7 +107,7 @@
     </header>
 
     <!-- MAIN CONTENT CONTAINER -->
-    <main class="pt-20">
+    <main class="pt-20 min-h-[calc(100vh-280px)]">
 
         <!-- ================= TAB: HOME ================= -->
         <div id="tab-home" class="tab-content active-tab">
@@ -657,32 +655,34 @@
 
     </main>
 
-    <!-- LOCKED FIXED FOOTER -->
-    <footer class="fixed bottom-0 left-0 w-full z-40 bg-[#0a0a0a]/90 backdrop-blur-md border-t border-neutral-900 text-neutral-400 text-xs py-3 px-6">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-            <!-- Left: Name, Location & Email -->
-            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-3">
-                <span class="font-bold text-white tracking-wider">RICKY HUYNH</span>
-                <span class="hidden sm:inline text-neutral-700">•</span>
-                <span>Boston, MA</span>
-                <span class="hidden sm:inline text-neutral-700">•</span>
-                <a href="mailto:rickyhuynhcontact@gmail.com" class="hover:text-white transition">rickyhuynhcontact@gmail.com</a>
+    <!-- NATURAL SCROLL-TO-BOTTOM FOOTER (Matching Reference Layout) -->
+    <footer class="w-full bg-[#0a0a0a] text-neutral-400 text-xs py-12 px-6 md:px-12 mt-20 border-t border-neutral-900">
+        <div class="max-w-7xl mx-auto flex flex-col justify-between min-h-[140px]">
+            <!-- Top Section: Left Subtitle/Location & Right Social Stack -->
+            <div class="flex flex-col md:flex-row justify-between items-start gap-8">
+                <!-- Left Content: Location/Subtitle and Email -->
+                <div class="space-y-4">
+                    <p class="text-neutral-500 tracking-wider text-[11px] uppercase">FILMMAKER &amp; CREATOR • BOSTON, MA</p>
+                    <div>
+                        <a href="mailto:rickyhuynhcontact@gmail.com" class="text-white text-lg md:text-xl font-medium tracking-wide underline underline-offset-4 decoration-neutral-600 hover:decoration-white transition">
+                            RICKYHUYNHCONTACT@GMAIL.COM
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Content: Social Links Stacked -->
+                <div class="flex flex-col items-start md:items-end space-y-2 text-neutral-400 w-full md:w-auto">
+                    <span class="text-[10px] tracking-[0.2em] uppercase text-neutral-500 mb-1 font-semibold">SOCIAL</span>
+                    <a href="https://www.linkedin.com/in/rickyvhuynh/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">linkedin</a>
+                    <a href="https://www.instagram.com/rickyhuynhs/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">instagram</a>
+                    <a href="https://www.tiktok.com/@rickyhuynhs" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">tiktok</a>
+                    <a href="https://www.youtube.com/@rickyhuynhs" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">youtube</a>
+                </div>
             </div>
 
-            <!-- Right: Social Links with Icons -->
-            <div class="flex items-center space-x-4 text-sm">
-                <a href="https://www.linkedin.com/in/rickyvhuynh/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition" title="LinkedIn">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-                <a href="https://www.instagram.com/rickyhuynhs/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition" title="Instagram">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <a href="https://www.tiktok.com/@rickyhuynhs" target="_blank" rel="noopener noreferrer" class="hover:text-white transition" title="TikTok">
-                    <i class="fa-brands fa-tiktok"></i>
-                </a>
-                <a href="https://www.youtube.com/@rickyhuynhs" target="_blank" rel="noopener noreferrer" class="hover:text-white transition" title="YouTube">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
+            <!-- Bottom Section: Copyright & Location -->
+            <div class="mt-12 pt-6 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between text-[11px] text-neutral-500">
+                <span>&copy; 2026 RICKY HUYNH | BOSTON, MA</span>
             </div>
         </div>
     </footer>
