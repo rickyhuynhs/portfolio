@@ -71,7 +71,7 @@
 <body class="bg-[#0a0a0a] text-gray-100 antialiased selection:bg-neutral-800 selection:text-white">
 
     <!-- Navigation Header -->
-    <header id="site-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-neutral-900">
+    <header id="site-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-[#0a0a0a]/85 backdrop-blur-md border-b border-neutral-900">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="#" onclick="switchTab('home')" class="font-serif tracking-widest text-xl md:text-2xl font-bold text-white hover:text-neutral-300 transition">
                 RICKY HUYNH
@@ -333,7 +333,6 @@
                     <div class="group cursor-pointer relative overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/vQl2RxJQSko?autoplay=1', 'Chợ Đêm Boston Little Saigon Night Market 2026')">
                         <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-center">
                             <div class="lg:col-span-7 aspect-video relative overflow-hidden">
-                                <!-- Updated Preview Thumbnail directly matching YouTube video -->
                                 <img src="https://img.youtube.com/vi/vQl2RxJQSko/maxresdefault.jpg" alt="Chợ Đêm Boston Little Saigon Night Market 2026" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
                                 <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
                                 <div class="absolute inset-0 flex items-center justify-center">
@@ -399,7 +398,7 @@
                         </div>
                     </div>
 
-                    <!-- Events Grid Blocks (Updated with content) -->
+                    <!-- Events Grid Blocks (Updated with Corporate & Gala title replacing "Block 1") -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <!-- Block 1: Corporate & Gala -->
                         <div class="group cursor-pointer bg-neutral-900/60 border border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-500 transition duration-300" onclick="openCategoryDetail('corporate')">
@@ -409,7 +408,7 @@
                             </div>
                             <div class="p-6">
                                 <div class="flex items-center justify-between">
-                                    <span class="text-[10px] uppercase tracking-widest text-neutral-500 font-semibold">Block 1</span>
+                                    <span class="text-[10px] uppercase tracking-widest text-amber-400 font-semibold">Corporate &amp; Gala</span>
                                     <span class="text-xs text-neutral-400 group-hover:text-white transition">Explore Category →</span>
                                 </div>
                                 <h4 class="text-xl font-serif text-white mt-2 group-hover:text-amber-300 transition">Corporate &amp; Gala</h4>
@@ -529,7 +528,7 @@
                 </div>
 
                 <div class="border-t border-neutral-800 pt-8">
-                    <!-- Updated Dynamic Content List Container -->
+                    <!-- Table / Row Layout Container for Past Work Items -->
                     <div id="category-content-list" class="space-y-4">
                         <!-- Populated dynamically via JS mapping -->
                     </div>
@@ -669,17 +668,19 @@
 
     <!-- JS for Tab Switching, Subtabs, Category Detail Pages & Video Modal -->
     <script>
-        // Category details config data with structured content lists for block navigation
+        // Category details config data with the requested Corporate & Gala past work video item
         const categoryData = {
             'corporate': {
-                badge: 'Block 1',
+                badge: 'Corporate & Gala',
                 title: 'Corporate & Gala',
                 desc: 'High-Impact Event Coverage & Executive Recaps',
                 items: [
-                    { title: 'Full-length Gala Recaps', subtitle: 'Annual Nonprofit & Corporate Galas', desc: 'Comprehensive event storytelling capturing key milestones and guest experiences.' },
-                    { title: 'Keynote Highlights', subtitle: 'Executive Presentations', desc: 'Crisp audio and multi-angle edits highlighting industry leaders.' },
-                    { title: 'Panel Discussions', subtitle: 'Thought Leadership', desc: 'Engaging multi-cam coverage of expert panels and Q&A segments.' },
-                    { title: 'Brand Partnership Promos', subtitle: 'Promotional Content', desc: 'Short-form promotional pieces highlighting sponsors and corporate collaborations.' }
+                    { 
+                        title: 'Corporate Gala Highlight', 
+                        org: 'Client Organization', 
+                        date: 'June 2022', 
+                        url: 'https://www.youtube.com/embed/XBKifPwL-Ho?autoplay=1' 
+                    }
                 ]
             },
             'community': {
@@ -687,10 +688,7 @@
                 title: 'Community Events',
                 desc: 'Local Culture, Festivals & Gathering Highlights',
                 items: [
-                    { title: 'Festival Recaps', subtitle: 'Cultural Celebrations', desc: 'High-energy edits capturing performances, night markets, and vibrant local crowds.' },
-                    { title: 'Non-profit Fundraisers', subtitle: 'Community Impact', desc: 'Story-driven coverage showcasing local missions and supporter engagement.' },
-                    { title: 'Workshops & Gatherings', subtitle: 'Interactive Sessions', desc: 'Documenting collaborative community workshops and educational events.' },
-                    { title: 'Local Cultural Storytelling', subtitle: 'Heritage & Identity', desc: 'Deep-dives into neighborhood traditions, arts, and local community voices.' }
+                    { title: 'Festival Recaps', org: 'Community Partner', date: 'July 2025' }
                 ]
             },
             'archive': {
@@ -698,9 +696,7 @@
                 title: 'Past Work Archive',
                 desc: 'Comprehensive Vault of Selected Videography Projects',
                 items: [
-                    { title: 'Filterable Project Vault', subtitle: 'Chronological Archive', desc: 'Organized by year, event scale, and deliverables across past client engagements.' },
-                    { title: 'Pop-up Event Highlights', subtitle: 'Experiential Activations', desc: 'Dynamic recap videos for immersive brand pop-ups and live installations.' },
-                    { title: 'Promotional Social Content', subtitle: 'Digital Delivery', desc: 'Bite-sized vertical and horizontal cuts optimized for web and social channels.' }
+                    { title: 'Vault Project Highlight', org: 'Archive', date: '2023' }
                 ]
             }
         };
@@ -713,16 +709,22 @@
             document.getElementById('category-detail-title').innerText = data.title;
             document.getElementById('category-detail-desc').innerText = data.desc;
 
-            // Render dynamic items list for the category block
+            // Render dynamic table/row layout for items
             const listContainer = document.getElementById('category-content-list');
             listContainer.innerHTML = data.items.map(item => `
-                <div class="p-6 bg-neutral-900/50 border border-neutral-800 rounded-xl hover:border-neutral-700 transition">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
-                        <div>
-                            <span class="text-[10px] uppercase tracking-widest text-amber-400 font-semibold">${item.subtitle}</span>
-                            <h3 class="text-xl font-serif text-white mt-1">${item.title}</h3>
-                            <p class="text-xs text-neutral-400 mt-1">${item.desc}</p>
+                <div onclick="openVideoModal('${item.url || 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1'}', '${item.title}')" class="group cursor-pointer p-6 bg-neutral-900/60 border border-neutral-800 rounded-xl hover:border-neutral-500 transition duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-lg bg-neutral-800 flex items-center justify-center text-white shrink-0 group-hover:bg-white group-hover:text-black transition">
+                            <i class="fa-solid fa-play text-xs"></i>
                         </div>
+                        <div>
+                            <h3 class="text-lg font-serif text-white group-hover:text-amber-300 transition">${item.title}</h3>
+                            <span class="text-xs uppercase tracking-wider text-neutral-400 mt-1 block md:hidden">Org: ${item.org} • ${item.date}</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-8 text-sm text-neutral-300">
+                        <span class="hidden md:block font-medium text-neutral-300 bg-neutral-800/80 px-3 py-1 rounded-full text-xs uppercase tracking-wider">${item.org}</span>
+                        <span class="text-xs uppercase tracking-wider text-neutral-400">${item.date}</span>
                     </div>
                 </div>
             `).join('');
@@ -741,7 +743,6 @@
         }
 
         function switchTab(tabId) {
-            // If returning to videography tab, reset back to main view
             if (tabId === 'videography') {
                 closeCategoryDetail();
             }
@@ -769,7 +770,7 @@
         }
 
         function switchVideographySubtab(subtab) {
-            closeCategoryDetail(); // Reset any open detail view when toggling subtabs
+            closeCategoryDetail();
 
             const eventsView = document.getElementById('videography-events');
             const weddingsView = document.getElementById('videography-weddings');
