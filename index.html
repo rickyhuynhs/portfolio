@@ -464,9 +464,11 @@
 
                 <!-- SUB-SECTION 2: WEDDINGS -->
                 <div id="videography-weddings" class="hidden space-y-20">
-                    <div class="text-center max-w-2xl mx-auto py-4">
-                        <p class="font-serif italic text-lg text-neutral-300">"We really love the video, we thought it captured our day beautifully. We're happy with all of the film footage you included. It looks highly professional and better than we could have imagined."</p>
-                        <p class="text-xs text-neutral-500 uppercase tracking-widest mt-2">— Matthew &amp; Melissa</p>
+                    <div class="text-center max-w-4xl mx-auto py-6 px-4">
+                        <i class="fa-solid fa-quote-left text-4xl md:text-5xl text-accentGold/40"></i>
+                        <p class="font-serif italic text-2xl md:text-4xl text-neutral-200 leading-snug md:leading-snug mt-4">We really love the video, we thought it captured our day beautifully. We're happy with all of the film footage you included. It looks highly professional and better than we could have imagined.</p>
+                        <i class="fa-solid fa-quote-right text-4xl md:text-5xl text-accentGold/40 mt-4 inline-block"></i>
+                        <p class="text-xs text-neutral-500 uppercase tracking-widest mt-4">— Matthew &amp; Melissa</p>
                     </div>
 
                     <!-- Featured Story Block -->
@@ -500,48 +502,38 @@
                         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                             <div class="lg:col-span-5 space-y-4">
                                 <h3 class="text-2xl md:text-4xl font-serif font-bold text-white tracking-tight uppercase leading-snug">
-                                    COASTAL ELEGANCE & INTIMATE VOWS
+                                    QUIET MOMENTS BEFORE "I DO"
                                 </h3>
                                 <p class="text-neutral-400 text-sm md:text-base leading-relaxed">
-                                    An intimate seaside ceremony centered around personal vows, golden-hour portraits, and raw emotional moments shared with family along the shores of Newport.
+                                    The hush before it all begins — soft light, steady hands, and the quiet anticipation of getting ready. These are the moments that rarely make the highlight reel but always end up meaning the most.
                                 </p>
                                 <div class="pt-2">
-                                    <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Sarah & David — Coastal Rhode Island')" class="px-6 py-3 bg-white text-black font-medium tracking-widest text-[11px] uppercase rounded-full hover:bg-neutral-200 transition inline-flex items-center gap-2">
+                                    <button onclick="openVideoModal('assets/videos/bride.mp4', 'Getting Ready — Quiet Moments Before I Do')" class="px-6 py-3 bg-white text-black font-medium tracking-widest text-[11px] uppercase rounded-full hover:bg-neutral-200 transition inline-flex items-center gap-2">
                                         <i class="fa-solid fa-play text-[10px]"></i> Watch Film
                                     </button>
                                 </div>
                             </div>
-                            <div class="lg:col-span-7 group cursor-pointer relative overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500 aspect-video shadow-2xl" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Sarah & David — Coastal Rhode Island')">
-                                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80" alt="Sarah & David" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                                <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition"></div>
-                                <div class="absolute inset-0 flex items-center justify-center">
-                                    <div class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:scale-110 group-hover:bg-white group-hover:text-black text-white transition duration-300">
-                                        <i class="fa-solid fa-play text-sm ml-1"></i>
-                                    </div>
-                                </div>
+                            <div class="lg:col-span-7 group cursor-pointer relative overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500 aspect-video shadow-2xl" onclick="openVideoModal('assets/videos/bride.mp4', 'Getting Ready — Quiet Moments Before I Do')">
+                                <video class="w-full h-full object-cover group-hover:scale-105 transition duration-700" src="assets/videos/bride.mp4" autoplay muted loop playsinline></video>
+                                <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition"></div>
                             </div>
                         </div>
 
                         <!-- Row 2: Content Block on Left, Text on Right -->
                         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                            <div class="lg:col-span-7 lg:order-1 order-2 group cursor-pointer relative overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500 aspect-video shadow-2xl" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Elena & James — Boston Library')">
-                                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80" alt="Elena & James" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                                <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition"></div>
-                                <div class="absolute inset-0 flex items-center justify-center">
-                                    <div class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:scale-110 group-hover:bg-white group-hover:text-black text-white transition duration-300">
-                                        <i class="fa-solid fa-play text-sm ml-1"></i>
-                                    </div>
-                                </div>
+                            <div class="lg:col-span-7 lg:order-1 order-2 group cursor-pointer relative overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500 aspect-video shadow-2xl" onclick="openVideoModal('assets/videos/couplee.mp4', 'Garden Vows & Sunlit Embraces')">
+                                <video class="w-full h-full object-cover group-hover:scale-105 transition duration-700" src="assets/videos/couplee.mp4" autoplay muted loop playsinline></video>
+                                <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition"></div>
                             </div>
                             <div class="lg:col-span-5 lg:order-2 order-1 space-y-4">
                                 <h3 class="text-2xl md:text-4xl font-serif font-bold text-white tracking-tight uppercase leading-snug">
-                                    HISTORIC ARCHITECTURE & CANDLELIGHT
+                                    GARDEN VOWS & SUNLIT EMBRACES
                                 </h3>
                                 <p class="text-neutral-400 text-sm md:text-base leading-relaxed">
-                                    Framed around heartfelt toast speeches, breathtaking candlelight reception aesthetics, and timeless orchestral scoring inside the iconic Boston Public Library.
+                                    An intimate outdoor ceremony wrapped in golden afternoon light — veiled embraces, garden greenery, and that first hug as husband and wife.
                                 </p>
                                 <div class="pt-2">
-                                    <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Elena & James — Boston Library')" class="px-6 py-3 bg-white text-black font-medium tracking-widest text-[11px] uppercase rounded-full hover:bg-neutral-200 transition inline-flex items-center gap-2">
+                                    <button onclick="openVideoModal('assets/videos/couplee.mp4', 'Garden Vows & Sunlit Embraces')" class="px-6 py-3 bg-white text-black font-medium tracking-widest text-[11px] uppercase rounded-full hover:bg-neutral-200 transition inline-flex items-center gap-2">
                                         <i class="fa-solid fa-play text-[10px]"></i> Watch Film
                                     </button>
                                 </div>
@@ -552,28 +544,52 @@
                         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                             <div class="lg:col-span-5 space-y-4">
                                 <h3 class="text-2xl md:text-4xl font-serif font-bold text-white tracking-tight uppercase leading-snug">
-                                    RUSTIC MOUNTAIN & AUTUMN GLOW
+                                    TOASTS, CANDLELIGHT & BALLROOM ELEGANCE
                                 </h3>
                                 <p class="text-neutral-400 text-sm md:text-base leading-relaxed">
-                                    A warm, outdoor autumn celebration highlighting joyful dance floors, scenic mountain backdrops, and deeply emotional family traditions in the Berkshires.
+                                    Heartfelt speeches under chandeliers, framed by soft candlelight and timeless ballroom architecture — the kind of reception moment that sets the tone for the whole night.
                                 </p>
                                 <div class="pt-2">
-                                    <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Hannah & Alex — Berkshires Celebration')" class="px-6 py-3 bg-white text-black font-medium tracking-widest text-[11px] uppercase rounded-full hover:bg-neutral-200 transition inline-flex items-center gap-2">
+                                    <button onclick="openVideoModal('assets/videos/moments.mp4', 'Toasts, Candlelight & Ballroom Elegance')" class="px-6 py-3 bg-white text-black font-medium tracking-widest text-[11px] uppercase rounded-full hover:bg-neutral-200 transition inline-flex items-center gap-2">
                                         <i class="fa-solid fa-play text-[10px]"></i> Watch Film
                                     </button>
                                 </div>
                             </div>
-                            <div class="lg:col-span-7 group cursor-pointer relative overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500 aspect-video shadow-2xl" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Hannah & Alex — Berkshires Celebration')">
-                                <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80" alt="Hannah & Alex" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                                <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition"></div>
-                                <div class="absolute inset-0 flex items-center justify-center">
-                                    <div class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:scale-110 group-hover:bg-white group-hover:text-black text-white transition duration-300">
-                                        <i class="fa-solid fa-play text-sm ml-1"></i>
-                                    </div>
-                                </div>
+                            <div class="lg:col-span-7 group cursor-pointer relative overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500 aspect-video shadow-2xl" onclick="openVideoModal('assets/videos/moments.mp4', 'Toasts, Candlelight & Ballroom Elegance')">
+                                <video class="w-full h-full object-cover group-hover:scale-105 transition duration-700" src="assets/videos/moments.mp4" autoplay muted loop playsinline></video>
+                                <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition"></div>
                             </div>
                         </div>
 
+                    </div>
+
+                    <!-- Long Form / Short Form Highlights -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8">
+                        <!-- Long Form Highlights -->
+                        <div class="group cursor-pointer relative overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Long Form Wedding Highlights')">
+                            <div class="aspect-video relative overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80" alt="Long Form Highlights" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
+                            </div>
+                            <div class="p-6 md:p-8 space-y-2">
+                                <h3 class="text-xl md:text-2xl font-serif text-white">Long Form Highlights</h3>
+                                <p class="text-neutral-400 text-xs md:text-sm uppercase tracking-widest">4–7 Minutes</p>
+                                <p class="text-neutral-500 text-xs md:text-sm">Full-day narrative films</p>
+                            </div>
+                        </div>
+
+                        <!-- Short Form Highlights -->
+                        <div class="group cursor-pointer relative overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/mqqUHwdffR8?autoplay=1', 'Short Form Wedding Highlights')">
+                            <div class="aspect-video relative overflow-hidden">
+                                <img src="https://img.youtube.com/vi/mqqUHwdffR8/maxresdefault.jpg" alt="Short Form Highlights" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
+                            </div>
+                            <div class="p-6 md:p-8 space-y-2">
+                                <h3 class="text-xl md:text-2xl font-serif text-white">Short Form Highlights</h3>
+                                <p class="text-neutral-400 text-xs md:text-sm uppercase tracking-widest">15–60 Seconds</p>
+                                <p class="text-neutral-500 text-xs md:text-sm">Fast-paced, made for the scroll — the day's best moments cut for Reels &amp; TikTok</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -935,6 +951,7 @@
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <iframe id="modal-player" class="w-full h-full" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <video id="modal-video-player" class="w-full h-full hidden" src="" controls autoplay playsinline></video>
         </div>
     </div>
 
@@ -1146,7 +1163,23 @@
         function openVideoModal(url, title) {
             const modal = document.getElementById('video-modal');
             const iframe = document.getElementById('modal-player');
-            iframe.src = url;
+            const video = document.getElementById('modal-video-player');
+            const isLocalVideo = url.endsWith('.mp4') || url.endsWith('.webm');
+
+            if (isLocalVideo) {
+                iframe.src = '';
+                iframe.classList.add('hidden');
+                video.src = url;
+                video.classList.remove('hidden');
+                video.play();
+            } else {
+                video.pause();
+                video.src = '';
+                video.classList.add('hidden');
+                iframe.classList.remove('hidden');
+                iframe.src = url;
+            }
+
             modal.classList.remove('hidden');
             modal.classList.add('flex');
         }
@@ -1154,7 +1187,10 @@
         function closeVideoModal() {
             const modal = document.getElementById('video-modal');
             const iframe = document.getElementById('modal-player');
+            const video = document.getElementById('modal-video-player');
             iframe.src = '';
+            video.pause();
+            video.src = '';
             modal.classList.add('hidden');
             modal.classList.remove('flex');
         }
