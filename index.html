@@ -54,9 +54,15 @@
         }
 
         /* Continuous Infinite Logo Marquee Animation with No Pause on Hover */
+        /* --marquee-shift is set precisely in JS to the measured pixel width of one logo set,
+           so the loop is seamless regardless of actual image dimensions. The 33.3333% is just a
+           fallback for the instant before JS finishes measuring. */
+        :root {
+            --marquee-shift: 33.3333%;
+        }
         @keyframes marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-33.3333%); }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-1 * var(--marquee-shift))); }
         }
         .animate-marquee {
             display: flex;
@@ -67,6 +73,31 @@
         .animate-marquee:hover {
             animation-play-state: running !important;
         }
+
+        /* Professional Subtab "View More" Flip Transition */
+        .flip-perspective {
+            perspective: 1500px;
+        }
+        @keyframes flipOut {
+            from { transform: rotateY(0deg); opacity: 1; }
+            to { transform: rotateY(-90deg); opacity: 0; }
+        }
+        @keyframes flipIn {
+            from { transform: rotateY(90deg); opacity: 0; }
+            to { transform: rotateY(0deg); opacity: 1; }
+        }
+        .animate-flip-out {
+            animation: flipOut 0.4s ease-in forwards;
+            transform-style: preserve-3d;
+        }
+        .animate-flip-in {
+            animation: flipIn 0.4s ease-out forwards;
+            transform-style: preserve-3d;
+        }
+
+        /* Hide scrollbar on horizontal BTS photo scroller while keeping it scrollable */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-[#0a0a0a] text-gray-100 antialiased selection:bg-neutral-800 selection:text-white">
@@ -182,20 +213,15 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="mt-10 max-w-3xl">
-                    <p class="text-xs uppercase tracking-widest text-neutral-500 font-semibold mb-2">Why These Are Featured</p>
-                    <p class="text-neutral-400 text-sm md:text-base leading-relaxed">These two sit side by side because they show two different sides of what I do. YEARN is a story I wrote and directed from scratch — every choice on screen was mine to make. The Night Market recap is the opposite kind of challenge: capturing a moment that was already happening and doing it justice in real time. Together, they're a fair introduction to the range of work you'll find here.</p>
-                </div>
             </section>
         </div>
 
         <!-- ================= TAB: FILM & NARRATIVE ================= -->
         <div id="tab-film" class="tab-content hidden py-24 px-6 max-w-7xl mx-auto">
-            <div class="mb-16">
+            <div class="mb-16 text-center max-w-3xl mx-auto">
                 <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">My Cinematic Universe</p>
                 <h2 class="text-3xl md:text-6xl font-serif text-white">Film & Narrative</h2>
-                <p class="text-neutral-400 mt-4 max-w-2xl text-base">A chronological archive of my stories, spanning fantasy, horror, documentary, and narrative shorts.</p>
+                <p class="text-neutral-400 mt-4 text-base">A chronological archive of my stories, spanning fantasy, horror, documentary, and narrative shorts.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -396,18 +422,20 @@
 
                             <div class="animate-marquee flex items-center opacity-75">
                                 <!-- Set 1 -->
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="AASA.png" alt="AASA" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="ALTITUDE.png" alt="Altitude" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="artem.png" alt="ArtsEmerson" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="ASA.png" alt="ASA" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="baaff_LOGO_full_color-scaled.png" alt="BAAFF" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="BL.png" alt="BL" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="ChoDem2026_AssetDrop (1).png" alt="Boston Little Saigon" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="LU.png" alt="Latinos Unidos" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="project-aarw-gallery.png" alt="AARW" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="Robert Mitchel Owenby Photography Logo.png" alt="Robert Mitchel Owenby Photography" class="h-12 w-auto object-contain" /></div>
+                                <div id="marquee-set-1" class="flex items-center shrink-0">
+                                    <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="AASA.png" alt="AASA" class="h-12 w-auto object-contain" /></div>
+                                    <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="ALTITUDE.png" alt="Altitude" class="h-12 w-auto object-contain" /></div>
+                                    <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="artem.png" alt="ArtsEmerson" class="h-12 w-auto object-contain" /></div>
+                                    <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="ASA.png" alt="ASA" class="h-12 w-auto object-contain" /></div>
+                                    <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="baaff_LOGO_full_color-scaled.png" alt="BAAFF" class="h-12 w-auto object-contain" /></div>
+                                    <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="BL.png" alt="BL" class="h-12 w-auto object-contain" /></div>
+                                    <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="ChoDem2026_AssetDrop (1).png" alt="Boston Little Saigon" class="h-12 w-auto object-contain" /></div>
+                                    <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="LU.png" alt="Latinos Unidos" class="h-12 w-auto object-contain" /></div>
+                                    <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="project-aarw-gallery.png" alt="AARW" class="h-12 w-auto object-contain" /></div>
+                                    <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="Robert Mitchel Owenby Photography Logo.png" alt="Robert Mitchel Owenby Photography" class="h-12 w-auto object-contain" /></div>
+                                </div>
 
-                                <!-- Set 2: Loop back directly to AASA -->
+                                <!-- Set 2: Duplicate for Seamless Infinite Loop -->
                                 <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="AASA.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
                                 <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="ALTITUDE.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
                                 <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="artem.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
@@ -506,7 +534,6 @@
                         <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-center">
                             <div class="lg:col-span-7 aspect-video relative overflow-hidden">
                                 <img src="https://img.youtube.com/vi/QDxD1XQ668E/maxresdefault.jpg" alt="Matthew & Melissa" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                                <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition duration-300"></div>
                             </div>
                             <div class="lg:col-span-5 p-8 md:p-12 space-y-4">
                                 <div class="flex flex-col items-start gap-2 -mt-6 mb-3">
@@ -537,11 +564,6 @@
                                 <p class="text-neutral-400 text-sm md:text-base leading-relaxed">
                                     The hush before it all begins — soft light, steady hands, and the quiet anticipation of getting ready. These are the moments that rarely make the highlight reel but always end up meaning the most.
                                 </p>
-                                <div class="pt-2">
-                                    <button onclick="openVideoModal('assets/videos/bride.mp4', 'Getting Ready — Quiet Moments Before I Do')" class="px-6 py-3 bg-white text-black font-medium tracking-widest text-[11px] uppercase rounded-full hover:bg-neutral-200 transition inline-flex items-center gap-2">
-                                        <i class="fa-solid fa-play text-[10px]"></i> Watch Film
-                                    </button>
-                                </div>
                             </div>
                             <div class="lg:col-span-7 group cursor-pointer relative overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500 aspect-video shadow-2xl" onclick="openVideoModal('assets/videos/bride.mp4', 'Getting Ready — Quiet Moments Before I Do')">
                                 <video class="w-full h-full object-cover group-hover:scale-105 transition duration-700" src="assets/videos/bride.mp4" autoplay muted loop playsinline></video>
@@ -562,11 +584,6 @@
                                 <p class="text-neutral-400 text-sm md:text-base leading-relaxed">
                                     An intimate outdoor ceremony wrapped in golden afternoon light — veiled embraces, garden greenery, and that first hug as husband and wife.
                                 </p>
-                                <div class="pt-2">
-                                    <button onclick="openVideoModal('assets/videos/couplee.mp4', 'Garden Vows & Sunlit Embraces')" class="px-6 py-3 bg-white text-black font-medium tracking-widest text-[11px] uppercase rounded-full hover:bg-neutral-200 transition inline-flex items-center gap-2">
-                                        <i class="fa-solid fa-play text-[10px]"></i> Watch Film
-                                    </button>
-                                </div>
                             </div>
                         </div>
 
@@ -579,11 +596,6 @@
                                 <p class="text-neutral-400 text-sm md:text-base leading-relaxed">
                                     Heartfelt speeches under chandeliers, framed by soft candlelight and timeless ballroom architecture — the kind of reception moment that sets the tone for the whole night.
                                 </p>
-                                <div class="pt-2">
-                                    <button onclick="openVideoModal('assets/videos/moments.mp4', 'Toasts, Candlelight & Ballroom Elegance')" class="px-6 py-3 bg-white text-black font-medium tracking-widest text-[11px] uppercase rounded-full hover:bg-neutral-200 transition inline-flex items-center gap-2">
-                                        <i class="fa-solid fa-play text-[10px]"></i> Watch Film
-                                    </button>
-                                </div>
                             </div>
                             <div class="lg:col-span-7 group cursor-pointer relative overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500 aspect-video shadow-2xl" onclick="openVideoModal('assets/videos/moments.mp4', 'Toasts, Candlelight & Ballroom Elegance')">
                                 <video class="w-full h-full object-cover group-hover:scale-105 transition duration-700" src="assets/videos/moments.mp4" autoplay muted loop playsinline></video>
@@ -596,10 +608,9 @@
                     <!-- Long Form / Short Form Highlights -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8">
                         <!-- Long Form Highlights -->
-                        <div class="group cursor-pointer relative overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Long Form Wedding Highlights')">
+                        <div class="group cursor-pointer relative overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/QDxD1XQ668E?autoplay=1', 'Matthew & Melissa — Westfield, MA')">
                             <div class="aspect-video relative overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80" alt="Long Form Highlights" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
+                                <img src="https://img.youtube.com/vi/QDxD1XQ668E/maxresdefault.jpg" alt="Long Form Highlights" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             </div>
                             <div class="p-6 md:p-8 space-y-2">
                                 <h3 class="text-xl md:text-2xl font-serif text-white">Long Form Highlights</h3>
@@ -741,9 +752,142 @@
             </div>
 
             <!-- PROFESSIONAL -->
-            <div id="content-professional" class="hidden space-y-6">
-                <p class="text-neutral-400 max-w-2xl mx-auto text-center text-base">Beyond my own channels, I manage and edit the day-to-day social presence for brands and creators.</p>
-                <p class="text-neutral-600 text-sm italic text-center">[Client showcase examples coming soon — send over the brands/creators you'd like featured here]</p>
+            <div id="content-professional" class="hidden flip-perspective">
+                <!-- PAGE 1 -->
+                <div id="content-professional-page-1" class="space-y-16">
+                    <p class="text-neutral-400 max-w-2xl mx-auto text-center text-base">Beyond my own work, I also collaborate on a variety of projects in different roles. Depending on the project, I might be behind the camera as a cinematographer or BTS camera, shaping the story as an editor, or helping develop the content strategy behind it all.</p>
+
+                    <!-- Section 1: Social Media Management -->
+                    <div>
+                        <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 font-semibold text-center mb-8">Social Media Management</p>
+
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="group cursor-pointer relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', '[Client Short-Form 1]')">
+                                <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=480&q=80" alt="Client short-form video 1" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition"></div>
+                            </div>
+                            <div class="group cursor-pointer relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', '[Client Short-Form 2]')">
+                                <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=480&q=80" alt="Client short-form video 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition"></div>
+                            </div>
+                            <div class="group cursor-pointer relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', '[Client Short-Form 3]')">
+                                <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=480&q=80" alt="Client short-form video 3" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition"></div>
+                            </div>
+                            <div class="group cursor-pointer relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', '[Client Short-Form 4]')">
+                                <img src="https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?auto=format&fit=crop&w=480&q=80" alt="Client short-form video 4" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition"></div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-6 pt-10 text-center max-w-2xl mx-auto">
+                            <div>
+                                <p class="text-3xl md:text-4xl font-serif text-white">[+XX%]</p>
+                                <p class="text-[10px] md:text-xs text-neutral-500 uppercase tracking-widest mt-2">[Engagement Growth]</p>
+                            </div>
+                            <div>
+                                <p class="text-3xl md:text-4xl font-serif text-white">[XXK]</p>
+                                <p class="text-[10px] md:text-xs text-neutral-500 uppercase tracking-widest mt-2">[Monthly Views]</p>
+                            </div>
+                            <div>
+                                <p class="text-3xl md:text-4xl font-serif text-white">[XX]</p>
+                                <p class="text-[10px] md:text-xs text-neutral-500 uppercase tracking-widest mt-2">[Videos Delivered]</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-neutral-800 max-w-4xl mx-auto"></div>
+
+                    <!-- Section 2: Behind the Scenes Photography -->
+                    <div>
+                        <div class="flex items-center justify-between max-w-4xl mx-auto mb-5 px-1">
+                            <h3 class="text-xl md:text-2xl font-serif text-white">Behind the Scenes Photography</h3>
+                            <button onclick="openBtsGallery()" class="text-[11px] uppercase tracking-widest text-neutral-400 hover:text-white transition underline underline-offset-4 decoration-neutral-600">Show All</button>
+                        </div>
+
+                        <div class="flex gap-4 overflow-x-auto no-scrollbar pb-2 snap-x snap-mandatory">
+                            <div class="shrink-0 w-40 md:w-48 aspect-[3/4] rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800 snap-start cursor-pointer" onclick="openBtsGallery()">
+                                <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 1" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            </div>
+                            <div class="shrink-0 w-40 md:w-48 aspect-[3/4] rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800 snap-start cursor-pointer" onclick="openBtsGallery()">
+                                <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 2" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            </div>
+                            <div class="shrink-0 w-40 md:w-48 aspect-[3/4] rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800 snap-start cursor-pointer" onclick="openBtsGallery()">
+                                <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 3" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            </div>
+                            <div class="shrink-0 w-40 md:w-48 aspect-[3/4] rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800 snap-start cursor-pointer" onclick="openBtsGallery()">
+                                <img src="https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 4" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            </div>
+                            <div class="shrink-0 w-40 md:w-48 aspect-[3/4] rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800 snap-start cursor-pointer" onclick="openBtsGallery()">
+                                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 5" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            </div>
+                            <div class="shrink-0 w-40 md:w-48 aspect-[3/4] rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800 snap-start cursor-pointer" onclick="openBtsGallery()">
+                                <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 6" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- View More -->
+                    <div class="flex justify-end pt-2">
+                        <button onclick="flipProfessionalPage(2)" class="px-6 py-3 border border-neutral-700 text-neutral-300 hover:bg-white hover:text-black transition rounded-full text-xs uppercase tracking-widest inline-flex items-center gap-2">
+                            View More <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PAGE 2: More catalog-style examples -->
+                <div id="content-professional-page-2" class="hidden space-y-16">
+                    <p class="text-neutral-400 max-w-2xl mx-auto text-center text-base">More from the catalog — additional projects, roles, and collaborations beyond the highlights on the first page.</p>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="group cursor-pointer relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', '[Client Short-Form 5]')">
+                            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=480&q=80" alt="Client short-form video 5" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition"></div>
+                        </div>
+                        <div class="group cursor-pointer relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', '[Client Short-Form 6]')">
+                            <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=480&q=80" alt="Client short-form video 6" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition"></div>
+                        </div>
+                        <div class="group cursor-pointer relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', '[Client Short-Form 7]')">
+                            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=480&q=80" alt="Client short-form video 7" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition"></div>
+                        </div>
+                        <div class="group cursor-pointer relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', '[Client Short-Form 8]')">
+                            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=480&q=80" alt="Client short-form video 8" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition"></div>
+                        </div>
+                    </div>
+
+                    <p class="text-neutral-600 text-sm italic text-center">[More catalog content coming soon — send over additional projects you'd like featured here]</p>
+
+                    <div class="flex justify-start pt-2">
+                        <button onclick="flipProfessionalPage(1)" class="px-6 py-3 border border-neutral-700 text-neutral-300 hover:bg-white hover:text-black transition rounded-full text-xs uppercase tracking-widest inline-flex items-center gap-2">
+                            <i class="fa-solid fa-arrow-left text-[10px]"></i> Back
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BTS Photo Gallery Modal -->
+        <div id="bts-gallery-modal" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4">
+            <div class="relative w-full max-w-5xl max-h-[85vh] bg-neutral-950 rounded-2xl overflow-hidden shadow-2xl border border-neutral-800">
+                <div class="flex items-center justify-between px-6 py-4 border-b border-neutral-800">
+                    <h3 class="text-lg font-serif text-white">Behind the Scenes Photography</h3>
+                    <button onclick="closeBtsGallery()" class="text-white hover:text-neutral-400 text-2xl">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="p-6 overflow-y-auto max-h-[calc(85vh-64px)] grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 1" class="w-full aspect-[3/4] object-cover rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 2" class="w-full aspect-[3/4] object-cover rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 3" class="w-full aspect-[3/4] object-cover rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 4" class="w-full aspect-[3/4] object-cover rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 5" class="w-full aspect-[3/4] object-cover rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 6" class="w-full aspect-[3/4] object-cover rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 7" class="w-full aspect-[3/4] object-cover rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 8" class="w-full aspect-[3/4] object-cover rounded-lg">
+                </div>
             </div>
         </div>
 
@@ -848,19 +992,6 @@
                         </div>
                     </div>
 
-                    <!-- Unique layout for set photo placeholders at the bottom of Direct Inquiries block -->
-                    <div class="space-y-3 pt-6 border-t border-neutral-800">
-                        <span class="text-[10px] uppercase tracking-[0.2em] text-neutral-500 block font-semibold">Behind the Scenes</span>
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="aspect-[4/3] rounded-lg bg-neutral-950 border border-neutral-800/80 flex items-center justify-center text-neutral-600 text-[10px] uppercase tracking-wider text-center p-2 hover:border-neutral-700 transition">
-                                [Set Photo 1 Placeholder]
-                            </div>
-                            <div class="aspect-[4/3] rounded-lg bg-neutral-950 border border-neutral-800/80 flex items-center justify-center text-neutral-600 text-[10px] uppercase tracking-wider text-center p-2 hover:border-neutral-700 transition">
-                                [Set Photo 2 Placeholder]
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="space-y-3 pt-6 border-t border-neutral-800">
                         <span class="text-[10px] uppercase tracking-[0.2em] text-neutral-500 block font-semibold">Social Channels</span>
                         <div class="flex flex-wrap gap-4 text-xs tracking-wider uppercase">
@@ -906,6 +1037,25 @@
                             Reach out to me!
                         </button>
                     </form>
+                </div>
+            </div>
+
+            <!-- Set Photos: 4-Column Section -->
+            <div class="mt-10">
+                <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-500 font-semibold text-center mb-4">On Set</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="aspect-[3/4] rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-600 text-[10px] uppercase tracking-wider text-center p-2 hover:border-neutral-700 transition">
+                        [Set Photo 1]
+                    </div>
+                    <div class="aspect-[3/4] rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-600 text-[10px] uppercase tracking-wider text-center p-2 hover:border-neutral-700 transition">
+                        [Set Photo 2]
+                    </div>
+                    <div class="aspect-[3/4] rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-600 text-[10px] uppercase tracking-wider text-center p-2 hover:border-neutral-700 transition">
+                        [Set Photo 3]
+                    </div>
+                    <div class="aspect-[3/4] rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-600 text-[10px] uppercase tracking-wider text-center p-2 hover:border-neutral-700 transition">
+                        [Set Photo 4]
+                    </div>
                 </div>
             </div>
         </div>
@@ -1132,6 +1282,34 @@
             }
         }
 
+        function flipProfessionalPage(toPage) {
+            const page1 = document.getElementById('content-professional-page-1');
+            const page2 = document.getElementById('content-professional-page-2');
+            const current = toPage === 2 ? page1 : page2;
+            const next = toPage === 2 ? page2 : page1;
+
+            current.classList.add('animate-flip-out');
+            setTimeout(() => {
+                current.classList.add('hidden');
+                current.classList.remove('animate-flip-out');
+                next.classList.remove('hidden');
+                next.classList.add('animate-flip-in');
+                setTimeout(() => next.classList.remove('animate-flip-in'), 450);
+            }, 380);
+        }
+
+        function openBtsGallery() {
+            const modal = document.getElementById('bts-gallery-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeBtsGallery() {
+            const modal = document.getElementById('bts-gallery-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
         function switchContentSubtab(subtab) {
             const personalView = document.getElementById('content-personal');
             const professionalView = document.getElementById('content-professional');
@@ -1247,7 +1425,46 @@
             } else {
                 history.replaceState({ tab: 'home' }, '', '#home');
             }
+
+            initMarquee();
         });
+
+        // Measures the actual rendered width of one full logo set (Set 1) and feeds that
+        // exact pixel value into the --marquee-shift CSS variable, so the marquee scrolls by
+        // precisely one set-width no matter how the logos happen to render. This makes the
+        // loop seamless (no blank gap, no jump) regardless of image sizes/aspect ratios.
+        function initMarquee() {
+            const set1 = document.getElementById('marquee-set-1');
+            if (!set1) return;
+
+            const applyMeasuredWidth = () => {
+                const width = set1.getBoundingClientRect().width;
+                if (width > 0) {
+                    document.documentElement.style.setProperty('--marquee-shift', width + 'px');
+                }
+            };
+
+            const imgs = set1.querySelectorAll('img');
+            let pending = imgs.length;
+            if (pending === 0) {
+                applyMeasuredWidth();
+            } else {
+                imgs.forEach((img) => {
+                    if (img.complete) {
+                        pending -= 1;
+                    } else {
+                        img.addEventListener('load', () => { pending -= 1; if (pending <= 0) applyMeasuredWidth(); });
+                        img.addEventListener('error', () => { pending -= 1; if (pending <= 0) applyMeasuredWidth(); });
+                    }
+                });
+                if (pending <= 0) {
+                    applyMeasuredWidth();
+                }
+            }
+
+            // Re-measure on resize (logo sizes are fixed height, but wrapping/padding can shift on breakpoint changes)
+            window.addEventListener('resize', applyMeasuredWidth);
+        }
     </script>
 </body>
 </html>
