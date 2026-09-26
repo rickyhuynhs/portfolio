@@ -98,6 +98,20 @@
         /* Hide scrollbar on horizontal BTS photo scroller while keeping it scrollable */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Contact Page: Autonomous Infinite Photo Loop (same measured-width technique as the logo marquee) */
+        :root {
+            --photo-marquee-shift: 33.3333%;
+        }
+        @keyframes photoMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-1 * var(--photo-marquee-shift))); }
+        }
+        .animate-photo-marquee {
+            display: flex;
+            width: max-content;
+            animation: photoMarquee 30s linear infinite;
+        }
     </style>
 </head>
 <body class="bg-[#0a0a0a] text-gray-100 antialiased selection:bg-neutral-800 selection:text-white">
@@ -611,6 +625,7 @@
                         <div class="group cursor-pointer relative overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/QDxD1XQ668E?autoplay=1', 'Matthew & Melissa — Westfield, MA')">
                             <div class="aspect-video relative overflow-hidden">
                                 <img src="https://img.youtube.com/vi/QDxD1XQ668E/maxresdefault.jpg" alt="Long Form Highlights" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
                             </div>
                             <div class="p-6 md:p-8 space-y-2">
                                 <h3 class="text-xl md:text-2xl font-serif text-white">Long Form Highlights</h3>
@@ -634,7 +649,7 @@
                     </div>
 
                     <div class="flex justify-center pt-4">
-                        <button onclick="switchTab('contact')" class="px-8 py-4 bg-white text-black font-medium tracking-widest text-xs uppercase rounded-full hover:bg-neutral-200 transition">
+                        <button onclick="switchTab('contact')" class="px-8 py-4 bg-white text-black font-medium tracking-widest text-xs uppercase rounded-full hover:bg-pink-400 transition">
                             Let's Tell Your Love Story
                         </button>
                     </div>
@@ -800,70 +815,121 @@
 
                     <!-- Section 2: Behind the Scenes Photography -->
                     <div>
-                        <div class="flex items-center justify-between max-w-4xl mx-auto mb-5 px-1">
-                            <h3 class="text-xl md:text-2xl font-serif text-white">Behind the Scenes Photography</h3>
-                            <button onclick="openBtsGallery()" class="text-[11px] uppercase tracking-widest text-neutral-400 hover:text-white transition underline underline-offset-4 decoration-neutral-600">Show All</button>
+                        <h3 class="text-xl md:text-2xl font-serif text-white text-center mb-10">Behind the Scenes Photography</h3>
+
+                        <!-- Row 1: Corporate & Galas -->
+                        <div class="mb-10">
+                            <h4 class="text-base md:text-lg font-serif text-white mb-3">Corporate &amp; Galas</h4>
+                            <div class="flex gap-2 overflow-x-auto no-scrollbar pb-2">
+                                <div class="shrink-0 w-32 md:w-40 aspect-[3/4] rounded-lg overflow-hidden cursor-pointer" onclick="openBtsGallery()">
+                                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=480&q=80" alt="Corporate BTS 1" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                                </div>
+                                <div class="shrink-0 w-32 md:w-40 aspect-[3/4] rounded-lg overflow-hidden cursor-pointer" onclick="openBtsGallery()">
+                                    <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=480&q=80" alt="Corporate BTS 2" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                                </div>
+                                <div class="shrink-0 w-32 md:w-40 aspect-[3/4] rounded-lg overflow-hidden cursor-pointer" onclick="openBtsGallery()">
+                                    <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=480&q=80" alt="Corporate BTS 3" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                                </div>
+                                <div class="shrink-0 w-32 md:w-40 aspect-[3/4] rounded-lg overflow-hidden cursor-pointer" onclick="openBtsGallery()">
+                                    <img src="https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?auto=format&fit=crop&w=480&q=80" alt="Corporate BTS 4" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                                </div>
+                                <div class="shrink-0 w-7 md:w-9 aspect-[3/4] rounded-md overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition" onclick="openBtsGallery()"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=200&q=60" alt="" class="w-full h-full object-cover"></div>
+                                <div class="shrink-0 w-7 md:w-9 aspect-[3/4] rounded-md overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition" onclick="openBtsGallery()"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=200&q=60" alt="" class="w-full h-full object-cover"></div>
+                                <div class="shrink-0 w-7 md:w-9 aspect-[3/4] rounded-md overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition" onclick="openBtsGallery()"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=200&q=60" alt="" class="w-full h-full object-cover"></div>
+                                <div class="shrink-0 w-7 md:w-9 aspect-[3/4] rounded-md overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition" onclick="openBtsGallery()"><img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=200&q=60" alt="" class="w-full h-full object-cover"></div>
+                                <div class="shrink-0 w-7 md:w-9 aspect-[3/4] rounded-md overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition" onclick="openBtsGallery()"><img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=200&q=60" alt="" class="w-full h-full object-cover"></div>
+                                <div class="shrink-0 w-7 md:w-9 aspect-[3/4] rounded-md overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition" onclick="openBtsGallery()"><img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=200&q=60" alt="" class="w-full h-full object-cover"></div>
+                                <div class="shrink-0 w-7 md:w-9 aspect-[3/4] rounded-md overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition" onclick="openBtsGallery()"><img src="https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?auto=format&fit=crop&w=200&q=60" alt="" class="w-full h-full object-cover"></div>
+                                <div class="shrink-0 w-7 md:w-9 aspect-[3/4] rounded-md overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition" onclick="openBtsGallery()"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=200&q=60" alt="" class="w-full h-full object-cover"></div>
+                            </div>
+                            <div class="flex justify-end mt-2">
+                                <button onclick="openBtsGallery()" class="text-[11px] uppercase tracking-widest text-neutral-400 hover:text-white transition underline underline-offset-4 decoration-neutral-600">Show All</button>
+                            </div>
                         </div>
 
-                        <div class="flex gap-4 overflow-x-auto no-scrollbar pb-2 snap-x snap-mandatory">
-                            <div class="shrink-0 w-40 md:w-48 aspect-[3/4] rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800 snap-start cursor-pointer" onclick="openBtsGallery()">
-                                <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 1" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                        <!-- Row 2: Weddings On Location -->
+                        <div class="mb-10">
+                            <h4 class="text-base md:text-lg font-serif text-white mb-3">Weddings On Location</h4>
+                            <div class="flex gap-2 overflow-x-auto no-scrollbar pb-2">
+                                <div class="shrink-0 w-32 md:w-40 aspect-[3/4] rounded-lg overflow-hidden cursor-pointer" onclick="openBtsGallery()">
+                                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=480&q=80" alt="Wedding BTS 1" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                                </div>
+                                <div class="shrink-0 w-32 md:w-40 aspect-[3/4] rounded-lg overflow-hidden cursor-pointer" onclick="openBtsGallery()">
+                                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=480&q=80" alt="Wedding BTS 2" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                                </div>
+                                <div class="shrink-0 w-32 md:w-40 aspect-[3/4] rounded-lg overflow-hidden cursor-pointer" onclick="openBtsGallery()">
+                                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=480&q=80" alt="Wedding BTS 3" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                                </div>
+                                <div class="shrink-0 w-32 md:w-40 aspect-[3/4] rounded-lg overflow-hidden cursor-pointer" onclick="openBtsGallery()">
+                                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=480&q=80" alt="Wedding BTS 4" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                                </div>
+                                <div class="shrink-0 w-7 md:w-9 aspect-[3/4] rounded-md overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition" onclick="openBtsGallery()"><img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=200&q=60" alt="" class="w-full h-full object-cover"></div>
+                                <div class="shrink-0 w-7 md:w-9 aspect-[3/4] rounded-md overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition" onclick="openBtsGallery()"><img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=200&q=60" alt="" class="w-full h-full object-cover"></div>
+                                <div class="shrink-0 w-7 md:w-9 aspect-[3/4] rounded-md overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition" onclick="openBtsGallery()"><img src="https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?auto=format&fit=crop&w=200&q=60" alt="" class="w-full h-full object-cover"></div>
+                                <div class="shrink-0 w-7 md:w-9 aspect-[3/4] rounded-md overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition" onclick="openBtsGallery()"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=200&q=60" alt="" class="w-full h-full object-cover"></div>
+                                <div class="shrink-0 w-7 md:w-9 aspect-[3/4] rounded-md overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition" onclick="openBtsGallery()"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=200&q=60" alt="" class="w-full h-full object-cover"></div>
+                                <div class="shrink-0 w-7 md:w-9 aspect-[3/4] rounded-md overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition" onclick="openBtsGallery()"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=200&q=60" alt="" class="w-full h-full object-cover"></div>
+                                <div class="shrink-0 w-7 md:w-9 aspect-[3/4] rounded-md overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition" onclick="openBtsGallery()"><img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=200&q=60" alt="" class="w-full h-full object-cover"></div>
                             </div>
-                            <div class="shrink-0 w-40 md:w-48 aspect-[3/4] rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800 snap-start cursor-pointer" onclick="openBtsGallery()">
-                                <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 2" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            <div class="flex justify-end mt-2">
+                                <button onclick="openBtsGallery()" class="text-[11px] uppercase tracking-widest text-neutral-400 hover:text-white transition underline underline-offset-4 decoration-neutral-600">Show All</button>
                             </div>
-                            <div class="shrink-0 w-40 md:w-48 aspect-[3/4] rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800 snap-start cursor-pointer" onclick="openBtsGallery()">
-                                <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 3" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                        </div>
+
+                        <!-- Row 3: Personal Sets -->
+                        <div>
+                            <h4 class="text-base md:text-lg font-serif text-white mb-3">Personal Sets</h4>
+                            <div class="flex gap-2 overflow-x-auto no-scrollbar pb-2">
+                                <div class="shrink-0 w-32 md:w-40 aspect-[3/4] rounded-lg overflow-hidden cursor-pointer" onclick="openBtsGallery()">
+                                    <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=480&q=80" alt="Personal BTS 1" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                                </div>
+                                <div class="shrink-0 w-32 md:w-40 aspect-[3/4] rounded-lg overflow-hidden cursor-pointer" onclick="openBtsGallery()">
+                                    <img src="https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?auto=format&fit=crop&w=480&q=80" alt="Personal BTS 2" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                                </div>
+                                <div class="shrink-0 w-32 md:w-40 aspect-[3/4] rounded-lg overflow-hidden cursor-pointer" onclick="openBtsGallery()">
+                                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=480&q=80" alt="Personal BTS 3" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                                </div>
+                                <div class="shrink-0 w-32 md:w-40 aspect-[3/4] rounded-lg overflow-hidden cursor-pointer" onclick="openBtsGallery()">
+                                    <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=480&q=80" alt="Personal BTS 4" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                                </div>
+                                <div class="shrink-0 w-7 md:w-9 aspect-[3/4] rounded-md overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition" onclick="openBtsGallery()"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=200&q=60" alt="" class="w-full h-full object-cover"></div>
+                                <div class="shrink-0 w-7 md:w-9 aspect-[3/4] rounded-md overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition" onclick="openBtsGallery()"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=200&q=60" alt="" class="w-full h-full object-cover"></div>
+                                <div class="shrink-0 w-7 md:w-9 aspect-[3/4] rounded-md overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition" onclick="openBtsGallery()"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=200&q=60" alt="" class="w-full h-full object-cover"></div>
+                                <div class="shrink-0 w-7 md:w-9 aspect-[3/4] rounded-md overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition" onclick="openBtsGallery()"><img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=200&q=60" alt="" class="w-full h-full object-cover"></div>
+                                <div class="shrink-0 w-7 md:w-9 aspect-[3/4] rounded-md overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition" onclick="openBtsGallery()"><img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=200&q=60" alt="" class="w-full h-full object-cover"></div>
+                                <div class="shrink-0 w-7 md:w-9 aspect-[3/4] rounded-md overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition" onclick="openBtsGallery()"><img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=200&q=60" alt="" class="w-full h-full object-cover"></div>
+                                <div class="shrink-0 w-7 md:w-9 aspect-[3/4] rounded-md overflow-hidden cursor-pointer opacity-80 hover:opacity-100 transition" onclick="openBtsGallery()"><img src="https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?auto=format&fit=crop&w=200&q=60" alt="" class="w-full h-full object-cover"></div>
                             </div>
-                            <div class="shrink-0 w-40 md:w-48 aspect-[3/4] rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800 snap-start cursor-pointer" onclick="openBtsGallery()">
-                                <img src="https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 4" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                            </div>
-                            <div class="shrink-0 w-40 md:w-48 aspect-[3/4] rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800 snap-start cursor-pointer" onclick="openBtsGallery()">
-                                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 5" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                            </div>
-                            <div class="shrink-0 w-40 md:w-48 aspect-[3/4] rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800 snap-start cursor-pointer" onclick="openBtsGallery()">
-                                <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 6" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            <div class="flex justify-end mt-2">
+                                <button onclick="openBtsGallery()" class="text-[11px] uppercase tracking-widest text-neutral-400 hover:text-white transition underline underline-offset-4 decoration-neutral-600">Show All</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- View More -->
-                    <div class="flex justify-end pt-2">
+                    <!-- View More + Pagination -->
+                    <div class="flex flex-col sm:flex-row items-center justify-end gap-4 pt-2">
+                        <div id="page1-pagination" class="flex items-center gap-1"></div>
                         <button onclick="flipProfessionalPage(2)" class="px-6 py-3 border border-neutral-700 text-neutral-300 hover:bg-white hover:text-black transition rounded-full text-xs uppercase tracking-widest inline-flex items-center gap-2">
                             View More <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </button>
                     </div>
                 </div>
 
-                <!-- PAGE 2: More catalog-style examples -->
-                <div id="content-professional-page-2" class="hidden space-y-16">
-                    <p class="text-neutral-400 max-w-2xl mx-auto text-center text-base">More from the catalog — additional projects, roles, and collaborations beyond the highlights on the first page.</p>
-
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div class="group cursor-pointer relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', '[Client Short-Form 5]')">
-                            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=480&q=80" alt="Client short-form video 5" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition"></div>
-                        </div>
-                        <div class="group cursor-pointer relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', '[Client Short-Form 6]')">
-                            <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=480&q=80" alt="Client short-form video 6" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition"></div>
-                        </div>
-                        <div class="group cursor-pointer relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', '[Client Short-Form 7]')">
-                            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=480&q=80" alt="Client short-form video 7" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition"></div>
-                        </div>
-                        <div class="group cursor-pointer relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', '[Client Short-Form 8]')">
-                            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=480&q=80" alt="Client short-form video 8" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition"></div>
-                        </div>
+                <!-- PAGE 2: Project Catalog -->
+                <div id="content-professional-page-2" class="hidden space-y-10">
+                    <div class="text-center max-w-2xl mx-auto space-y-2">
+                        <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 font-semibold">Project Catalog</p>
+                        <h3 id="catalog-project-title" class="text-2xl md:text-3xl font-serif text-white">[Project Title]</h3>
+                        <p id="catalog-project-subtext" class="text-neutral-400 text-sm md:text-base leading-relaxed">[Project subtext]</p>
                     </div>
 
-                    <p class="text-neutral-600 text-sm italic text-center">[More catalog content coming soon — send over additional projects you'd like featured here]</p>
+                    <div id="catalog-project-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
 
-                    <div class="flex justify-start pt-2">
-                        <button onclick="flipProfessionalPage(1)" class="px-6 py-3 border border-neutral-700 text-neutral-300 hover:bg-white hover:text-black transition rounded-full text-xs uppercase tracking-widest inline-flex items-center gap-2">
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+                        <button onclick="flipProfessionalPage(1)" class="order-2 sm:order-1 px-6 py-3 border border-neutral-700 text-neutral-300 hover:bg-white hover:text-black transition rounded-full text-xs uppercase tracking-widest inline-flex items-center gap-2">
                             <i class="fa-solid fa-arrow-left text-[10px]"></i> Back
                         </button>
+                        <div id="catalog-pagination-top" class="order-1 sm:order-2 flex items-center gap-1"></div>
                     </div>
                 </div>
             </div>
@@ -1040,21 +1106,32 @@
                 </div>
             </div>
 
-            <!-- Set Photos: 4-Column Section -->
-            <div class="mt-10">
-                <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-500 font-semibold text-center mb-4">On Set</p>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="aspect-[3/4] rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-600 text-[10px] uppercase tracking-wider text-center p-2 hover:border-neutral-700 transition">
-                        [Set Photo 1]
+            <!-- Set Photos: Full-Width Autonomous Infinite Loop -->
+            <div class="mt-14 relative w-screen left-1/2 -translate-x-1/2 overflow-hidden">
+                <div class="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none"></div>
+                <div class="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none"></div>
+
+                <div class="animate-photo-marquee items-center gap-4">
+                    <!-- Set 1 -->
+                    <div id="photo-marquee-set-1" class="flex items-center gap-4 shrink-0">
+                        <div class="shrink-0 w-56 md:w-72 aspect-[3/4] rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-600 text-[10px] uppercase tracking-wider text-center p-2 hover:border-neutral-700 transition">[Set Photo 1]</div>
+                        <div class="shrink-0 w-56 md:w-72 aspect-[3/4] rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-600 text-[10px] uppercase tracking-wider text-center p-2 hover:border-neutral-700 transition">[Set Photo 2]</div>
+                        <div class="shrink-0 w-56 md:w-72 aspect-[3/4] rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-600 text-[10px] uppercase tracking-wider text-center p-2 hover:border-neutral-700 transition">[Set Photo 3]</div>
+                        <div class="shrink-0 w-56 md:w-72 aspect-[3/4] rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-600 text-[10px] uppercase tracking-wider text-center p-2 hover:border-neutral-700 transition">[Set Photo 4]</div>
                     </div>
-                    <div class="aspect-[3/4] rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-600 text-[10px] uppercase tracking-wider text-center p-2 hover:border-neutral-700 transition">
-                        [Set Photo 2]
+                    <!-- Set 2: Duplicate for Seamless Infinite Loop -->
+                    <div class="flex items-center gap-4 shrink-0" aria-hidden="true">
+                        <div class="shrink-0 w-56 md:w-72 aspect-[3/4] rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-600 text-[10px] uppercase tracking-wider text-center p-2">[Set Photo 1]</div>
+                        <div class="shrink-0 w-56 md:w-72 aspect-[3/4] rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-600 text-[10px] uppercase tracking-wider text-center p-2">[Set Photo 2]</div>
+                        <div class="shrink-0 w-56 md:w-72 aspect-[3/4] rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-600 text-[10px] uppercase tracking-wider text-center p-2">[Set Photo 3]</div>
+                        <div class="shrink-0 w-56 md:w-72 aspect-[3/4] rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-600 text-[10px] uppercase tracking-wider text-center p-2">[Set Photo 4]</div>
                     </div>
-                    <div class="aspect-[3/4] rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-600 text-[10px] uppercase tracking-wider text-center p-2 hover:border-neutral-700 transition">
-                        [Set Photo 3]
-                    </div>
-                    <div class="aspect-[3/4] rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-600 text-[10px] uppercase tracking-wider text-center p-2 hover:border-neutral-700 transition">
-                        [Set Photo 4]
+                    <!-- Set 3: Duplicate for Seamless Infinite Loop on Wide Viewports -->
+                    <div class="flex items-center gap-4 shrink-0" aria-hidden="true">
+                        <div class="shrink-0 w-56 md:w-72 aspect-[3/4] rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-600 text-[10px] uppercase tracking-wider text-center p-2">[Set Photo 1]</div>
+                        <div class="shrink-0 w-56 md:w-72 aspect-[3/4] rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-600 text-[10px] uppercase tracking-wider text-center p-2">[Set Photo 2]</div>
+                        <div class="shrink-0 w-56 md:w-72 aspect-[3/4] rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-600 text-[10px] uppercase tracking-wider text-center p-2">[Set Photo 3]</div>
+                        <div class="shrink-0 w-56 md:w-72 aspect-[3/4] rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-600 text-[10px] uppercase tracking-wider text-center p-2">[Set Photo 4]</div>
                     </div>
                 </div>
             </div>
@@ -1282,6 +1359,112 @@
             }
         }
 
+        // Project Catalog data for the Professional "View More" catalog page.
+        // Each entry needs a title, a one-line subtext, and 4 thumbnail image URLs.
+        // Add more entries here as real projects come in — pagination adapts automatically.
+        const catalogProjects = [
+            {
+                title: '[Project Title 1]',
+                subtext: '[One-line description of the client, platform, and role you played on this project.]',
+                thumbs: [
+                    'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=480&q=80',
+                    'https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=480&q=80',
+                    'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=480&q=80',
+                    'https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?auto=format&fit=crop&w=480&q=80'
+                ]
+            },
+            {
+                title: '[Project Title 2]',
+                subtext: '[One-line description of the client, platform, and role you played on this project.]',
+                thumbs: [
+                    'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=480&q=80',
+                    'https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=480&q=80',
+                    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=480&q=80',
+                    'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=480&q=80'
+                ]
+            },
+            {
+                title: '[Project Title 3]',
+                subtext: '[One-line description of the client, platform, and role you played on this project.]',
+                thumbs: [
+                    'https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=480&q=80',
+                    'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=480&q=80',
+                    'https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?auto=format&fit=crop&w=480&q=80',
+                    'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=480&q=80'
+                ]
+            },
+            {
+                title: '[Project Title 4]',
+                subtext: '[One-line description of the client, platform, and role you played on this project.]',
+                thumbs: [
+                    'https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=480&q=80',
+                    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=480&q=80',
+                    'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=480&q=80',
+                    'https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=480&q=80'
+                ]
+            }
+        ];
+
+        let currentCatalogPage = 0;
+
+        function renderCatalogProject() {
+            const proj = catalogProjects[currentCatalogPage];
+            if (!proj) return;
+
+            document.getElementById('catalog-project-title').textContent = proj.title;
+            document.getElementById('catalog-project-subtext').textContent = proj.subtext;
+
+            const grid = document.getElementById('catalog-project-grid');
+            grid.innerHTML = proj.thumbs.map((url, i) => `
+                <div class="group cursor-pointer relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', '${proj.title.replace(/'/g, "\\'")}')">
+                    <img src="${url}" alt="${proj.title.replace(/"/g, '')} thumbnail ${i + 1}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition"></div>
+                </div>
+            `).join('');
+
+            renderPagination('page1-pagination', currentCatalogPage, catalogProjects.length);
+            renderPagination('catalog-pagination-top', currentCatalogPage, catalogProjects.length);
+        }
+
+        function renderPagination(containerId, current, total) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            const prevPage = Math.max(0, current - 1);
+            const nextPage = Math.min(total - 1, current + 1);
+
+            let html = `<button onclick="goToCatalogPage(${prevPage})" class="text-neutral-500 hover:text-white transition px-2" aria-label="Previous project">&larr;</button>`;
+
+            let pagesToShow;
+            if (total <= 6) {
+                pagesToShow = Array.from({ length: total }, (_, i) => i);
+            } else {
+                pagesToShow = [0, 1, 2, 3, 4, 'ellipsis', total - 1];
+            }
+
+            pagesToShow.forEach((p) => {
+                if (p === 'ellipsis') {
+                    html += `<span class="text-neutral-600 px-1 text-xs md:text-sm">&hellip;</span>`;
+                } else {
+                    const isActive = p === current;
+                    html += `<button onclick="goToCatalogPage(${p})" class="px-2 text-xs md:text-sm tracking-widest transition ${isActive ? 'text-white font-semibold' : 'text-neutral-500 hover:text-neutral-300'}">${String(p + 1).padStart(2, '0')}</button>`;
+                }
+            });
+
+            html += `<button onclick="goToCatalogPage(${nextPage})" class="text-neutral-500 hover:text-white transition px-2" aria-label="Next project">&rarr;</button>`;
+            container.innerHTML = html;
+        }
+
+        function goToCatalogPage(n) {
+            currentCatalogPage = Math.max(0, Math.min(catalogProjects.length - 1, n));
+            renderCatalogProject();
+
+            const page1 = document.getElementById('content-professional-page-1');
+            if (page1 && !page1.classList.contains('hidden')) {
+                flipProfessionalPage(2);
+            }
+        }
+
         function flipProfessionalPage(toPage) {
             const page1 = document.getElementById('content-professional-page-1');
             const page2 = document.getElementById('content-professional-page-2');
@@ -1427,20 +1610,22 @@
             }
 
             initMarquee();
+            initPhotoMarquee();
+            renderCatalogProject();
         });
 
-        // Measures the actual rendered width of one full logo set (Set 1) and feeds that
-        // exact pixel value into the --marquee-shift CSS variable, so the marquee scrolls by
-        // precisely one set-width no matter how the logos happen to render. This makes the
-        // loop seamless (no blank gap, no jump) regardless of image sizes/aspect ratios.
-        function initMarquee() {
-            const set1 = document.getElementById('marquee-set-1');
+        // Measures the actual rendered width of one full set (Set 1) and feeds that exact
+        // pixel value into the given CSS variable, so the marquee scrolls by precisely one
+        // set-width no matter how the content happens to render. This makes the loop seamless
+        // (no blank gap, no jump) regardless of image sizes/aspect ratios.
+        function initMeasuredMarquee(setId, cssVarName) {
+            const set1 = document.getElementById(setId);
             if (!set1) return;
 
             const applyMeasuredWidth = () => {
                 const width = set1.getBoundingClientRect().width;
                 if (width > 0) {
-                    document.documentElement.style.setProperty('--marquee-shift', width + 'px');
+                    document.documentElement.style.setProperty(cssVarName, width + 'px');
                 }
             };
 
@@ -1462,8 +1647,15 @@
                 }
             }
 
-            // Re-measure on resize (logo sizes are fixed height, but wrapping/padding can shift on breakpoint changes)
             window.addEventListener('resize', applyMeasuredWidth);
+        }
+
+        function initMarquee() {
+            initMeasuredMarquee('marquee-set-1', '--marquee-shift');
+        }
+
+        function initPhotoMarquee() {
+            initMeasuredMarquee('photo-marquee-set-1', '--photo-marquee-shift');
         }
     </script>
 </body>
