@@ -854,28 +854,19 @@
         <div id="bts-gallery-modal" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4">
             <div class="relative w-full max-w-5xl max-h-[85vh] bg-neutral-950 rounded-2xl overflow-hidden shadow-2xl border border-neutral-800">
                 <div class="flex items-center justify-between px-6 py-4 border-b border-neutral-800">
-                    <h3 class="text-lg font-serif text-white">Behind the Scenes Photography</h3>
+                    <h3 id="bts-gallery-title" class="text-lg font-serif text-white">Behind the Scenes Photography</h3>
                     <button onclick="closeBtsGallery()" class="text-white hover:text-neutral-400 text-2xl">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
-                <div class="p-6 overflow-y-auto max-h-[calc(85vh-64px)] grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 1" class="w-full aspect-[3/4] object-cover rounded-lg">
-                    <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 2" class="w-full aspect-[3/4] object-cover rounded-lg">
-                    <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 3" class="w-full aspect-[3/4] object-cover rounded-lg">
-                    <img src="https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 4" class="w-full aspect-[3/4] object-cover rounded-lg">
-                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 5" class="w-full aspect-[3/4] object-cover rounded-lg">
-                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 6" class="w-full aspect-[3/4] object-cover rounded-lg">
-                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 7" class="w-full aspect-[3/4] object-cover rounded-lg">
-                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=480&q=80" alt="Behind the scenes 8" class="w-full aspect-[3/4] object-cover rounded-lg">
-                </div>
+                <div id="bts-gallery-grid" class="p-6 overflow-y-auto max-h-[calc(85vh-64px)] grid grid-cols-2 md:grid-cols-4 gap-4"></div>
             </div>
         </div>
 
         <!-- ================= TAB: ABOUT ================= -->
-        <div id="tab-about" class="tab-content hidden py-24 px-6 max-w-5xl mx-auto">
+        <div id="tab-about" class="tab-content hidden py-24 px-6 max-w-6xl mx-auto">
             <!-- Bio Section -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start mb-20">
+            <div class="grid grid-cols-1 md:grid-cols-[360px_1fr] gap-12 items-start mb-20">
                 <div class="aspect-[4/5] rounded-2xl overflow-hidden bg-neutral-900 shadow-2xl relative sticky top-28">
                     <img src="Ricky_Huynh_Headshot.jpg" 
                          onerror="this.onerror=null; this.src='https://placehold.co/800x1000/171717/ffffff?text=Ricky+Huynh+Headshot';" 
@@ -1322,9 +1313,9 @@
         const BTS_PROJECTS_PER_PAGE = 3;
         let currentCatalogPage = 0; // 0-indexed
 
-        function buildBtsRowHtml(project) {
+        function buildBtsRowHtml(project, projectIndex) {
             const photosHtml = project.photos.map((url, i) => `
-                <div class="flex-1 hover:flex-[7_1_0%] transition-all duration-500 ease-out overflow-hidden rounded-lg cursor-pointer min-w-0" onclick="openBtsGallery()"><img src="${url}" alt="${project.title.replace(/"/g, '')} ${i + 1}" class="w-full h-full object-cover"></div>
+                <div class="flex-1 hover:flex-[1.15_1_0%] transition-all duration-500 ease-out overflow-hidden rounded-lg cursor-pointer min-w-0" onclick="openBtsGallery(${projectIndex})"><img src="${url}" alt="${project.title.replace(/"/g, '')} ${i + 1}" class="w-full h-full object-cover"></div>
             `).join('');
 
             return `
@@ -1332,7 +1323,7 @@
                     <h4 class="text-base md:text-lg font-serif text-white mb-3">${project.title}</h4>
                     <div class="flex gap-1.5 h-48 md:h-64 overflow-hidden">${photosHtml}</div>
                     <div class="flex justify-end mt-2">
-                        <button onclick="openBtsGallery()" class="text-[11px] uppercase tracking-widest text-neutral-400 hover:text-white transition underline underline-offset-4 decoration-neutral-600">Show All</button>
+                        <button onclick="openBtsGallery(${projectIndex})" class="text-[11px] uppercase tracking-widest text-neutral-400 hover:text-white transition underline underline-offset-4 decoration-neutral-600">Show All</button>
                     </div>
                 </div>
             `;
@@ -1344,7 +1335,7 @@
 
             const start = currentCatalogPage * BTS_PROJECTS_PER_PAGE;
             const pageProjects = btsProjects.slice(start, start + BTS_PROJECTS_PER_PAGE);
-            const rowsHtml = pageProjects.map(buildBtsRowHtml).join('');
+            const rowsHtml = pageProjects.map((project, i) => buildBtsRowHtml(project, start + i)).join('');
 
             if (currentCatalogPage === 0) {
                 document.getElementById('bts-rows-page-1').innerHTML = rowsHtml;
@@ -1422,8 +1413,22 @@
             }, 380);
         }
 
-        function openBtsGallery() {
+        function openBtsGallery(projectIndex) {
             const modal = document.getElementById('bts-gallery-modal');
+            const titleEl = document.getElementById('bts-gallery-title');
+            const gridEl = document.getElementById('bts-gallery-grid');
+
+            const project = btsProjects[projectIndex];
+            if (project) {
+                titleEl.textContent = project.title;
+                gridEl.innerHTML = project.photos.map((url, i) => `
+                    <img src="${url}" alt="${project.title.replace(/"/g, '')} ${i + 1}" class="w-full aspect-[3/4] object-cover rounded-lg">
+                `).join('');
+            } else {
+                titleEl.textContent = 'Behind the Scenes Photography';
+                gridEl.innerHTML = '';
+            }
+
             modal.classList.remove('hidden');
             modal.classList.add('flex');
         }
