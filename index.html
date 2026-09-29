@@ -45,9 +45,9 @@
         :root { --title-font: "hellofont-id-shouxietongzhen", 'Playfair Display', sans-serif; }
         .nav-btn, #mobile-menu button { font-family: var(--title-font); font-weight: 400; font-style: normal; }
         /* The new title font renders smaller than Playfair; scale it up. Adjust --title-scale to taste. */
-        :root { --title-scale: 1.5; --nav-scale: 1.6; }
+        :root { --title-scale: 1.8; --nav-scale: 1.8; }
         .font-serif { font-weight: 400; font-style: normal; zoom: var(--title-scale); }
-        .nav-btn, #mobile-menu button { zoom: var(--nav-scale); }
+        .nav-btn { zoom: var(--nav-scale); }
         body {
             background-color: #0a0a0a;
             color: #f3f4f6;
@@ -143,7 +143,7 @@
             </a>
             
             <!-- Desktop Nav Links -->
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wider uppercase text-neutral-400">
+            <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium tracking-wider uppercase text-neutral-400">
                 <button onclick="switchTab('film')" class="nav-btn hover:text-white transition" data-tab="film">Film & Narrative</button>
                 <button onclick="switchTab('videography')" class="nav-btn hover:text-white transition" data-tab="videography">Videography</button>
                 <button onclick="switchTab('content')" class="nav-btn hover:text-white transition" data-tab="content">Content Creator</button>
@@ -152,13 +152,13 @@
             </nav>
 
             <!-- Mobile Menu Toggle -->
-            <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden text-white text-xl focus:outline-none">
+            <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="lg:hidden text-white text-xl focus:outline-none">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
 
         <!-- Mobile Navigation Drawer -->
-        <div id="mobile-menu" class="hidden md:hidden bg-[#0a0a0a] border-b border-neutral-800 px-6 py-6 space-y-4">
+        <div id="mobile-menu" class="hidden lg:hidden bg-[#0a0a0a] border-b border-neutral-800 px-6 py-6 space-y-4">
             <button onclick="switchTab('film'); toggleMobileMenu();" class="block w-full text-left text-lg font-medium text-neutral-400 py-2">Film & Narrative</button>
             <button onclick="switchTab('videography'); toggleMobileMenu();" class="block w-full text-left text-lg font-medium text-neutral-400 py-2">Videography</button>
             <button onclick="switchTab('content'); toggleMobileMenu();" class="block w-full text-left text-lg font-medium text-neutral-400 py-2">Content Creator</button>
@@ -892,7 +892,7 @@
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
-                <div id="bts-gallery-grid" class="p-6 overflow-y-auto max-h-[calc(85vh-64px)] grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+                <div id="bts-gallery-grid" class="p-6 overflow-y-auto max-h-[calc(85vh-64px)] grid grid-cols-1 md:grid-cols-2 gap-4"></div>
             </div>
         </div>
 
@@ -1340,14 +1340,26 @@
             {
                 title: "'Sunset Shootout' Short Film - BTS Photo & Video",
                 photos: [
-                    'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=480&q=80',
-                    'https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=480&q=80',
-                    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=480&q=80',
-                    'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=480&q=80',
-                    'https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=480&q=80',
-                    'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=480&q=80',
-                    'https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?auto=format&fit=crop&w=480&q=80',
-                    'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=480&q=80'
+                    'DSC05106.jpg',
+                    'DSC05252.jpg',
+                    'DSC02561.jpg',
+                    'DSC02586.jpg',
+                    'DSC02663.jpg',
+                    'DSC02942.jpg',
+                    'DSC03262.jpg',
+                    'DSC03315.jpg',
+                    'DSC03434.jpg',
+                    'DSC03617.jpg',
+                    'DSC03861.jpg',
+                    'DSC04228.jpg',
+                    'DSC04276.jpg',
+                    'DSC04324.jpg',
+                    'DSC04395.jpg',
+                    'DSC04458.jpg',
+                    'DSC04473.jpg',
+                    'DSC04544.jpg',
+                    'DSC04769.jpg',
+                    'DSC04874.jpg'
                 ]
             },
             {
@@ -1369,8 +1381,8 @@
         let currentCatalogPage = 0; // 0-indexed
 
         function buildBtsRowHtml(project, projectIndex) {
-            const photosHtml = project.photos.map((url, i) => `
-                <div class="flex-1 hover:flex-[5_1_0%] transition-all duration-500 ease-out overflow-hidden rounded-lg cursor-pointer min-w-0" onclick="openBtsGallery(${projectIndex})"><img src="${url}" alt="${project.title.replace(/"/g, '')} ${i + 1}" class="w-full h-full object-cover"></div>
+            const photosHtml = project.photos.slice(0, 8).map((url, i) => `
+                <div class="flex-1 hover:flex-[5_1_0%] transition-all duration-500 ease-out overflow-hidden rounded-lg cursor-pointer min-w-0" onclick="openBtsGallery(${projectIndex})"><img src="${url}" data-fallback alt="${project.title.replace(/"/g, '')} ${i + 1}" class="w-full h-full object-cover"></div>
             `).join('');
 
             return `
@@ -1477,7 +1489,7 @@
             if (project) {
                 titleEl.textContent = project.title;
                 gridEl.innerHTML = project.photos.map((url, i) => `
-                    <img src="${url}" alt="${project.title.replace(/"/g, '')} ${i + 1}" class="w-full aspect-[3/4] object-cover rounded-lg">
+                    <img src="${url}" data-fallback loading="lazy" alt="${project.title.replace(/"/g, '')} ${i + 1}" class="w-full aspect-video object-cover rounded-lg">
                 `).join('');
             } else {
                 titleEl.textContent = 'Behind the Scenes Photography';
