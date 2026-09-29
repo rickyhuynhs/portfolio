@@ -18,17 +18,32 @@
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        serif: ['var(--title-font)'],
                     }
                 }
             }
         }
+    </script>
+    <!-- Adobe Fonts (Typekit) -->
+    <script>
+      (function(d) {
+        var config = { kitId: 'yvm3uwm', scriptTimeout: 3000, async: true },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;
+        h.className+=" wf-loading";
+        tk.src='https://use.typekit.net/'+config.kitId+'.js';
+        tk.async=true;
+        tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};
+        s.parentNode.insertBefore(tk,s);
+      })(document);
     </script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* TITLE FONT: replace the first name below with the exact family name shown in your Adobe Fonts kit */
+        :root { --title-font: 'YOUR-ADOBE-FONT-NAME', 'Playfair Display', serif; }
+        .nav-btn, #mobile-menu button { font-family: var(--title-font); }
         body {
             background-color: #0a0a0a;
             color: #f3f4f6;
@@ -425,7 +440,7 @@
                     </div>
 
                     <!-- SCROLLING LOGO ROW -->
-                    <div class="py-10 border-y border-neutral-900 bg-neutral-950/40 relative overflow-hidden my-12 rounded-2xl">
+                    <div class="py-12 border-y border-neutral-900 bg-neutral-950/40 relative overflow-hidden my-12 rounded-2xl">
                         <div class="text-center mb-6">
                             <p class="text-[10px] uppercase tracking-[0.3em] text-neutral-500 font-semibold">Trusted By &amp; Featured Collaborations</p>
                         </div>
@@ -437,50 +452,50 @@
                             <div class="animate-marquee flex items-center opacity-75">
                                 <!-- Set 1 -->
                                 <div id="marquee-set-1" class="flex items-center shrink-0">
-                                    <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="AASA.png" alt="AASA" class="h-12 w-auto object-contain" /></div>
-                                    <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="ALTITUDE.png" alt="Altitude" class="h-12 w-auto object-contain" /></div>
-                                    <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="artem.png" alt="ArtsEmerson" class="h-12 w-auto object-contain" /></div>
-                                    <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="ASA.png" alt="ASA" class="h-12 w-auto object-contain" /></div>
-                                    <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="baaff_LOGO_full_color-scaled.png" alt="BAAFF" class="h-12 w-auto object-contain" /></div>
-                                    <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="BL.png" alt="BL" class="h-12 w-auto object-contain" /></div>
-                                    <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="Boston_Little_Saigon.png" alt="Boston Little Saigon" class="h-12 w-auto object-contain" /></div>
-                                    <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="LU.png" alt="Latinos Unidos" class="h-12 w-auto object-contain" /></div>
-                                    <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="AARW.png" alt="AARW" class="h-12 w-auto object-contain" /></div>
-                                    <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="Robert_Mitchel_Owenby_Photography_Logo.png" alt="Robert Mitchel Owenby Photography" class="h-12 w-auto object-contain" /></div>
-                                    <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="threecircles.png" alt="Three Circles Studio" class="h-12 w-auto object-contain" /></div>
-                                    <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="VSA.png" alt="Vietnamese Students Association UMass Amherst" class="h-12 w-auto object-contain" /></div>
-                                    <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="WAVE.png" alt="Life Sciences" class="h-12 w-auto object-contain" /></div>
+                                    <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="AASA.png" alt="AASA" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                    <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="ALTITUDE.png" alt="Altitude" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                    <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="artem.png" alt="ArtsEmerson" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                    <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="ASA.png" alt="ASA" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                    <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="baaff_LOGO_full_color-scaled.png" alt="BAAFF" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                    <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="BL.png" alt="BL" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                    <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="Boston_Little_Saigon.png" alt="Boston Little Saigon" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                    <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="LU.png" alt="Latinos Unidos" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                    <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="AARW.png" alt="AARW" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                    <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="Robert_Mitchel_Owenby_Photography_Logo.png" alt="Robert Mitchel Owenby Photography" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                    <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="threecircles.png" alt="Three Circles Studio" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                    <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="VSA.png" alt="Vietnamese Students Association UMass Amherst" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                    <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="WAVE.png" alt="Life Sciences" class="h-16 md:h-20 w-auto object-contain" /></div>
                                 </div>
 
                                 <!-- Set 2: Duplicate for Seamless Infinite Loop -->
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="AASA.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="ALTITUDE.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="artem.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="ASA.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="baaff_LOGO_full_color-scaled.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="BL.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="Boston_Little_Saigon.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="LU.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="AARW.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="Robert_Mitchel_Owenby_Photography_Logo.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="threecircles.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="VSA.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="WAVE.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="AASA.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="ALTITUDE.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="artem.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="ASA.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="baaff_LOGO_full_color-scaled.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="BL.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="Boston_Little_Saigon.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="LU.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="AARW.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="Robert_Mitchel_Owenby_Photography_Logo.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="threecircles.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="VSA.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="WAVE.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
 
                                 <!-- Set 3 -->
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="AASA.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="ALTITUDE.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="artem.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="ASA.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="baaff_LOGO_full_color-scaled.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="BL.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="Boston_Little_Saigon.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="LU.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="AARW.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="Robert_Mitchel_Owenby_Photography_Logo.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="threecircles.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="VSA.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
-                                <div class="flex items-center shrink-0 pr-12 md:pr-16"><img src="WAVE.png" alt="" aria-hidden="true" class="h-12 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="AASA.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="ALTITUDE.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="artem.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="ASA.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="baaff_LOGO_full_color-scaled.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="BL.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="Boston_Little_Saigon.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="LU.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="AARW.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="Robert_Mitchel_Owenby_Photography_Logo.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="threecircles.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="VSA.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
+                                <div class="flex items-center shrink-0 pr-14 md:pr-24"><img src="WAVE.png" alt="" aria-hidden="true" class="h-16 md:h-20 w-auto object-contain" /></div>
                             </div>
                         </div>
                     </div>
@@ -761,19 +776,19 @@
 
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <div class="group cursor-pointer relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', '[On Second Thought Ep. 1]')">
-                            <img src="movie_1.jpg" alt="On Second Thought Episode 1" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            
                             <div class="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition"></div>
                         </div>
                         <div class="group cursor-pointer relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', '[On Second Thought Ep. 2]')">
-                            <img src="movie_2.jpg" alt="On Second Thought Episode 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            
                             <div class="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition"></div>
                         </div>
                         <div class="group cursor-pointer relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', '[On Second Thought Ep. 3]')">
-                            <img src="movie_3.jpg" alt="On Second Thought Episode 3" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            
                             <div class="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition"></div>
                         </div>
                         <div class="group cursor-pointer relative overflow-hidden rounded-xl aspect-[9/16] bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition duration-500" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', '[On Second Thought Ep. 4]')">
-                            <img src="movie_4.jpg" alt="On Second Thought Episode 4" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            
                             <div class="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition"></div>
                         </div>
                     </div>
@@ -793,25 +808,25 @@
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                             <div>
                                 <a href="https://www.instagram.com/p/Daf0cq-REoG/" target="_blank" rel="noopener noreferrer" class="block aspect-[9/16] rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition">
-                                    <img src="Insta 1.png" alt="" class="w-full h-full object-cover">
+                                    <img src="Insta%201.png" data-fallback alt="" class="w-full h-full object-cover">
                                 </a>
                                 <p class="text-center text-xs text-neutral-400 mt-2">'Hot Dancing Granny' Short Film</p>
                             </div>
                             <div>
                                 <a href="https://www.instagram.com/p/Db5yf3GxLxN/" target="_blank" rel="noopener noreferrer" class="block aspect-[9/16] rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition">
-                                    <img src="Insta 2.png" alt="" class="w-full h-full object-cover">
+                                    <img src="Insta%202.png" data-fallback alt="" class="w-full h-full object-cover">
                                 </a>
                                 <p class="text-center text-xs text-neutral-400 mt-2">'Hot Dancing Granny' Short Film</p>
                             </div>
                             <div>
                                 <a href="https://www.instagram.com/p/DcYuu4UJjOw/" target="_blank" rel="noopener noreferrer" class="block aspect-[9/16] rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition">
-                                    <img src="Insta 3.png" alt="" class="w-full h-full object-cover">
+                                    <img src="Insta%203.png" data-fallback alt="" class="w-full h-full object-cover">
                                 </a>
                                 <p class="text-center text-xs text-neutral-400 mt-2">'Hot Dancing Granny' Short Film</p>
                             </div>
                             <div>
                                 <a href="https://www.instagram.com/p/Dctj5Kxpeof/" target="_blank" rel="noopener noreferrer" class="block aspect-[9/16] rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition">
-                                    <img src="Insta 4.png" alt="" class="w-full h-full object-cover">
+                                    <img src="Insta%204.png" data-fallback alt="" class="w-full h-full object-cover">
                                 </a>
                                 <p class="text-center text-xs text-neutral-400 mt-2">'Hot Dancing Granny' Short Film</p>
                             </div>
@@ -882,7 +897,7 @@
             <!-- Bio Section -->
             <div class="grid grid-cols-1 md:grid-cols-[360px_1fr] gap-12 items-start mb-20">
                 <div class="aspect-[4/5] rounded-2xl overflow-hidden bg-neutral-900 shadow-2xl relative sticky top-28">
-                    <img src="RICKY_HEADSHOT.png" 
+                    <img src="RICKY%20HEADSHOT.png" data-fallback 
                          alt="Ricky Huynh" 
                          class="w-full h-full object-cover">
                 </div>
@@ -921,25 +936,25 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                     <div class="group relative overflow-hidden rounded-lg bg-neutral-900 transition-transform duration-300 hover:-translate-y-1">
                         <div class="aspect-[2/3] w-full">
-                            <img src="https://upload.wikimedia.org/wikipedia/en/d/df/Arrival_%28film%29_poster.jpg" alt="Arrival" class="w-full h-full object-cover">
+                            <img src="Movies%201.png" alt="Favorite movie 1" data-fallback class="w-full h-full object-cover">
                         </div>
                     </div>
                     
                     <div class="group relative overflow-hidden rounded-lg bg-neutral-900 transition-transform duration-300 hover:-translate-y-1">
                         <div class="aspect-[2/3] w-full">
-                            <img src="https://upload.wikimedia.org/wikipedia/en/5/50/RatatouillePoster.jpg" alt="Ratatouille" class="w-full h-full object-cover">
+                            <img src="Movies%202.png" alt="Favorite movie 2" data-fallback class="w-full h-full object-cover">
                         </div>
                     </div>
 
                     <div class="group relative overflow-hidden rounded-lg bg-neutral-900 transition-transform duration-300 hover:-translate-y-1">
                         <div class="aspect-[2/3] w-full">
-                            <img src="https://upload.wikimedia.org/wikipedia/en/c/c2/WALL-E_poster.jpg" alt="WALL-E" class="w-full h-full object-cover">
+                            <img src="Movies%203.png" alt="Favorite movie 3" data-fallback class="w-full h-full object-cover">
                         </div>
                     </div>
 
                     <div class="group relative overflow-hidden rounded-lg bg-neutral-900 transition-transform duration-300 hover:-translate-y-1">
                         <div class="aspect-[2/3] w-full">
-                            <img src="https://upload.wikimedia.org/wikipedia/en/a/a2/Alien_Romulus_poster.jpg" alt="Alien: Romulus" class="w-full h-full object-cover">
+                            <img src="Movies%204.png" alt="Favorite movie 4" data-fallback class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
@@ -1484,6 +1499,22 @@
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         }
+
+
+        // Image extension fallback: tries other common extensions if the named file 404s
+        document.addEventListener('error', function (e) {
+            const img = e.target;
+            if (!(img instanceof HTMLImageElement) || !img.hasAttribute('data-fallback')) return;
+            const exts = ['png','jpg','jpeg','webp','PNG','JPG','JPEG'];
+            const tried = (img.dataset.tried || '').split(',').filter(Boolean);
+            const base = img.getAttribute('src').replace(/\.[A-Za-z]+$/, '');
+            const cur = (img.getAttribute('src').match(/\.([A-Za-z]+)$/) || [])[1];
+            if (cur) tried.push(cur);
+            const next = exts.find(x => !tried.includes(x));
+            if (!next) return;
+            img.dataset.tried = tried.join(',');
+            img.src = base + '.' + next;
+        }, true);
 
         function openVideoModal(url, title) {
             const modal = document.getElementById('video-modal');
