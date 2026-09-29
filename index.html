@@ -55,7 +55,7 @@
             overflow-x: hidden;
         }
         /* Auto-fit titles (sized by JS at the bottom of the page) */
-        .fit-1 { white-space: nowrap; }
+        .fit-1 { white-space: nowrap; display: block; max-width: 100%; min-width: 0; }
         .fit-2 { overflow-wrap: break-word; }
         /* Hero showreel: stays invisible until it is actually playing, so no YouTube loading/play UI ever shows */
         #hero-reel { opacity: 0; transition: opacity 0.8s ease; background: #000; }
@@ -228,7 +228,7 @@
                             <span class="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-3 py-1 rounded text-[10px] uppercase tracking-widest text-white">Film & Narrative</span>
                         </div>
                         <div class="flex items-center justify-between">
-                            <div>
+                            <div class="min-w-0 flex-1">
                                 <span class="text-xs uppercase tracking-widest text-neutral-500 font-medium">2026 • Dark Fantasy Short Film</span>
                                 <h3 class="text-2xl md:text-3xl font-serif fit-1 text-white mt-1 group-hover:text-neutral-300 transition">YEARN</h3>
                                 <p class="text-xs text-neutral-400 mt-1">Directed, Written & Edited</p>
@@ -244,7 +244,7 @@
                             <span class="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-3 py-1 rounded text-[10px] uppercase tracking-widest text-white">Events</span>
                         </div>
                         <div class="flex items-center justify-between">
-                            <div>
+                            <div class="min-w-0 flex-1">
                                 <span class="text-xs uppercase tracking-widest text-neutral-500 font-medium">July 2026 • Community Event</span>
                                 <h3 class="text-2xl md:text-3xl font-serif fit-1 text-white mt-1 group-hover:text-neutral-300 transition">Chợ Đêm Boston Little Saigon Night Market 2026</h3>
                                 <p class="text-xs text-neutral-400 mt-1">High-energy evening recap celebrating local culture in Boston, MA</p>
@@ -909,7 +909,7 @@
                 <div class="aspect-[4/5] md:aspect-auto md:self-stretch rounded-2xl overflow-hidden bg-neutral-900 shadow-2xl relative">
                     <img src="RICKY%20HEADSHOT.png" data-fallback 
                          alt="Ricky Huynh" 
-                         class="absolute inset-0 w-full h-full object-cover" style="object-position: center 35%;">
+                         class="absolute inset-0 w-full h-full object-cover" style="object-position: 40% 35%;">
                 </div>
                 <div class="space-y-6">
                     <div>
@@ -1228,11 +1228,11 @@
             const listContainer = document.getElementById('category-content-list');
             listContainer.innerHTML = data.items.map(item => `
                 <div onclick="openVideoModal('${item.url || 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1'}', '${item.title.replace(/'/g, "\\'")}')" class="group cursor-pointer p-6 bg-neutral-900/60 border border-neutral-800 rounded-xl hover:border-neutral-500 transition duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                    <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-4 min-w-0 flex-1">
                         <div class="w-12 h-12 rounded-lg bg-neutral-800 flex items-center justify-center text-white shrink-0 group-hover:bg-white group-hover:text-black transition">
                             <i class="fa-solid fa-play text-xs"></i>
                         </div>
-                        <div>
+                        <div class="min-w-0">
                             <h3 class="text-lg font-serif fit-1 text-white group-hover:text-amber-300 transition">${item.title}</h3>
                             <span class="text-xs uppercase tracking-wider text-neutral-400 mt-1 block md:hidden">Org: ${item.org} • ${item.date}</span>
                         </div>
@@ -1717,13 +1717,17 @@
             });
             return tops.length;
         }
+        function tooWide(el) {
+            return el.scrollWidth > el.clientWidth * 0.97;      // keep a little breathing room
+        }
         function fit(el, maxLines) {
             el.style.fontSize = '';
             if (!el.offsetParent) return;                      // hidden tab: fit later when shown
             var base = parseFloat(getComputedStyle(el).fontSize);
-            var size = base, floor = base * 0.25, guard = 0;
-            while (countLines(el) > maxLines && size > floor && guard++ < 60) {
-                size *= 0.94;
+            var size = base, floor = base * 0.12, guard = 0;
+            var isOne = maxLines === 1;
+            while ((countLines(el) > maxLines || (isOne && tooWide(el))) && size > floor && guard++ < 90) {
+                size *= 0.95;
                 el.style.fontSize = size + 'px';
             }
         }
