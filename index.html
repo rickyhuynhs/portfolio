@@ -41,9 +41,10 @@
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* TITLE FONT: replace the first name below with the exact family name shown in your Adobe Fonts kit */
-        :root { --title-font: 'YOUR-ADOBE-FONT-NAME', 'Playfair Display', serif; }
-        .nav-btn, #mobile-menu button { font-family: var(--title-font); }
+        /* TITLE FONT: Adobe Fonts kit yvm3uwm (HelloFont ID Shou Xie Tong Zhen Ti) */
+        :root { --title-font: "hellofont-id-shouxietongzhen", 'Playfair Display', sans-serif; }
+        .nav-btn, #mobile-menu button { font-family: var(--title-font); font-weight: 400; font-style: normal; }
+        .font-serif { font-weight: 400; font-style: normal; }
         body {
             background-color: #0a0a0a;
             color: #f3f4f6;
@@ -936,25 +937,25 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                     <div class="group relative overflow-hidden rounded-lg bg-neutral-900 transition-transform duration-300 hover:-translate-y-1">
                         <div class="aspect-[2/3] w-full">
-                            <img src="movie_1.jpg" alt="Arrival" class="w-full h-full object-cover">
+                            <img src="movie_1.jpg" data-fallback alt="Arrival" class="w-full h-full object-cover">
                         </div>
                     </div>
                     
                     <div class="group relative overflow-hidden rounded-lg bg-neutral-900 transition-transform duration-300 hover:-translate-y-1">
                         <div class="aspect-[2/3] w-full">
-                            <img src="movie_2.jpg" alt="Ratatouille" class="w-full h-full object-cover">
+                            <img src="movie_2.jpg" data-fallback alt="Ratatouille" class="w-full h-full object-cover">
                         </div>
                     </div>
 
                     <div class="group relative overflow-hidden rounded-lg bg-neutral-900 transition-transform duration-300 hover:-translate-y-1">
                         <div class="aspect-[2/3] w-full">
-                            <img src="movie_3.jpg" alt="Alien: Romulus" class="w-full h-full object-cover">
+                            <img src="movie_3.jpg" data-fallback alt="Alien: Romulus" class="w-full h-full object-cover">
                         </div>
                     </div>
 
                     <div class="group relative overflow-hidden rounded-lg bg-neutral-900 transition-transform duration-300 hover:-translate-y-1">
                         <div class="aspect-[2/3] w-full">
-                            <img src="movie_4.jpg" alt="Speed Racer" class="w-full h-full object-cover">
+                            <img src="movie_4.jpg" data-fallback alt="Speed Racer" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
@@ -1048,42 +1049,42 @@
                 <div class="animate-photo-marquee items-center gap-4">
                     <!-- Set 1 (10 photos) -->
                     <div id="photo-marquee-set-1" class="flex items-center gap-4 shrink-0">
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="BTS_1.png" alt="Behind the scenes photo 1" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_2.png" alt="Behind the scenes photo 2" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_3.png" alt="Behind the scenes photo 3" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_4.png" alt="Behind the scenes photo 4" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_5.png" alt="Behind the scenes photo 5" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_6.png" alt="Behind the scenes photo 6" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_7.png" alt="Behind the scenes photo 7" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_8.png" alt="Behind the scenes photo 8" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_9.png" alt="Behind the scenes photo 9" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_10.png" alt="Behind the scenes photo 10" loading="lazy" class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="BTS_1.png" alt="Behind the scenes photo 1" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_2.png" alt="Behind the scenes photo 2" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_3.png" alt="Behind the scenes photo 3" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_4.png" alt="Behind the scenes photo 4" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_5.png" alt="Behind the scenes photo 5" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_6.png" alt="Behind the scenes photo 6" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_7.png" alt="Behind the scenes photo 7" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_8.png" alt="Behind the scenes photo 8" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_9.png" alt="Behind the scenes photo 9" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_10.png" alt="Behind the scenes photo 10" data-fallback class="w-full h-full object-cover"></div>
                     </div>
                     <!-- Set 2: duplicate for seamless loop -->
                     <div class="flex items-center gap-4 shrink-0" aria-hidden="true">
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="BTS_1.png" alt="" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_2.png" alt="" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_3.png" alt="" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_4.png" alt="" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_5.png" alt="" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_6.png" alt="" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_7.png" alt="" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_8.png" alt="" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_9.png" alt="" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_10.png" alt="" loading="lazy" class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="BTS_1.png" alt="" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_2.png" alt="" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_3.png" alt="" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_4.png" alt="" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_5.png" alt="" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_6.png" alt="" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_7.png" alt="" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_8.png" alt="" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_9.png" alt="" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_10.png" alt="" data-fallback class="w-full h-full object-cover"></div>
                     </div>
                     <!-- Set 3: duplicate for wide viewports -->
                     <div class="flex items-center gap-4 shrink-0" aria-hidden="true">
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="BTS_1.png" alt="" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_2.png" alt="" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_3.png" alt="" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_4.png" alt="" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_5.png" alt="" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_6.png" alt="" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_7.png" alt="" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_8.png" alt="" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_9.png" alt="" loading="lazy" class="w-full h-full object-cover"></div>
-                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_10.png" alt="" loading="lazy" class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="BTS_1.png" alt="" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_2.png" alt="" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_3.png" alt="" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_4.png" alt="" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_5.png" alt="" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_6.png" alt="" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_7.png" alt="" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_8.png" alt="" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_9.png" alt="" data-fallback class="w-full h-full object-cover"></div>
+                        <div class="shrink-0 w-72 md:w-[26rem] aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-neutral-800"><img src="bts_10.png" alt="" data-fallback class="w-full h-full object-cover"></div>
                     </div>
                 </div>
             </div>
@@ -1519,19 +1520,29 @@
         }
 
 
-        // Image extension fallback: tries other common extensions if the named file 404s
+        // Image filename fallback: if a file 404s, try common name/extension variants
+        // (e.g. insta_1.png -> Insta_1.png, Insta 1.png, insta_1.jpg ...)
         document.addEventListener('error', function (e) {
             const img = e.target;
             if (!(img instanceof HTMLImageElement) || !img.hasAttribute('data-fallback')) return;
-            const exts = ['png','jpg','jpeg','webp','PNG','JPG','JPEG'];
-            const tried = (img.dataset.tried || '').split(',').filter(Boolean);
-            const base = img.getAttribute('src').replace(/\.[A-Za-z]+$/, '');
-            const cur = (img.getAttribute('src').match(/\.([A-Za-z]+)$/) || [])[1];
-            if (cur) tried.push(cur);
-            const next = exts.find(x => !tried.includes(x));
-            if (!next) return;
-            img.dataset.tried = tried.join(',');
-            img.src = base + '.' + next;
+            if (!img.__cands) {
+                const src = decodeURIComponent(img.getAttribute('src'));
+                const m = src.match(/^(.*\/)?([^\/]+?)(\.[A-Za-z0-9]+)?$/);
+                const dir = m[1] || '', stem = m[2], ext = (m[3] || '.png').slice(1);
+                const cap = x => x.charAt(0).toUpperCase() + x.slice(1);
+                const stems = [stem, cap(stem), stem.toUpperCase(), stem.toLowerCase(),
+                               stem.replace(/_/g, ' '), cap(stem.replace(/_/g, ' ')), stem.toUpperCase().replace(/_/g, ' '),
+                               stem.replace(/_/g, '-'), stem.replace(/_/g, ''), cap(stem.replace(/_/g, ''))];
+                const exts = [ext, 'png', 'PNG', 'jpg', 'jpeg', 'JPG', 'webp'];
+                const seen = new Set([src]);
+                img.__cands = [];
+                stems.forEach(st => exts.forEach(x => {
+                    const c = dir + st + '.' + x;
+                    if (!seen.has(c)) { seen.add(c); img.__cands.push(c); }
+                }));
+            }
+            const next = img.__cands.shift();
+            if (next) img.src = encodeURI(next);
         }, true);
 
         function openVideoModal(url, title) {
