@@ -54,6 +54,12 @@
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
+        /* Auto-fit titles (sized by JS at the bottom of the page) */
+        .fit-1 { white-space: nowrap; }
+        .fit-2 { overflow-wrap: break-word; }
+        /* Hero showreel: stays invisible until it is actually playing, so no YouTube loading/play UI ever shows */
+        #hero-reel { opacity: 0; transition: opacity 0.8s ease; background: #000; }
+        #hero-reel.is-live { opacity: 0.6; }
         /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -175,15 +181,15 @@
             <!-- Hero / Full-Width Container -->
             <section class="relative h-[90vh] w-full flex items-center justify-center overflow-hidden">
                 <div class="absolute inset-0 z-0">
-                    <iframe class="absolute inset-0 w-full h-full object-cover pointer-events-none scale-125 opacity-60" 
-                            src="https://www.youtube.com/embed/nmq4ATBxz-Q?autoplay=1&mute=1&loop=1&playlist=nmq4ATBxz-Q&controls=0&showinfo=0&autohide=1" 
-                            title="Showreel Background" frameborder="0"></iframe>
+                    <iframe id="hero-reel" class="absolute inset-0 w-full h-full object-cover pointer-events-none scale-125" 
+                            src="https://www.youtube.com/embed/nmq4ATBxz-Q?autoplay=1&mute=1&loop=1&playlist=nmq4ATBxz-Q&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&fs=0&playsinline=1&enablejsapi=1" 
+                            title="Showreel Background" frameborder="0" allow="autoplay; encrypted-media" tabindex="-1" aria-hidden="true"></iframe>
                     <div class="absolute inset-0 bg-black/50 cinematic-gradient"></div>
                 </div>
 
                 <div class="relative z-10 text-center px-6 max-w-5xl mx-auto mt-12">
                     <p class="text-xs md:text-sm uppercase tracking-[0.3em] text-neutral-400 mb-4 font-semibold">Filmmaker, Director & Creator</p>
-                    <h1 class="text-4xl md:text-7xl lg:text-8xl font-serif font-light tracking-tight text-white mb-8">
+                    <h1 class="text-4xl md:text-7xl lg:text-8xl font-serif fit-1 font-light tracking-tight text-white mb-8">
                         RICKY HUYNH
                     </h1>
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -206,7 +212,7 @@
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
                     <div>
                         <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">Selected Portfolio</p>
-                        <h2 class="text-3xl md:text-5xl font-serif text-white">Featured Works</h2>
+                        <h2 class="text-3xl md:text-5xl font-serif fit-1 text-white">Featured Works</h2>
                     </div>
                     <div class="mt-4 md:mt-0">
                         <button onclick="switchTab('film')" class="text-xs text-neutral-400 hover:text-white uppercase tracking-wider font-semibold">View All Works →</button>
@@ -224,7 +230,7 @@
                         <div class="flex items-center justify-between">
                             <div>
                                 <span class="text-xs uppercase tracking-widest text-neutral-500 font-medium">2026 • Dark Fantasy Short Film</span>
-                                <h3 class="text-xl font-serif text-white mt-1 group-hover:text-neutral-300 transition">YEARN</h3>
+                                <h3 class="text-2xl md:text-3xl font-serif fit-2 text-white mt-1 group-hover:text-neutral-300 transition">YEARN</h3>
                                 <p class="text-xs text-neutral-400 mt-1">Directed, Written & Edited</p>
                             </div>
                         </div>
@@ -240,7 +246,7 @@
                         <div class="flex items-center justify-between">
                             <div>
                                 <span class="text-xs uppercase tracking-widest text-neutral-500 font-medium">July 2026 • Community Event</span>
-                                <h3 class="text-xl font-serif text-white mt-1 group-hover:text-neutral-300 transition">Chợ Đêm Boston Little Saigon Night Market 2026</h3>
+                                <h3 class="text-2xl md:text-3xl font-serif fit-2 text-white mt-1 group-hover:text-neutral-300 transition">Chợ Đêm Boston Little Saigon Night Market 2026</h3>
                                 <p class="text-xs text-neutral-400 mt-1">High-energy evening recap celebrating local culture in Boston, MA</p>
                             </div>
                         </div>
@@ -253,7 +259,7 @@
         <div id="tab-film" class="tab-content hidden py-24 px-6 max-w-7xl mx-auto">
             <div class="mb-16 text-center max-w-3xl mx-auto">
                 <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">My Cinematic Universe</p>
-                <h2 class="text-3xl md:text-6xl font-serif text-white">Film & Narrative</h2>
+                <h2 class="text-3xl md:text-6xl font-serif fit-1 text-white">Film & Narrative</h2>
                 <p class="text-neutral-400 mt-4 text-base">A chronological archive of my stories, spanning fantasy, horror, documentary, and narrative shorts.</p>
             </div>
             
@@ -266,7 +272,7 @@
                     </div>
                     <div class="p-6">
                         <span class="text-xs uppercase tracking-widest text-neutral-500 font-semibold">2026 • Dark Fantasy Short Film</span>
-                        <h3 class="text-xl font-serif text-white mt-1">YEARN</h3>
+                        <h3 class="text-2xl md:text-3xl font-serif fit-2 text-white mt-1">YEARN</h3>
                         <p class="text-neutral-400 text-sm mt-2">Directed, Written & Edited</p>
                         <p class="text-neutral-300 text-xs mt-3 leading-relaxed">A young woman, imprisoned by vampire hunters, follows an otherworldly presence toward the one she's been longing for.</p>
                     </div>
@@ -280,7 +286,7 @@
                     </div>
                     <div class="p-6">
                         <span class="text-xs uppercase tracking-widest text-neutral-500 font-semibold">2025 • Narrative Short</span>
-                        <h3 class="text-xl font-serif text-white mt-1">The Crown and The Root</h3>
+                        <h3 class="text-2xl md:text-3xl font-serif fit-2 text-white mt-1">The Crown and The Root</h3>
                         <p class="text-neutral-400 text-sm mt-2">Directed, Written, Filmed & Edited</p>
                         <p class="text-neutral-300 text-xs mt-3 leading-relaxed">While creating this video, I found myself torn on the direction I wanted the visuals to take. Was it a story about finding purpose? A surreal fantasy about a queen? Or just a montage of beautiful moments? It’s up to you to decide.</p>
                     </div>
@@ -294,7 +300,7 @@
                     </div>
                     <div class="p-6">
                         <span class="text-xs uppercase tracking-widest text-neutral-500 font-semibold">2025 • Horror Short</span>
-                        <h3 class="text-xl font-serif text-white mt-1">A Family Friendly Camping Vlog</h3>
+                        <h3 class="text-2xl md:text-3xl font-serif fit-2 text-white mt-1">A Family Friendly Camping Vlog</h3>
                         <p class="text-neutral-400 text-sm mt-2">Directed, Written, Filmed & Edited</p>
                         <p class="text-neutral-300 text-xs mt-3 leading-relaxed">On what seems like another routine camping trip, a cheerful family-friendly YouTube vlogger heads out alone for the first time without her usual partner. But when she crosses paths with a stranger in the woods, everything changes. What happens to Aly? Why would someone do this to her?</p>
                     </div>
@@ -308,7 +314,7 @@
                     </div>
                     <div class="p-6">
                         <span class="text-xs uppercase tracking-widest text-neutral-500 font-semibold">2025 • Sci-fi Short</span>
-                        <h3 class="text-xl font-serif text-white mt-1">VITA ULTRA</h3>
+                        <h3 class="text-2xl md:text-3xl font-serif fit-2 text-white mt-1">VITA ULTRA</h3>
                         <p class="text-neutral-400 text-sm mt-2">Directed, Written & Edited</p>
                         <p class="text-neutral-300 text-xs mt-3 leading-relaxed">On a mission to uncover the truth about his past, an astronaut crashes on a strange world where the inhabitants hold an unsettling connection to him.</p>
                     </div>
@@ -322,7 +328,7 @@
                     </div>
                     <div class="p-6">
                         <span class="text-xs uppercase tracking-widest text-neutral-500 font-semibold">2025 • Narrative Short</span>
-                        <h3 class="text-xl font-serif text-white mt-1">Would You Change Things?</h3>
+                        <h3 class="text-2xl md:text-3xl font-serif fit-2 text-white mt-1">Would You Change Things?</h3>
                         <p class="text-neutral-400 text-sm mt-2">Directed, Written & Edited</p>
                         <p class="text-neutral-300 text-xs mt-3 leading-relaxed">Even when you know how a relationship will end, would you still embrace it and cherish the moments it gives you?</p>
                     </div>
@@ -336,7 +342,7 @@
                     </div>
                     <div class="p-6">
                         <span class="text-xs uppercase tracking-widest text-neutral-500 font-semibold">2024 • Documentary Short</span>
-                        <h3 class="text-xl font-serif text-white mt-1">How Adoption Shaped His Sense of Self</h3>
+                        <h3 class="text-2xl md:text-3xl font-serif fit-2 text-white mt-1">How Adoption Shaped His Sense of Self</h3>
                         <p class="text-neutral-400 text-sm mt-2">Directed, Filmed & Edited</p>
                         <p class="text-neutral-300 text-xs mt-3 leading-relaxed">This short documentary tells the heartfelt adoption story of Jonathan Dees, who was adopted from Korea at just two years old. Through his journey, we gain insight into his upbringing alongside his siblings and reflect on the cherished, competitive memories they share. Adoption profoundly shaped Jonathan's identity, and he wouldn’t change a thing about the path that led him to become the person he is today.</p>
                     </div>
@@ -350,7 +356,7 @@
                     </div>
                     <div class="p-6">
                         <span class="text-xs uppercase tracking-widest text-neutral-500 font-semibold">2024 • Horror Short</span>
-                        <h3 class="text-xl font-serif text-white mt-1">Maria</h3>
+                        <h3 class="text-2xl md:text-3xl font-serif fit-2 text-white mt-1">Maria</h3>
                         <p class="text-neutral-400 text-sm mt-2">Written, Directed & Edited</p>
                         <p class="text-neutral-300 text-xs mt-3 leading-relaxed">Inspired by ‘Pearl’ (2022), Maria tells the story of a girl whose failed relationship takes a deadly turn. When she realizes her partner will never treat her the way she deserves, she decides to take matters into her own hands.</p>
                     </div>
@@ -364,7 +370,7 @@
                     </div>
                     <div class="p-6">
                         <span class="text-xs uppercase tracking-widest text-neutral-500 font-semibold">2023 • Narrative Short</span>
-                        <h3 class="text-xl font-serif text-white mt-1">Do You Remember</h3>
+                        <h3 class="text-2xl md:text-3xl font-serif fit-2 text-white mt-1">Do You Remember</h3>
                         <p class="text-neutral-400 text-sm mt-2">Written, Directed & Edited</p>
                         <p class="text-neutral-300 text-xs mt-3 leading-relaxed">A couple reminisces on their past memories through old photos. After finding their digital camera tucked away in a 'memories' box, they discuss the moments leading up to where they are now.</p>
                     </div>
@@ -378,7 +384,7 @@
                     </div>
                     <div class="p-6">
                         <span class="text-xs uppercase tracking-widest text-neutral-500 font-semibold">2022 • Narrative Short</span>
-                        <h3 class="text-xl font-serif text-white mt-1">Dear Anna</h3>
+                        <h3 class="text-2xl md:text-3xl font-serif fit-2 text-white mt-1">Dear Anna</h3>
                         <p class="text-neutral-400 text-sm mt-2">Co-written, Co-directed & Edited</p>
                         <p class="text-neutral-300 text-xs mt-3 leading-relaxed">A young woman reflects on her past relationship with her ex-girlfriend. The beauty and the pain of their connection are looked at through the eyes of a letter.</p>
                     </div>
@@ -394,7 +400,7 @@
                 <!-- Section Title -->
                 <div class="text-center max-w-3xl mx-auto mb-10">
                     <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">Your Moments, Through My Lens</p>
-                    <h2 class="text-4xl md:text-7xl font-serif text-white">Videography Collection</h2>
+                    <h2 class="text-4xl md:text-7xl font-serif fit-1 text-white">Videography Collection</h2>
                     <p class="text-neutral-400 mt-4 text-base">I want my videos to feel like you're right back there, surrounded by the people and moments that made the day special.</p>
                 </div>
 
@@ -431,7 +437,7 @@
                                         <span class="px-3 py-1 bg-amber-950/60 text-amber-300 border border-amber-700/50 text-[10px] uppercase tracking-widest font-semibold rounded-full inline-block">Community Event</span>
                                     </div>
                                 </div>
-                                <h3 class="text-2xl md:text-3xl font-serif text-white">Chợ Đêm Boston Little Saigon Night Market 2026</h3>
+                                <h3 class="text-2xl md:text-3xl font-serif fit-2 text-white">Chợ Đêm Boston Little Saigon Night Market 2026</h3>
                                 <p class="text-neutral-400 text-sm leading-relaxed">
                                     A high-energy evening recap celebrating local culture, community leaders, and live performances in Dorchester, MA.
                                 </p>
@@ -566,7 +572,7 @@
                 <div id="videography-weddings" class="hidden space-y-20">
                     <div class="text-center max-w-7xl mx-auto py-6 px-4">
                         <i class="fa-solid fa-quote-left text-3xl md:text-4xl text-accentGold/40"></i>
-                        <p class="font-serif italic text-xl md:text-2xl text-neutral-200 leading-snug md:leading-snug mt-3">We really love the video, we thought it captured our day beautifully. We're happy with all of the film footage you included. It looks highly professional and better than we could have imagined.</p>
+                        <p class="font-serif fit-2 italic text-xl md:text-2xl text-neutral-200 leading-snug md:leading-snug mt-3">We really love the video, we thought it captured our day beautifully. We're happy with all of the film footage you included. It looks highly professional and better than we could have imagined.</p>
                         <i class="fa-solid fa-quote-right text-3xl md:text-4xl text-accentGold/40 mt-3 inline-block"></i>
                         <p class="text-xs text-neutral-500 uppercase tracking-widest mt-3">— Matthew &amp; Melissa</p>
                     </div>
@@ -587,7 +593,7 @@
                                     <span class="px-3 py-1 bg-amber-900/30 text-amber-300 border border-amber-800/40 text-[10px] uppercase tracking-widest font-semibold rounded-full inline-block">Most Recent Wedding</span>
                                     <span class="px-3 py-1 bg-sky-900/30 text-sky-300 border border-sky-800/40 text-[10px] uppercase tracking-widest font-semibold rounded-full inline-block">Long Form Video</span>
                                 </div>
-                                <h3 class="text-2xl md:text-3xl font-serif text-white">Matthew &amp; Melissa</h3>
+                                <h3 class="text-2xl md:text-3xl font-serif fit-2 text-white">Matthew &amp; Melissa</h3>
                                 <p class="text-neutral-400 text-sm leading-relaxed">
                                     An intimate ceremony centered around personal vows, golden-hour portraits, and raw emotional moments shared with family.
                                 </p>
@@ -605,7 +611,7 @@
                         <!-- Row 1: Text on Left, Content Block on Right -->
                         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                             <div class="lg:col-span-5 space-y-4">
-                                <h3 class="text-2xl md:text-4xl font-serif font-bold text-white tracking-tight uppercase leading-snug">
+                                <h3 class="text-2xl md:text-4xl font-serif fit-2 font-bold text-white tracking-tight uppercase leading-snug">
                                     QUIET MOMENTS BEFORE "I DO"
                                 </h3>
                                 <p class="text-neutral-400 text-sm md:text-base leading-relaxed">
@@ -624,7 +630,7 @@
                                 <video class="w-full h-full object-cover group-hover:scale-105 transition duration-700" src="couplleee.mp4" autoplay muted loop playsinline></video>
                             </div>
                             <div class="lg:col-span-5 lg:order-2 order-1 space-y-4">
-                                <h3 class="text-2xl md:text-4xl font-serif font-bold text-white tracking-tight uppercase leading-snug">
+                                <h3 class="text-2xl md:text-4xl font-serif fit-2 font-bold text-white tracking-tight uppercase leading-snug">
                                     SUNLIT PORTRAITS & HAPPY LAUGHS
                                 </h3>
                                 <p class="text-neutral-400 text-sm md:text-base leading-relaxed">
@@ -637,7 +643,7 @@
                         <!-- Row 3: Text on Left, Content Block on Right -->
                         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                             <div class="lg:col-span-5 space-y-4">
-                                <h3 class="text-2xl md:text-4xl font-serif font-bold text-white tracking-tight uppercase leading-snug">
+                                <h3 class="text-2xl md:text-4xl font-serif fit-2 font-bold text-white tracking-tight uppercase leading-snug">
                                     TOASTS, CANDLELIGHT & BALLROOM ELEGANCE
                                 </h3>
                                 <p class="text-neutral-400 text-sm md:text-base leading-relaxed">
@@ -661,7 +667,7 @@
                                 <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
                             </div>
                             <div class="p-6 md:p-8 space-y-2">
-                                <h3 class="text-xl md:text-2xl font-serif text-white">Long Form Highlights</h3>
+                                <h3 class="text-xl md:text-2xl font-serif fit-2 text-white">Long Form Highlights</h3>
                                 <p class="text-neutral-400 text-xs md:text-sm uppercase tracking-widest">4–7 Minutes</p>
                                 <p class="text-neutral-300 text-xs md:text-sm">The full day, told through all the moments that made it yours.</p>
                             </div>
@@ -674,7 +680,7 @@
                                 <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
                             </div>
                             <div class="p-6 md:p-8 space-y-2">
-                                <h3 class="text-xl md:text-2xl font-serif text-white">Short Form Highlights</h3>
+                                <h3 class="text-xl md:text-2xl font-serif fit-2 text-white">Short Form Highlights</h3>
                                 <p class="text-neutral-400 text-xs md:text-sm uppercase tracking-widest">15–60 Seconds</p>
                                 <p class="text-neutral-300 text-xs md:text-sm">All the good stuff, cut into one little film.</p>
                             </div>
@@ -694,7 +700,7 @@
                         <i class="fa-solid fa-arrow-left"></i> Back to Videography
                     </button>
                     <p class="text-xs uppercase tracking-[0.2em] text-indigo-400 font-semibold" id="category-detail-badge">Category</p>
-                    <h2 class="text-3xl md:text-5xl font-serif text-white mt-1" id="category-detail-title">Category Title</h2>
+                    <h2 class="text-3xl md:text-5xl font-serif fit-1 text-white mt-1" id="category-detail-title">Category Title</h2>
                     <p class="text-neutral-400 mt-2 text-sm max-w-2xl" id="category-detail-desc">Category description placeholder.</p>
                 </div>
 
@@ -711,7 +717,7 @@
         <div id="tab-content" class="tab-content hidden py-24 px-6 max-w-7xl mx-auto">
             <div class="text-center max-w-3xl mx-auto mb-10">
                 <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">The World of Social Media</p>
-                <h2 class="text-4xl md:text-7xl font-serif text-white">I Make Content</h2>
+                <h2 class="text-4xl md:text-7xl font-serif fit-1 text-white">I Make Content</h2>
                 <p class="text-neutral-400 mt-4 text-base">A mix of the stories I've created for yourself and the content I've created for others, from passion projects to branded and social content.</p>
             </div>
 
@@ -738,7 +744,7 @@
                         <img src="https://img.youtube.com/vi/_0WcxysCS0E/maxresdefault.jpg" alt="Hello, 25" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition"></div>
                     </div>
-                    <h3 class="text-xl md:text-2xl font-serif text-white">Hello, 25</h3>
+                    <h3 class="text-xl md:text-2xl font-serif fit-2 text-white">Hello, 25</h3>
                 </div>
 
                 <!-- 3 Highlighted Videos -->
@@ -748,7 +754,7 @@
                             <img src="https://img.youtube.com/vi/AOLwA1ZddVQ/maxresdefault.jpg" alt="This Is Where My Life Changes" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             <div class="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition"></div>
                         </div>
-                        <h4 class="text-base font-serif text-white">This Is Where My Life Changes</h4>
+                        <h4 class="text-base font-serif fit-2 text-white">This Is Where My Life Changes</h4>
                         <p class="text-neutral-400 text-xs italic">I am an independent Asian American filmmaker, and I just got accepted into the American Pavilion Cannes Student Program, but I need help getting there..</p>
                     </div>
                     <div class="space-y-3">
@@ -756,7 +762,7 @@
                             <img src="https://img.youtube.com/vi/uA87aWL6LOg/maxresdefault.jpg" alt="A Letter to Myself Before 24" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             <div class="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition"></div>
                         </div>
-                        <h4 class="text-base font-serif text-white">A Letter to Myself Before 24</h4>
+                        <h4 class="text-base font-serif fit-2 text-white">A Letter to Myself Before 24</h4>
                         <p class="text-neutral-400 text-xs italic">In this, I ask myself, “Who am I?” as I explore the memories and experiences I’ve gone through up until the age of 24. It’s both a time capsule for my future self and a letter of appreciation for everything that has brought me to this point.</p>
                     </div>
                     <div class="space-y-3">
@@ -764,7 +770,7 @@
                             <img src="https://img.youtube.com/vi/mLL6piYjUiw/maxresdefault.jpg" alt="I Watched 190 Movies in 2024" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             <div class="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition"></div>
                         </div>
-                        <h4 class="text-base font-serif text-white">I Watched 190 Movies in 2024. These are my FAVORITE Every Month!</h4>
+                        <h4 class="text-base font-serif fit-2 text-white">I Watched 190 Movies in 2024. These are my FAVORITE Every Month!</h4>
                         <p class="text-neutral-400 text-xs italic">In 2024, I watched a ton of movies. Here are my favorite ones from each month!</p>
                     </div>
                 </div>
@@ -908,7 +914,7 @@
                 <div class="space-y-6">
                     <div>
                         <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">About Me</p>
-                        <h2 class="text-4xl font-serif text-white">Hi there! I'm Ricky.</h2>
+                        <h2 class="text-4xl font-serif fit-1 text-white">Hi there! I'm Ricky.</h2>
                     </div>
                     <p class="text-neutral-300 leading-relaxed text-base">
                         I'm an independent filmmaker, freelance videographer, and editor based in Boston, with a love for storytelling in pretty much every form. I've been making videos for around 8 years now, and somewhere along the way, it grew from a hobby into something I genuinely want to build my life around.
@@ -931,7 +937,7 @@
             <!-- Favorite Movies Section -->
             <div class="border-t border-neutral-800 pt-16">
                 <div class="text-center mb-10">
-                    <h3 class="text-3xl md:text-4xl font-serif text-white mb-2">My Favorite Movies</h3>
+                    <h3 class="text-3xl md:text-4xl font-serif fit-1 text-white mb-2">My Favorite Movies</h3>
                     <p class="text-sm text-neutral-400">
                         (Add me on <a href="https://letterboxd.com/ruhruh/" target="_blank" rel="noopener noreferrer" class="underline hover:text-white transition">Letterboxd</a> &#128540;)
                     </p>
@@ -969,7 +975,7 @@
         <div id="tab-contact" class="tab-content hidden py-24 px-6 max-w-4xl mx-auto">
             <div class="text-center mb-16">
                 <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">Get In Touch</p>
-                <h2 class="text-4xl md:text-5xl font-serif text-white mb-4">Let's Create Something Together</h2>
+                <h2 class="text-4xl md:text-5xl font-serif fit-1 text-white mb-4">Let's Create Something Together</h2>
                 <p class="text-neutral-400 max-w-lg mx-auto text-sm md:text-base">Have a project, a story to tell, or just want to talk about movies?</p>
             </div>
 
@@ -1227,7 +1233,7 @@
                             <i class="fa-solid fa-play text-xs"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-serif text-white group-hover:text-amber-300 transition">${item.title}</h3>
+                            <h3 class="text-lg font-serif fit-2 text-white group-hover:text-amber-300 transition">${item.title}</h3>
                             <span class="text-xs uppercase tracking-wider text-neutral-400 mt-1 block md:hidden">Org: ${item.org} • ${item.date}</span>
                         </div>
                     </div>
@@ -1387,7 +1393,7 @@
 
             return `
                 <div>
-                    <h4 class="text-base md:text-lg font-serif text-white mb-3">${project.title}</h4>
+                    <h4 class="text-base md:text-lg font-serif fit-2 text-white mb-3">${project.title}</h4>
                     <div class="flex gap-1.5 h-48 md:h-64 overflow-hidden">${photosHtml}</div>
                     <div class="flex justify-end mt-2">
                         <button onclick="openBtsGallery(${projectIndex})" class="text-[11px] uppercase tracking-widest text-neutral-400 hover:text-white transition underline underline-offset-4 decoration-neutral-600">Show All</button>
@@ -1696,6 +1702,63 @@
         function initPhotoMarquee() {
             initMeasuredMarquee('photo-marquee-set-1', '--photo-marquee-shift');
         }
+    </script>
+
+    <script>
+    /* ===== Auto-fit titles: shrink text only as much as needed to hit the line limit ===== */
+    (function () {
+        function countLines(el) {
+            var r = document.createRange();
+            r.selectNodeContents(el);
+            var rects = Array.prototype.slice.call(r.getClientRects()).filter(function (x) { return x.width > 0 && x.height > 0; });
+            if (!rects.length) return 0;
+            var tops = [];
+            rects.forEach(function (x) {
+                if (!tops.some(function (t) { return Math.abs(t - x.top) < x.height * 0.5; })) tops.push(x.top);
+            });
+            return tops.length;
+        }
+        function fit(el, maxLines) {
+            el.style.fontSize = '';
+            if (!el.offsetParent) return;                      // hidden tab: fit later when shown
+            var base = parseFloat(getComputedStyle(el).fontSize);
+            var size = base, floor = base * 0.25, guard = 0;
+            while (countLines(el) > maxLines && size > floor && guard++ < 60) {
+                size *= 0.94;
+                el.style.fontSize = size + 'px';
+            }
+        }
+        var queued = false;
+        function fitAll() {
+            queued = false;
+            document.querySelectorAll('.fit-1').forEach(function (el) { fit(el, 1); });
+            document.querySelectorAll('.fit-2').forEach(function (el) { fit(el, 2); });
+        }
+        function queue() { if (!queued) { queued = true; requestAnimationFrame(fitAll); } }
+        window.fitTitles = queue;
+        window.addEventListener('load', queue);
+        window.addEventListener('resize', queue);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(queue);
+        setTimeout(queue, 800); setTimeout(queue, 2500);       // catch late Adobe Fonts loading
+        new MutationObserver(queue).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
+        queue();
+
+        /* ===== Hero showreel: reveal only once it is truly playing ===== */
+        var reel = document.getElementById('hero-reel');
+        if (reel) {
+            var live = false;
+            function reveal() { if (!live) { live = true; reel.classList.add('is-live'); } }
+            function listen() { try { reel.contentWindow.postMessage(JSON.stringify({ event: 'listening', id: 1 }), '*'); } catch (e) {} }
+            reel.addEventListener('load', function () { listen(); setTimeout(listen, 500); setTimeout(listen, 1500); });
+            window.addEventListener('message', function (e) {
+                if (e.source !== reel.contentWindow) return;
+                var d = e.data; if (typeof d === 'string') { try { d = JSON.parse(d); } catch (x) { return; } }
+                if (!d) return;
+                if ((d.event === 'onStateChange' && d.info === 1) || (d.info && d.info.playerState === 1)) setTimeout(reveal, 400);
+            });
+            setTimeout(reveal, 6000);                              // safety fallback
+        }
+    })();
     </script>
 </body>
 </html>
