@@ -57,7 +57,7 @@
         /* Videography dropdown (desktop nav) */
         .nav-sub { font-family: var(--title-font); font-weight: 400; zoom: var(--nav-scale); }
         .nav-dd-menu { display: none; z-index: 60; }
-        .nav-dd:hover .nav-dd-menu, .nav-dd:focus-within .nav-dd-menu, .nav-dd.open .nav-dd-menu { display: block; }
+        .nav-dd:hover .nav-dd-menu { display: block; }
         .nav-dd.suppress .nav-dd-menu { display: none !important; }
         body {
             background-color: #0a0a0a;
@@ -203,7 +203,7 @@
             <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium tracking-wider uppercase text-neutral-400">
                 <button onclick="switchTab('film')" class="nav-btn hover:text-white transition" data-tab="film">Film & Narrative</button>
                 <div id="nav-video-dd" class="nav-dd relative">
-                    <button type="button" onclick="toggleVideoDropdown(event)" class="nav-btn hover:text-white transition" data-tab="videography" aria-haspopup="true" aria-expanded="false">Videography <i class="fa-solid fa-chevron-down text-[0.5em] align-middle ml-1"></i></button>
+                    <button type="button" class="nav-btn hover:text-white transition" data-tab="videography" aria-haspopup="true">Videography</button>
                     <div class="nav-dd-menu absolute left-1/2 -translate-x-1/2 top-full pt-4">
                         <div class="bg-[#0f0f0f] border border-neutral-800 rounded-xl shadow-2xl py-2 min-w-[11rem] text-center">
                             <button type="button" onclick="openVideography('events')" class="nav-sub block w-full px-6 py-2 text-neutral-300 hover:text-white hover:bg-neutral-900 transition">Events</button>
@@ -1350,19 +1350,8 @@
             switchTab('videography');
             switchVideographySubtab(subtab, true);
             const dd = document.getElementById('nav-video-dd');
-            if (dd) { dd.classList.remove('open'); dd.classList.add('suppress'); }
+            if (dd) dd.classList.add('suppress');   // hide right after a pick; hover re-enables it
         }
-        function toggleVideoDropdown(e) {
-            e.stopPropagation();
-            const dd = document.getElementById('nav-video-dd');
-            dd.classList.remove('suppress');
-            const open = dd.classList.toggle('open');
-            dd.querySelector('button').setAttribute('aria-expanded', open);
-        }
-        document.addEventListener('click', function (e) {
-            const dd = document.getElementById('nav-video-dd');
-            if (dd && !dd.contains(e.target)) dd.classList.remove('open');
-        });
         document.getElementById('nav-video-dd').addEventListener('mouseleave', function () { this.classList.remove('suppress'); });
 
         // Behind the Scenes Photography — data-driven so the page-number control only shows as
@@ -1674,7 +1663,6 @@
             data.append('_template', 'table');
             data.append('_captcha', 'false');
             try {
-                if (location.protocol === 'file:') throw new Error('Form sending only works once the site is hosted online (not opened from a local file).');
                 const res = await fetch('https://formsubmit.co/ajax/' + CONTACT_EMAIL, {
                     method: 'POST', headers: { 'Accept': 'application/json' }, body: data
                 });
@@ -1683,11 +1671,8 @@
                 show('Thank you for reaching out! Your message has been sent. I\'ll get back to you soon.', true);
                 form.reset();
             } catch (err) {
-                // Fallback: open the visitor's own email app with everything pre-filled so the inquiry still reaches the inbox
-                const body = 'Name: ' + data.get('name') + '\nEmail: ' + data.get('email') + '\nInquiry: ' + data.get('inquiry_type') + '\n\n' + data.get('message');
-                console.warn('Contact form:', err && err.message);
-                show('Opening your email app with your message ready to send to ' + CONTACT_EMAIL + '. Just hit send there!', false);
-                window.location.href = 'mailto:' + CONTACT_EMAIL + '?subject=' + encodeURIComponent('Website inquiry: ' + data.get('inquiry_type')) + '&body=' + encodeURIComponent(body);
+                console.error('Contact form error:', err);
+                show('Sorry, that message could not be sent' + (err && err.message ? ' (' + err.message + ')' : '') + '. Please try again in a moment.', false);
             } finally {
                 btn.disabled = false; btn.textContent = label;
             }
