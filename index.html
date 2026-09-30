@@ -209,7 +209,7 @@
 
             <!-- Featured Work -->
             <section class="py-24 px-6 max-w-7xl mx-auto">
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-6">
                     <div>
                         <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">Selected Portfolio</p>
                         <h2 class="text-3xl md:text-5xl font-serif fit-1 text-white">Featured Works</h2>
@@ -437,7 +437,7 @@
                                         <span class="px-3 py-1 bg-amber-950/60 text-amber-300 border border-amber-700/50 text-[10px] uppercase tracking-widest font-semibold rounded-full inline-block">Community Event</span>
                                     </div>
                                 </div>
-                                <h3 class="text-2xl md:text-3xl font-serif fit-1 text-white">Chợ Đêm Boston Little Saigon Night Market 2026</h3>
+                                <h3 class="text-2xl md:text-3xl font-serif fit-2 leading-snug text-white">Chợ Đêm Boston Little Saigon Night Market 2026</h3>
                                 <p class="text-neutral-400 text-sm leading-relaxed">
                                     A high-energy evening recap celebrating local culture, community leaders, and live performances in Dorchester, MA.
                                 </p>
@@ -909,7 +909,7 @@
                 <div class="aspect-[4/5] md:aspect-auto md:self-stretch rounded-2xl overflow-hidden bg-neutral-900 shadow-2xl relative">
                     <img src="RICKY%20HEADSHOT.png" data-fallback 
                          alt="Ricky Huynh" 
-                         class="absolute inset-0 w-full h-full object-cover" style="object-position: 30% 35%;">
+                         class="absolute inset-0 w-full h-full object-cover" style="object-position: 0% 35%;">
                 </div>
                 <div class="space-y-6">
                     <div>
@@ -1232,7 +1232,7 @@
                         <div class="w-12 h-12 rounded-lg bg-neutral-800 flex items-center justify-center text-white shrink-0 group-hover:bg-white group-hover:text-black transition">
                             <i class="fa-solid fa-play text-xs"></i>
                         </div>
-                        <div class="min-w-0">
+                        <div class="min-w-0 flex-1">
                             <h3 class="text-lg font-serif fit-1 text-white group-hover:text-amber-300 transition">${item.title}</h3>
                             <span class="text-xs uppercase tracking-wider text-neutral-400 mt-1 block md:hidden">Org: ${item.org} • ${item.date}</span>
                         </div>
@@ -1332,14 +1332,14 @@
             {
                 title: "'Hot Dancing Granny' Short Film - BTS Photographer",
                 photos: [
-                    'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=480&q=80',
-                    'https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?auto=format&fit=crop&w=480&q=80',
-                    'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=480&q=80',
-                    'https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=480&q=80',
-                    'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=480&q=80',
-                    'https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=480&q=80',
-                    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=480&q=80',
-                    'https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?auto=format&fit=crop&w=480&q=80'
+                    '',
+                    '',
+                    '',
+                    '',
+                    '',
+                    '',
+                    '',
+                    ''
                 ]
             },
             {
@@ -1370,14 +1370,14 @@
             {
                 title: "'Apparently by Chance' Short Film - BTS Photographer",
                 photos: [
-                    'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=480&q=80',
-                    'https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=480&q=80',
-                    'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=480&q=80',
-                    'https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?auto=format&fit=crop&w=480&q=80',
-                    'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=480&q=80',
-                    'https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=480&q=80',
-                    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=480&q=80',
-                    'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=480&q=80'
+                    '',
+                    '',
+                    '',
+                    '',
+                    '',
+                    '',
+                    '',
+                    ''
                 ]
             }
         ];
@@ -1387,7 +1387,7 @@
 
         function buildBtsRowHtml(project, projectIndex) {
             const photosHtml = project.photos.slice(0, 8).map((url, i) => `
-                <div class="flex-1 hover:flex-[5_1_0%] transition-all duration-500 ease-out overflow-hidden rounded-lg cursor-pointer min-w-0" onclick="openBtsGallery(${projectIndex})"><img src="${url}" data-fallback alt="${project.title.replace(/"/g, '')} ${i + 1}" class="w-full h-full object-cover"></div>
+                <div class="flex-1 hover:flex-[5_1_0%] transition-all duration-500 ease-out overflow-hidden rounded-lg cursor-pointer min-w-0 bg-neutral-900 border border-neutral-800" onclick="openBtsGallery(${projectIndex})">${url ? `<img src="${url}" data-fallback alt="${project.title.replace(/"/g, '')} ${i + 1}" class="w-full h-full object-cover">` : ''}</div>
             `).join('');
 
             return `
@@ -1494,7 +1494,7 @@
             if (project) {
                 titleEl.textContent = project.title;
                 gridEl.innerHTML = project.photos.map((url, i) => `
-                    <img src="${url}" data-fallback loading="lazy" alt="${project.title.replace(/"/g, '')} ${i + 1}" class="w-full aspect-video object-cover rounded-lg">
+                    ${url ? `<img src="${url}" data-fallback loading="lazy" alt="${project.title.replace(/"/g, '')} ${i + 1}" class="w-full aspect-video object-cover rounded-lg">` : `<div class="w-full aspect-video rounded-lg bg-neutral-900 border border-neutral-800"></div>`}
                 `).join('');
             } else {
                 titleEl.textContent = 'Behind the Scenes Photography';
