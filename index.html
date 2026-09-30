@@ -1646,6 +1646,11 @@
         }
 
         const CONTACT_EMAIL = 'rickyhuynhcontact@gmail.com';
+        // OPTIONAL (more reliable, no activation email): get a free access key at https://web3forms.com
+        // (enter rickyhuynhcontact@gmail.com, key arrives by email) and paste it between the quotes.
+        // While this is empty, the form uses FormSubmit instead.
+        const WEB3FORMS_KEY = '';
+
         async function handleContactSubmit(event) {
             event.preventDefault();
             const form = event.target;
@@ -1659,20 +1664,43 @@
             if (data.get('_honey')) return;                       // spam trap
             const label = btn.textContent;
             btn.disabled = true; btn.textContent = 'Sending…';
-            data.append('_subject', 'New website inquiry: ' + data.get('inquiry_type') + ' (' + data.get('name') + ')');
-            data.append('_template', 'table');
-            data.append('_captcha', 'false');
+            const subject = 'New website inquiry: ' + data.get('inquiry_type') + ' (' + data.get('name') + ')';
             try {
-                const res = await fetch('https://formsubmit.co/ajax/' + CONTACT_EMAIL, {
-                    method: 'POST', headers: { 'Accept': 'application/json' }, body: data
-                });
-                const out = await res.json().catch(() => ({}));
-                if (!res.ok || out.success === 'false' || out.success === false) throw new Error(out.message || 'Send failed');
+                let res, payload;
+                if (WEB3FORMS_KEY) {
+                    payload = {
+                        access_key: WEB3FORMS_KEY, subject: subject,
+                        name: data.get('name'), email: data.get('email'),
+                        inquiry_type: data.get('inquiry_type'), message: data.get('message')
+                    };
+                    res = await fetch('https://api.web3forms.com/submit', {
+                        method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                } else {
+                    payload = {
+                        name: data.get('name'), email: data.get('email'),
+                        inquiry_type: data.get('inquiry_type'), message: data.get('message'),
+                        _subject: subject, _template: 'table', _captcha: 'false'
+                    };
+                    res = await fetch('https://formsubmit.co/ajax/' + CONTACT_EMAIL, {
+                        method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                }
+                const raw = await res.text();
+                let out = {};
+                try { out = JSON.parse(raw); } catch (e) {}
+                const failed = !res.ok || out.success === 'false' || out.success === false;
+                if (failed) {
+                    const why = out.message || raw.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 160) || 'no details returned';
+                    throw new Error('HTTP ' + res.status + ': ' + why);
+                }
                 show('Thank you for reaching out! Your message has been sent. I\'ll get back to you soon.', true);
                 form.reset();
             } catch (err) {
                 console.error('Contact form error:', err);
-                show('Sorry, that message could not be sent' + (err && err.message ? ' (' + err.message + ')' : '') + '. Please try again in a moment.', false);
+                show('Sorry, that message could not be sent (' + (err && err.message ? err.message : 'unknown error') + ').', false);
             } finally {
                 btn.disabled = false; btn.textContent = label;
             }
