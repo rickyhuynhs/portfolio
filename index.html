@@ -60,8 +60,8 @@
         /* Hero showreel: stays invisible until it is actually playing, so no YouTube loading/play UI ever shows */
         #hero-reel { opacity: 0; transition: opacity 0.8s ease; background: #000; }
         #hero-reel.is-live { opacity: 0.6; }
-        /* Homepage only: tighter gap between the featured cards and the footer */
-        body:has(#tab-home.active-tab) footer { margin-top: 1rem; }
+        /* Tighter gap between page content and the footer on every page */
+        footer { margin-top: 1rem !important; }
         /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -258,7 +258,7 @@
         </div>
 
         <!-- ================= TAB: FILM & NARRATIVE ================= -->
-        <div id="tab-film" class="tab-content hidden py-24 px-6 max-w-7xl mx-auto">
+        <div id="tab-film" class="tab-content hidden pt-24 pb-4 px-6 max-w-7xl mx-auto">
             <div class="mb-16 text-center max-w-3xl mx-auto">
                 <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">My Cinematic Universe</p>
                 <h2 class="text-3xl md:text-6xl font-serif fit-1 text-white">Film & Narrative</h2>
@@ -395,7 +395,7 @@
         </div>
 
         <!-- ================= TAB: VIDEOGRAPHY ================= -->
-        <div id="tab-videography" class="tab-content hidden py-24 px-6 max-w-7xl mx-auto">
+        <div id="tab-videography" class="tab-content hidden pt-24 pb-4 px-6 max-w-7xl mx-auto">
             
             <!-- MAIN VIDEOGRAPHY VIEW -->
             <div id="videography-main-view">
@@ -716,7 +716,7 @@
         </div>
 
         <!-- ================= TAB: CONTENT CREATOR ================= -->
-        <div id="tab-content" class="tab-content hidden py-24 px-6 max-w-7xl mx-auto">
+        <div id="tab-content" class="tab-content hidden pt-24 pb-4 px-6 max-w-7xl mx-auto">
             <div class="text-center max-w-3xl mx-auto mb-10">
                 <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">The World of Social Media</p>
                 <h2 class="text-4xl md:text-7xl font-serif fit-1 text-white">I Make Content</h2>
@@ -905,7 +905,7 @@
         </div>
 
         <!-- ================= TAB: ABOUT ================= -->
-        <div id="tab-about" class="tab-content hidden py-24 px-6 max-w-6xl mx-auto">
+        <div id="tab-about" class="tab-content hidden pt-24 pb-4 px-6 max-w-6xl mx-auto">
             <!-- Bio Section -->
             <div class="grid grid-cols-1 md:grid-cols-[360px_1fr] gap-12 items-stretch mb-20">
                 <div class="aspect-[4/5] md:aspect-auto md:self-stretch rounded-2xl overflow-hidden bg-neutral-900 shadow-2xl relative">
@@ -974,7 +974,7 @@
         </div>
 
         <!-- ================= TAB: CONTACT ================= -->
-        <div id="tab-contact" class="tab-content hidden py-24 px-6 max-w-4xl mx-auto">
+        <div id="tab-contact" class="tab-content hidden pt-24 pb-4 px-6 max-w-4xl mx-auto">
             <div class="text-center mb-16">
                 <p class="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2 font-semibold">Get In Touch</p>
                 <h2 class="text-4xl md:text-5xl font-serif fit-1 text-white mb-4">Let's Create Something Together</h2>
