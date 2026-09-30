@@ -2,7 +2,8 @@
 <html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0a0a0a">
     <title>RICKY HUYNH — Filmmaker & Director</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -62,6 +63,38 @@
         #hero-reel.is-live { opacity: 0.6; }
         /* Tighter gap between page content and the footer on every page */
         footer { margin-top: 1rem !important; }
+        /* ================= MOBILE POLISH ================= */
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 5rem; }
+        * { -webkit-tap-highlight-color: transparent; }
+        button, a, [onclick] { touch-action: manipulation; }
+        .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        footer { padding-bottom: calc(3rem + env(safe-area-inset-bottom, 0px)); }
+        #mobile-menu { max-height: calc(100dvh - 4rem); overflow-y: auto; animation: menuIn .2s ease-out; }
+        @keyframes menuIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+        #video-modal, #bts-gallery-modal { overscroll-behavior: contain; }
+        @media (max-width: 639px) {
+            :root { --title-scale: 1.45; --nav-scale: 1.45; }
+            .fit-1 { white-space: normal; }                      /* phones: titles may use up to 2 lines before shrinking */
+            #site-header > div { height: 4rem; padding-left: 1.25rem; padding-right: 1.25rem; }
+            main { padding-top: 4rem; }
+            #mobile-menu-btn { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; margin-right: -10px; }
+            #mobile-menu { padding: 0.75rem 1.25rem 1.25rem; }
+            #mobile-menu button { padding: 0.9rem 0; border-bottom: 1px solid #1a1a1a; font-size: 1.35rem; }
+            #mobile-menu button:last-child { border-bottom: 0; }
+            #tab-film, #tab-videography, #tab-content, #tab-about, #tab-contact { padding-top: 2.25rem; padding-left: 1.25rem; padding-right: 1.25rem; }
+            #tab-home > section { padding-left: 1.25rem; padding-right: 1.25rem; }
+            #tab-home > section:first-child { height: calc(100svh - 4rem); padding-left: 0; padding-right: 0; }
+            #tab-home > section:not(:first-child) { padding-top: 3rem; }
+            #tab-film > div:first-child, #tab-content > div:first-child { margin-bottom: 2rem; }
+            #video-subtab-events-btn, #video-subtab-weddings-btn, #content-subtab-personal-btn, #content-subtab-professional-btn { padding: 0.8rem 1.4rem; font-size: 0.7rem; }
+            input, select, textarea { font-size: 16px !important; }   /* stops iOS zooming into form fields */
+            #video-modal { padding: 0.5rem; }
+            #video-modal button, #bts-gallery-modal button { min-width: 44px; min-height: 44px; }
+            #bts-gallery-modal { padding: 0.5rem; }
+            #bts-gallery-grid { padding: 1rem; gap: 0.75rem; }
+            footer { padding-left: 1.25rem; padding-right: 1.25rem; }
+        }
         /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -574,7 +607,7 @@
                 <div id="videography-weddings" class="hidden space-y-20">
                     <div class="text-center max-w-7xl mx-auto py-6 px-4">
                         <i class="fa-solid fa-quote-left text-3xl md:text-4xl text-accentGold/40"></i>
-                        <p class="font-serif fit-2 italic text-xl md:text-2xl text-neutral-200 leading-snug md:leading-snug mt-3">We really love the video, we thought it captured our day beautifully. We're happy with all of the film footage you included. It looks highly professional and better than we could have imagined.</p>
+                        <p data-phone-lines="5" class="font-serif fit-2 italic text-xl md:text-2xl text-neutral-200 leading-snug md:leading-snug mt-3">We really love the video, we thought it captured our day beautifully. We're happy with all of the film footage you included. It looks highly professional and better than we could have imagined.</p>
                         <i class="fa-solid fa-quote-right text-3xl md:text-4xl text-accentGold/40 mt-3 inline-block"></i>
                         <p class="text-xs text-neutral-500 uppercase tracking-widest mt-3">— Matthew &amp; Melissa</p>
                     </div>
@@ -1138,7 +1171,7 @@
     <!-- VIDEO MODAL -->
     <div id="video-modal" class="fixed inset-0 z-50 bg-black/90 hidden flex items-center justify-center p-4">
         <div class="relative w-full max-w-4xl aspect-video bg-black rounded-lg overflow-hidden shadow-2xl">
-            <button onclick="closeVideoModal()" class="absolute top-4 right-4 text-white hover:text-gray-400 z-10 text-2xl">
+            <button onclick="closeVideoModal()" class="absolute top-2 right-2 p-2 text-white hover:text-gray-400 z-10 text-2xl bg-black/40 rounded-full w-11 h-11 flex items-center justify-center">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <iframe id="modal-player" class="w-full h-full" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -1389,13 +1422,13 @@
 
         function buildBtsRowHtml(project, projectIndex) {
             const photosHtml = project.photos.slice(0, 8).map((url, i) => `
-                <div class="flex-1 hover:flex-[5_1_0%] transition-all duration-500 ease-out overflow-hidden rounded-lg cursor-pointer min-w-0 bg-neutral-900 border border-neutral-800" onclick="openBtsGallery(${projectIndex})">${url ? `<img src="${url}" data-fallback alt="${project.title.replace(/"/g, '')} ${i + 1}" class="w-full h-full object-cover">` : ''}</div>
+                <div class="shrink-0 w-44 snap-start md:w-auto md:flex-1 md:hover:flex-[5_1_0%] transition-all duration-500 ease-out overflow-hidden rounded-lg cursor-pointer min-w-0 bg-neutral-900 border border-neutral-800" onclick="openBtsGallery(${projectIndex})">${url ? `<img src="${url}" data-fallback alt="${project.title.replace(/"/g, '')} ${i + 1}" class="w-full h-full object-cover">` : ''}</div>
             `).join('');
 
             return `
                 <div>
                     <h4 class="text-base md:text-lg font-serif fit-1 text-white mb-3">${project.title}</h4>
-                    <div class="flex gap-1.5 h-48 md:h-64 overflow-hidden">${photosHtml}</div>
+                    <div class="flex gap-1.5 h-48 md:h-64 overflow-x-auto md:overflow-hidden snap-x snap-mandatory md:snap-none no-scrollbar -mx-5 px-5 sm:mx-0 sm:px-0">${photosHtml}</div>
                     <div class="flex justify-end mt-2">
                         <button onclick="openBtsGallery(${projectIndex})" class="text-[11px] uppercase tracking-widest text-neutral-400 hover:text-white transition underline underline-offset-4 decoration-neutral-600">Show All</button>
                     </div>
@@ -1505,12 +1538,14 @@
 
             modal.classList.remove('hidden');
             modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeBtsGallery() {
             const modal = document.getElementById('bts-gallery-modal');
             modal.classList.add('hidden');
             modal.classList.remove('flex');
+            document.body.style.overflow = '';
         }
 
         function switchContentSubtab(subtab) {
@@ -1539,7 +1574,20 @@
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
+            const btn = document.getElementById('mobile-menu-btn');
+            if (btn) btn.innerHTML = menu.classList.contains('hidden') ? '<i class="fa-solid fa-bars"></i>' : '<i class="fa-solid fa-xmark"></i>';
         }
+        // Tap anywhere outside the open menu (or press Esc) to close it
+        document.addEventListener('click', function (e) {
+            const menu = document.getElementById('mobile-menu');
+            if (menu && !menu.classList.contains('hidden') && !e.target.closest('#site-header')) toggleMobileMenu();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key !== 'Escape') return;
+            const menu = document.getElementById('mobile-menu');
+            if (menu && !menu.classList.contains('hidden')) toggleMobileMenu();
+            closeVideoModal(); closeBtsGallery();
+        });
 
 
         // Image filename fallback: if a file 404s, try common name/extension variants
@@ -1589,6 +1637,7 @@
 
             modal.classList.remove('hidden');
             modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeVideoModal() {
@@ -1600,6 +1649,7 @@
             video.src = '';
             modal.classList.add('hidden');
             modal.classList.remove('flex');
+            document.body.style.overflow = '';
         }
 
         function handleContactSubmit(event) {
@@ -1731,29 +1781,35 @@
             el.style.fontSize = '';
             if (!el.offsetParent) return;                      // hidden tab: fit later when shown
             var base = parseFloat(getComputedStyle(el).fontSize);
-            var isOne = maxLines === 1;
-            // Short card titles (e.g. YEARN) get a little bigger, but only if they still fit comfortably
-            if (isOne && el.classList.contains('fit-grow')) {
+            // Short card titles (e.g. YEARN) get a little bigger, but only if they still fit on one line
+            if (el.classList.contains('fit-grow')) {
                 el.style.fontSize = (base * 1.3) + 'px';
                 if (!overflows(el) && countLines(el) <= 1) return;
                 el.style.fontSize = '';
             }
             // Titles that already fit are left exactly as they were
-            var bad = isOne ? (overflows(el) || countLines(el) > 1) : countLines(el) > maxLines;
-            if (!bad) return;
+            function bad(strict) {
+                if (countLines(el) > maxLines) return true;
+                var w = el.getBoundingClientRect().width;
+                return textWidth(el) > (strict && maxLines === 1 ? w * 0.97 : w + 0.5);
+            }
+            if (!bad(false)) return;
             var size = base, floor = base * 0.12, guard = 0;
             while (guard++ < 90 && size > floor) {
                 size *= 0.95;
                 el.style.fontSize = size + 'px';
-                var stillBad = isOne ? (textWidth(el) > el.getBoundingClientRect().width * 0.97 || countLines(el) > 1) : countLines(el) > maxLines;
-                if (!stillBad) break;
+                if (!bad(true)) break;
             }
         }
+        var phoneMQ = window.matchMedia('(max-width: 639px)');
         var queued = false;
         function fitAll() {
             queued = false;
-            document.querySelectorAll('.fit-1').forEach(function (el) { fit(el, 1); });
-            document.querySelectorAll('.fit-2').forEach(function (el) { fit(el, 2); });
+            var phone = phoneMQ.matches;
+            document.querySelectorAll('.fit-1').forEach(function (el) { fit(el, phone ? 2 : 1); });
+            document.querySelectorAll('.fit-2').forEach(function (el) {
+                fit(el, phone && el.dataset.phoneLines ? parseInt(el.dataset.phoneLines, 10) : 2);
+            });
             var ft = document.getElementById('featured-event-title');
             if (ft && ft.offsetParent) {
                 var col = ft.parentElement, thumb = col.previousElementSibling;
