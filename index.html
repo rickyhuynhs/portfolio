@@ -25,10 +25,12 @@
             }
         }
     </script>
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+    <link rel="preconnect" href="https://p.typekit.net" crossorigin>
     <!-- Adobe Fonts (Typekit) -->
     <script>
       (function(d) {
-        var config = { kitId: 'yvm3uwm', scriptTimeout: 3000, async: true },
+        var config = { kitId: 'yvm3uwm', scriptTimeout: 2000, async: true },
         h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;
         h.className+=" wf-loading";
         tk.src='https://use.typekit.net/'+config.kitId+'.js';
@@ -55,6 +57,10 @@
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
+        /* No font flash: keep the page invisible while Adobe Fonts loads (the loader script sets .wf-loading),
+           then fade in once the custom font is active. If the font can't load, it appears after the 2s timeout. */
+        body { transition: opacity 0.35s ease; }
+        html.wf-loading body { opacity: 0; }
         /* Auto-fit titles (sized by JS at the bottom of the page) */
         .fit-1 { white-space: nowrap; display: block; max-width: 100%; min-width: 0; }
         .fit-2 { overflow-wrap: break-word; }
@@ -1832,6 +1838,7 @@
         if (document.fonts && document.fonts.ready) document.fonts.ready.then(queue);
         setTimeout(queue, 800); setTimeout(queue, 2500);       // catch late Adobe Fonts loading
         new MutationObserver(queue).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
+        new MutationObserver(queue).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });   // font kit finished loading
         queue();
 
         /* ===== Hero showreel: reveal only once it is truly playing ===== */
