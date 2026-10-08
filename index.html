@@ -54,6 +54,8 @@
         :root { --title-scale: 1.8; --nav-scale: 1.8; }
         .font-serif { font-weight: 400; font-style: normal; zoom: var(--title-scale); }
         .nav-btn { zoom: var(--nav-scale); }
+        /* gap (not space-x) so the un-zoomed Videography wrapper gets the same spacing as the zoomed tabs */
+        .nav-row { column-gap: calc(1.5rem * var(--nav-scale)); }
         /* Videography dropdown (desktop nav) */
         .nav-sub { font-family: var(--title-font); font-weight: 400; zoom: var(--nav-scale); }
         .nav-dd-menu { display: none; z-index: 60; }
@@ -200,7 +202,7 @@
             </a>
             
             <!-- Desktop Nav Links -->
-            <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium tracking-wider uppercase text-neutral-400">
+            <nav class="nav-row hidden lg:flex items-center text-sm font-medium tracking-wider uppercase text-neutral-400">
                 <button onclick="switchTab('film')" class="nav-btn hover:text-white transition" data-tab="film">Film & Narrative</button>
                 <div id="nav-video-dd" class="nav-dd relative">
                     <button type="button" class="nav-btn hover:text-white transition" data-tab="videography" aria-haspopup="true">Videography</button>
