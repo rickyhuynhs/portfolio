@@ -258,11 +258,8 @@
                         RICKY HUYNH
                     </h1>
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <button onclick="openVideoModal('https://www.youtube.com/embed/nmq4ATBxz-Q?autoplay=1', 'Director & Videography Reel')" class="px-8 py-4 bg-white text-black font-medium tracking-widest text-xs uppercase rounded-full hover:bg-neutral-200 transition flex items-center gap-3">
-                            <i class="fa-solid fa-play text-xs"></i> Watch Showreel
-                        </button>
-                        <button onclick="switchTab('film')" class="px-8 py-4 bg-transparent border border-neutral-700 text-white font-medium tracking-widest text-xs uppercase rounded-full hover:border-white transition">
-                            Explore Films
+                        <button onclick="openVideoModal('https://www.youtube.com/embed/nmq4ATBxz-Q?autoplay=1', 'Director & Videography Reel')" class="px-6 py-3 bg-transparent border border-white/40 text-white font-medium tracking-widest text-[11px] uppercase rounded-full hover:bg-white hover:text-black hover:border-white transition duration-300 flex items-center gap-2.5">
+                            <i class="fa-solid fa-play text-[10px]"></i> Watch Showreel
                         </button>
                     </div>
                 </div>
@@ -1415,20 +1412,78 @@
         const BTS_PROJECTS_PER_PAGE = 3;
         let currentCatalogPage = 0; // 0-indexed
 
-        function buildBtsRowHtml(project, projectIndex) {
-            const photosHtml = project.photos.slice(0, 8).map((url, i) => `
-                <div class="shrink-0 w-44 snap-start md:w-auto md:flex-1 md:hover:flex-[5_1_0%] transition-all duration-500 ease-out overflow-hidden rounded-lg cursor-pointer min-w-0 bg-neutral-900 border border-neutral-800" onclick="openBtsGallery(${projectIndex})">${url ? `<img decoding="async" src="${url}" data-fallback alt="${project.title.replace(/"/g, '')} ${i + 1}" class="w-full h-full object-cover">` : ''}</div>
+        const BTS_PHOTOS_PER_SET = 8;
+        const btsSetIndex = {};      // projectIndex -> which set of 8 is showing
+        const btsHoverTimers = {};   // projectIndex -> { delay, loop }
+
+        function btsSetCount(project) {
+            return Math.max(1, Math.ceil(project.photos.length / BTS_PHOTOS_PER_SET));
+        }
+
+        function buildBtsPhotosHtml(project, projectIndex) {
+            const set = btsSetIndex[projectIndex] || 0;
+            const offset = set * BTS_PHOTOS_PER_SET;
+            return project.photos.slice(offset, offset + BTS_PHOTOS_PER_SET).map((url, i) => `
+                <div class="shrink-0 w-44 snap-start md:w-auto md:flex-1 md:hover:flex-[5_1_0%] transition-all duration-500 ease-out overflow-hidden rounded-lg cursor-pointer min-w-0 bg-neutral-900 border border-neutral-800" onclick="openBtsGallery(${projectIndex})">${url ? `<img decoding="async" src="${url}" data-fallback alt="${project.title.replace(/"/g, '')} ${offset + i + 1}" class="w-full h-full object-cover">` : ''}</div>
             `).join('');
+        }
+
+        function buildBtsRowHtml(project, projectIndex) {
+            const hasMore = btsSetCount(project) > 1;
+            const arrow = hasMore ? `
+                        <button type="button" aria-label="Show next set of photos"
+                            onclick="btsNextSet(${projectIndex}, true)"
+                            onmouseenter="btsHoverStart(${projectIndex})" onmouseleave="btsHoverStop(${projectIndex})"
+                            class="hidden md:flex absolute right-0 top-0 h-full w-14 z-10 items-center justify-center rounded-r-lg bg-gradient-to-l from-black/70 to-transparent text-white/80 hover:text-white transition">
+                            <i class="fa-solid fa-chevron-right text-xl"></i>
+                        </button>` : '';
+            const showAll = `
+                    <div class="flex justify-end mt-2 md:hidden">
+                        <button onclick="openBtsGallery(${projectIndex})" class="text-[11px] uppercase tracking-widest text-neutral-400 hover:text-white transition underline underline-offset-4 decoration-neutral-600">Show All</button>
+                    </div>`;
 
             return `
                 <div>
                     <h4 class="text-base md:text-lg font-serif fit-1 text-white mb-3">${project.title}</h4>
-                    <div class="flex gap-1.5 h-48 md:h-64 overflow-x-auto md:overflow-hidden snap-x snap-mandatory md:snap-none no-scrollbar -mx-5 px-5 sm:mx-0 sm:px-0">${photosHtml}</div>
-                    <div class="flex justify-end mt-2">
-                        <button onclick="openBtsGallery(${projectIndex})" class="text-[11px] uppercase tracking-widest text-neutral-400 hover:text-white transition underline underline-offset-4 decoration-neutral-600">Show All</button>
-                    </div>
+                    <div class="relative">
+                        <div id="bts-photos-${projectIndex}" class="flex gap-1.5 h-48 md:h-64 overflow-x-auto md:overflow-hidden snap-x snap-mandatory md:snap-none no-scrollbar -mx-5 px-5 sm:mx-0 sm:px-0 transition-opacity duration-200">${buildBtsPhotosHtml(project, projectIndex)}</div>${arrow}
+                    </div>${showAll}
                 </div>
             `;
+        }
+
+        // Swap the row to the next set of 8 photos (wraps back to the first set)
+        function btsNextSet(projectIndex, fromClick) {
+            const project = btsProjects[projectIndex];
+            const row = document.getElementById('bts-photos-' + projectIndex);
+            if (!project || !row) return;
+            const total = btsSetCount(project);
+            if (total < 2) return;
+            if (fromClick) btsHoverStop(projectIndex, true);
+            btsSetIndex[projectIndex] = ((btsSetIndex[projectIndex] || 0) + 1) % total;
+            row.style.opacity = '0';
+            setTimeout(() => {
+                row.innerHTML = buildBtsPhotosHtml(project, projectIndex);
+                row.scrollLeft = 0;
+                row.style.opacity = '1';
+            }, 200);
+        }
+
+        // Hovering the arrow area flips to the next set automatically, and keeps cycling while the mouse stays there
+        function btsHoverStart(projectIndex) {
+            btsHoverStop(projectIndex, true);
+            const t = {};
+            t.delay = setTimeout(() => {
+                btsNextSet(projectIndex);
+                t.loop = setInterval(() => btsNextSet(projectIndex), 1800);
+            }, 350);
+            btsHoverTimers[projectIndex] = t;
+        }
+        function btsHoverStop(projectIndex, keepEntry) {
+            const t = btsHoverTimers[projectIndex];
+            if (!t) return;
+            clearTimeout(t.delay); clearInterval(t.loop);
+            delete btsHoverTimers[projectIndex];
         }
 
         function renderCatalogProject() {
